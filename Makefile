@@ -38,7 +38,6 @@ all: $(NAME)
 clean:
 	rm -rf obj
 	make clean -C $(LIBFT_PATH)
-	make clean -C $(MINILIBX_PATH)
 	make clean -C test
 
 fclean: clean

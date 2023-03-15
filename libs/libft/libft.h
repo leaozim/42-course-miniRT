@@ -6,7 +6,7 @@
 /*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:19:41 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/15 15:37:04 by marcrodr         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:36:10 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+
+# define BUFFER_SIZE 1
 
 typedef struct s_list
 {
@@ -32,6 +35,7 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
+double	ft_atof(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *lst_new);
 void	ft_lstadd_front(t_list **lst, t_list *lst_new);
 void	ft_lstclear(t_list **lst, void (*del)(void*));
@@ -43,6 +47,7 @@ t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 void	*ft_memchr(const void *str, int c, size_t n);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
+int		ft_strcmp(char *s1, char *s2);
 void	*ft_memcpy(void *dest, const void *str, size_t n);
 void	*ft_memmove(void *str1, const void *str2, size_t n);
 void	*ft_memset(void *str, int x, size_t n);

@@ -13,14 +13,18 @@ HEADER_PATH			=	./includes
 HEADER_FILES		=	minirt.h
 
 SRC					=	main.c										\
+						$(UTILS)
 
-DIRS				=	. srcs
+UTILS				=	error.c 
+
+DIRS				=	. srcs utils
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror 
 
 VPATH				=	$(addprefix ./srcs/, $(DIRS))
 VPATH				+=	$(HEADER_PATH)
+VPATH				+=	$
 
 CFLAGS				+=	-g
 

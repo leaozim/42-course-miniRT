@@ -1,8 +1,8 @@
-NAME	= minishell_test
+NAME	= rt_test
 
 HEADER	= $(shell ls . unity | grep .h$)
 
-SRCS	= $(shell ls . unity test_utils | grep .c$)
+SRCS	= $(shell ls . unity test_ | grep .c$)
 
 LIBFT_PATH	= ../libs/libft
 LIBFT 	= $(LIBFT_PATH)/libft.a
@@ -18,7 +18,7 @@ OBJS	= $(SRCS:%.c=$(OBJ_DIR)/%.o) $(MINIRT_OBJS)
 CFLAGS	= -Wall -Wextra -g3
 IFLAGS	= -I. -Iunity -I../include -I../libft -Iincludes
 VPATH	=  unity 
-VPATH	+= test_utils
+VPATH	+= test_
 LDFLAGS	= -L$(LIBFT_PATH) -lft
 
 all: $(NAME)

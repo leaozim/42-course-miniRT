@@ -1,4 +1,4 @@
-# include "../../includes/minirt.h"
+#include "../../includes/minirt.h"
 
 void	error_msg(char *msg)
 {

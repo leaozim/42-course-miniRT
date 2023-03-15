@@ -7,6 +7,4 @@ enum e_status
 	ERROR
 };
 
-
-
 #endif

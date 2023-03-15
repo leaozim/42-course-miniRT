@@ -38,7 +38,6 @@ all: $(NAME)
 clean:
 	rm -rf obj
 	make clean -C $(LIBFT_PATH)
-	make clean -C $(MINILIBX_PATH)
 	make clean -C test
 
 fclean: clean
@@ -50,9 +49,6 @@ re:  fclean all
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)
-
-$(MINILIBX):
-	make -C $(MINILIBX_PATH)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
 	$(CC) $(CFLAGS) $(IFLAGS) -o $@ $(OBJS) $(LDFLAGS)

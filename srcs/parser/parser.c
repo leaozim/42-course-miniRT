@@ -6,13 +6,13 @@
 /*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:54:46 by marcrodr          #+#    #+#             */
-/*   Updated: 2023/03/15 17:57:22 by marcrodr         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:04:43 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minirt.h>
 
-static int parse_file(char *line)
+static int identifier(char *line)
 {
 	char	**tokens;
 
@@ -46,7 +46,7 @@ int	read_file(char *filename)
 		if (!line)
 			return (0);
 	//	printf("%s", line);
-		parse_file(line);
+		identifier(line);
 	}
 	return (0);
 }

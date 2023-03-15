@@ -9,5 +9,7 @@
 # include "defines.h"
 
 void	error_msg(char *msg);
+int     check_argc(int argc);
+int	    check_file(char *file);
 
 #endif

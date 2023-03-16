@@ -24,7 +24,7 @@ int	is_invalid_coordinates(char **tokens)
 int	check_id_c(char **tokens)
 {
 	if (ft_array_size(tokens) != 4)
-		return (error_msg("to many or few arguments for camera:"), ERROR);
+		return (error_msg("to many or few arguments for camera"), ERROR);
 	if (is_invalid_coordinates(tokens))
 		return (error_msg("coordinates are invaded"), ERROR);
 

@@ -11,9 +11,9 @@ int	is_invalid_coordinates(char **tokens)
 		j = 0;
 		while(tokens[i][j] != '\0')
 		{
-			if (!ft_isdigit(tokens[i][j]) && tokens[i][j] != '.' 
-				&& tokens[i][j] != ',' && tokens[i][j] != '-' 
-					&& tokens[i][j] != '\n')
+				if (!ft_isdigit(tokens[i][j]) && tokens[i][j] != '.' 
+					&& tokens[i][j] != ',' && tokens[i][j] != '-' 
+						&& tokens[i][j] != '\n')
 				return (ERROR);
 			j++;
 		}

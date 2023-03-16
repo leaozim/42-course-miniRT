@@ -7,6 +7,12 @@ enum e_status
 	ERROR
 };
 
+enum e_objects
+{
+	SPHERE,
+	PLANE,
+	CYLINDER
+};
 typedef struct s_color
 {
 	int	r;
@@ -25,10 +31,10 @@ typedef struct s_tuple
 typedef t_tuple	t_vector;
 typedef t_tuple	t_point;
 
-typedef struct  s_ambient
+typedef struct s_ambient
 {
 	double	ratio;
-	t_color	color;	
+	t_color	color;
 }	t_ambient;
 
 typedef struct s_camera
@@ -41,11 +47,12 @@ typedef struct s_camera
 typedef struct s_light
 {
 	t_point	coord;
+	double	brightness;
 }	t_light;
 
 typedef struct s_sphere
 {
-	t_point coord;
+	t_point	coord;
 	double	diameter;
 	t_color	color;
 }	t_sphere;
@@ -65,17 +72,23 @@ typedef struct s_cylinder
 	double		size;
 }	t_cylinder;
 
-typedef struct s_identifier
+typedef struct s_scene
 {
 	t_ambient	*ambient;
 	t_camera	*camera;
-	t_light		*light;
-	t_sphere	*sphere;
-	t_plane		*plane;
-	t_cylinder	*cylinder;
-}	t_identifier;
- 
+	t_list		*shapes;
+	t_list		*lights;
+}	t_scene;
 
-
+typedef struct s_shape
+{
+	enum e_objects	type;
+	union
+	{
+		t_sphere	sphere;
+		t_plane		plane;
+		t_cylinder	cylinder;
+	};
+}	t_shape;
 
 #endif

@@ -12,6 +12,7 @@ void	valid_soma(void)
 	int b = 3;
 	int result = 6;
 	TEST_ASSERT_EQUAL_INT(result, soma(a, b));
+	
 }
 
 void test_soma(void)

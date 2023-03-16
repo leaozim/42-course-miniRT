@@ -1,4 +1,4 @@
-# include "../includes/minirt.h"
+# include "minirt.h"
 
 int	main(int argc, char *argv[])
 {
@@ -7,4 +7,3 @@ int	main(int argc, char *argv[])
 	read_file(argv[1]);
 	return (0);
 }
- 

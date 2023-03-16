@@ -1,16 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 14:54:46 by marcrodr          #+#    #+#             */
-/*   Updated: 2023/03/15 18:04:43 by marcrodr         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <minirt.h>
+# include "minirt.h"
 
 static int identifier(char *line)
 {
@@ -20,7 +8,7 @@ static int identifier(char *line)
 	if(!tokens)
 		return (0);
 	if (ft_strncmp(tokens[0], "A", 1) == 0)
-		printf("Letter A -> %s\n", line);
+		printf("check_id_a %s\n", line);
 	if (ft_strncmp(tokens[0], "C", 1) == 0)
 		printf("Letter C -> %s\n", line);
 	if (ft_strncmp(tokens[0], "L", 1) == 0)
@@ -45,7 +33,6 @@ int	read_file(char *filename)
 		line = gnl(fd);
 		if (!line)
 			return (0);
-	//	printf("%s", line);
 		identifier(line);
 	}
 	return (0);

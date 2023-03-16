@@ -1,6 +1,6 @@
-#include "../../includes/minirt.h"
+# include "minirt.h"
 
-int check_argc(int argc)
+int	check_argc(int argc)
 {
 	if (argc == 2)
 		return (OK);
@@ -12,7 +12,7 @@ int check_argc(int argc)
 
 int	check_file(char *file)
 {
-	int len_file;
+	int	len_file;
 
 	len_file = ft_strlen(file);
 	if (ft_strcmp(&file[len_file - 3], ".rt") || len_file == 3) 

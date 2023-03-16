@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lade-lim <lade-lim@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:19:41 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/10 13:11:35 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:36:10 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+
+# define BUFFER_SIZE 1
 
 typedef struct s_list
 {
@@ -25,6 +28,7 @@ typedef struct s_list
 int		ft_atoi(const char *str);
 void	*ft_bzero(void *str, size_t n);
 void	*ft_calloc(size_t nelem, size_t elsize);
+char	*gnl(int fd);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);

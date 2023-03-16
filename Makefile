@@ -12,13 +12,15 @@ OBJS				=	$(SRC:%.c=$(OBJ_DIR)/%.o)
 HEADER_PATH			=	./includes
 HEADER_FILES		=	minirt.h
 
-SRC					=	main.c										\
-						$(UTILS)
+SRC					=	main.c \
+						$(UTILS) $(PARSER)
 
 UTILS				=	error.c \
 						check_arguments.c
 
-DIRS				=	. srcs utils 
+PARSER				= parser.c
+
+DIRS				=	. srcs utils parser
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror 
@@ -55,7 +57,7 @@ $(LIBFT):
 	make -C $(LIBFT_PATH)
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJS)
-	$(CC) $(CFLAGS) $(IFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+	$(CC) -g $(CFLAGS) $(IFLAGS) -o $@ $(OBJS) $(LDFLAGS)
 #@echo "$(GREEN)MINIRT compiled succesfully$(WHITE)"
 
 $(OBJ_DIR)/%.o: %.c $(HEADER_FILES) Makefile | $(OBJ_DIR)

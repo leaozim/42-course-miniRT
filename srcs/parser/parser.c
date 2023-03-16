@@ -1,5 +1,36 @@
 # include "minirt.h"
 
+int	is_invalid_coordinates(char **tokens)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (tokens[++i])
+	{
+		j = 0;
+		while(tokens[i][j] != '\0')
+		{
+			if (!ft_isdigit(tokens[i][j]) && tokens[i][j] != '.' 
+				&& tokens[i][j] != ',' && tokens[i][j] != '-' 
+					&& tokens[i][j] != '\n')
+				return (ERROR);
+			j++;
+		}
+	}
+	return (OK);
+}
+
+int	check_id_c(char **tokens)
+{
+	if (ft_array_size(tokens) != 4)
+		return (error_msg("to many or few arguments for camera:"), ERROR);
+	if (is_invalid_coordinates(tokens))
+		return (error_msg("coordinates are invaded"), ERROR);
+
+	return (OK);
+}
+
 static int identifier(char *line)
 {
 	char	**tokens;
@@ -7,18 +38,21 @@ static int identifier(char *line)
 	tokens = ft_split(line, ' ');
 	if(!tokens)
 		return (0);
-	if (ft_strncmp(tokens[0], "A", 1) == 0)
-		printf("check_id_a %s\n", line);
+	// if (ft_strncmp(tokens[0], "A", 1) == 0)
+	// 	printf("check_id_a %s\n", line);
 	if (ft_strncmp(tokens[0], "C", 1) == 0)
-		printf("Letter C -> %s\n", line);
-	if (ft_strncmp(tokens[0], "L", 1) == 0)
-		printf("Letter L -> %s\n", line);
-	if (ft_strncmp(tokens[0], "sp", 1) == 0)
-		printf("Letter sp -> %s\n", line);
-	if (ft_strncmp(tokens[0], "pl", 1) == 0)
-		printf("Letter pl -> %s\n", line);
-	if (ft_strncmp(tokens[0], "cy", 1) == 0)
-		printf("Letter cy -> %s\n", line);
+	{
+		printf("line = %s", line);
+		check_id_c(tokens);
+	}
+	// if (ft_strncmp(tokens[0], "L", 1) == 0)
+	// 	printf("Letter L -> %s\n", line);
+	// if (ft_strncmp(tokens[0], "sp", 1) == 0)
+	// 	printf("Letter sp -> %s\n", line);
+	// if (ft_strncmp(tokens[0], "pl", 1) == 0)
+	// 	printf("Letter pl -> %s\n", line);
+	// if (ft_strncmp(tokens[0], "cy", 1) == 0)
+	// 	printf("Letter cy -> %s\n", line);
 	return (0);
 }
 

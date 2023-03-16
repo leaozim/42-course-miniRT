@@ -1,6 +1,22 @@
 # include "minirt.h"
 
-int	is_invalid_coordinates(char **tokens)
+// int	ft_char_format_flout(char *nbr)
+// {
+	
+// }
+
+// int	is_invalid_flout(char **tokens)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (tokens[++i])
+// 	{
+// 		ft_char_format_flout
+// 	}		
+// }
+
+int	is_invalid_data(char **tokens)
 {
 	int	i;
 	int	j;
@@ -25,8 +41,8 @@ int	check_id_c(char **tokens)
 {
 	if (ft_array_size(tokens) != 4)
 		return (error_msg("to many or few arguments for camera"), ERROR);
-	if (is_invalid_coordinates(tokens))
-		return (error_msg("coordinates are invaded"), ERROR);
+	if (is_invalid_data(tokens))
+		return (error_msg("data are invaded"), ERROR);
 
 	return (OK);
 }
@@ -42,7 +58,6 @@ static int identifier(char *line)
 	// 	printf("check_id_a %s\n", line);
 	if (ft_strncmp(tokens[0], "C", 1) == 0)
 	{
-		printf("line = %s", line);
 		check_id_c(tokens);
 	}
 	// if (ft_strncmp(tokens[0], "L", 1) == 0)

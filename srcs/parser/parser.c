@@ -1,49 +1,5 @@
 # include "minirt.h"
 
-// int	ft_char_format_flout(char *nbr)
-// {
-	
-// }
-
-// int	is_invalid_flout(char **tokens)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (tokens[++i])
-// 	{
-// 		ft_char_format_flout
-// 	}		
-// }
-
-// void	replace_value_inside_quotes(char *list, int old_vle, int new_vle)
-// {
-// 	char	*str;
-// 	int		quotes;
-// 	int		i;
-
-// 	i = 0;
-// 	str = list;
-// 	quotes = 0;
-// 	while (str[i])
-// 	{
-// 		if (str[i] == SQUOTE || str[i] == DQUOTES)
-// 		{
-// 			quotes = str[i];
-// 			i++;
-// 			while (str[i] && str[i] != quotes)
-// 			{
-// 				if (str[i] == old_vle)
-// 					str[i] = new_vle;
-// 				i++;
-// 			}
-// 			i++;
-// 		}
-// 		while (str[i] && str[i] != SQUOTE && str[i] != DQUOTES)
-// 			i++;
-// 	}
-// }
-
 void	replace_char(char *str, int value_substituted)
 {
 	size_t		i;

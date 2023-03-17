@@ -26,6 +26,7 @@ int	check_color(char *tokens)
 	if (ft_array_size(rgb) != 3)
 		return (error_msg("Invalid RGB"), ERROR);
 	check_rgb(rgb[0], rgb[1], rgb[2]);
+	ft_free_array(rgb);
 	return (0);
 }
 
@@ -86,6 +87,7 @@ static int	identifier(char *line)
 		return (OK);
 	if (ft_strncmp(tokens[0], "cy", 2) == 0)
 		return (OK);
+	ft_free_array(tokens);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:19:41 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/15 16:36:10 by marcrodr         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:38:27 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
+int		ft_isfloat(char *str);
 int		ft_isprint(int c);
+int		ft_isrange(double value, double min, double max);
 char	*ft_itoa(int n);
 double	ft_atof(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *lst_new);

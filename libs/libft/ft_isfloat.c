@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   ft_isfloat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 18:02:59 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/17 15:01:41 by marcrodr         ###   ########.fr       */
+/*   Created: 2023/03/17 11:24:14 by marcrodr          #+#    #+#             */
+/*   Updated: 2023/03/17 11:58:49 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-double	ft_atof(const char *str)
+int	ft_isfloat(char *str)
 {
-	int		sign;
-	double	result;
-	double	decimal;
+	int		dot;
+	size_t	len;
+	char	*aux;
 
-	sign = 1;
-	result = 0.0;
-	decimal = 0.1;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign *= -1;
+	len = ft_strlen(str);
+	dot = 0;
+	if (len == 0)
+		return (0);
+	if (*str == '+' || *str == '-')
 		str++;
-	}
-	while (ft_isdigit(*str))
+	if (*str == '\0' || !ft_isdigit(*str))
+		return (0);
+	aux = str;
+	while (*aux)
 	{
-		result = (result * 10.0) + (*str - '0');
-		str++;
+		if (*aux == '.')
+		{
+			if (++dot > 1)
+				return (0);
+		}			
+		else if (!ft_isdigit(*aux))
+			return (0);
+		aux++;
 	}
-	if (*str++ != '.')
-		return (sign * result);
-	while (ft_isdigit(*str))
-	{
-		result +=  (*str++ - '0') * decimal;
-		decimal /= 10;
-	}
-	return (result * sign);
+	return (1);
 }

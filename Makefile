@@ -83,6 +83,9 @@ test_vall:	all
 val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='*/bin/*,*/sbin/*' --suppressions=readline.supp ./minishell
 
+debug: all
+	gdb --tui --args ./$(NAME) scenes/test.rt
+
 mc:	all
 	clear
 	./minirt

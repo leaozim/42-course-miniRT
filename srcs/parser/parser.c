@@ -1,5 +1,34 @@
 #include "minirt.h"
 
+int	check_rgb(char *red, char *green, char *blue)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	if (!ft_isdigit(*red) || !ft_isdigit(*green) || !ft_isdigit(*blue))
+		return (error_msg("RGB needs to be a positive number"), ERROR);
+	r = ft_atoi(red);
+	g = ft_atoi(green);
+	b = ft_atoi(blue);
+	if (ft_isrange(r, 0, 255)
+		|| ft_isrange(g, 0, 255)
+		|| ft_isrange(b, 0, 255))
+		return (error_msg("Incorrect range of RGB [0-255]"), ERROR);
+	return (0);
+}
+
+int	check_color(char *tokens)
+{
+	char	**rgb;
+
+	rgb = ft_split(tokens, ',');
+	if (ft_array_size(rgb) != 3)
+		return (error_msg("Invalid RGB"), ERROR);
+	check_rgb(rgb[0], rgb[1], rgb[2]);
+	return (0);
+}
+
 int	is_invalid_file_data(char	**tokens)
 {
 	int		i;
@@ -34,6 +63,7 @@ int	check_id_a(char **tokens)
 	floating = ft_atof(tokens[1]);
 	if (ft_isrange(floating, 0, 1))
 		return (error_msg("Incorrect range of numbers"), ERROR);
+	check_color(tokens[2]);
 	return (0);
 }
 

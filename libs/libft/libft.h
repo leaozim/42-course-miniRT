@@ -6,7 +6,7 @@
 /*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:19:41 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/17 15:38:27 by marcrodr         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:45:10 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+size_t	ft_array_size(char **array);
 int		ft_atoi(const char *str);
 void	*ft_bzero(void *str, size_t n);
 void	*ft_calloc(size_t nelem, size_t elsize);

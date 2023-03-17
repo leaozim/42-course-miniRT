@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lade-lim <lade-lim@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 20:54:32 by lade-lim          #+#    #+#             */
-/*   Updated: 2022/06/14 16:55:59 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:12:44 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ char	**ft_split(char const *s, char c)
 {
 	char	**array_str;
 
+	if (!s || *s == ' ')
+		return (NULL);
 	array_str = malloc((words_count(s, c) + 1) * sizeof(char *));
 	if (!array_str)
 		return (NULL);

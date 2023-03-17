@@ -6,7 +6,7 @@
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:19:41 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/16 16:59:35 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/17 11:11:34 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 int		ft_tolower(int ch);
 int		ft_toupper(int ch);
 size_t	ft_array_size(char **array);
+int		ft_isspace(int c);
 
 #endif 

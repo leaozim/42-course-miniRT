@@ -24,7 +24,11 @@ int	check_color(char *tokens)
 
 	rgb = ft_split(tokens, ',');
 	if (ft_array_size(rgb) != 3)
+	{
+		ft_free_array(rgb);
 		return (error_msg("Invalid RGB"), ERROR);
+	}
+		
 	check_rgb(rgb[0], rgb[1], rgb[2]);
 	ft_free_array(rgb);
 	return (0);
@@ -103,6 +107,7 @@ int	read_file(char *filename)
 		if (!line)
 			return (0);
 		identifier(line);
+		free(line);
 	}
 	return (0);
 }

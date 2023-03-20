@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 18:02:59 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/20 11:04:16 by lade-lim         ###   ########.fr       */
+/*   Created: 2023/03/17 19:14:09 by marcrodr          #+#    #+#             */
+/*   Updated: 2023/03/20 09:45:37 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-double	ft_atof(const char *str)
+void	ft_free_array(char **matrix)
 {
-	int		sign;
-	double	result;
-	double	decimal;
+	int	i;
 
-	sign = 1;
-	result = 0;
-	decimal = 0.1;
-	if (*str == '-' || *str == '+')
+	i = 0;
+	if (matrix)
 	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
+		while (matrix[i])
+		{
+			free(matrix[i]);
+			matrix[i] = NULL;
+			i++;
+		}
+		free(matrix);
 	}
-	while (ft_isdigit(*str++))
-		result *= 10 + (*str - '0');
-	while (ft_isdigit(*str))
-	{
-		result += (*str++ - '0') * decimal;
-		decimal /= 10;
-	}
-	return (result * sign);
+	matrix = NULL;
 }

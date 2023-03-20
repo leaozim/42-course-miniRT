@@ -13,5 +13,8 @@ void	error_msg(char *msg);
 int		check_argc(int argc);
 int		check_file(char *file);
 int		read_file(char *filename);
+int		check_id_c(char **tokens);
+int		is_invalid_file_data(char **tokens);
+int		check_orientation(char *tokens);
 
 #endif

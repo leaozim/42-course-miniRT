@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   ft_isflout.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 18:02:59 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/20 11:04:16 by lade-lim         ###   ########.fr       */
+/*   Created: 2023/03/17 11:24:14 by marcrodr          #+#    #+#             */
+/*   Updated: 2023/03/17 17:03:49 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-double	ft_atof(const char *str)
+int	ft_isfloat(char *str)
 {
-	int		sign;
-	double	result;
-	double	decimal;
+	int		dot;
+	size_t	len;
+	char	*aux;
 
-	sign = 1;
-	result = 0;
-	decimal = 0.1;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign *= -1;
+	len = ft_strlen(str);
+	dot = 0;
+	if (len == 0)
+		return (0);
+	if (*str == '+' || *str == '-')
 		str++;
-	}
-	while (ft_isdigit(*str++))
-		result *= 10 + (*str - '0');
-	while (ft_isdigit(*str))
+	if (*str == '\0' || !ft_isdigit(*str))
+		return (0);
+	aux = str;
+	while (*aux)
 	{
-		result += (*str++ - '0') * decimal;
-		decimal /= 10;
+		if (*aux == '.')
+		{
+			if (++dot > 1)
+				return (0);
+		}			
+		else if (!ft_isdigit(*aux))
+			return (0);
+		aux++;
 	}
-	return (result * sign);
+	return (1);
 }

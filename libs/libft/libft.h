@@ -6,7 +6,7 @@
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:19:41 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/17 11:11:34 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:46:10 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,8 @@ int		ft_tolower(int ch);
 int		ft_toupper(int ch);
 size_t	ft_array_size(char **array);
 int		ft_isspace(int c);
+int		ft_isrange(double value, double min, double max);
+int		ft_isfloat(char *str);
+void	ft_free_array(char **matrix);
 
 #endif 

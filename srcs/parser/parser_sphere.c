@@ -10,6 +10,7 @@ int	check_id_sp(char **tokens)
 		return (error_msg("Sphere orientation are invalid!"), ERROR);
 	if (!ft_isfloat(tokens[2]))
 		return (error_msg("Parameter needs to be a Float"), ERROR);
-	check_color(tokens[3]);
+	if (check_color(tokens[3]))
+		return (ERROR);
 	return (OK);
 }

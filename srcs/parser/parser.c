@@ -56,13 +56,14 @@ int	is_invalid_file_data(char	**tokens)
 	return (0);
 }
 
-int	check_id_a(char **tokens)
+int	check_id_a(char **tokens, t_scene *scene)
 {
 	double	floating;
 
 	floating = 0.0;
 	if (is_invalid_file_data(tokens))
 		return (error_msg("File data is invalid"), ERROR);
+	scene->ambient = (t_ambient *)ft_calloc(1, sizeof(t_ambient));
 	if (!ft_isfloat(tokens[1]))
 		return (error_msg("Parameter needs to be a Float"), ERROR);
 	floating = ft_atof(tokens[1]);
@@ -72,7 +73,7 @@ int	check_id_a(char **tokens)
 	return (0);
 }
 
-static int	identifier(char *line)
+static int	identifier(char *line, t_scene *scene)
 {
 	char	**tokens;
 
@@ -80,7 +81,7 @@ static int	identifier(char *line)
 	if (!tokens)
 		return (0);
 	if (ft_strncmp(tokens[0], "A", 1) == 0)
-		check_id_a(tokens);
+		check_id_a(tokens, scene);
 	if (ft_strncmp(tokens[0], "C", 1) == 0)
 		return (OK);
 	if (ft_strncmp(tokens[0], "L", 1) == 0)
@@ -95,7 +96,7 @@ static int	identifier(char *line)
 	return (0);
 }
 
-int	read_file(char *filename)
+int	read_file(char *filename, t_scene *scene)
 {
 	char	*line;
 	int		fd;
@@ -106,7 +107,7 @@ int	read_file(char *filename)
 		line = gnl(fd);
 		if (!line)
 			return (0);
-		identifier(line);
+		identifier(line, scene);
 		free(line);
 	}
 	return (0);

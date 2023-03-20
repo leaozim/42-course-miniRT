@@ -12,6 +12,6 @@
 void	error_msg(char *msg);
 int		check_argc(int argc);
 int		check_file(char *file);
-int		read_file(char *filename);
+int		read_file(char *filename, t_scene *scene);
 
 #endif

@@ -31,3 +31,22 @@ int	check_color(char *tokens, t_scene *scene)
 	ft_free_array(rgb);
 	return (0);
 }
+
+int check_orientation(char *tokens)
+{
+	char	**orientation;
+	int		i;
+
+	i = 0;
+	orientation = ft_split(tokens, ',');
+	if (!orientation)
+		return (0);
+	while (orientation[i])
+	{
+		if (ft_isrange(ft_atoi(orientation[i]), -1, 1) || i > 2)
+			return (ERROR);
+		i++;
+	}
+	free(orientation);
+	return (0);
+}

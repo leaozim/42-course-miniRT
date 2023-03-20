@@ -18,7 +18,7 @@ SRC					=	main.c \
 UTILS				=	error.c \
 						check_arguments.c color.c
 
-PARSER				= 	parser.c parser_ambient.c check.c
+PARSER				= 	parser.c parser_ambient.c check.c parser_camera.c
 
 DIRS				=	. srcs utils parser
 IFLAGS				=	-I $(HEADER_PATH)

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:35:13 by marcrodr          #+#    #+#             */
 /*   Updated: 2023/03/17 19:44:58 by marcrodr         ###   ########.fr       */

@@ -1,5 +1,18 @@
 #include "minirt.h"
 
+void	replace_char(char *str, int value_substituted)
+{
+	size_t		i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if ((ft_isspace(str[i]) && str[i] != ' ')
+			|| (str[i] == '\n' && str[i] != ' ' ))
+			str[i] = value_substituted;
+	}
+}
+
 int	is_invalid_file_data(char	**tokens)
 {
 	int		i;
@@ -26,13 +39,14 @@ static int	identifier(char *line, t_scene *scene)
 {
 	char	**tokens;
 
+  replace_char(line, ' ');
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (0);
 	if (ft_strncmp(tokens[0], "A", 1) == 0)
 		return (check_id_a(tokens, scene));
 	else if (ft_strcmp(tokens[0], "C") == 0)
-		return (OK);
+    return (check_id_c(tokens));
 	else if (ft_strcmp(tokens[0], "L") == 0)
 		return (OK);
 	else if (ft_strcmp(tokens[0], "sp") == 0)
@@ -44,7 +58,7 @@ static int	identifier(char *line, t_scene *scene)
 	else if (tokens[0][0] == '#')
 		return (OK);
 	ft_free_array(tokens);
-	return (0);
+	return (OK);
 }
 
 int	read_file(char *filename, t_scene *scene)
@@ -62,5 +76,6 @@ int	read_file(char *filename, t_scene *scene)
 			return (ERROR);
 		free(line);
 	}
-	return (0);
+	close (fd);
+	return (OK);
 }

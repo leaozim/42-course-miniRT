@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:19:41 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/17 19:14:38 by marcrodr         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:34:30 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
 
 # define BUFFER_SIZE 1
 
@@ -75,5 +74,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 int		ft_tolower(int ch);
 int		ft_toupper(int ch);
+size_t	ft_array_size(char **array);
+int		ft_isspace(int c);
+int		ft_isrange(double value, double min, double max);
+int		ft_isfloat(char *str);
+void	ft_free_array(char **matrix);
 
 #endif 

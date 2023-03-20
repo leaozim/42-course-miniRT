@@ -49,9 +49,9 @@ int	check_orientation(char *tokens)
 	while (orientation[i])
 	{
 		if (ft_isrange(ft_atoi(orientation[i]), -1, 1))
-			return (ERROR);
+			return (error_msg("Incorrect range for each x,y,z axis [1, -1]!"), ERROR);
 		else if (!ft_isfloat(orientation[i]))
-			return (ERROR);
+			return (error_msg("Parameter for each x,y,z axis  needs to be a Float"),ERROR);
 		i++;
 	}
 	free(orientation);

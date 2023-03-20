@@ -9,9 +9,10 @@ int	check_id_cy(char **tokens)
 	if (check_coordinates(tokens[1]))
 		return (error_msg("Cylinder coordinates are invaded!"), ERROR);
 	if (check_orientation(tokens[2]))
-		return (error_msg("Cylinder orientations are invaded!"), ERROR);
+		return (ERROR);
 	if (!ft_isfloat(tokens[3]) || !ft_isfloat(tokens[4]))
 		return (error_msg("Parameter needs to be a Float"), ERROR);
-	check_color(tokens[5]);
+	if (check_color(tokens[5]))
+		return (ERROR);
 	return (OK);
 }

@@ -9,7 +9,7 @@ int	check_id_c(char **tokens)
 	if (check_coordinates(tokens[1]))
 		return (error_msg("Camera coordinates are invaded!"), ERROR);
 	if (check_orientation(tokens[2]))
-		return (error_msg("Camera orientation are invalid!"), ERROR);
+		return (ERROR);
 	if (ft_isrange(ft_atoi(tokens[3]), 0, 180))
 		return (error_msg("FOV is invalid!"), ERROR);
 	return (OK);

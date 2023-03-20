@@ -9,7 +9,7 @@ int	check_id_sp(char **tokens)
 	if (check_coordinates(tokens[1]))
 		return (error_msg("Sphere orientation are invalid!"), ERROR);
 	if (!ft_isfloat(tokens[2]))
-		return (error_msg("Parameter needs to be a Float"), ERROR);
+		return (error_msg("Parameter for sphere needs to be a Float"), ERROR);
 	if (check_color(tokens[3]))
 		return (ERROR);
 	return (OK);

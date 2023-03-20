@@ -60,11 +60,11 @@ static int	identifier(char *line)
 	else if (ft_strcmp(tokens[0], "L") == 0)
 		return (OK);
 	else if (ft_strcmp(tokens[0], "sp") == 0)
-		return (OK);
+		return (check_id_sp(tokens));
 	else if (ft_strcmp(tokens[0], "pl") == 0)
 		return (OK);
 	else if (ft_strcmp(tokens[0], "cy") == 0)
-		return (OK);
+		return (check_id_cy(tokens));
 	else if (tokens[0][0] == '#')
 		return (OK);
 	ft_free_array(tokens);
@@ -89,4 +89,3 @@ int	read_file(char *filename)
 	close (fd);
 	return (OK);
 }
-

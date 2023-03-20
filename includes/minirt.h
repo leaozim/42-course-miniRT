@@ -14,7 +14,11 @@ int		check_argc(int argc);
 int		check_file(char *file);
 int		read_file(char *filename);
 int		check_id_c(char **tokens);
+int		check_id_sp(char **tokens);
+int		check_id_cy(char **tokens);
 int		is_invalid_file_data(char **tokens);
 int		check_orientation(char *tokens);
+int		check_coordinates(char *tokens);
+int		check_color(char *tokens);
 
 #endif

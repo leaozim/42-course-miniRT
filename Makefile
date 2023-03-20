@@ -18,7 +18,8 @@ SRC					=	main.c \
 UTILS				=	error.c \
 						check_arguments.c
 
-PARSER				= parser.c parser_camera.c check.c
+PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
+						parser_cylinder.c
 
 DIRS				=	. srcs utils parser
 IFLAGS				=	-I $(HEADER_PATH)
@@ -88,7 +89,6 @@ mc:	all
 	./minirt
 
 norm:
-	@clear
-	@norminette ${SRC} ${INCDIR}* | grep Error || true
+	@norminette ${SRC} ${LIBFT_PATH} 
 
 .PHONY:	all clean fclean re git test

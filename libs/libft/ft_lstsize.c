@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lade-lim <lade-lim@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:01:32 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/10 12:51:47 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:34:06 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_lstsize(t_list *lst)
 {
 	int	count;

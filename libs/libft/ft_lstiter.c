@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lade-lim <lade-lim@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:40:28 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/10 12:51:47 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:33:58 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	while (lst)

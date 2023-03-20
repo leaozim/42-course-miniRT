@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 22:28:46 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/20 12:35:42 by lade-lim         ###   ########.fr       */
+/*   Created: 2023/03/17 19:14:09 by marcrodr          #+#    #+#             */
+/*   Updated: 2023/03/20 12:35:38 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new_lst)
+void	ft_free_array(char **matrix)
 {
-	new_lst->next = *lst;
-	*lst = new_lst;
+	int	i;
+
+	i = 0;
+	if (matrix)
+	{
+		while (matrix[i])
+		{
+			free(matrix[i]);
+			matrix[i] = NULL;
+			i++;
+		}
+		free(matrix);
+	}
+	matrix = NULL;
 }

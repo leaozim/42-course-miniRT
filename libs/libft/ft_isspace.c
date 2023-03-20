@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 22:28:46 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/20 12:35:42 by lade-lim         ###   ########.fr       */
+/*   Created: 2022/06/03 19:38:50 by lade-lim          #+#    #+#             */
+/*   Updated: 2023/03/20 12:35:14 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstadd_front(t_list **lst, t_list *new_lst)
+int	ft_isspace(int c)
 {
-	new_lst->next = *lst;
-	*lst = new_lst;
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }

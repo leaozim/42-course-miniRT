@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_isrange.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/10 22:28:46 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/20 12:35:42 by lade-lim         ###   ########.fr       */
+/*   Created: 2023/03/17 15:37:43 by marcrodr          #+#    #+#             */
+/*   Updated: 2023/03/17 17:00:43 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstadd_front(t_list **lst, t_list *new_lst)
+int	ft_isrange(double value, double min, double max)
 {
-	new_lst->next = *lst;
-	*lst = new_lst;
+	if (value >= min && value <= max)
+		return (0);
+	return (1);
 }

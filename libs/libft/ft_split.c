@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lade-lim <lade-lim@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 20:54:32 by lade-lim          #+#    #+#             */
-/*   Updated: 2022/06/14 16:55:59 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:35:30 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,14 @@ static char	**build_array(char **array_str, char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**array_str;
+	int		words_size;
 
-	array_str = malloc((words_count(s, c) + 1) * sizeof(char *));
+	if (!s || (*s == c && ft_strlen(s) == 1))
+		return (NULL);
+	words_size = words_count(s, c);
+	if (words_size == 0)
+		return (NULL);
+	array_str = malloc((words_size + 1) * sizeof(char *));
 	if (!array_str)
 		return (NULL);
 	array_str = build_array(array_str, s, c);

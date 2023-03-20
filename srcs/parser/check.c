@@ -1,4 +1,4 @@
-# include "minirt.h"
+#include "minirt.h"
 
 int	check_rgb(char *red, char *green, char *blue)
 {

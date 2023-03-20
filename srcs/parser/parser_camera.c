@@ -1,4 +1,4 @@
-# include "minirt.h"
+#include "minirt.h"
 
 int	check_id_c(char **tokens)
 {

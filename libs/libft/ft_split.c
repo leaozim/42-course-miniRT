@@ -6,7 +6,7 @@
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 20:54:32 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/17 15:28:27 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:35:30 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static char	**build_array(char **array_str, char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**array_str;
-	int		words_size; 
+	int		words_size;
 
 	if (!s || (*s == c && ft_strlen(s) == 1))
 		return (NULL);

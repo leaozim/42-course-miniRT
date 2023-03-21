@@ -1,34 +1,33 @@
 #include "minirt.h"
 
-int	check_rgb(char *red, char *green, char *blue)
+int	check_rgb(int red, int green, int blue)
 {
-	int	r;
-	int	g;
-	int	b;
-
-	if (!ft_isdigit(*red) || !ft_isdigit(*green) || !ft_isdigit(*blue))
-		return (error_msg("RGB needs to be a positive number"), ERROR);
-	r = ft_atoi(red);
-	g = ft_atoi(green);
-	b = ft_atoi(blue);
-	if (ft_isrange(r, 0, 255)
-		|| ft_isrange(g, 0, 255)
-		|| ft_isrange(b, 0, 255))
+	if (ft_isrange(red, 0, 255)
+		|| ft_isrange(green, 0, 255)
+		|| ft_isrange(blue, 0, 255))
 		return (error_msg("Incorrect range of RGB [0-255]"), ERROR);
 	return (0);
 }
 
-int	check_color(char *tokens)
+int	check_color(char *tokens, t_scene *scene)
 {
 	char	**rgb;
+	int		r;
+	int		g;
+	int		b;
 
 	rgb = ft_split(tokens, ',');
 	if (ft_array_size(rgb) != 3)
 	{
 		ft_free_array(rgb);
 		return (error_msg("Invalid RGB"), ERROR);
-	}	
-	check_rgb(rgb[0], rgb[1], rgb[2]);
+	}
+	r = ft_atoi(rgb[0]);
+	g = ft_atoi(rgb[1]);
+	b = ft_atoi(rgb[2]);		
+	if (check_rgb(r, g, b))
+		return (ERROR);
+	scene->ambient->color = set_color(r, g, b);
 	ft_free_array(rgb);
 	return (0);
 }

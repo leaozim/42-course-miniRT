@@ -15,9 +15,10 @@ enum e_objects
 };
 typedef struct s_color
 {
-	int	r;
-	int	g;
-	int	b;
+	double	r;
+	double	g;
+	double	b;
+	int		mixed;
 }	t_color;
 
 typedef struct s_tuple
@@ -78,6 +79,7 @@ typedef struct s_scene
 	t_camera	*camera;
 	t_list		*shapes;
 	t_list		*lights;
+	int			i;
 }	t_scene;
 
 typedef struct s_shape

@@ -16,9 +16,9 @@ SRC					=	main.c \
 						$(UTILS) $(PARSER)
 
 UTILS				=	error.c \
-						check_arguments.c
+						check_arguments.c color.c
 
-PARSER				= parser.c parser_camera.c check.c
+PARSER				= 	parser.c parser_ambient.c check.c parser_camera.c
 
 DIRS				=	. srcs utils parser
 IFLAGS				=	-I $(HEADER_PATH)
@@ -82,6 +82,9 @@ test_vall:	all
 
 val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='*/bin/*,*/sbin/*' --suppressions=readline.supp ./minishell
+
+debug: all
+	gdb --tui --args ./$(NAME) scenes/test.rt
 
 mc:	all
 	clear

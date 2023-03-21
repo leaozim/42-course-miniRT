@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-static int	set_shape(char **tokens, t_list shape)
+static int	set_shape(char **tokens, t_list *shapes)
 {
 
 	// if (ft_strcmp(tokens[0], "A") == 0)
@@ -11,7 +11,7 @@ static int	set_shape(char **tokens, t_list shape)
 		// return (OK);
 	if (ft_strcmp(tokens[0], "sp") == 0)
     {
-        create_sphere(tokens);
+        create_sphere_node(tokens, shapes);
     }
 	return (0);
 	// else if (ft_strcmp(tokens[0], "pl") == 0)
@@ -24,12 +24,12 @@ static int	set_shape(char **tokens, t_list shape)
 	return (error_msg("file data are invaded"), ERROR);
 }
 
-int	read_file(char *filename, t_scene *scene)
+int	read_file2(char *filename, t_scene *scene)
 {
 	char	**tokens;
 	char	*line;
 	int		fd;
-    t_list  shape;
+    t_list  shapes;
 
 	(void)scene;
 	fd = open(filename, O_RDONLY);
@@ -42,7 +42,7 @@ int	read_file(char *filename, t_scene *scene)
 		tokens = ft_split(line, ' ');
 		if (!tokens)
 			return (0);
-		set_shape(tokens, &shape);
+		set_shape(tokens, &shapes);
 		free(line);
 	}
 	ft_free_array(tokens);

@@ -9,5 +9,6 @@ int	main(int argc, char *argv[])
 	ft_bzero(&scene, sizeof(t_scene));
 	if (read_file(argv[1], &scene) == ERROR)
 		return (EXIT_FAILURE);
+	read_file2(argv[1], &scene);
 	return (0);
 }

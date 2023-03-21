@@ -42,7 +42,7 @@ int	check_id_sp(char **tokens)
 }
 
 
-void	create_sphere(char **tokens, t_list shape)
+void	create_sphere_node(char **tokens, t_list *shapes)
 {
 	t_shape *shape;
 
@@ -50,7 +50,7 @@ void	create_sphere(char **tokens, t_list shape)
 	shape->sphere = create_sphere(tokens, shape);
 	shape->type = SPHERE;
 	// set_shape_linked_list_node(shape);
-	ft_lstadd_front(shape,);
+	ft_lstadd_front((void *)shape, shapes);
 	printf("%lf\n", shape->sphere.color.r * 255);
 	printf("%f\n", shape->sphere.color.g * 255);
 	printf("%lf\n", shape->sphere.diameter);

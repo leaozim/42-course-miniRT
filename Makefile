@@ -19,7 +19,7 @@ UTILS				=	error.c \
 						check_arguments.c color.c
 
 PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
-						parser_cylinder.c create_parameter.c
+						parser_cylinder.c create_parameter.c parser_to_parser.c
 
 TUPLA				=	create_tupla.c
 

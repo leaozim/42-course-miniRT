@@ -9,7 +9,7 @@ int	check_rgb(int red, int green, int blue)
 	return (0);
 }
 
-int	check_color(char *tokens, t_scene *scene)
+int	check_color(char *tokens)
 {
 	char	**rgb;
 	int		r;
@@ -27,7 +27,6 @@ int	check_color(char *tokens, t_scene *scene)
 	b = ft_atoi(rgb[2]);		
 	if (check_rgb(r, g, b))
 		return (ERROR);
-	scene->ambient->color = set_color(r, g, b);
 	ft_free_array(rgb);
 	return (0);
 }

@@ -4,7 +4,8 @@
         "string_view": "c",
         "initializer_list": "c",
         "utility": "c",
-        "string": "c"
+        "string": "c",
+        "libft.h": "c"
     },
     "42header.email": "larissa_silva@outlook.com",
     "42header.username": "lade-lim"

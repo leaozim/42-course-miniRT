@@ -2,6 +2,7 @@
 
 int	check_id_sp(char **tokens, t_scene *scene)
 {
+	(void)scene;
 	if (ft_array_size(tokens) != 4)
 		return (error_msg("To many or few arguments for sphere!"), ERROR);
 	if (is_invalid_file_data(tokens))
@@ -10,7 +11,7 @@ int	check_id_sp(char **tokens, t_scene *scene)
 		return (error_msg("Sphere orientation are invalid!"), ERROR);
 	if (!ft_isfloat(tokens[2]))
 		return (error_msg("Parameter for sphere needs to be a Float"), ERROR);
-	if (check_color(tokens[3]))
-		return (ERROR);
+	// if (check_color(tokens[3], scene))
+	// 	return (ERROR);
 	return (OK);
 }

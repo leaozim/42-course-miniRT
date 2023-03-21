@@ -16,7 +16,7 @@ SRC					=	main.c \
 						$(UTILS) $(PARSER)
 
 UTILS				=	error.c \
-						check_arguments.c
+						check_arguments.c color.c
 
 PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
 						parser_cylinder.c

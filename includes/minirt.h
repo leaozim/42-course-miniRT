@@ -19,6 +19,7 @@ int		check_id_cy(char **tokens, t_scene *scene);
 int		is_invalid_file_data(char **tokens);
 int		check_orientation(char *tokens);
 int		check_coordinates(char *tokens);
-int		check_color(char *tokens);
+int		check_color(char *tokens, t_scene *scene);
+t_color	set_color(double r, double g, double b);
 
 #endif

@@ -13,13 +13,6 @@ enum e_objects
 	PLANE,
 	CYLINDER
 };
-typedef struct s_color
-{
-	double	r;
-	double	g;
-	double	b;
-	int		mixed;
-}	t_color;
 
 typedef struct s_tuple
 {
@@ -31,6 +24,14 @@ typedef struct s_tuple
 
 typedef t_tuple	t_vector;
 typedef t_tuple	t_point;
+
+# define t_color t_tuple
+# define r x
+# define g y
+# define b z
+# define mixed w
+# define VECTOR_W 0
+# define POINT_W 1
 
 typedef struct s_ambient
 {

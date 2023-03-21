@@ -12,10 +12,10 @@
 void	error_msg(char *msg);
 int		check_argc(int argc);
 int		check_file(char *file);
-int		read_file(char *filename);
-int		check_id_c(char **tokens);
-int		check_id_sp(char **tokens);
-int		check_id_cy(char **tokens);
+int	    read_file(char *filename, t_scene *scene);
+int		check_id_c(char **tokens, t_scene *scene);
+int		check_id_sp(char **tokens, t_scene *scene);
+int		check_id_cy(char **tokens, t_scene *scene);
 int		is_invalid_file_data(char **tokens);
 int		check_orientation(char *tokens);
 int		check_coordinates(char *tokens);

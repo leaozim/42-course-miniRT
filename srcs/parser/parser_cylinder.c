@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-int	check_id_cy(char **tokens)
+int	check_id_cy(char **tokens, t_scene *scene)
 {
 	if (ft_array_size(tokens) != 6)
 		return (error_msg("To many or few arguments for cylinder!"), ERROR);

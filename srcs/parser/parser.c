@@ -45,7 +45,7 @@ void	print_array(char **str)
 	}
 }
 
-static int	identifier(char *line)
+static int	identifier(char *line, t_scene *scene)
 {
 	char	**tokens;
 
@@ -56,22 +56,22 @@ static int	identifier(char *line)
 	if (ft_strcmp(tokens[0], "A") == 0)
 		return (OK);
 	else if (ft_strcmp(tokens[0], "C") == 0)
-		return (check_id_c(tokens));
+		return (check_id_c(tokens, scene));
 	else if (ft_strcmp(tokens[0], "L") == 0)
 		return (OK);
 	else if (ft_strcmp(tokens[0], "sp") == 0)
-		return (check_id_sp(tokens));
+		return (check_id_sp(tokens, scene));
 	else if (ft_strcmp(tokens[0], "pl") == 0)
 		return (OK);
 	else if (ft_strcmp(tokens[0], "cy") == 0)
-		return (check_id_cy(tokens));
+		return (check_id_cy(tokens, scene));
 	else if (tokens[0][0] == '#')
 		return (OK);
 	ft_free_array(tokens);
 	return (error_msg("file data are invaded"), ERROR);
 }
 
-int	read_file(char *filename)
+int	read_file(char *filename, t_scene *scene)
 {
 	char	*line;
 	int		fd;
@@ -82,8 +82,8 @@ int	read_file(char *filename)
 		line = gnl(fd);
 		if (!line)
 			return (ERROR);
-		if (identifier(line) == 1)
-			return (ERROR);
+		if (identifier(line, scene) == ERROR)
+			return (free(line), ERROR);
 		free(line);
 	}
 	close (fd);

@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-int	check_id_sp(char **tokens)
+int	check_id_sp(char **tokens, t_scene *scene)
 {
 	if (ft_array_size(tokens) != 4)
 		return (error_msg("To many or few arguments for sphere!"), ERROR);

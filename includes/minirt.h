@@ -19,5 +19,6 @@ int		check_id_a(char **tokens, t_scene *scene);
 int		is_invalid_file_data(char	**tokens);
 int		check_id_c(char **tokens);
 int		check_orientation(char *tokens);
+int     parser_light(char **tokens, t_scene *scene);
 
 #endif

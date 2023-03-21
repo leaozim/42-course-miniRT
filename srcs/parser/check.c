@@ -50,3 +50,26 @@ int check_orientation(char *tokens)
 	free(orientation);
 	return (0);
 }
+
+int	check_coordinates(char *tokens)
+{
+	char	**coordinates;
+	int		i;
+	int		size;
+
+	i = 0;
+	coordinates = ft_split(tokens, ',');
+	if (!coordinates)
+		return (ERROR);
+	size = ft_array_size(coordinates);
+	if (size != 3)
+		return (free(coordinates), ERROR);
+	while (coordinates[i])
+	{
+		if (!ft_isfloat(coordinates[i]))
+			return (free(coordinates), ERROR);
+		i++;
+	}
+	free(coordinates);
+	return (OK);
+}

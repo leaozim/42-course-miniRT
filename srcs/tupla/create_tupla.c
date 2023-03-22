@@ -1,4 +1,3 @@
-
 #include "minirt.h"
 
 t_tuple	create_tuple(double x, double y, double z, double w)

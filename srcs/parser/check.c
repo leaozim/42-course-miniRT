@@ -5,7 +5,7 @@ int	check_rgb(int red, int green, int blue)
 	if (ft_isrange(red, 0, 255)
 		|| ft_isrange(green, 0, 255)
 		|| ft_isrange(blue, 0, 255))
-		return (error_msg("Incorrect range of RGB [0-255]"), ERROR);
+		return (error_msg(ERROR_RANGE_COLOR), ERROR);
 	return (0);
 }
 
@@ -20,11 +20,11 @@ int	check_color(char *tokens)
 	if (ft_array_size(rgb) != 3)
 	{
 		ft_free_array(rgb);
-		return (error_msg("Invalid RGB"), ERROR);
+		return (error_msg(ERROR_INVALID_RGB), ERROR);
 	}
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
-	b = ft_atoi(rgb[2]);		
+	b = ft_atoi(rgb[2]);
 	if (check_rgb(r, g, b))
 		return (ERROR);
 	ft_free_array(rgb);
@@ -47,9 +47,9 @@ int	check_orientation(char *tokens)
 	while (orientation[i])
 	{
 		if (ft_isrange(ft_atoi(orientation[i]), -1, 1))
-			return (ft_free_array(orientation), error_msg("Incorrect range for each x,y,z axis [1, -1]!"), ERROR);
+			return (ft_free_array(orientation), error_msg(ERROR_RANGE), ERROR);
 		else if (!ft_isfloat(orientation[i]))
-			return (ft_free_array(orientation), error_msg("Parameter for each x,y,z axis  needs to be a Float"),ERROR);
+			return (ft_free_array(orientation), error_msg(ERROR_FLOAT), ERROR);
 		i++;
 	}
 	ft_free_array(orientation);

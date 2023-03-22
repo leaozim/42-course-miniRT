@@ -14,10 +14,10 @@ t_color	create_color(double r, double g, double b)
 {
 	t_color	color;
 
-	color.R = r;
-	color.G = g;
-	color.B = b;
-    color.MIXED = merge_colors((int)(r * 255), (int)(g * 255), \
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	color.mixed = merge_colors((int)(r * 255), (int)(g * 255), \
 	(int)(b * 255));
 	return (color);
 }

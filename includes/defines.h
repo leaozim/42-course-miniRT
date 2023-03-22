@@ -14,6 +14,14 @@ enum e_objects
 	CYLINDER
 };
 
+typedef struct s_color
+{
+	double	r;
+	double	g;
+	double	b;
+	int		mixed;
+}	t_color;
+
 typedef struct s_tuple
 {
 	double	x;
@@ -25,18 +33,13 @@ typedef struct s_tuple
 typedef t_tuple	t_vector;
 typedef t_tuple	t_point;
 
-# define t_color t_tuple
-# define R x
-# define G y
-# define B z
-# define MIXED w
 # define VECTOR_W 0
 # define POINT_W 1
 
 typedef struct s_ambient
 {
-	double	ratio;
-	t_color	color;
+	double		ratio;
+	t_color		color;
 }	t_ambient;
 
 typedef struct s_camera
@@ -48,15 +51,15 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_point	coord;
-	double	brightness;
+	t_point		coord;
+	double		brightness;
 }	t_light;
 
 typedef struct s_sphere
 {
-	t_point	coord;
-	double	diameter;
-	t_color	color;
+	t_point		coord;
+	double		diameter;
+	t_color		color;
 }	t_sphere;
 
 typedef struct s_plane
@@ -71,7 +74,8 @@ typedef struct s_cylinder
 	t_point		coord;
 	t_vector	vector;
 	double		diameter;
-	double		size;
+	double		height;
+	t_color		color;
 }	t_cylinder;
 
 typedef struct s_scene

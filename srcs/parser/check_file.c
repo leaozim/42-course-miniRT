@@ -2,7 +2,7 @@
 
 void	replace_char(char *str, int value_substituted)
 {
-	size_t		i;
+	size_t	i;
 
 	i = -1;
 	while (str[++i])
@@ -41,6 +41,8 @@ static int	identifier(char *line)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (0);
+	if (is_invalid_file_data(tokens))
+		return (error_msg(ERROR_FILE), ERROR);
 	if (ft_strcmp(tokens[0], "A") == 0)
 	{
 		ft_free_array(tokens);
@@ -68,11 +70,10 @@ static int	identifier(char *line)
 		return (OK);
 	}
 	ft_free_array(tokens);
-	return (error_msg("file data are invaded"), ERROR);
+	return (error_msg(ERROR_FILE), ERROR);
 }
 
-
-int	open_File(char *file)
+int	open_file(char *file)
 {
 	int	len_file;
 	int	fd;
@@ -82,7 +83,7 @@ int	open_File(char *file)
 	if (fd == -1)
 		return (close(fd), ft_putstr_fd("Error: ", 2), perror(file), ERROR);
 	if (ft_strcmp(&file[len_file - 3], ".rt") || len_file == 3)
-		return (close(fd), error_msg("the scene needs to be in *.rt format"), ERROR);
+		return (close(fd), error_msg(ERROR_FORMAT), ERROR);
 	return (fd);
 }
 

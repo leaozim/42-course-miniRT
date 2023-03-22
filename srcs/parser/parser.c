@@ -17,7 +17,7 @@ static int	set_shape(char *line, t_scene *scene)
 	else if (ft_strcmp(tokens[0], "sp") == 0)
 		return (create_sphere_node(tokens, scene), OK);
 	else if (ft_strcmp(tokens[0], "pl") == 0)
-		return (ft_free_array(tokens), OK);
+		return (create_plane_node(tokens, scene), ERROR);
 	else if (ft_strcmp(tokens[0], "cy") == 0)
 		return (create_cylinder_node(tokens, scene), ERROR);
 	else if (tokens[0][0] == '#')

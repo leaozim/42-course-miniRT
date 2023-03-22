@@ -29,10 +29,12 @@ t_tuple		create_tuple(double x, double y, double z, double w);
 void		replace_char(char *str, int value_substituted);	
 int			check_file(char *filename);
 void		create_sphere_node(char **tokens, t_scene *scene);
-void		create_light_node(char **tokens, t_scene *scene);
-int			check_id_p(char **tokens);
-
+void		create_cylinder_node(char **tokens, t_scene *scene);
+void		destroy_minirt(t_scene *scene);
+t_color		create_parameter_color(char *tokens);
+void		create_camera(char **tokens, t_scene *scene);
+void		create_plane_node(char **tokens, t_scene *scene);
 
 //// APAGAR ////
-void	print_array(char **str);
+void		print_array(char **str);
 #endif

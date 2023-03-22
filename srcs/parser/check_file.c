@@ -71,6 +71,7 @@ static int	identifier(char *line)
 	return (error_msg("file data are invaded"), ERROR);
 }
 
+
 int	open_File(char *file)
 {
 	int	len_file;
@@ -93,16 +94,13 @@ int	check_file(char *filename, t_scene *scene)
 
 	(void)scene;
 	fd = open_File(filename);
-	if (!fd)
-	{
+	if (fd == ERROR)
 		return (ERROR);
-	}
 	while (42)
 	{
-		
 		line = gnl(fd);
 		if (!line)
-			return (ERROR);
+			return (0);
 		if (identifier(line) == ERROR)
 			return (close(fd), free(line), ERROR);
 		free(line);

@@ -12,6 +12,6 @@ t_tuple	create_parameter(char *tokens, t_tuple (*f)(double, double, double))
 	x = ft_atof(parameter[0]);
 	y = ft_atof(parameter[1]);
 	z = ft_atof(parameter[2]);
-	free(parameter);
+	ft_free_array(parameter);
 	return(f(x, y, z));
 }

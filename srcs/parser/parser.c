@@ -8,28 +8,37 @@ static int	set_shape(char *line, t_scene *scene)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (0);
-
-	// if (ft_strcmp(tokens[0], "A") == 0)
-		// return (OK);
-	// else if (ft_strcmp(tokens[0], "C") == 0)
-		// return (check_id_c(tokens));
-	// else if (ft_strcmp(tokens[0], "L") == 0)
-		// return (OK);
-
-	if (ft_strcmp(tokens[0], "sp") == 0)
-    {
-        printf("oi\n");
-        create_sphere_node(tokens, scene);
-        return (OK);
-    }
-	// else if (ft_strcmp(tokens[0], "pl") == 0)
-	// 	return (OK);
-	// else if (ft_strcmp(tokens[0], "cy") == 0)
-	// 	return (check_id_cy(tokens));
-	// else if (tokens[0][0] == '#')
-	// 	return (OK);
-	// ft_free_array(tokens);
-	return (error_msg("file data are invaded"), ERROR);
+	if (ft_strcmp(tokens[0], "A") == 0)
+	{
+		ft_free_array(tokens);
+		return (OK);
+	}
+	else if (ft_strcmp(tokens[0], "C") == 0)
+		return (check_id_c(tokens));
+	else if (ft_strcmp(tokens[0], "L") == 0)
+	{
+		ft_free_array(tokens);
+		return (OK);
+	}
+	else if (ft_strcmp(tokens[0], "sp") == 0)
+	{
+		create_sphere_node(tokens, scene);
+		return (OK);
+	}
+	else if (ft_strcmp(tokens[0], "pl") == 0)
+	{
+		ft_free_array(tokens);
+		return (OK);
+	}
+	else if (ft_strcmp(tokens[0], "cy") == 0)
+		return (check_id_cy(tokens));
+	else if (tokens[0][0] == '#')
+	{
+		ft_free_array(tokens);
+		return (OK);
+	}
+	ft_free_array(tokens);
+	return (ERROR);
 }
 
 int	read_file(char *filename, t_scene *scene)
@@ -43,7 +52,7 @@ int	read_file(char *filename, t_scene *scene)
 	{
 		line = gnl(fd);
 		if (!line)
-			return (close(fd), ERROR);
+			return (close(fd), 0);
 		set_shape(line, scene);
 		free(line);
 	}

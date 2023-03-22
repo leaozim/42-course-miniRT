@@ -1,24 +1,32 @@
 #include "minirt.h"
 
-// int	set_shape_linked_list_node(t_shape *shape)
-// {
-// 	t_list	*node;
-
-
-// 	return (0);
-// }
-
-t_sphere	create_sphere(char **tokens,  t_shape *shape)
+t_sphere	create_sphere(char **tokens)
 {
-	t_point	coord;
-	double	diameter;
-	t_color	color;
+	t_sphere	sp;
 
-	(void)shape;
-	coord = (t_point)(create_parameter(tokens[1], create_point));
-	diameter = ft_atof(tokens[2]);
-	color = (t_color)(create_parameter(tokens[3], set_color));
-	return ((t_sphere){coord, diameter, color});
+	sp.coord = (t_point)(create_parameter(tokens[1], create_point));
+	sp.diameter = ft_atof(tokens[2]);
+	sp.color = (t_color)(create_parameter(tokens[3], set_color));
+	return (sp);
+}
+
+void	create_sphere_node(char **tokens, t_scene *scene)
+{
+	t_shape *shape;
+	// t_shape	*current_shape;
+	// t_list	*shape_list;
+
+	shape = ft_calloc(1, sizeof(t_shape));
+	shape->sphere = create_sphere(tokens);
+	shape->type = SPHERE;
+	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
+	ft_free_array(tokens);
+	// shape_list = scene->shapes;
+	// current_shape = (t_shape *)shape_list->content;
+	// printf("%lf\n", current_shape->sphere.color.R * 255);
+	// printf("%f\n", current_shape->sphere.color.G * 255);
+	// printf("%lf\n", current_shape->sphere.diameter);
+	// ft_lstclear(&scene->shapes, free);
 }
 
 int	check_id_sp(char **tokens)
@@ -35,27 +43,4 @@ int	check_id_sp(char **tokens)
 		return (ERROR);
 	ft_free_array(tokens);
 	return (OK);
-}
-
-
-void	create_sphere_node(char **tokens, t_scene *scene)
-{
-	t_shape *shape;
-
-	t_shape	*current_shape;
-	t_list	*shape_list;
-
-	printf("oi\n");
-    shape = ft_calloc(1, sizeof(t_shape));
-	shape = ft_calloc(1, sizeof(t_shape));
-	shape->sphere = create_sphere(tokens, shape);
-	shape->type = SPHERE;
-	// set_shape_linked_list_node(shape);
-	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
-
-	shape_list = scene->shapes;
-	current_shape = (t_shape *)shape_list->content;
-	printf("%lf\n", current_shape->sphere.color.R * 255);
-	// printf("%f\n", scene->shapes->sphere.color.G * 255);
-	// printf("%lf\n", scene->shapes->sphere.diameter);
 }

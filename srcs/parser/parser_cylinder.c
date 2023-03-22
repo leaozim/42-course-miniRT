@@ -23,5 +23,6 @@ int	check_id_cy(char **tokens)
 	// fill_cylinder(tokens, scene);
 	// if (check_color(tokens[5], scene))
 	// 	return (ERROR);
+	ft_free_array(tokens);
 	return (OK);
 }

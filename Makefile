@@ -19,7 +19,7 @@ UTILS				=	error.c \
 						check_arguments.c color.c
 
 PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
-						parser_cylinder.c create_parameter.c parser_to_parser.c
+						parser_cylinder.c create_parameter.c check_file.c
 
 TUPLA				=	create_tupla.c
 
@@ -84,7 +84,7 @@ test_vall:	all
 	make val -C test
 
 val: all
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='*/bin/*,*/sbin/*' --suppressions=readline.supp ./minishell
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT
 
 mc:	all
 	clear

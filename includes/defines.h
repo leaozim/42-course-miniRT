@@ -26,10 +26,10 @@ typedef t_tuple	t_vector;
 typedef t_tuple	t_point;
 
 # define t_color t_tuple
-# define r x
-# define g y
-# define b z
-# define mixed w
+# define R x
+# define G y
+# define B z
+# define MIXED w
 # define VECTOR_W 0
 # define POINT_W 1
 
@@ -78,8 +78,6 @@ typedef struct s_scene
 {
 	t_ambient	*ambient;
 	t_camera	*camera;
-	t_cylinder	*cylinder;
-	t_sphere	*sphere;
 	t_list		*shapes;
 	t_list		*lights;
 }	t_scene;

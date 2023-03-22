@@ -24,5 +24,6 @@ int	check_id_c(char **tokens)
 	// printf("%lf\n", scene->camera->point_of_view.z);
 	// printf("%f\n", scene->camera->field_of_view);
 	// printf("%lf\n", scene->camera->vector.z);
+	ft_free_array(tokens);
 	return (OK);
 }

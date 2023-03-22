@@ -1,67 +1,34 @@
 #include "minirt.h"
 
-void	replace_char(char *str, int value_substituted)
+static int	set_shape(char *line, t_scene *scene)
 {
-	size_t		i;
+	char	**tokens;
 
-	i = -1;
-	while (str[++i])
-	{
-		if ((ft_isspace(str[i]) && str[i] != ' ')
-			|| (str[i] == '\n' && str[i] != ' ' ))
-			str[i] = value_substituted;
-	}
-}
+	replace_char(line, ' ');
+	tokens = ft_split(line, ' ');
+	if (!tokens)
+		return (0);
 
-int	is_invalid_file_data(char **tokens)
-{
-	int	i;
-	int	j;
+	// if (ft_strcmp(tokens[0], "A") == 0)
+		// return (OK);
+	// else if (ft_strcmp(tokens[0], "C") == 0)
+		// return (check_id_c(tokens));
+	// else if (ft_strcmp(tokens[0], "L") == 0)
+		// return (OK);
 
-	i = 0;
-	while (tokens[++i])
-	{
-		j = 0;
-		while (tokens[i][j] != '\0')
-		{
-			if (!ft_isdigit(tokens[i][j]) && tokens[i][j] != '.'
-				&& tokens[i][j] != ',' && tokens[i][j] != '-')
-				return (ERROR);
-			j++;
-		}
-	}
-	return (OK);
-}
-
-void	print_array(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		printf("%s\n", str[i]);
-		i++;
-	}
-}
-
-static int	identifier(char **tokens)
-{
-	if (ft_strcmp(tokens[0], "A") == 0)
-		return (OK);
-	else if (ft_strcmp(tokens[0], "C") == 0)
-		return (check_id_c(tokens));
-	else if (ft_strcmp(tokens[0], "L") == 0)
-		return (OK);
-	else if (ft_strcmp(tokens[0], "sp") == 0)
-		return (check_id_sp(tokens));
-	else if (ft_strcmp(tokens[0], "pl") == 0)
-		return (OK);
-	else if (ft_strcmp(tokens[0], "cy") == 0)
-		return (check_id_cy(tokens));
-	else if (tokens[0][0] == '#')
-		return (OK);
-	ft_free_array(tokens);
+	if (ft_strcmp(tokens[0], "sp") == 0)
+    {
+        printf("oi\n");
+        create_sphere_node(tokens, scene);
+        return (OK);
+    }
+	// else if (ft_strcmp(tokens[0], "pl") == 0)
+	// 	return (OK);
+	// else if (ft_strcmp(tokens[0], "cy") == 0)
+	// 	return (check_id_cy(tokens));
+	// else if (tokens[0][0] == '#')
+	// 	return (OK);
+	// ft_free_array(tokens);
 	return (error_msg("file data are invaded"), ERROR);
 }
 
@@ -71,19 +38,13 @@ int	read_file(char *filename, t_scene *scene)
 	char	*line;
 	int		fd;
 
-	(void)scene;
 	fd = open(filename, O_RDONLY);
 	while (42)
 	{
 		line = gnl(fd);
 		if (!line)
-			return (ERROR);
-		replace_char(line, ' ');
-		tokens = ft_split(line, ' ');
-		if (!tokens)
-			return (0);
-		if (identifier(tokens) == ERROR)
-			return (free(line),ERROR);
+			return (close(fd), ERROR);
+		set_shape(line, scene);
 		free(line);
 	}
 	ft_free_array(tokens);

@@ -11,7 +11,6 @@
 
 void		error_msg(char *msg);
 int			check_argc(int argc);
-int			check_file(char *file);
 int			read_file(char *filename, t_scene *scene);
 int			check_id_c(char **tokens);
 int			check_id_sp(char **tokens);
@@ -25,9 +24,12 @@ t_tuple		create_parameter(char *tks, t_tuple (*f)(double, double, double));
 t_point		create_point(double x, double y, double z);
 t_vector	create_vector(double x, double y, double z);
 t_tuple		create_tuple(double x, double y, double z, double w);
-void		create_sphere_node(char **tokens, t_list *shapes);
+// void		create_sphere_node(char **tokens, t_list *shapes);
 void		replace_char(char *str, int value_substituted);	
-int			read_file2(char *filename, t_scene *scene);
+int			check_file(char *filename, t_scene *scene);
+void		create_sphere_node(char **tokens, t_scene *scene);
 
 
+//// APAGAR ////
+void	print_array(char **str);
 #endif

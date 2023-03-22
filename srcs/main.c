@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 	if (check_argc(argc))
 		return (EXIT_FAILURE);
 	ft_bzero(&scene, sizeof(t_scene));
-	if (check_file(argv[1], &scene) == ERROR)
+	if (check_file(argv[1]) == ERROR)
 		return (EXIT_FAILURE);
 	read_file(argv[1], &scene);
 
@@ -30,5 +30,6 @@ int	main(int argc, char *argv[])
 	printf("%lf\n", current_shape->sphere.color.R * 255);
 	printf("%f\n", current_shape->sphere.color.G * 255);
 	printf("%lf\n", current_shape->sphere.diameter);
+	destroy_minirt(&scene);
 	return (0);
 }

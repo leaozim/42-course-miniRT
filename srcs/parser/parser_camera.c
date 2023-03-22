@@ -20,10 +20,6 @@ int	check_id_c(char **tokens)
 		return (ERROR);
 	if (ft_isrange(ft_atoi(tokens[3]), 0, 180))
 		return (error_msg("FOV is invalid!"), ERROR);
-	// fill_camera(tokens, scene);
-	// printf("%lf\n", scene->camera->point_of_view.z);
-	// printf("%f\n", scene->camera->field_of_view);
-	// printf("%lf\n", scene->camera->vector.z);
 	ft_free_array(tokens);
 	return (OK);
 }

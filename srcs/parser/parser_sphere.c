@@ -21,12 +21,7 @@ void	create_sphere_node(char **tokens, t_scene *scene)
 	shape->type = SPHERE;
 	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
 	ft_free_array(tokens);
-	// shape_list = scene->shapes;
-	// current_shape = (t_shape *)shape_list->content;
-	// printf("%lf\n", current_shape->sphere.color.R * 255);
-	// printf("%f\n", current_shape->sphere.color.G * 255);
-	// printf("%lf\n", current_shape->sphere.diameter);
-	// ft_lstclear(&scene->shapes, free);
+		// ft_lstclear(&scene->shapes, free);
 }
 
 int	check_id_sp(char **tokens)

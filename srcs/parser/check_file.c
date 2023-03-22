@@ -86,13 +86,11 @@ int	open_File(char *file)
 	return (fd);
 }
 
-int	check_file(char *filename, t_scene *scene)
+int	check_file(char *filename)
 {
-
 	char	*line;
 	int		fd;
 
-	(void)scene;
 	fd = open_File(filename);
 	if (fd == ERROR)
 		return (ERROR);

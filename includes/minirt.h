@@ -26,9 +26,9 @@ t_vector	create_vector(double x, double y, double z);
 t_tuple		create_tuple(double x, double y, double z, double w);
 // void		create_sphere_node(char **tokens, t_list *shapes);
 void		replace_char(char *str, int value_substituted);	
-int			check_file(char *filename, t_scene *scene);
+int			check_file(char *filename);
 void		create_sphere_node(char **tokens, t_scene *scene);
-
+void		destroy_minirt(t_scene *scene);
 
 //// APAGAR ////
 void	print_array(char **str);

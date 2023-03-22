@@ -16,7 +16,8 @@ SRC					=	main.c \
 						$(UTILS) $(PARSER) $(TUPLA)
 
 UTILS				=	error.c \
-						check_arguments.c color.c
+						check_arguments.c color.c\
+						destroy_minirt.c
 
 PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
 						parser_cylinder.c create_parameter.c check_file.c

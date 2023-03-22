@@ -39,16 +39,16 @@ static int	identifier(char *line, t_scene *scene)
 {
 	char	**tokens;
 
-  replace_char(line, ' ');
+	replace_char(line, ' ');
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (0);
 	if (ft_strncmp(tokens[0], "A", 1) == 0)
-		return (check_id_a(tokens, scene));
+		return (parser_ambient(tokens, scene));
 	else if (ft_strcmp(tokens[0], "C") == 0)
     	return (check_id_c(tokens));
 	else if (ft_strcmp(tokens[0], "L") == 0)
-		return (parser_light(tokens, scene));
+		return (parser_light(tokens));
 	else if (ft_strcmp(tokens[0], "sp") == 0)
 		return (OK);
 	else if (ft_strcmp(tokens[0], "pl") == 0)

@@ -1,5 +1,13 @@
 #include "minirt.h"
 
+void	fill_camera(char **tokens,  t_scene *scene)
+{
+	scene->camera = (t_camera *)ft_calloc(1, sizeof(t_camera));
+	scene->camera->field_of_view = ft_atof(tokens[3]);
+	scene->camera->point_of_view = (t_point)(create_parameter(tokens[1], create_point));
+	scene->camera->vector = (t_vector)(create_parameter(tokens[2], create_vector));
+}
+
 int	check_id_c(char **tokens)
 {
 	if (ft_array_size(tokens) != 4)

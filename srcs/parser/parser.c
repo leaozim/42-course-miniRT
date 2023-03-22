@@ -9,37 +9,19 @@ static int	set_shape(char *line, t_scene *scene)
 	if (!tokens)
 		return (0);
 	if (ft_strcmp(tokens[0], "A") == 0)
-	{
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (ft_free_array(tokens), OK);
 	else if (ft_strcmp(tokens[0], "C") == 0)
-		return (check_id_c(tokens));
+		return (create_camera(tokens, scene), OK);
 	else if (ft_strcmp(tokens[0], "L") == 0)
-	{
-		create_light_node(tokens, scene);
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (ft_free_array(tokens), OK);
 	else if (ft_strcmp(tokens[0], "sp") == 0)
-	{
-		create_sphere_node(tokens, scene);
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (create_sphere_node(tokens, scene), OK);
 	else if (ft_strcmp(tokens[0], "pl") == 0)
-	{
-		check_id_p(tokens);
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (ft_free_array(tokens), OK);
 	else if (ft_strcmp(tokens[0], "cy") == 0)
-		return (check_id_cy(tokens));
+		return (create_cylinder_node(tokens, scene), ERROR);
 	else if (tokens[0][0] == '#')
-	{
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (ft_free_array(tokens), OK);
 	ft_free_array(tokens);
 	return (ERROR);
 }

@@ -1,5 +1,7 @@
 #include "minirt.h"
 
+
+
 int check_id_p(char **tokens)
 {
 	if (ft_array_size(tokens) != 4)

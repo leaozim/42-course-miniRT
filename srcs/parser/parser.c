@@ -1,41 +1,6 @@
 #include "minirt.h"
 
-void	replace_char(char *str, int value_substituted)
-{
-	size_t		i;
-
-	i = -1;
-	while (str[++i])
-	{
-		if ((ft_isspace(str[i]) && str[i] != ' ')
-			|| (str[i] == '\n' && str[i] != ' ' ))
-			str[i] = value_substituted;
-	}
-}
-
-int	is_invalid_file_data(char	**tokens)
-{
-	int		i;
-	int		j;
-
-	i = 1;
-	while (tokens[i])
-	{	
-		j = 0;
-		while (tokens[i][j])
-		{
-			if (!ft_isdigit(tokens[i][j]) && tokens[i][j] != '.'
-				&& tokens[i][j] != ',' && tokens[i][j] != '-'
-					&& tokens[i][j] != '\n')
-				return (ERROR);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-static int	identifier(char *line, t_scene *scene)
+static int	set_shape(char *line, t_scene *scene)
 {
 	char	**tokens;
 
@@ -43,26 +8,45 @@ static int	identifier(char *line, t_scene *scene)
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (0);
-	if (ft_strncmp(tokens[0], "A", 1) == 0)
-		return (parser_ambient(tokens, scene));
+	if (ft_strcmp(tokens[0], "A") == 0)
+	{
+		ft_free_array(tokens);
+		return (OK);
+	}
 	else if (ft_strcmp(tokens[0], "C") == 0)
-    	return (check_id_c(tokens));
+		return (check_id_c(tokens));
 	else if (ft_strcmp(tokens[0], "L") == 0)
-		return (parser_light(tokens));
+	{
+		create_light_node(tokens, scene);
+		ft_free_array(tokens);
+		return (OK);
+	}
 	else if (ft_strcmp(tokens[0], "sp") == 0)
+	{
+		create_sphere_node(tokens, scene);
+		ft_free_array(tokens);
 		return (OK);
+	}
 	else if (ft_strcmp(tokens[0], "pl") == 0)
+	{
+		check_id_p(tokens);
+		ft_free_array(tokens);
 		return (OK);
+	}
 	else if (ft_strcmp(tokens[0], "cy") == 0)
-		return (OK);
+		return (check_id_cy(tokens));
 	else if (tokens[0][0] == '#')
+	{
+		ft_free_array(tokens);
 		return (OK);
+	}
 	ft_free_array(tokens);
-	return (OK);
+	return (ERROR);
 }
 
 int	read_file(char *filename, t_scene *scene)
 {
+	char	**tokens;
 	char	*line;
 	int		fd;
 
@@ -71,11 +55,11 @@ int	read_file(char *filename, t_scene *scene)
 	{
 		line = gnl(fd);
 		if (!line)
-			return (0);
-		if (identifier(line, scene) == 1)
-			return (ERROR);
+			return (close(fd), 0);
+		set_shape(line, scene);
 		free(line);
 	}
+	ft_free_array(tokens);
 	close (fd);
 	return (OK);
 }

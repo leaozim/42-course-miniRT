@@ -31,22 +31,28 @@ int	check_color(char *tokens)
 	return (0);
 }
 
-int check_orientation(char *tokens)
+int	check_orientation(char *tokens)
 {
 	char	**orientation;
 	int		i;
+	int		size;
 
 	i = 0;
 	orientation = ft_split(tokens, ',');
 	if (!orientation)
 		return (0);
+	size = ft_array_size(orientation);
+	if (size != 3)
+		return (ft_free_array(orientation), ERROR);
 	while (orientation[i])
 	{
-		if (ft_isrange(ft_atoi(orientation[i]), -1, 1) || i > 2)
-			return (ERROR);
+		if (ft_isrange(ft_atoi(orientation[i]), -1, 1))
+			return (ft_free_array(orientation), error_msg("Incorrect range for each x,y,z axis [1, -1]!"), ERROR);
+		else if (!ft_isfloat(orientation[i]))
+			return (ft_free_array(orientation), error_msg("Parameter for each x,y,z axis  needs to be a Float"),ERROR);
 		i++;
 	}
-	free(orientation);
+	ft_free_array(orientation);
 	return (0);
 }
 
@@ -62,13 +68,13 @@ int	check_coordinates(char *tokens)
 		return (ERROR);
 	size = ft_array_size(coordinates);
 	if (size != 3)
-		return (free(coordinates), ERROR);
+		return (ft_free_array(coordinates), ERROR);
 	while (coordinates[i])
 	{
 		if (!ft_isfloat(coordinates[i]))
-			return (free(coordinates), ERROR);
+			return (ft_free_array(coordinates), ERROR);
 		i++;
 	}
-	free(coordinates);
+	ft_free_array(coordinates);
 	return (OK);
 }

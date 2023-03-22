@@ -92,7 +92,7 @@ int	check_file(char *filename)
 	char	*line;
 	int		fd;
 
-	fd = open_File(filename);
+	fd = open_file(filename);
 	if (fd == ERROR)
 		return (ERROR);
 	while (42)

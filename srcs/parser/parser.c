@@ -9,9 +9,9 @@ static int	set_shape(char *line, t_scene *scene)
 	if (!tokens)
 		return (0);
 	if (ft_strcmp(tokens[0], "A") == 0)
-		return (create_camera(tokens), OK);
+		return (ft_free_array(tokens), OK);
 	else if (ft_strcmp(tokens[0], "C") == 0)
-		return (check_id_c(tokens));
+		return (create_camera(tokens, scene), OK);
 	else if (ft_strcmp(tokens[0], "L") == 0)
 		return (ft_free_array(tokens), OK);
 	else if (ft_strcmp(tokens[0], "sp") == 0)

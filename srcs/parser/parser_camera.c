@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-void	fill_camera(char **tokens, t_scene *scene)
+void	create_camera(char **tokens, t_scene *scene)
 {
 	scene->camera = (t_camera *)ft_calloc(1, sizeof(t_camera));
 	scene->camera->point_of_view = \

@@ -32,6 +32,7 @@ void		create_sphere_node(char **tokens, t_scene *scene);
 void		create_cylinder_node(char **tokens, t_scene *scene);
 void		destroy_minirt(t_scene *scene);
 t_color		create_parameter_color(char *tokens);
+void		create_camera(char **tokens, t_scene *scene);
 
 //// APAGAR ////
 void		print_array(char **str);

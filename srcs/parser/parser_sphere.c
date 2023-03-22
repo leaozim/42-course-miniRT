@@ -17,7 +17,7 @@ void	create_sphere_node(char **tokens, t_scene *scene)
 	shape = ft_calloc(1, sizeof(t_shape));
 	shape->sphere = create_sphere(tokens);
 	shape->type = SPHERE;
-	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
+	ft_lstadd_back(&scene->shapes, ft_lstnew(shape));
 	ft_free_array(tokens);
 }
 

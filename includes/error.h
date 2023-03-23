@@ -25,8 +25,11 @@
 # define ERROR_FLOAT_SP "Parameter for sphere needs to be a Float"
 
 # define ERROR_MANY_ARGC_PL "To many or few arguments for plane!"
-# define ERROR_COOR_PL "PLane coordinates are invaded!"
+# define ERROR_COOR_PL "Plane coordinates are invalid!"
 
+# define ERROR_MANY_ARGC_L "To many or few arguments for light!"
+# define ERROR_COOR_L "Light coordinates are invaded!"
+# define ERROR_BRIGHTNESS "Invalid brightness"
 
 # define ERROR_FORMAT "The scene needs to be in *.rt format"
 

@@ -26,7 +26,7 @@ int	check_color(char *tokens)
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
 	if (check_rgb(r, g, b))
-		return (ERROR);
+		return (ft_free_array(rgb), ERROR);
 	ft_free_array(rgb);
 	return (0);
 }

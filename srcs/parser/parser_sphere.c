@@ -28,7 +28,7 @@ int	check_id_sp(char **tokens)
 	if (check_coordinates(tokens[1]))
 		return (error_msg(ERROR_ORI_SP), ERROR);
 	if (!ft_isfloat(tokens[2]))
-		return (error_msg(ERROR_FLOAT_SP), ERROR);
+		return (error_msg(ERROR_FLOAT_SP), ft_free_array(tokens), ERROR);
 	if (check_color(tokens[3]))
 		return (ERROR);
 	ft_free_array(tokens);

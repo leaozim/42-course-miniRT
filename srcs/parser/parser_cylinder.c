@@ -32,9 +32,9 @@ int	check_id_cy(char **tokens)
 	if (check_orientation(tokens[2]))
 		return (ERROR);
 	if (!ft_isfloat(tokens[3]) || !ft_isfloat(tokens[4]))
-		return (error_msg(ERROR_FLOAT_CY), ERROR);
+		return (error_msg(ERROR_FLOAT_CY), ft_free_array(tokens), ERROR);
 	if (check_color(tokens[5]))
-		return (ERROR);
+		return (ft_free_array(tokens), ERROR);
 	ft_free_array(tokens);
 	return (OK);
 }

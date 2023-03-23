@@ -44,24 +44,15 @@ static int	identifier(char *line)
 	if (is_invalid_file_data(tokens))
 		return (error_msg(ERROR_FILE), ERROR);
 	if (ft_strcmp(tokens[0], "A") == 0)
-	{
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (check_id_a(tokens));
 	else if (ft_strcmp(tokens[0], "C") == 0)
 		return (check_id_c(tokens));
 	else if (ft_strcmp(tokens[0], "L") == 0)
-	{
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (check_id_l(tokens));
 	else if (ft_strcmp(tokens[0], "sp") == 0)
 		return (check_id_sp(tokens));
 	else if (ft_strcmp(tokens[0], "pl") == 0)
-	{
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (check_id_pl(tokens));
 	else if (ft_strcmp(tokens[0], "cy") == 0)
 		return (check_id_cy(tokens));
 	else if (tokens[0][0] == '#')

@@ -20,7 +20,7 @@ UTILS				=	error.c \
 
 PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
 						parser_cylinder.c create_parameter.c check_file.c \
-						parser_light.c parser_plane.c
+						parser_light.c parser_plane.c parser_ambient.c
 
 TUPLA				=	create_tupla.c
 
@@ -88,7 +88,7 @@ val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT
 
 debug: all
-	gdb --tui --args ./$(NAME) scenes/test_copy.rt
+	gdb --tui --args ./$(NAME) scenes/test.rt
 
 mc:	all
 	clear

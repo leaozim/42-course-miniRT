@@ -1,12 +1,22 @@
 #include "minirt.h"
 
-int	parser_ambient(char **tokens, t_scene *scene)
+void	create_ambient(char **tokens, t_scene *scene)
 {
-	if (is_invalid_file_data(tokens))
-		return (error_msg("File data is invalid"), ERROR);
+	scene->ambient = (t_ambient *)ft_calloc(1, sizeof(t_ambient));
+	scene->ambient->ratio = ft_atof(tokens[1]);
+	scene->ambient->color = create_parameter_color(tokens[2]);
+}
+
+int	check_id_a(char **tokens)
+{
+	if (ft_array_size(tokens) != 3)
+		return(error_msg(ERROR_MANY_ARGC_A), ERROR);
 	else if (!ft_isfloat(tokens[1]))
-		return (error_msg("Parameter in ambient needs to be a Float"), ERROR);
-	if (ft_isrange(scene->ambient->ratio, 0, 1))
-		return (error_msg("Incorrect range of numbers"), ERROR);
-	return (0);
+		return (error_msg(ERROR_NUMBER_FLOAT_A), ERROR);
+	if (ft_isrange(ft_atof(tokens[1]), 0, 1))
+		return (error_msg(ERROR_RANGE_A), ERROR);
+	if (check_color(tokens[2]))
+		return (ERROR);
+	ft_free_array(tokens);
+	return (OK);
 }

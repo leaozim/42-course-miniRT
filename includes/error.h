@@ -5,6 +5,10 @@
 # define ERROR_FLOAT "Parameter for each x,y,z axis needs to be a Float!"
 # define ERROR_RANGE_COLOR "Incorrect range of RGB [0-255]!"
 
+# define ERROR_MANY_ARGC_A "To many or few arguments for ambient!"
+# define ERROR_NUMBER_FLOAT_A "Parameter in ambient needs to be a Float"
+# define ERROR_RANGE_A "Incorrect range for Ambient Light [0, 1]!"
+
 # define ERROR_INVALID_RGB "Invalid RGB!"
 # define ERROR_MANY_ARGC_C "To many or few arguments for camera!"
 

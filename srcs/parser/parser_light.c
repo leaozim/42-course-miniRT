@@ -16,7 +16,7 @@ void	create_light_node(char **tokens, t_scene *scene)
 	ft_lstadd_front(&scene->lights, ft_lstnew(light));
 }
 
-int parser_light(char **tokens)
+int check_id_l(char **tokens)
 {
 	char	**xyz;
 
@@ -29,5 +29,5 @@ int parser_light(char **tokens)
 		return (error_msg("Light brightness needs to be a Float"), ERROR);
 	if (ft_isrange(ft_atof(tokens[2]), 0, 1))
 		return (error_msg("Invalid brightness"), ERROR);
-	return (0);
+	return (OK);
 }

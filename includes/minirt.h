@@ -13,8 +13,11 @@
 void		error_msg(char *msg);
 int			check_argc(int argc);
 int			read_file(char *filename, t_scene *scene);
+int			check_id_a(char **tokens);
 int			check_id_c(char **tokens);
+int 		check_id_l(char **tokens);
 int			check_id_sp(char **tokens);
+int			check_id_pl(char **tokens);
 int			check_id_cy(char **tokens);
 int			is_invalid_file_data(char **tokens);
 int			check_orientation(char *tokens);
@@ -29,10 +32,13 @@ t_tuple		create_tuple(double x, double y, double z, double w);
 void		replace_char(char *str, int value_substituted);	
 int			check_file(char *filename);
 void		create_sphere_node(char **tokens, t_scene *scene);
+void		create_light_node(char **tokens, t_scene *scene);
 void		create_cylinder_node(char **tokens, t_scene *scene);
 void		destroy_minirt(t_scene *scene);
 t_color		create_parameter_color(char *tokens);
 void		create_camera(char **tokens, t_scene *scene);
+void		create_plane_node(char **tokens, t_scene *scene);
+void		create_ambient(char **tokens, t_scene *scene);
 
 //// APAGAR ////
 void		print_array(char **str);

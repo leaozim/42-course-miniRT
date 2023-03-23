@@ -1,0 +1,31 @@
+#include "minirt.h"
+
+t_light	*create_light(char **tokens, t_light *light)
+{
+	light->coord = (t_point)(create_parameter(tokens[1], create_point));
+	light->brightness = ft_atof(tokens[2]);
+	return (light);
+}
+
+void	create_light_node(char **tokens, t_scene *scene)
+{
+	t_light	*light;
+
+	light = ft_calloc(1, sizeof(t_light));
+	light = create_light(tokens, light);
+	ft_lstadd_back(&scene->lights, ft_lstnew(light));
+	ft_free_array(tokens);
+}
+
+int check_id_l(char **tokens)
+{
+
+	if (ft_array_size(tokens) != 3)
+		return (error_msg(ERROR_MANY_ARGC_L), ft_free_array(tokens), ERROR);
+	if (check_coordinates(tokens[1]))
+		return (error_msg(ERROR_COOR_L), ft_free_array(tokens), ERROR);
+	if (ft_isrange(ft_atof(tokens[2]), 0, 1))
+		return (error_msg(ERROR_BRIGHTNESS), ft_free_array(tokens), ERROR);
+	ft_free_array(tokens);
+	return (OK);
+}

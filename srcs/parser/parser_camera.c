@@ -18,7 +18,7 @@ int	check_id_c(char **tokens)
 	if (check_coordinates(tokens[1]))
 		return (error_msg(ERROR_COOR_C), ft_free_array(tokens), ERROR);
 	if (check_orientation(tokens[2]))
-		return (ft_free_array(tokens),error_msg(ERROR_ORI_C), ERROR);
+		return (ft_free_array(tokens), error_msg(ERROR_ORI_C), ERROR);
 	if (ft_isrange(ft_atoi(tokens[3]), 0, 180))
 		return (error_msg(ERROR_FOV), ERROR);
 	ft_free_array(tokens);

@@ -56,10 +56,7 @@ static int	identifier(char *line)
 	else if (ft_strcmp(tokens[0], "cy") == 0)
 		return (check_id_cy(tokens));
 	else if (tokens[0][0] == '#')
-	{
-		ft_free_array(tokens);
-		return (OK);
-	}
+		return (ft_free_array(tokens), OK);
 	ft_free_array(tokens);
 	return (error_msg(ERROR_FILE), ERROR);
 }

@@ -17,9 +17,8 @@ void	create_light_node(char **tokens, t_scene *scene)
 	ft_free_array(tokens);
 }
 
-int check_id_l(char **tokens)
+int	check_id_l(char **tokens)
 {
-
 	if (ft_array_size(tokens) != 3)
 		return (error_msg(ERROR_MANY_ARGC_L), ft_free_array(tokens), ERROR);
 	if (check_coordinates(tokens[1]))

@@ -4,7 +4,7 @@ static int	set_shape(char *line, t_scene *scene)
 {
 	char	**tokens;
 
-	replace_char(line, ' ');
+  replace_char(line, ' ');
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 		return (0);

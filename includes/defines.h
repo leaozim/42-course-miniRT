@@ -84,6 +84,7 @@ typedef struct s_scene
 	t_camera	*camera;
 	t_list		*shapes;
 	t_list		*lights;
+	int			i;
 }	t_scene;
 
 typedef struct s_shape

@@ -6,7 +6,7 @@
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:19:41 by lade-lim          #+#    #+#             */
-/*   Updated: 2023/03/20 12:34:30 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/03/23 10:50:50 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,19 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+size_t	ft_array_size(char **array);
 int		ft_atoi(const char *str);
 void	*ft_bzero(void *str, size_t n);
 void	*ft_calloc(size_t nelem, size_t elsize);
+void	ft_free_array(char **matrix);
 char	*gnl(int fd);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
+int		ft_isfloat(char *str);
 int		ft_isprint(int c);
+int		ft_isrange(double value, double min, double max);
 char	*ft_itoa(int n);
 double	ft_atof(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *lst_new);

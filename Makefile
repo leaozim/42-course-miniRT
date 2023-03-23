@@ -87,6 +87,9 @@ test_vall:	all
 val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT
 
+debug: all
+	gdb --tui --args ./$(NAME) scenes/test.rt
+
 mc:	all
 	clear
 	./minirt

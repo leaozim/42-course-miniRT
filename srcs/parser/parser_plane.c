@@ -12,7 +12,8 @@ t_plane	create_plane(char **tokens)
 
 void	create_plane_node(char **tokens, t_scene *scene)
 {
-	t_shape *plane;
+	t_shape	*plane;
+
 	plane = ft_calloc(1, sizeof(t_shape));
 	plane->plane = create_plane(tokens);
 	plane->type = PLANE;
@@ -20,7 +21,7 @@ void	create_plane_node(char **tokens, t_scene *scene)
 	ft_free_array(tokens);
 }
 
-int check_id_pl(char **tokens)
+int	check_id_pl(char **tokens)
 {
 	if (ft_array_size(tokens) != 4)
 		return (error_msg(ERROR_MANY_ARGC_PL), ft_free_array(tokens), ERROR);

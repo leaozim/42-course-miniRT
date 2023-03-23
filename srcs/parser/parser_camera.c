@@ -10,7 +10,7 @@ void	create_camera(char **tokens, t_scene *scene)
 	scene->camera->field_of_view = ft_atof(tokens[3]);
 }
 
-int	check_id_c(char **tokens)
+int	check_id_c(char **tokens, t_bool	*is_duplicated)
 {
 	if (ft_array_size(tokens) != 4)
 		return (error_msg(ERROR_MANY_ARGC_C), ERROR);
@@ -21,5 +21,6 @@ int	check_id_c(char **tokens)
 	if (ft_isrange(ft_atoi(tokens[3]), 0, 180))
 		return (error_msg(ERROR_FOV), ERROR);
 	ft_free_array(tokens);
+	is_duplicated[CAMERA] = TRUE;
 	return (OK);
 }

@@ -12,12 +12,14 @@
 # define ERROR_INVALID_RGB "Invalid RGB!"
 # define ERROR_MANY_ARGC_C "To many or few arguments for camera!"
 
-# define ERROR_FILE "File data are invaded!"
-# define ERROR_COOR_C "Camera coordinates are invaded!"
+# define ERROR_FILE "File data is invalid!"
+# define ERROR_COOR_C "Camera coordinates are invalid!"
+# define ERROR_ORI_C "Camera orientation are invalid!"
+
 
 # define ERROR_FOV "FOV is invalid!"
 # define ERROR_MANY_ARGC_CY "To many or few arguments for cylinder!"
-# define ERROR_COOR_CY "Cylinder coordinates are invaded!"
+# define ERROR_COOR_CY "Cylinder coordinates are invalid!"
 # define ERROR_FLOAT_CY "Parameter needs to be a Float!"
 
 # define ERROR_MANY_ARGC_SP "To many or few arguments for sphere!"
@@ -28,7 +30,7 @@
 # define ERROR_COOR_PL "Plane coordinates are invalid!"
 
 # define ERROR_MANY_ARGC_L "To many or few arguments for light!"
-# define ERROR_COOR_L "Light coordinates are invaded!"
+# define ERROR_COOR_L "Light coordinates are invalid!"
 # define ERROR_BRIGHTNESS "Invalid brightness"
 
 # define ERROR_FORMAT "The scene needs to be in *.rt format"

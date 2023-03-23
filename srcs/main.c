@@ -21,5 +21,6 @@ int	main(int argc, char *argv[])
 	ft_bzero(&scene, sizeof(t_scene));
 	printf("\n================================\n");
 	read_file(argv[1], &scene);
+	destroy_minirt(&scene);
 	return (0);
 }

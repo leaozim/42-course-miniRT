@@ -13,7 +13,7 @@ void	create_light_node(char **tokens, t_scene *scene)
 
 	light = ft_calloc(1, sizeof(t_light));
 	light = create_light(tokens, light);
-	ft_lstadd_front(&scene->lights, ft_lstnew(light));
+	ft_lstadd_back(&scene->lights, ft_lstnew(light));
 }
 
 int check_id_l(char **tokens)

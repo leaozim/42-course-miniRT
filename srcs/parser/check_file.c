@@ -42,7 +42,7 @@ static int	identifier(char *line)
 	if (!tokens)
 		return (ft_free_array(tokens), 0);
 	if (is_invalid_file_data(tokens))
-		return (error_msg(ERROR_FILE), ft_free_array(tokens),ERROR);
+		return (error_msg(ERROR_FILE), ft_free_array(tokens), ERROR);
 	if (ft_strcmp(tokens[0], "A") == 0)
 		return (check_id_a(tokens));
 	else if (ft_strcmp(tokens[0], "C") == 0)

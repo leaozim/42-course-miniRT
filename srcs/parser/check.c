@@ -18,10 +18,7 @@ int	check_color(char *tokens)
 
 	rgb = ft_split(tokens, ',');
 	if (ft_array_size(rgb) != 3)
-	{
-		ft_free_array(rgb);
-		return (error_msg(ERROR_INVALID_RGB), ERROR);
-	}
+		return (error_msg(ERROR_INVALID_RGB), ft_free_array(rgb), ERROR);
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);

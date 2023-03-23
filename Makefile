@@ -13,14 +13,18 @@ HEADER_PATH			=	./includes
 HEADER_FILES		=	minirt.h
 
 SRC					=	main.c \
-						$(UTILS) $(PARSER)
+						$(UTILS) $(PARSER) $(TUPLA)
 
 UTILS				=	error.c \
-						check_arguments.c color.c
+						check_arguments.c color.c\
+						destroy_minirt.c
 
-PARSER				= 	parser.c parser_ambient.c check.c parser_camera.c
+PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
+						parser_cylinder.c create_parameter.c check_file.c
 
-DIRS				=	. srcs utils parser
+TUPLA				=	create_tupla.c
+
+DIRS				=	. srcs utils parser tupla
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror 
@@ -81,7 +85,7 @@ test_vall:	all
 	make val -C test
 
 val: all
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --trace-children-skip='*/bin/*,*/sbin/*' --suppressions=readline.supp ./minishell
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT
 
 debug: all
 	gdb --tui --args ./$(NAME) scenes/test.rt
@@ -91,7 +95,6 @@ mc:	all
 	./minirt
 
 norm:
-	@clear
-	@norminette ${SRC} ${INCDIR}* | grep Error || true
+	@norminette ${SRC} ${LIBFT_PATH} 
 
 .PHONY:	all clean fclean re git test

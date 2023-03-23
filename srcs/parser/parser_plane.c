@@ -30,5 +30,6 @@ int check_id_pl(char **tokens)
 		return (ERROR);
 	if (check_color(tokens[3]))
 		return (ERROR);
+	ft_free_array(tokens);
 	return (OK);
 }

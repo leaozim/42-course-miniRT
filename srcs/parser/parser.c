@@ -7,7 +7,7 @@ static int	set_shape(char *line, t_scene *scene)
 	replace_char(line, ' ');
 	tokens = ft_split(line, ' ');
 	if (!tokens)
-		return (0);
+		return (ft_free_array(tokens), 0);
 	if (ft_strcmp(tokens[0], "A") == 0)
 		return (create_ambient(tokens, scene), OK);
 	else if (ft_strcmp(tokens[0], "C") == 0)

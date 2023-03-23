@@ -40,7 +40,7 @@ static int	identifier(char *line)
 	replace_char(line, ' ');
 	tokens = ft_split(line, ' ');
 	if (!tokens)
-		return (0);
+		return (ft_free_array(tokens), 0);
 	if (is_invalid_file_data(tokens))
 		return (error_msg(ERROR_FILE), ERROR);
 	if (ft_strcmp(tokens[0], "A") == 0)

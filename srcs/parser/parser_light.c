@@ -17,7 +17,7 @@ void	create_light_node(char **tokens, t_scene *scene)
 	ft_free_array(tokens);
 }
 
-int	check_id_l(char **tokens)
+int	check_id_l(char **tokens, t_bool *is_duplicated)
 {
 	if (ft_array_size(tokens) != 3)
 		return (error_msg(ERROR_MANY_ARGC_L), ft_free_array(tokens), ERROR);
@@ -26,5 +26,6 @@ int	check_id_l(char **tokens)
 	if (ft_isrange(ft_atof(tokens[2]), 0, 1))
 		return (error_msg(ERROR_BRIGHTNESS), ft_free_array(tokens), ERROR);
 	ft_free_array(tokens);
+	is_duplicated[LIGHT] = TRUE;
 	return (OK);
 }

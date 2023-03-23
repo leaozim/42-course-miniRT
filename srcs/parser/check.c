@@ -75,3 +75,17 @@ int	check_coordinates(char *tokens)
 	ft_free_array(coordinates);
 	return (OK);
 }
+
+int	check_open_file(char *file)
+{
+	int	len_file;
+	int	fd;
+
+	len_file = ft_strlen(file);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return (close(fd), ft_putstr_fd("Error: ", 2), perror(file), ERROR);
+	if (ft_strcmp(&file[len_file - 3], ".rt") || len_file == 3)
+		return (close(fd), error_msg(ERROR_FORMAT), ERROR);
+	return (fd);
+}

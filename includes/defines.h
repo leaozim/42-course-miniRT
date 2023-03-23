@@ -7,13 +7,23 @@ enum e_status
 	ERROR
 };
 
+typedef enum e_bool
+{
+	FALSE,
+	TRUE,
+}	t_bool;
+
+
 enum e_objects
 {
 	SPHERE,
 	PLANE,
-	CYLINDER
+	AMBIENT,
 };
 
+#define CAMERA 0
+#define LIGHT 1
+#define CYLINDER 2
 typedef struct s_color
 {
 	double	r;
@@ -35,6 +45,7 @@ typedef t_tuple	t_point;
 
 # define VECTOR_W 0
 # define POINT_W 1
+
 
 typedef struct s_ambient
 {

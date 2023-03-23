@@ -38,4 +38,6 @@
 # define ERROR_MANY_ARGC "Too many arguments!"
 # define ERROR_NOT_FILE "Need to add scene file!"
 
+#define ERROR_QTT "You have incorrectly duplicated data!"
+
 #endif

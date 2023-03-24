@@ -19,7 +19,7 @@ CFLAGS	= -Wall -Wextra -g3
 IFLAGS	= -I. -Iunity -I../include -I../libft -Iincludes
 VPATH	=  unity 
 VPATH	+= test_
-LDFLAGS	= -L$(LIBFT_PATH) -lft
+LDFLAGS	= -L$(LIBFT_PATH) -lft -lm
 
 all: $(NAME)
 

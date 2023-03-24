@@ -39,6 +39,7 @@ t_color		create_parameter_color(char *tokens);
 void		create_camera(char **tokens, t_scene *scene);
 void		create_plane_node(char **tokens, t_scene *scene);
 void		create_ambient(char **tokens, t_scene *scene);
+int			soma(int a, int b);
 
 //// APAGAR ////
 void		print_array(char **str);

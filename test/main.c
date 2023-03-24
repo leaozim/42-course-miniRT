@@ -16,5 +16,6 @@ int main(void)
 	UNITY_BEGIN();
 	RUN_TEST(test_soma);
 	RUN_TEST(test_sum_array);
+	RUN_TEST(test_operation_tuple);
 	return (UNITY_END());
 }

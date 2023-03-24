@@ -108,4 +108,6 @@ typedef struct s_shape
 	};
 }	t_shape;
 
+# define EPSILON 0.0001
+
 #endif

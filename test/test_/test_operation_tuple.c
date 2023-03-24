@@ -32,10 +32,41 @@ void	is_tuple_value_correct(void)
 
 void	add_tuples(void)
 {
-	char	a[4] = {3, -2, 5, 1};
-	char	b[4] = {-2, 3, 1, 0};
-	char	result[4] = {1, 1, 6, 1};
-	TEST_ASSERT_EQUAL_MEMORY(result, adding_tuples(a, b), sizeof(result));
+	double	x1, y1, z1, w1;
+	double	x2, y2, z2, w2;
+	t_tuple	tupleA;
+	t_tuple	tupleB;
+	t_tuple	sum;
+	int 	i;
+
+	i = 0;
+	sum = create_tuple(4, 4, 4, 4); // valores aleatorios pra teste.
+	while (i < MAX_INTERATIONS)
+	{
+		x1 = rand_double();
+		y1 = rand_double();
+		z1 = rand_double();
+		w1 = rand_double();
+		tupleA = create_tuple(x1, y1, z1, w1);
+		x2 = rand_double();
+		y2 = rand_double();
+		z2 = rand_double();
+		w2 = rand_double();
+		tupleB = create_tuple(x2, y2, z2, w2);
+//		sum = adding_tuples(tupleA, tupleB); função a ser criada, adding_tuples -> recebe t_tuple A e t_tuple B e retorna a soma das duas tuplas t_tuple.
+//  	prototipo t_tuple	adding_tuple(t_tuple a, t_tuple b);
+		TEST_ASSERT_EQUAL_DOUBLE((x1 + x2), sum.x);
+		TEST_ASSERT_EQUAL_DOUBLE((y1 + y2), sum.y);
+		TEST_ASSERT_EQUAL_DOUBLE((z1 + z2), sum.z);
+		TEST_ASSERT_EQUAL_DOUBLE((w1 + w2), sum.w);
+		i++;
+	}
+
+}
+
+void	sub_tuples(void)
+{
+
 }
 
 void test_operation_tuple(void)

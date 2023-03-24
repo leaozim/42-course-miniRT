@@ -281,7 +281,7 @@ typedef UNITY_FLOAT_TYPE UNITY_FLOAT;
 
   /* Double Floating Point Support */
   #ifndef UNITY_DOUBLE_PRECISION
-  #define UNITY_DOUBLE_PRECISION (1e-12)
+  #define UNITY_DOUBLE_PRECISION (0.0001f)
   #endif
 
   #ifndef UNITY_DOUBLE_TYPE

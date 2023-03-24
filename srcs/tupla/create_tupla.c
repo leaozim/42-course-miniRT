@@ -20,3 +20,8 @@ t_vector	create_vector(double x, double y, double z)
 {
 	return (create_tuple(x, y, z, VECTOR_W));
 }
+
+int	soma(int a, int b)
+{
+	return (a + b);
+}

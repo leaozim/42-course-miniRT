@@ -22,7 +22,7 @@ PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
 						parser_cylinder.c create_parameter.c check_file.c \
 						parser_light.c parser_plane.c parser_ambient.c
 
-TUPLA				=	create_tupla.c
+TUPLA				=	create_tuple.c operations_tuple.c
 
 DIRS				=	. srcs utils parser tupla
 IFLAGS				=	-I $(HEADER_PATH)

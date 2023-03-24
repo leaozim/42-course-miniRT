@@ -127,30 +127,36 @@ void	test_div_tuples(void)
 
 }
 
-void	test_multiplication_tuples(void)
+
+
+void	test_cross_product(void)
 {
-	double	x1, y1, z1, w1;
-	double	multiplication_n;
-	t_tuple	tupleA;
-	t_tuple	result;
-	int 	i;
+	double		x1, y1, z1, w1;
+	double		x2, y2, z2, w2;
+	t_vector	vectorA;
+	t_vector	vectorB;
+	t_vector	cross;
+	int 		i;
 
 	i = 0;
-	result = create_tuple(4, 6, 4, 2); // valores aleatorios pra teste.
+	cross = create_tuple(4, 4, 4, 4); // valores aleatorios pra teste.
 	while (i < MAX_INTERATIONS)
 	{
 		x1 = rand_double();
 		y1 = rand_double();
 		z1 = rand_double();
 		w1 = rand_double();
-		tupleA = create_tuple(x1, y1, z1, w1);
-		multiplication_n = rand_double();
-//		result = multiplication_tuple(tupleA, multi); função a ser criada, multiplication_tuples -> recebe t_tuple A e o número a qual os valores da tupla serão multiplicados e retorna a tupla multiplicada (t_tuple).
-//  	prototipo -> t_tuple	multiplication_tuple(t_tuple tupleA, double multi_n);
-		TEST_ASSERT_EQUAL_DOUBLE((x1 * multiplication_n), result.x);
-		TEST_ASSERT_EQUAL_DOUBLE((y1 * multiplication_n), result.y);
-		TEST_ASSERT_EQUAL_DOUBLE((z1 * multiplication_n), result.z);
-		TEST_ASSERT_EQUAL_DOUBLE((w1 * multiplication_n), result.w);
+		vectorA = create_tuple(x1, y1, z1, w1);
+		x2 = rand_double();
+		y2 = rand_double();
+		z2 = rand_double();
+		w2 = rand_double();
+		vectorB = create_tuple(x2, y2, z2, w2);
+//		cross = cross_product(vectorA, vectorB); função a ser criada, cross_product -> recebe t_vector A e t_vector B e retorna o produto vetorial dos dois vetores t_vector.
+//  	prototipo t_vector	cross_product(t_vector vectorA, t_vector vectorB);
+		TEST_ASSERT_EQUAL_DOUBLE((y1 * z2 - z1 * y2), cross.x);
+		TEST_ASSERT_EQUAL_DOUBLE((z1 * x2 - x1 * z2), cross.y);
+		TEST_ASSERT_EQUAL_DOUBLE((x1 * y2 - y1 * x2), cross.z);
 		i++;
 	}
 
@@ -162,5 +168,5 @@ void test_operation_tuple(void)
 	RUN_TEST(test_add_tuples);
 	RUN_TEST(test_sub_tuples);
 	RUN_TEST(test_div_tuples);
-	RUN_TEST(test_multiplication_tuples);
+	RUN_TEST(test_cross_product);
 }

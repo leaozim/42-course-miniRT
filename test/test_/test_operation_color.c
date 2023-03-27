@@ -38,8 +38,8 @@ void	test_add_color(void)
 		r2 = rand_rgb();
 		g2 = rand_rgb();
 		b2 = rand_rgb();
-		colorA = set_color(r1, g1, b1);
-		colorB = set_color(r2, g2, b2);
+		colorA = create_color(r1, g1, b1);
+		colorB = create_color(r2, g2, b2);
 		sum = adding_color(colorA, colorB);
 		TEST_ASSERT_EQUAL_DOUBLE((colorA.r + colorB.r), sum.r);
 		TEST_ASSERT_EQUAL_DOUBLE((colorA.g + colorB.g), sum.g);
@@ -61,7 +61,7 @@ void	multiply_color_scalar_correct(void)
 		g = rand_rgb();
 		b = rand_rgb();
 		multiplier = rand_double();
-		color = set_color(r, g, b);
+		color = create_color(r, g, b);
 		result = multiply_color_scalar(color, multiplier);
 		TEST_ASSERT_EQUAL_DOUBLE(color.r * multiplier, result.r);
 		TEST_ASSERT_EQUAL_DOUBLE(color.g * multiplier, result.g);
@@ -88,8 +88,8 @@ void	test_sub_color(void)
 		r2 = rand_rgb();
 		g2 = rand_rgb();
 		b2 = rand_rgb();
-		colorA = set_color(r1, g1, b1);
-		colorB = set_color(r2, g2, b2);
+		colorA = create_color(r1, g1, b1);
+		colorB = create_color(r2, g2, b2);
 		sub = sub_color(colorA, colorB);
 		TEST_ASSERT_EQUAL_DOUBLE((colorA.r - colorB.r), sub.r);
 		TEST_ASSERT_EQUAL_DOUBLE((colorA.g - colorB.g), sub.g);
@@ -116,8 +116,8 @@ void	test_mult_color(void)
 		r2 = rand_rgb();
 		g2 = rand_rgb();
 		b2 = rand_rgb();
-		colorA = set_color(r1, g1, b1);
-		colorB = set_color(r2, g2, b2);
+		colorA = create_color(r1, g1, b1);
+		colorB = create_color(r2, g2, b2);
 		result = multiply_color(colorA, colorB);
 		TEST_ASSERT_EQUAL_DOUBLE((colorA.r * colorB.r), result.r);
 		TEST_ASSERT_EQUAL_DOUBLE((colorA.g * colorB.g), result.g);

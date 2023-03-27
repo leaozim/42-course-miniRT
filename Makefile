@@ -13,18 +13,20 @@ HEADER_PATH			=	./includes
 HEADER_FILES		=	minirt.h
 
 SRC					=	main.c \
-						$(UTILS) $(PARSER) $(TUPLA)
+						$(UTILS) $(PARSER) $(TUPLA) $(COLOR)
 
 UTILS				=	error.c \
-						check_arguments.c color.c destroy_minirt.c
+						check_arguments.c destroy_minirt.c
 
 PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
 						parser_cylinder.c create_parameter.c check_file.c \
 						parser_light.c parser_plane.c parser_ambient.c
 
-TUPLA				=	create_tupla.c operations_tuple.c operations_tuple2.c
+TUPLA				=	create_tuple.c operations_tuple.c operations_tuple2.c
 
-DIRS				=	. srcs utils parser tupla
+COLOR				=	color.c operations_color.c
+
+DIRS				=	. srcs utils parser tupla color
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror

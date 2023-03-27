@@ -12,6 +12,16 @@ typedef	struct  s_mlx
 	void	*mlx;
 }	t_mlx;
 
+typedef struct s_canvas
+{
+	void	*window;
+	void	*image;
+	char	*address;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endianness;
+}	t_canvas;
+
 typedef enum e_bool
 {
 	FALSE,

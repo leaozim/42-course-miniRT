@@ -21,8 +21,8 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	ft_bzero(&scene, sizeof(t_scene));
 	read_file(argv[1], &scene);
-	destroy_minirt(&scene);
 	canvas.mlx = mlx_init();
-	create_canvas(canvas.mlx, 800, 600);
+	write_pixel(canvas.mlx, 500, 100, scene.ambient->color);
+	destroy_minirt(&scene);	
 	return (0);
 }

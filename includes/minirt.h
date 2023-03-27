@@ -50,8 +50,9 @@ t_tuple		sub_tuples(t_tuple a, t_tuple b);
 t_tuple		div_tuples(t_tuple t, double div);
 double		magnitude(t_vector vec);
 t_vector	cross_product(t_vector vec1, t_vector vec2);
-void		create_canvas(void *mlx_ptr, int width, int height);
+t_canvas	create_canvas(void *mlx_ptr);
 void		destroy_mlx(void *mlx_ptr, void *win_ptr);
+void		write_pixel(void *mlx_ptr, int width, int height, t_color color);
 
 
 

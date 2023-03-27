@@ -20,7 +20,7 @@ t_color	multiply_color_scalar(t_color c, double mult)
 {
 	t_color	new_color;
 
-	new_color = create_color(c.r * mult, c.g * mult, c.b * mult);
+	new_color = create_color(c.r * mult, c.g * mult, c.b  * mult);
 	return (new_color);
 }
 

@@ -4,7 +4,7 @@ void	test_create_color(void)
 {
 	double		r, g, b;
 	t_color	color;
-	int		i;
+	int i;
 
 	i = 0;
 	while (i < MAX_INTERATIONS)
@@ -12,10 +12,10 @@ void	test_create_color(void)
 		r = rand_rgb();
 		g = rand_rgb();
 		b = rand_rgb();
-		color = set_color(r, g, b);
-		TEST_ASSERT_EQUAL_DOUBLE(r / 255, color.r);
-		TEST_ASSERT_EQUAL_DOUBLE(g / 255, color.g);
-		TEST_ASSERT_EQUAL_DOUBLE(b / 255, color.b);
+		color = create_color(r, g, b);
+		TEST_ASSERT_EQUAL_DOUBLE(r, color.r);
+		TEST_ASSERT_EQUAL_DOUBLE(g, color.g);
+		TEST_ASSERT_EQUAL_DOUBLE(b, color.b);
 		i++;
 	}
 }

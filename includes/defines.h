@@ -13,7 +13,6 @@ typedef enum e_bool
 	TRUE,
 }	t_bool;
 
-
 enum e_objects
 {
 	SPHERE,
@@ -21,9 +20,6 @@ enum e_objects
 	AMBIENT,
 };
 
-#define CAMERA 0
-#define LIGHT 1
-#define CYLINDER 2
 typedef struct s_color
 {
 	double	r;
@@ -42,10 +38,6 @@ typedef struct s_tuple
 
 typedef t_tuple	t_vector;
 typedef t_tuple	t_point;
-
-# define VECTOR_W 0
-# define POINT_W 1
-
 
 typedef struct s_ambient
 {
@@ -109,5 +101,10 @@ typedef struct s_shape
 }	t_shape;
 
 # define EPSILON 0.0001
+# define CAMERA 0
+# define LIGHT 1
+# define CYLINDER 2
+# define VECTOR_W 0
+# define POINT_W 1
 
 #endif

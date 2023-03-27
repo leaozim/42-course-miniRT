@@ -168,7 +168,7 @@ void	test_add_tuples(void)
 	int 	i;
 
 	i = 0;
-	sum = create_tuple(4, 4, 4, 4); // valores aleatorios pra teste.
+	sum = create_tuple(4, 4, 4, 4);
 	while (i < MAX_INTERATIONS)
 	{
 		x1 = rand_double();
@@ -181,8 +181,7 @@ void	test_add_tuples(void)
 		z2 = rand_double();
 		w2 = rand_double();
 		tupleB = create_tuple(x2, y2, z2, w2);
-//		sum = adding_tuples(tupleA, tupleB); função a ser criada, adding_tuples -> recebe t_tuple A e t_tuple B e retorna a soma das duas tuplas t_tuple.
-//  	prototipo t_tuple	adding_tuple(t_tuple tupleA, t_tuple tupleB);
+		sum = adding_tuples(tupleA, tupleB);
 		TEST_ASSERT_EQUAL_DOUBLE((x1 + x2), sum.x);
 		TEST_ASSERT_EQUAL_DOUBLE((y1 + y2), sum.y);
 		TEST_ASSERT_EQUAL_DOUBLE((z1 + z2), sum.z);
@@ -202,7 +201,7 @@ void	test_sub_tuples(void)
 	int 	i;
 
 	i = 0;
-	sub = create_tuple(4, 4, 4, 4); // valores aleatorios pra teste.
+	sub = create_tuple(4, 4, 4, 4);
 	while (i < MAX_INTERATIONS)
 	{
 		x1 = rand_double();
@@ -215,8 +214,7 @@ void	test_sub_tuples(void)
 		z2 = rand_double();
 		w2 = rand_double();
 		tupleB = create_tuple(x2, y2, z2, w2);
-//		sub = sub_tuples(tupleA, tupleB); função a ser criada, sub_tuples -> recebe t_tuple A e t_tuple B e retorna a subtração das duas tuplas (t_tuple).
-//  	prototipo t_tuple	sub_tuple(t_tuple tupleA, t_tuple tupleB);
+		sub = sub_tuples(tupleA, tupleB);
 		TEST_ASSERT_EQUAL_DOUBLE((x1 - x2), sub.x);
 		TEST_ASSERT_EQUAL_DOUBLE((y1 - y2), sub.y);
 		TEST_ASSERT_EQUAL_DOUBLE((z1 - z2), sub.z);
@@ -235,7 +233,7 @@ void	test_div_tuples(void)
 	int 	i;
 
 	i = 0;
-	result = create_tuple(4, 4, 4, 4); // valores aleatorios pra teste.
+	result = create_tuple(4, 4, 4, 4);
 	while (i < MAX_INTERATIONS)
 	{
 		x1 = rand_double();
@@ -244,8 +242,7 @@ void	test_div_tuples(void)
 		w1 = rand_double();
 		tupleA = create_tuple(x1, y1, z1, w1);
 		divide_n = rand_double();
-//		result = divide_tuples(tupleA, divide); função a ser criada, divide_tuples -> recebe t_tuple A e o número a qual os valores da tupla serão divididos e retorna a tupla dividia (t_tuple).
-//  	prototipo t_tuple	divide_tuple(t_tuple tupleA, double divide_n);
+		result = div_tuples(tupleA, divide_n);
 		TEST_ASSERT_EQUAL_DOUBLE((x1 / divide_n), result.x);
 		TEST_ASSERT_EQUAL_DOUBLE((y1 / divide_n), result.y);
 		TEST_ASSERT_EQUAL_DOUBLE((z1 / divide_n), result.z);
@@ -263,14 +260,14 @@ void	test_magnitude(void)
 	int			i;
 
 	i = 0;
-	result = rand_double(); // valores aleatorios pra teste.
+	result = rand_double();
 	while (i < MAX_INTERATIONS)
 	{
 		x = rand_double();
 		y = rand_double();
 		z = rand_double();
 		vector = create_vector(x, y, z);
-//		result = magnitude(t_vector vector)
+		result = magnitude(vector);
 		TEST_ASSERT_EQUAL_DOUBLE((sqrt((x*x) + (y*y) + (z*z))), result);
 	i++;
 	}
@@ -286,7 +283,7 @@ void	test_cross_product(void)
 	int 		i;
 
 	i = 0;
-	result = create_tuple(4, 4, 4, 4); // valores aleatorios pra teste.
+	result = create_tuple(4, 4, 4, 4);
 	while (i < MAX_INTERATIONS)
 	{
 		x1 = rand_double();
@@ -297,8 +294,7 @@ void	test_cross_product(void)
 		y2 = rand_double();
 		z2 = rand_double();
 		vectorB = create_vector(x2, y2, z2);
-//		result = cross_product(vectorA, vectorB); função a ser criada, cross_product -> recebe t_vector A e t_vector B e retorna o produto vetorial dos dois vetores t_vector.
-//  	prototipo t_vector	cross_product(t_vector vectorA, t_vector vectorB);
+		result = cross_product(vectorA, vectorB);
 		TEST_ASSERT_EQUAL_DOUBLE((y1 * z2 - z1 * y2), result.x);
 		TEST_ASSERT_EQUAL_DOUBLE((z1 * x2 - x1 * z2), result.y);
 		TEST_ASSERT_EQUAL_DOUBLE((x1 * y2 - y1 * x2), result.z);

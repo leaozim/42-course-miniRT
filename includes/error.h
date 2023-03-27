@@ -16,7 +16,6 @@
 # define ERROR_COOR_C "Camera coordinates are invalid!"
 # define ERROR_ORI_C "Camera orientation are invalid!"
 
-
 # define ERROR_FOV "FOV is invalid!"
 # define ERROR_MANY_ARGC_CY "To many or few arguments for cylinder!"
 # define ERROR_COOR_CY "Cylinder coordinates are invalid!"
@@ -38,6 +37,6 @@
 # define ERROR_MANY_ARGC "Too many arguments!"
 # define ERROR_NOT_FILE "Need to add scene file!"
 
-#define ERROR_QTT "You have incorrectly duplicated data!"
+# define ERROR_QTT "You have incorrectly duplicated data!"
 
 #endif

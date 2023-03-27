@@ -71,7 +71,6 @@ void	negating_tuples_correct(void)
 	t_tuple		tuple, tuple_neg;
 
 	i = 0;
-	(void)tuple_neg;
 	while (i < MAX_INTERATIONS)
 	{
 		x = rand_double();
@@ -79,23 +78,21 @@ void	negating_tuples_correct(void)
 		z = rand_double();
 		w = rand_double();
 		tuple = create_tuple(x, y, z, w);
-		// tuple_neg = t_tupla neg_tupla(t_tupla tupla);
-		// TEST_ASSERT_EQUAL_DOUBLE(-x, tuple_neg.x);
-		TEST_ASSERT_EQUAL_DOUBLE(-x, tuple.x);
-		TEST_ASSERT_EQUAL_DOUBLE(-y, tuple.y);
-		TEST_ASSERT_EQUAL_DOUBLE(-z, tuple.z);
-		TEST_ASSERT_EQUAL_DOUBLE(-w, tuple.w);
+		tuple_neg = neg_tuple(tuple);
+		TEST_ASSERT_EQUAL_DOUBLE(-x, tuple_neg.x);
+		TEST_ASSERT_EQUAL_DOUBLE(-y, tuple_neg.y);
+		TEST_ASSERT_EQUAL_DOUBLE(-z, tuple_neg.z);
+		TEST_ASSERT_EQUAL_DOUBLE(-w, tuple_neg.w);
 		i++;
 	}
 }
 
 void	multiply_tupla_correct(void)
 {
-	double		x, y, z, w, multiplier, result;
+	double		x, y, z, w, multiplier;
 	int			i;
-	t_tuple		tuple;
+	t_tuple		tuple, result;
 
-	(void)result;
 	i = 0;
 	while (i < MAX_INTERATIONS)
 	{
@@ -105,47 +102,42 @@ void	multiply_tupla_correct(void)
 		w = rand_double();
 		multiplier = rand_double();
 		tuple = create_tuple(x, y, z, w);
-		// result = t_tupla multiply_tupla(t_tupla tupla, multiplier);
-		// TEST_ASSERT_EQUAL_DOUBLE(x * multiplier, result.x);
-		TEST_ASSERT_EQUAL_DOUBLE(x * multiplier, tuple.x);
-		TEST_ASSERT_EQUAL_DOUBLE(y * multiplier, tuple.y);
-		TEST_ASSERT_EQUAL_DOUBLE(z * multiplier, tuple.z);
-		TEST_ASSERT_EQUAL_DOUBLE(w * multiplier, tuple.w);
+		result = multiply_tupla(tuple, multiplier);
+		TEST_ASSERT_EQUAL_DOUBLE(x * multiplier, result.x);
+		TEST_ASSERT_EQUAL_DOUBLE(y * multiplier, result.y);
+		TEST_ASSERT_EQUAL_DOUBLE(z * multiplier, result.z);
+		TEST_ASSERT_EQUAL_DOUBLE(w * multiplier, result.w);
 		i++;
 	}
 }
 
 void	normalization_correct(void)
 {
-	double		x, y, z;
+	double		x, y, z, w;
 	int			i;
-	t_vector	vector, norm;
+	t_vector	vec, norm;
 
-	(void)norm;
 	i = 0;
 	while (i < MAX_INTERATIONS)
 	{
 		x = rand_double();
 		y = rand_double();
 		z = rand_double();
-		vector = create_vector(x, y, z);
-		// norm = t_vector normalize(t_vector *vector);
-		// TEST_ASSERT_EQUAL_DOUBLE(1.0, magnitude(norm));
-		TEST_ASSERT_EQUAL_DOUBLE(1.0, vector.x);
-		TEST_ASSERT_EQUAL_DOUBLE(1.0, vector.y);
-		TEST_ASSERT_EQUAL_DOUBLE(1.0, vector.z);
+		w = rand_double();
+		vec = create_vector(x, y, z);
+		norm = normalize(vec);
+		TEST_ASSERT_EQUAL_DOUBLE(1.0, magnitude(norm));
 		i++;
 	}
 }
 
 void	dot_product_correct(void)
 {
-	double		x1, y1, z1, x2, y2, z2;
+	double		x1, y1, z1, x2, y2, z2, result;
 	int			i;
 	t_vector	vector1, vector2;
 
-	(void)vector1;
-	(void)vector2;
+
 	i = 0;
 	while (i < MAX_INTERATIONS)
 	{
@@ -157,16 +149,11 @@ void	dot_product_correct(void)
 		z2 = rand_double();
 		vector1 = create_vector(x1, y1, z1);
 		vector2 = create_vector(x2, y2, z2);
-		// 	double dot_product(t_vector *vector1, t_vector *vector2);
-		// 	TEST_ASSERT_EQUAL_DOUBLE((vector1.x * vector2.x) + 
-									// (vector1.y * vector2.y) + 
-									// (vector1.z * vector2.z) + 
-									// (vector1.w * vector2.w), 
-									// dot_product(vector1, vector2));
+		result = dot_product(vector1, vector2);
 		TEST_ASSERT_EQUAL_DOUBLE((vector1.x * vector2.x) + \
 								(vector1.y * vector2.y) + \
 								(vector1.z * vector2.z) + \
-								(vector1.w * vector2.w), 2.0);
+								(vector1.w * vector2.w), result);
 		i++;
 	}
 }

@@ -7,6 +7,11 @@ enum e_status
 	ERROR
 };
 
+typedef	struct  s_mlx
+{
+	void	*mlx;
+}	t_mlx;
+
 typedef enum e_bool
 {
 	FALSE,

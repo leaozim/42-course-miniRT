@@ -113,7 +113,7 @@ void	multiply_tupla_correct(void)
 
 void	normalization_correct(void)
 {
-	double		x, y, z, w;
+	double		x, y, z;
 	int			i;
 	t_vector	vec, norm;
 
@@ -123,7 +123,6 @@ void	normalization_correct(void)
 		x = rand_double();
 		y = rand_double();
 		z = rand_double();
-		w = rand_double();
 		vec = create_vector(x, y, z);
 		norm = normalize(vec);
 		TEST_ASSERT_EQUAL_DOUBLE(1.0, magnitude(norm));

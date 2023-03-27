@@ -22,14 +22,14 @@ t_tuple	multiply_tupla(t_tuple tuple, double multiplier)
 	return (new_tuple);
 }
 
-t_vector	normalize(t_vector *vector)
+t_vector	normalize(t_vector vector)
 {
 	t_vector	new_vector;
 
-	new_vector.x = vector->x / magnitude(vector);
-	new_vector.y = vector->y / magnitude(vector);
-	new_vector.z = vector->z / magnitude(vector);
-	new_vector.w = vector->w / magnitude(vector);
+	new_vector.x = vector.x / magnitude(vector);
+	new_vector.y = vector.y / magnitude(vector);
+	new_vector.z = vector.z / magnitude(vector);
+	new_vector.w = vector.w / magnitude(vector);
 	return (new_vector);
 }
 

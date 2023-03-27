@@ -51,12 +51,12 @@ t_tuple		div_tuples(t_tuple t, double div);
 double		magnitude(t_vector vec);
 t_vector	cross_product(t_vector vec1, t_vector vec2);
 
-
-
-
-
-
-
+t_color		adding_color(t_color a, t_color b);
+t_color		sub_color(t_color a, t_color b);
+t_color		multiply_color_scalar(t_color c, double mult);
+t_color		multiply_color(t_color a, t_color b);
+t_color		create_color(double r, double g, double b);
+double	normalize_color(double color);
 //// APAGAR ////
 void		print_array(char **str);
 #endif

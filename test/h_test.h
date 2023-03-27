@@ -4,6 +4,7 @@
 # include "unity/unity.h"
 # include <string.h>
 # include "../includes/minirt.h"
+# include <math.h>
 # include <stdlib.h>
 
 #define MAX_INTERATIONS 100

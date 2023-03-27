@@ -27,7 +27,7 @@ TUPLA				=	create_tuple.c operations_tuple.c
 DIRS				=	. srcs utils parser tupla
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
-CFLAGS				=	-Wall -Wextra -Werror 
+CFLAGS				=	-Wall -Wextra -Werror
 
 VPATH				=	$(addprefix ./srcs/, $(DIRS))
 VPATH				+=	$(HEADER_PATH)

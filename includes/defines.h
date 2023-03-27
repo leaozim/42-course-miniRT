@@ -13,7 +13,6 @@ typedef enum e_bool
 	TRUE,
 }	t_bool;
 
-
 enum e_objects
 {
 	SPHERE,

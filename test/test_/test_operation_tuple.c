@@ -171,6 +171,151 @@ void	dot_product_correct(void)
 	}
 }
 
+void	test_add_tuples(void)
+{
+	double	x1, y1, z1, w1;
+	double	x2, y2, z2, w2;
+	t_tuple	tupleA;
+	t_tuple	tupleB;
+	t_tuple	sum;
+	int 	i;
+
+	i = 0;
+	sum = create_tuple(4, 4, 4, 4);
+	while (i < MAX_INTERATIONS)
+	{
+		x1 = rand_double();
+		y1 = rand_double();
+		z1 = rand_double();
+		w1 = rand_double();
+		tupleA = create_tuple(x1, y1, z1, w1);
+		x2 = rand_double();
+		y2 = rand_double();
+		z2 = rand_double();
+		w2 = rand_double();
+		tupleB = create_tuple(x2, y2, z2, w2);
+		sum = adding_tuples(tupleA, tupleB);
+		TEST_ASSERT_EQUAL_DOUBLE((x1 + x2), sum.x);
+		TEST_ASSERT_EQUAL_DOUBLE((y1 + y2), sum.y);
+		TEST_ASSERT_EQUAL_DOUBLE((z1 + z2), sum.z);
+		TEST_ASSERT_EQUAL_DOUBLE((w1 + w2), sum.w);
+		i++;
+	}
+
+}
+
+void	test_sub_tuples(void)
+{
+	double	x1, y1, z1, w1;
+	double	x2, y2, z2, w2;
+	t_tuple	tupleA;
+	t_tuple	tupleB;
+	t_tuple	sub;
+	int 	i;
+
+	i = 0;
+	sub = create_tuple(4, 4, 4, 4);
+	while (i < MAX_INTERATIONS)
+	{
+		x1 = rand_double();
+		y1 = rand_double();
+		z1 = rand_double();
+		w1 = rand_double();
+		tupleA = create_tuple(x1, y1, z1, w1);
+		x2 = rand_double();
+		y2 = rand_double();
+		z2 = rand_double();
+		w2 = rand_double();
+		tupleB = create_tuple(x2, y2, z2, w2);
+		sub = sub_tuples(tupleA, tupleB);
+		TEST_ASSERT_EQUAL_DOUBLE((x1 - x2), sub.x);
+		TEST_ASSERT_EQUAL_DOUBLE((y1 - y2), sub.y);
+		TEST_ASSERT_EQUAL_DOUBLE((z1 - z2), sub.z);
+		TEST_ASSERT_EQUAL_DOUBLE((w1 - w2), sub.w);
+		i++;
+	}
+
+}
+
+void	test_div_tuples(void)
+{
+	double	x1, y1, z1, w1;
+	double	divide_n;
+	t_tuple	tupleA;
+	t_tuple	result;
+	int 	i;
+
+	i = 0;
+	result = create_tuple(4, 4, 4, 4);
+	while (i < MAX_INTERATIONS)
+	{
+		x1 = rand_double();
+		y1 = rand_double();
+		z1 = rand_double();
+		w1 = rand_double();
+		tupleA = create_tuple(x1, y1, z1, w1);
+		divide_n = rand_double();
+		result = div_tuples(tupleA, divide_n);
+		TEST_ASSERT_EQUAL_DOUBLE((x1 / divide_n), result.x);
+		TEST_ASSERT_EQUAL_DOUBLE((y1 / divide_n), result.y);
+		TEST_ASSERT_EQUAL_DOUBLE((z1 / divide_n), result.z);
+		TEST_ASSERT_EQUAL_DOUBLE((w1 / divide_n), result.w);
+		i++;
+	}
+
+}
+
+void	test_magnitude(void)
+{
+	double		x, y, z;
+	t_vector	vector;
+	double		result;
+	int			i;
+
+	i = 0;
+	result = rand_double();
+	while (i < MAX_INTERATIONS)
+	{
+		x = rand_double();
+		y = rand_double();
+		z = rand_double();
+		vector = create_vector(x, y, z);
+		result = magnitude(vector);
+		TEST_ASSERT_EQUAL_DOUBLE((sqrt((x*x) + (y*y) + (z*z))), result);
+	i++;
+	}
+}
+
+void	test_cross_product(void)
+{
+	double		x1, y1, z1;
+	double		x2, y2, z2;
+	t_vector	vectorA;
+	t_vector	vectorB;
+	t_vector	result;
+	int 		i;
+
+	i = 0;
+	result = create_tuple(4, 4, 4, 4);
+	while (i < MAX_INTERATIONS)
+	{
+		x1 = rand_double();
+		y1 = rand_double();
+		z1 = rand_double();
+		vectorA =  create_vector(x1, y1, z1);
+		x2 = rand_double();
+		y2 = rand_double();
+		z2 = rand_double();
+		vectorB = create_vector(x2, y2, z2);
+		result = cross_product(vectorA, vectorB);
+		TEST_ASSERT_EQUAL_DOUBLE((y1 * z2 - z1 * y2), result.x);
+		TEST_ASSERT_EQUAL_DOUBLE((z1 * x2 - x1 * z2), result.y);
+		TEST_ASSERT_EQUAL_DOUBLE((x1 * y2 - y1 * x2), result.z);
+		i++;
+	}
+
+}
+
 void test_operation_tuple(void)
 {
 	RUN_TEST(is_tuple_value_correct);
@@ -180,4 +325,9 @@ void test_operation_tuple(void)
 	RUN_TEST(multiply_tupla_correct);
 	RUN_TEST(normalization_correct);
 	RUN_TEST(dot_product_correct);
+	RUN_TEST(test_add_tuples);
+	RUN_TEST(test_sub_tuples);
+	RUN_TEST(test_div_tuples);
+	RUN_TEST(test_magnitude);
+	RUN_TEST(test_cross_product);
 }

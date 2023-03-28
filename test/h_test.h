@@ -11,10 +11,12 @@
 
 double	rand_double();
 double	rand_rgb();
-void		test_soma(void);
-void		test_sum_array(void);
-void		test_operation_tuple(void);
-void		test_operation_color(void);
-void		test_matrix(void);
+void	test_matrix(void);
+void 	test_soma(void);
+void	test_sum_array(void);
+void	test_operation_tuple(void);
+void	test_operation_color(void);
+void	test_canvas(void);
+
 
 #endif

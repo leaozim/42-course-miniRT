@@ -14,15 +14,18 @@ void	print_array(char **str)
 
 int	main(int argc, char *argv[])
 {
-	t_scene	scene;
-	t_mlx	canvas;
+	t_scene		scene;
+	t_mlx		mlx;
+	t_canvas	canvas;
+
 
 	if (check_argc(argc) || check_file(argv[1]) == ERROR)
 		return (EXIT_FAILURE);
 	ft_bzero(&scene, sizeof(t_scene));
 	read_file(argv[1], &scene);
-	canvas.mlx = mlx_init();
-	write_pixel(canvas.mlx, 500, 100, scene.ambient->color);
+	mlx.mlx = mlx_init();
+	canvas = create_canvas(mlx.mlx);
+	write_pixel(mlx.mlx, 500, 100, scene.ambient->color, canvas);
 	destroy_minirt(&scene);	
 	return (0);
 }

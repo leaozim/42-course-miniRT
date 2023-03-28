@@ -7,6 +7,9 @@ SRCS	= $(shell ls . unity test_ | grep .c$)
 LIBFT_PATH	= ../libs/libft
 LIBFT 	= $(LIBFT_PATH)/libft.a
 
+MINILIBX_PATH		=	libs/minilibx-linux/
+MINILIBX			=	(MINILIBX_PATH)/mlx.h
+
 MINIRT_PATH = ../
 MINIRT = $(MINIRT_PATH)/miniRT.a
 
@@ -19,7 +22,7 @@ CFLAGS	= -Wall -Wextra -g3
 IFLAGS	= -I. -Iunity -I../include -I../libft -Iincludes
 VPATH	=  unity 
 VPATH	+= test_
-LDFLAGS	= -L$(LIBFT_PATH) -lft -lm
+LDFLAGS	= -L$(LIBFT_PATH) -lft -lm -L$(MINILIBX_PATH) -lmlx -lXext -lX11
 
 all: $(NAME)
 

@@ -187,7 +187,6 @@ void	test_add_tuples(void)
 		TEST_ASSERT_EQUAL_DOUBLE((w1 + w2), sum.w);
 		i++;
 	}
-
 }
 
 void	test_sub_tuples(void)

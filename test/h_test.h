@@ -9,9 +9,13 @@
 
 #define MAX_INTERATIONS 100
 
-double		rand_double();
-void 		test_soma(void);
-void		test_sum_array(void);
-void		test_operation_tuple(void);
+double	rand_double();
+double	rand_rgb();
+void 	test_soma(void);
+void	test_sum_array(void);
+void	test_operation_tuple(void);
+void	test_operation_color(void);
+void	test_canvas(void);
+
 
 #endif

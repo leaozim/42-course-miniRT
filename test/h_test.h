@@ -15,5 +15,7 @@ void 	test_soma(void);
 void	test_sum_array(void);
 void	test_operation_tuple(void);
 void	test_operation_color(void);
+void	test_canvas(void);
+
 
 #endif

@@ -11,7 +11,7 @@ t_tuple	neg_tuple(t_tuple tuple)
 	return (new_tuple);
 }
 
-t_tuple	multiply_tupla(t_tuple tuple, double multiplier)
+t_tuple	multiply_tupla_scalar(t_tuple tuple, double multiplier)
 {
 	t_tuple	new_tuple;
 

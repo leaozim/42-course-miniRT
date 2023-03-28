@@ -189,7 +189,7 @@ void	test_matrix_equality_2x2(void)
 						{9, 5}
 					}};
 	TEST_ASSERT_EQUAL_INT(m_a.size, m_b.size);
-	// TEST_ASSERT_TRUE(is_equal_matrix(m_a, m_b)); // substituir todo o trecho da linha 93 a 99 por essa funçao
+	// TEST_ASSERT_TRUE(is_equal_matrix(m_a, m_b)); // substituir todo o trecho da linha 193 a 199 por essa funçao
 	i = -1;
 	while (++i < 2)
 	{
@@ -212,7 +212,7 @@ void	test_matrix_different_2x2(void)
 						{9, 8},
 					}};
 	TEST_ASSERT_EQUAL_INT(m_a.size, m_b.size);
-	// TEST_ASSERT_TRUE(is_equal_matrix(m_a, m_b)); // substituir todo o trecho da linha 120 a 126 por essa funçao
+	// TEST_ASSERT_TRUE(is_equal_matrix(m_a, m_b)); // substituir todo o trecho da linha 216 a 222 por essa funçao
 	i = -1;
 	while (++i < 2)
 	{

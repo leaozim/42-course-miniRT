@@ -155,12 +155,12 @@ void	test_matrix_different_3x3(void)
 {
 	int		i, j;
 
-	t_matrix m_a = {4, {
+	t_matrix m_a = {3, {
 						{1, 2, 3},
 						{5, 6, 7},
 						{9, 8, 7},
 				}};
-	t_matrix m_b = {4, {
+	t_matrix m_b = {3, {
 						{1, 2, 3},
 						{5, 6, 7},
 						{9, 8, 7},
@@ -176,6 +176,51 @@ void	test_matrix_different_3x3(void)
 	}
 }
 
+void	test_matrix_equality_2x2(void)
+{
+	int		i, j;
+
+	t_matrix m_a = {2, {
+						{1, 2},
+						{5, 6},
+				}};
+	t_matrix m_b = {2, {
+						{1, 2},
+						{9, 5}
+					}};
+	TEST_ASSERT_EQUAL_INT(m_a.size, m_b.size);
+	// TEST_ASSERT_TRUE(is_equal_matrix(m_a, m_b)); // substituir todo o trecho da linha 93 a 99 por essa funçao
+	i = -1;
+	while (++i < 2)
+	{
+		j = -1;
+		while (++j < 2)
+			TEST_ASSERT_EQUAL_DOUBLE(m_a.matrix[i][j], m_b.matrix[i][j]);
+	}
+}
+
+void	test_matrix_different_2x2(void)
+{
+	int		i, j;
+
+	t_matrix m_a = {2, {
+						{1, 2},
+						{9, 8},
+				}};
+	t_matrix m_b = {2, {
+						{1, 2},
+						{9, 8},
+					}};
+	TEST_ASSERT_EQUAL_INT(m_a.size, m_b.size);
+	// TEST_ASSERT_TRUE(is_equal_matrix(m_a, m_b)); // substituir todo o trecho da linha 120 a 126 por essa funçao
+	i = -1;
+	while (++i < 2)
+	{
+		j = -1;
+		while (++j < 2)
+			TEST_ASSERT_NOT_EQUAL_DOUBLE(m_a.matrix[i][j], m_b.matrix[i][j]);
+	}
+}
 
 
 void test_matrix(void)
@@ -187,4 +232,6 @@ void test_matrix(void)
 	RUN_TEST(test_matrix_different_4x4);
 	RUN_TEST(test_matrix_equality_3x3);
 	RUN_TEST(test_matrix_different_3x3);
+	RUN_TEST(test_matrix_equality_2x2);
+	RUN_TEST(test_matrix_different_2x2);
 }

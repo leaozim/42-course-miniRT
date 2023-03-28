@@ -266,6 +266,100 @@ void	test_mult_two_matrix_4x4(void)
 	}
 }
 
+void	test_mult_two_matrix_3x3(void)
+{
+	// t_matrix multiply;
+	int	i, j;
+
+	t_matrix	m_a = {3, {
+				{1, 2, 3},
+				{5, 6, 7},
+				{9, 8, 7},
+	}};
+	t_matrix	m_b = { 3, {
+				{-2, 1, 2},
+				{3, 2, 1,},
+				{4, 3, 6}
+	}};
+	t_matrix	expc = {3, {
+				{20, 22, 50},
+				{44, 54, 114},
+				{40, 58, 110}
+	}};
+	// substituir todo o trecho da while por essa funçao 
+	// multiply = multiply_matrix(a, b);
+	// TEST_ASSERT_TRUE(is_equal_matrix(multiply, expected));
+	i = -1;
+	while (++i < 3)
+	{
+		j = -1;
+		while (++j < 3)
+			TEST_ASSERT_EQUAL_DOUBLE(expc.matrix[i][j], m_b.matrix[i][j]);
+	}
+}
+
+void	test_mult_two_matrix_2x2(void)
+{
+	// t_matrix multiply;
+	int	i, j;
+
+	t_matrix	m_a = {2, {
+				{1, 2},
+				{5, 6}
+	}};
+	t_matrix	m_b = { 2, {
+				{-2, 1, 2},
+				{3, 2, 1,}
+	}};
+	t_matrix	expc = {2, {
+				{20, 22},
+				{44, 54}
+	}};
+	// substituir todo o trecho da while por essa funçao 
+	// multiply = multiply_matrix(a, b);
+	// TEST_ASSERT_TRUE(is_equal_matrix(multiply, expected));
+	i = -1;
+	while (++i < 2)
+	{
+		j = -1;
+		while (++j < 2)
+			TEST_ASSERT_EQUAL_DOUBLE(expc.matrix[i][j], m_b.matrix[i][j]);
+	}
+}
+
+void	test_matrix_mult_tupla(void)
+{
+	t_tuple		t, expec, *multiply;
+
+	t_matrix	m = { 4, {
+		{1, 2, 3, 4},
+		{2, 4, 4, 2},
+		{8, 6, 4, 1},
+		{0, 0, 0, 1}
+	}};
+	t = create_tuple(1, 2, 3, 1);
+	expec = create_tuple(18, 24, 33, 1);
+	// substituir todo o trecho da while por essa funçao 
+	// multiply = multiply_matrix_tuple(m, t);
+	// TEST_ASSERT_TRUE(is_equal_tuple(multiply, expected));
+
+	//usado apenas para dar fail no teste
+	int	i, j;
+	t_matrix	expc = {4, {
+				{20, 22, 50, 48},
+				{44, 54, 114, 108},
+				{40, 58, 110, 102},
+				{16, 26, 46, 42}
+	}};
+	i = -1;
+	while (++i < 2)
+	{
+		j = -1;
+		while (++j < 2)
+			TEST_ASSERT_EQUAL_DOUBLE(expc.matrix[i][j], m.matrix[i][j]);
+	}
+}
+
 void test_matrix(void)
 {
 	RUN_TEST(test_create_matrix_4x4);
@@ -278,4 +372,7 @@ void test_matrix(void)
 	RUN_TEST(test_matrix_equality_2x2);
 	RUN_TEST(test_matrix_different_2x2);
 	RUN_TEST(test_mult_two_matrix_4x4);
+	RUN_TEST(test_mult_two_matrix_3x3);
+	RUN_TEST(test_mult_two_matrix_2x2);
+	RUN_TEST(test_matrix_mult_tupla);
 }

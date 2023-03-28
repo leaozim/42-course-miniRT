@@ -115,6 +115,12 @@ typedef struct s_shape
 	};
 }	t_shape;
 
+typedef struct s_matrix
+{
+	size_t	size;
+	double	matrix[4][4];
+}	t_matrix;
+
 # define EPSILON 0.0001
 # define CAMERA 0
 # define LIGHT 1

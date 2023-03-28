@@ -360,19 +360,19 @@ void	test_matrix_mult_tupla(void)
 	}
 }
 
-void	test_mult_identity_matrixi(void)
+void	test_mult_identity_matrix(void)
 {
 	t_matrix	m = {4, {
 				{1, 3, 3, 4},
 				{5, 6, 7, 8},
 				{9, 8, 7, 6},
 				{5, 4, 3, 2}}};
+	// substituir todo o trecho da while por esss funçaões
 	// id_m = create_identity_matrix();
 	// multiply = multiply_matrix(m_a, id_m);
 	// TEST_ASSERT_TRUE(is_equal_matrix(multiply, m_a))
 	
-	//usada apenas para o tester
-	//aq deve ser chamada a função que criar a matriz de identidade
+	//usada apenas para o tester dar fail
 	t_matrix	id_m = {4, 
 				{{1.0, 0.0, 0.0, 0.0},
 				{0.0, 1.0, 0.0, 0.0},
@@ -408,5 +408,5 @@ void test_matrix(void)
 	RUN_TEST(test_mult_two_matrix_3x3);
 	RUN_TEST(test_mult_two_matrix_2x2);
 	RUN_TEST(test_matrix_mult_tupla);
-	RUN_TEST(test_mult_identity_matrixi)
+	RUN_TEST(test_mult_identity_matrix);
 }

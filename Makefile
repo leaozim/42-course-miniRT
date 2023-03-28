@@ -28,7 +28,7 @@ CANVAS				= 	create_canvas.c
 
 COLOR				=	color.c operations_color.c
 
-MATRIX				=	create_matrix.c
+MATRIX				=	matrix_builder.c
 
 DIRS				=	. srcs utils parser tupla color canvas matrix
 IFLAGS				=	-I $(HEADER_PATH)

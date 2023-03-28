@@ -50,9 +50,33 @@ void	test_create_matrix_3x3()
 	}
 }
 
+void	test_create_matrix_2x2()
+{
+	int		i, j;
+	double	m[2][2] = {
+		{1, 2},
+		{5, 6},
+	};
+	// matrix = create_matrix(m, 3); adicionar aqui a função 
+	t_matrix matrix = {2, {
+                        {5, 2},
+                        {5, 6},
+                    }};
+	TEST_ASSERT_NOT_NULL(&matrix);
+	i = -1;
+	while (++i < 2)
+	{
+		j = -1;
+		while (++j < 2)
+			TEST_ASSERT_EQUAL_DOUBLE(m[i][j], matrix.matrix[i][j]);
+	}
+}
+
+
 void test_matrix(void)
 {
 	RUN_TEST(test_create_matrix_4x4);
 	RUN_TEST(test_create_matrix_3x3);
+	RUN_TEST(test_create_matrix_2x2);
 
 }

@@ -102,7 +102,7 @@ void	multiply_tupla_correct(void)
 		w = rand_double();
 		multiplier = rand_double();
 		tuple = create_tuple(x, y, z, w);
-		result = multiply_tupla(tuple, multiplier);
+		result = multiply_tupla_scalar(tuple, multiplier);
 		TEST_ASSERT_EQUAL_DOUBLE(x * multiplier, result.x);
 		TEST_ASSERT_EQUAL_DOUBLE(y * multiplier, result.y);
 		TEST_ASSERT_EQUAL_DOUBLE(z * multiplier, result.z);

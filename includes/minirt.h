@@ -42,7 +42,7 @@ void		create_plane_node(char **tokens, t_scene *scene);
 void		create_ambient(char **tokens, t_scene *scene);
 int			soma(int a, int b);
 t_tuple		neg_tuple(t_tuple tuple);
-t_tuple		multiply_tupla(t_tuple tuple, double multiplier);
+t_tuple		multiply_tupla_scalar(t_tuple tuple, double multiplier);
 t_vector	normalize(t_vector vector);
 double		dot_product(t_vector vec1, t_vector vec2);
 t_tuple		adding_tuples(t_tuple a, t_tuple b);

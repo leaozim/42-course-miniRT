@@ -9,3 +9,10 @@ int	check_argc(int argc)
 	else
 		return (error_msg(ERROR_MANY_ARGC), ERROR);
 }
+
+int	is_equal_double(double a, double b)
+{
+	if (fabs(a - b) < EPSILON)
+			return (OK);
+	return (ERROR);
+}

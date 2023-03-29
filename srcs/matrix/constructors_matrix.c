@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_matrix	submatrix(t_matrix matrix, size_t row, size_t column)
+t_matrix	submatrix(t_matrix matrix, size_t row, size_t col)
 {
 	t_matrix	new_matrix;
 	size_t		i;
@@ -19,7 +19,7 @@ t_matrix	submatrix(t_matrix matrix, size_t row, size_t column)
 		new_r = 0;
 		while (++j < matrix.size)
 		{
-			if (j == column)
+			if (j == col)
 				continue ;
 			new_matrix.matrix[new_c][new_r] = matrix.matrix[i][j];
 			new_r++;
@@ -27,14 +27,6 @@ t_matrix	submatrix(t_matrix matrix, size_t row, size_t column)
 		new_c++;
 	}
 	return (new_matrix);
-}
-
-double	minor(t_matrix matrix, size_t row, size_t column)
-{
-	t_matrix new_matrix;
-
-	new_matrix = submatrix(matrix, row, column);
-	determinante(matrix);
 }
 
 double	determinant_2x2(t_matrix m)
@@ -45,29 +37,64 @@ double	determinant_2x2(t_matrix m)
 	);
 } 
 
-// double	cofator(t_matrix matrix, size_t row, size_t column)
-// {
+double	cofactor(t_matrix matrix, size_t row, size_t col)
+{
+	double	mi;
 
-// }
+	mi = minor(matrix, row, col);
+	if ((row + col) % 2 == 0)
+		return (mi);
+	return (-mi);
 
-// t_matrix	inverse_matrix(t_matrix m)
-// {
-
-// }
+}
 
 double	determinant(t_matrix m)
 {
-	size_t	column;
+	size_t	col;
 	double	deter;
 
 	if (m.size == 2)
-		return (determinant2x2(m));
+		return (determinant_2x2(m));
 	deter = 0;
-	column = 0;
-	while (column < m.size)
+	col = 0;
+	while (col < m.size)
 	{
-		deter += m.matrix[0][column] * cofactor(m, 0, column);
-		++column;
+		deter += m.matrix[0][col] * cofactor(m, 0, col);
+		++col;
 	}
 	return (deter);
+}
+
+double	minor(t_matrix matrix, size_t row, size_t col)
+{
+	t_matrix	new_matrix;
+	double		minor;
+
+	new_matrix = submatrix(matrix, row, col);
+	minor = determinant(new_matrix);
+	return (minor);
+}
+
+double	is_invertible(t_matrix matrix)
+{
+	return (determinant(matrix));
+}
+
+t_matrix	inverse_matrix(t_matrix matrix)
+{
+	size_t			row;
+	size_t			col;
+	t_matrix		inver_m;
+
+	if (!is_invertible(matrix))
+		return (matrix);
+	row = -1; 
+	while (++row < matrix.size)
+	{
+		col = -1;
+		while (col < matrix.size)
+			inver_m.matrix[col][row] = cofactor(matrix, row, col) / determinant(matrix);
+	}
+	inver_m.size = matrix.size;
+	return (inver_m);
 }

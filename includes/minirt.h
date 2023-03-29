@@ -59,7 +59,10 @@ t_color		multiply_color_scalar(t_color c, double mult);
 t_color		multiply_color(t_color a, t_color b);
 t_color		create_color(double r, double g, double b);
 double		normalize_color(double color);
-t_matrix	submatrix(t_matrix m, size_t row, size_t column);
+t_matrix	submatrix(t_matrix m, size_t row, size_t col);
+double		minor(t_matrix matrix, size_t row, size_t col);
+double		determinant(t_matrix m);
+double		cofactor(t_matrix matrix, size_t row, size_t col);
 
 //// APAGAR ////
 void		print_array(char **str);

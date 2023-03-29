@@ -13,6 +13,6 @@ int	check_argc(int argc)
 int	is_equal_double(double a, double b)
 {
 	if (fabs(a - b) < EPSILON)
-			return (TRUE);
+		return (TRUE);
 	return (FALSE);
 }

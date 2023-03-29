@@ -68,21 +68,21 @@ t_matrix	transposed_matrix(t_matrix matrix)
 	return (transposed);
 }
 
-t_matrix	inverse_matrix(t_matrix matrix)
+t_matrix	inverse_matrix(t_matrix mtx)
 {
 	size_t			row;
 	size_t			col;
-	t_matrix		inver_m;
+	t_matrix		inver;
 
-	if (!is_invertible(matrix))
-		return (matrix);
-	row = -1; 
-	while (++row < matrix.size)
+	if (!is_invertible(mtx))
+		return (mtx);
+	row = -1;
+	while (++row < mtx.size)
 	{
 		col = -1;
-		while (col < matrix.size)
-			inver_m.matrix[col][row] = cofactor(matrix, row, col) / determinant(matrix);
+		while (col < mtx.size)
+			inver.matrix[col][row] = cofactor(mtx, row, col) / determinant(mtx);
 	}
-	inver_m.size = matrix.size;
-	return (inver_m);
+	inver.size = mtx.size;
+	return (inver);
 }

@@ -33,7 +33,6 @@ int	main(int argc, char *argv[])
 	t_mlx		mlx;
 	t_canvas	canvas;
 
-
 	if (check_argc(argc) || check_file(argv[1]) == ERROR)
 		return (EXIT_FAILURE);
 	ft_bzero(&scene, sizeof(t_scene));
@@ -41,7 +40,6 @@ int	main(int argc, char *argv[])
 	mlx.mlx = mlx_init();
 	canvas = create_canvas(mlx.mlx, 1280, 900);
 	write_pixel(mlx.mlx, 500, 100, scene.ambient->color, canvas);
-
-	destroy_minirt(&scene);	
+	destroy_minirt(&scene);
 	return (0);
 }

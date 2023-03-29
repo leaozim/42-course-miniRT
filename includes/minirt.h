@@ -63,6 +63,7 @@ t_matrix	submatrix(t_matrix m, size_t row, size_t col);
 double		minor(t_matrix matrix, size_t row, size_t col);
 double		determinant(t_matrix m);
 double		cofactor(t_matrix matrix, size_t row, size_t col);
+ t_matrix	create_matrix(double m[4][4], size_t size);
 
 //// APAGAR ////
 void		print_array(char **str);

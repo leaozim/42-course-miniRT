@@ -41,6 +41,7 @@ void		create_camera(char **tokens, t_scene *scene);
 void		create_plane_node(char **tokens, t_scene *scene);
 void		create_ambient(char **tokens, t_scene *scene);
 int			soma(int a, int b);
+int			is_equal_double(double a, double b);
 t_tuple		neg_tuple(t_tuple tuple);
 t_tuple		multiply_tupla_scalar(t_tuple tuple, double multiplier);
 t_vector	normalize(t_vector vector);
@@ -54,14 +55,20 @@ t_canvas	create_canvas(void *mlx_ptr, int height, int width);
 void		destroy_mlx(void *mlx_ptr, void *win_ptr);
 void		write_pixel(void *mlx, int x, int y, t_color rgb, t_canvas c);
 
-
+t_matrix	create_matrix(double m[][4], size_t size);
+t_matrix	create_identity_matrix(void);
+int			is_equal_matrix(t_matrix a, t_matrix b);
+t_matrix	multiply_matrix(t_matrix a, t_matrix b);
+t_tuple		multiply_matrix_tuple(t_matrix m, t_tuple t);
+t_matrix	transposed_matrix(t_matrix matrix);
+double		determinant_2x2(t_matrix m);
 
 t_color		adding_color(t_color a, t_color b);
 t_color		sub_color(t_color a, t_color b);
 t_color		multiply_color_scalar(t_color c, double mult);
 t_color		multiply_color(t_color a, t_color b);
 t_color		create_color(double r, double g, double b);
-double	normalize_color(double color);
+double		normalize_color(double color);
 //// APAGAR ////
 void		print_array(char **str);
 #endif

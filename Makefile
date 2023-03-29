@@ -28,7 +28,7 @@ CANVAS				= 	create_canvas.c
 
 COLOR				=	color.c operations_color.c
 
-MATRIX				=	matrix_builder.c
+MATRIX				=	matrix_builder.c matrix_operations.c
 
 DIRS				=	. srcs utils parser tupla color canvas matrix
 IFLAGS				=	-I $(HEADER_PATH)
@@ -89,6 +89,9 @@ test:	all
 
 test_vall:	all
 	make val -C test
+
+test_debug: all
+	make debug -C test
 
 val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT

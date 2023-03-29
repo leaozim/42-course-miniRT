@@ -7,7 +7,7 @@ enum e_status
 	ERROR
 };
 
-typedef	struct  s_mlx
+typedef struct s_mlx
 {
 	void	*mlx;
 }	t_mlx;
@@ -114,6 +114,12 @@ typedef struct s_shape
 		t_cylinder	cylinder;
 	};
 }	t_shape;
+
+typedef struct s_matrix
+{
+	size_t	size;
+	double	matrix[4][4];
+}	t_matrix;
 
 # define EPSILON 0.0001
 # define CAMERA 0

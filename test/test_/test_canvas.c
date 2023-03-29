@@ -24,7 +24,6 @@ void    test_pixel(void)
 		TEST_ASSERT_EQUAL_DOUBLE(b, color.b);
 		i++;
 	}
-	
 }
 
 void    test_canvas(void)

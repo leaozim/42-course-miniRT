@@ -13,7 +13,8 @@ HEADER_PATH			=	./includes
 HEADER_FILES		=	minirt.h
 
 SRC					=	main.c \
-						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) $(MATRIX)
+						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) \
+						$(MATRIX)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
@@ -28,7 +29,8 @@ CANVAS				= 	create_canvas.c
 
 COLOR				=	color.c operations_color.c
 
-MATRIX				=	matrix_builder.c matrix_operations.c
+MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c \
+						matrix_utils.c
 
 DIRS				=	. srcs utils parser tupla color canvas matrix
 IFLAGS				=	-I $(HEADER_PATH)

@@ -1,27 +1,5 @@
 #include "minirt.h"
 
-int	is_equal_matrix(t_matrix a, t_matrix b)
-{
-	size_t	row;
-	size_t	col;
-
-	if (a.size != b.size)
-		return (ERROR);
-	row = 0;
-	while (row < a.size)
-	{
-		col = 0;
-		while (col < a.size)
-		{
-			if (is_equal_double(a.matrix[row][col], b.matrix[row][col]))
-				return (ERROR);
-			col++;
-		}
-		row++;
-	}
-	return (OK);
-}
-
 t_matrix	multiply_matrix(t_matrix a, t_matrix b)
 {
 	size_t		i;
@@ -90,10 +68,21 @@ t_matrix	transposed_matrix(t_matrix matrix)
 	return (transposed);
 }
 
-double	determinant_2x2(t_matrix m)
+t_matrix	inverse_matrix(t_matrix mtx)
 {
-	return (
-		(m.matrix[0][0] * m.matrix[1][1]) - \
-		(m.matrix[0][1] * m.matrix[1][0])
-	);
+	size_t			row;
+	size_t			col;
+	t_matrix		inver;
+
+	if (!is_invertible(mtx))
+		return (mtx);
+	row = -1;
+	while (++row < mtx.size)
+	{
+		col = -1;
+		while (col < mtx.size)
+			inver.matrix[col][row] = cofactor(mtx, row, col) / determinant(mtx);
+	}
+	inver.size = mtx.size;
+	return (inver);
 }

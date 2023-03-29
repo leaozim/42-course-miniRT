@@ -54,21 +54,26 @@ t_vector	cross_product(t_vector vec1, t_vector vec2);
 t_canvas	create_canvas(void *mlx_ptr, int height, int width);
 void		destroy_mlx(void *mlx_ptr, void *win_ptr);
 void		write_pixel(void *mlx, int x, int y, t_color rgb, t_canvas c);
-
-t_matrix	create_matrix(double m[][4], size_t size);
 t_matrix	create_identity_matrix(void);
 int			is_equal_matrix(t_matrix a, t_matrix b);
 t_matrix	multiply_matrix(t_matrix a, t_matrix b);
 t_tuple		multiply_matrix_tuple(t_matrix m, t_tuple t);
 t_matrix	transposed_matrix(t_matrix matrix);
-double		determinant_2x2(t_matrix m);
-
 t_color		adding_color(t_color a, t_color b);
 t_color		sub_color(t_color a, t_color b);
 t_color		multiply_color_scalar(t_color c, double mult);
 t_color		multiply_color(t_color a, t_color b);
 t_color		create_color(double r, double g, double b);
 double		normalize_color(double color);
+t_matrix	submatrix(t_matrix m, size_t row, size_t col);
+double		minor(t_matrix matrix, size_t row, size_t col);
+double		determinant(t_matrix m);
+double		cofactor(t_matrix matrix, size_t row, size_t col);
+t_matrix	create_matrix(double m[4][4], size_t size);
+double		is_invertible(t_matrix matrix);
+
 //// APAGAR ////
 void		print_array(char **str);
+void		print_matrix(t_matrix m);
+
 #endif

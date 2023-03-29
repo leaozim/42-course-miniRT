@@ -12,12 +12,26 @@ void	print_array(char **str)
 	}
 }
 
+void	print_matrix(t_matrix m)
+{
+	size_t	i, j;
+
+	for (i = 0; i < m.size; i++)
+	{
+		for (j = 0; j < m.size; j++)
+		{
+			printf("{ %5.1f } ", m.matrix[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_scene		scene;
 	t_mlx		mlx;
 	t_canvas	canvas;
-
 
 	if (check_argc(argc) || check_file(argv[1]) == ERROR)
 		return (EXIT_FAILURE);
@@ -26,6 +40,6 @@ int	main(int argc, char *argv[])
 	mlx.mlx = mlx_init();
 	canvas = create_canvas(mlx.mlx, 1280, 900);
 	write_pixel(mlx.mlx, 500, 100, scene.ambient->color, canvas);
-	destroy_minirt(&scene);	
+	destroy_minirt(&scene);
 	return (0);
 }

@@ -274,6 +274,136 @@ void	test_determinant_2x2(void)
 	 TEST_ASSERT_EQUAL(17, determinant(det_m));
 }
 
+void	test_submatrix_3x3(void)
+{
+	t_matrix matrix = {3,{
+						{1, 5, 0},
+						{-3, 2, 7},
+						{0, 6, -3}}};
+	t_matrix expec ={2,{
+						{-3, 2},
+						{0, 6}}};	
+	t_matrix sub = submatrix(matrix, 0, 2);
+	TEST_ASSERT_TRUE(is_equal_matrix(sub, expec));
+}
+
+void	test_submatrix_4x4(void)
+{
+	t_matrix matrix = {4,{
+						{-6, 1, 1, 6},
+						{-8, 5, 8, 6},
+						{-1, 0, 8, 2},
+						{-7, 1, -1, 1}}};
+	t_matrix expec ={3,{
+						{-6, 1, 6},
+						{-8, 8, 6},
+						{-7, -1, 1}}};	
+	t_matrix sub = submatrix(matrix, 2, 1);
+	TEST_ASSERT_TRUE(is_equal_matrix(sub, expec));
+}
+
+void	test_minor_3x3(void)
+{
+	t_matrix matrix = {3,{
+						{3, 5, 0},
+						{2, -1, -7},
+						{6, -1, 5}}};
+	double expec = 25;	
+	double min = minor(matrix, 1, 0);
+	TEST_ASSERT_EQUAL_DOUBLE(min, expec);
+}
+
+void	test_cofactor_3x3(void)
+{
+	t_matrix matrix = {3,{
+						{3, 5, 0},
+						{2, -1, -7},
+						{6, -1, 5}}};
+	double expec = -12;	
+	double cof = cofactor(matrix, 0, 0);
+	TEST_ASSERT_EQUAL_DOUBLE(cof, expec);
+	expec = -25;
+	cof = cofactor(matrix, 1, 0);
+	TEST_ASSERT_EQUAL_DOUBLE(cof, expec);
+}
+
+void	test_determinant_3x3(void)
+{
+	t_matrix matrix = {3,{
+						{1, 2, 6},
+						{-5, 8, -4},
+						{2, 6, 4}}};
+	double expec = -196;	
+	double det = determinant(matrix);
+	TEST_ASSERT_EQUAL_DOUBLE(det, expec);
+}
+
+void	test_determinant_4x4(void)
+{
+	t_matrix matrix = {4,{
+						{-2, -8, 3, 5},
+						{-3, 1, 7, 3},
+						{1, 2, -9, 6},
+						{-6, 7, 7, -9}}};
+	double expec = -4071;	
+	double det = determinant(matrix);
+	TEST_ASSERT_EQUAL_DOUBLE(det, expec);
+}
+
+void	test_invertible(void)
+{
+	t_matrix matrix = {4,{
+						{-4, 2, -2, -3},
+						{9, 6, 2, 6},
+						{0, -5, 1, -5},
+						{0, 0, 0, 0}}};
+	double expec = 0;
+	double inv = is_invertible(matrix);
+	TEST_ASSERT_EQUAL_DOUBLE(inv, expec);	
+}
+
+void	test_inverse(void)
+{
+	t_matrix matrix = {4,{
+						{-5, 2, 6, -8},
+						{1, -5, 1, 8},
+						{7, 7, -6, -7},
+						{1, -3, 7, 4}}};
+	t_matrix reverse_expec = {4,{
+						{0.21805, 0.45113, 0.24060, -0.04511},
+						{-0.80827, -1.45677, -0.44361, 0.52068},
+						{-0.07895, -0.22368, -0.05263, 0.19737},
+						{-0.52256, -0.81391, -0.30075, 0.30639}}};
+	t_matrix reverse = inverse_matrix(matrix);
+	double expec = 532;	
+	double det = determinant(matrix);
+	TEST_ASSERT_EQUAL_DOUBLE(det, expec);
+	expec = -160;
+	double cof = cofactor(matrix, 2, 3);
+	TEST_ASSERT_EQUAL_DOUBLE(cof, expec);
+	expec = 105;
+	cof = cofactor(matrix, 3, 2);
+	TEST_ASSERT_EQUAL_DOUBLE(cof, expec);
+	TEST_ASSERT_TRUE(is_equal_matrix(reverse_expec, reverse));
+}
+
+void	test_mult_inverse(void)
+{
+	t_matrix a = {4,{
+						{-3, -9, 7, 3},
+						{3, -8, 2, -9},
+						{-4, 4, 4, 1},
+						{-6, 5, -1, 1}}};
+	t_matrix b = {4,{
+						{8, 2, 2, 2},
+						{3, -1, 7, 0},
+						{7, 0, 5, 4},
+						{6, -2, 0, 5}}};
+	t_matrix c = multiply_matrix(a, b);
+	t_matrix result = multiply_matrix(c, inverse_matrix(b));
+	TEST_ASSERT_TRUE(is_equal_matrix(result, a));
+}
+
 void test_matrix(void)
 {
 	RUN_TEST(test_create_matrix_4x4);
@@ -294,4 +424,13 @@ void test_matrix(void)
 	RUN_TEST(test_transposing_matrix);
 	RUN_TEST(test_transposing_matrix_identity);
 	RUN_TEST(test_determinant_2x2);
+	RUN_TEST(test_submatrix_3x3);
+	RUN_TEST(test_submatrix_4x4);
+	RUN_TEST(test_minor_3x3);
+	RUN_TEST(test_cofactor_3x3);
+	RUN_TEST(test_determinant_3x3);
+	RUN_TEST(test_determinant_4x4);
+	RUN_TEST(test_invertible);
+	RUN_TEST(test_inverse);
+	RUN_TEST(test_mult_inverse);
 }

@@ -13,7 +13,7 @@ HEADER_PATH			=	./includes
 HEADER_FILES		=	minirt.h
 
 SRC					=	main.c \
-						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR)
+						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) $(MATRIX)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
@@ -28,7 +28,9 @@ CANVAS				= 	create_canvas.c
 
 COLOR				=	color.c operations_color.c
 
-DIRS				=	. srcs utils parser tupla color canvas
+MATRIX				=	matrix_builder.c matrix_operations.c
+
+DIRS				=	. srcs utils parser tupla color canvas matrix
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror
@@ -87,6 +89,9 @@ test:	all
 
 test_vall:	all
 	make val -C test
+
+test_debug: all
+	make debug -C test
 
 val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT

@@ -127,5 +127,6 @@ typedef struct s_matrix
 # define CYLINDER 2
 # define VECTOR_W 0
 # define POINT_W 1
+# define MTRX_MAX 4
 
 #endif

@@ -57,4 +57,7 @@ val: all
 	valgrind --leak-check=full --show-leak-kinds=all \
 	./$(NAME) 2> error.log
 
+debug: all
+	gdb --tui ./$(NAME)
+
 .PHONY:	all clean fclean re run

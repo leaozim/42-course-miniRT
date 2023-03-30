@@ -19,5 +19,6 @@ int main(void)
 	RUN_TEST(test_matrix);
 	//RUN_TEST(test_canvas);
 	RUN_TEST(test_rotation);
+	RUN_TEST(test_shearing);
 	return (UNITY_END());
 }

@@ -121,6 +121,16 @@ typedef struct s_matrix
 	double	matrix[4][4];
 }	t_matrix;
 
+typedef struct s_shearing
+{
+	double	x_y;
+	double	x_z;
+	double	y_x;
+	double	y_z;
+	double	z_x;
+	double	z_y;
+}	t_shearing;
+
 # define EPSILON 0.0001
 # define CAMERA 0
 # define LIGHT 1

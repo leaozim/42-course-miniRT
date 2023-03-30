@@ -18,5 +18,7 @@ void	test_operation_tuple(void);
 void	test_operation_color(void);
 void	test_canvas(void);
 t_bool	is_equal_tuple(t_tuple a, t_tuple b);
+void	test_transformations_matrix(void);
+void	test_rotation(void);
 
 #endif

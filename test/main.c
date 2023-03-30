@@ -17,6 +17,7 @@ int main(void)
 	RUN_TEST(test_operation_tuple);
 	RUN_TEST(test_operation_color);
 	RUN_TEST(test_matrix);
+	RUN_TEST(test_transformations_matrix);
 	//RUN_TEST(test_canvas);
 	return (UNITY_END());
 }

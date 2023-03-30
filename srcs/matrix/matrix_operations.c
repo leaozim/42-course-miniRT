@@ -80,7 +80,7 @@ t_matrix	inverse_matrix(t_matrix mtx)
 	while (++row < mtx.size)
 	{
 		col = -1;
-		while (col < mtx.size)
+		while (++col < mtx.size)
 			inver.matrix[col][row] = cofactor(mtx, row, col) / determinant(mtx);
 	}
 	inver.size = mtx.size;

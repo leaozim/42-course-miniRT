@@ -167,7 +167,6 @@ void	test_add_tuples(void)
 	int 	i;
 
 	i = 0;
-	sum = create_tuple(4, 4, 4, 4);
 	while (i < MAX_INTERATIONS)
 	{
 		x1 = rand_double();

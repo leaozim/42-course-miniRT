@@ -126,5 +126,7 @@ void	test_transformations_matrix(void)
 	RUN_TEST(test_mult_inverse_translation_matrix);
 	RUN_TEST(test_translation_not_effect_vectors);
 	RUN_TEST(test_scaling_matrix_applied_vector);
+	RUN_TEST(test_scaling_matrix_applied_point);
 	RUN_TEST(mult_inverse_scaling_matrix);
+	RUN_TEST(test_reflection_scaling_negative_value);
 }

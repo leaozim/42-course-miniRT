@@ -75,12 +75,12 @@ t_matrix	inverse_matrix(t_matrix mtx)
 	t_matrix		inver;
 
 	if (!is_invertible(mtx))
-		return (mtx);
+		return (create_identity_matrix());
 	row = -1;
 	while (++row < mtx.size)
 	{
 		col = -1;
-		while (col < mtx.size)
+		while (++col < mtx.size)
 			inver.matrix[col][row] = cofactor(mtx, row, col) / determinant(mtx);
 	}
 	inver.size = mtx.size;

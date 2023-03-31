@@ -17,7 +17,7 @@ int main(void)
 	test_operation_tuple();
 	test_operation_color();
 	test_matrix();
-	// test_transformations_matrix();
+	test_transformations_matrix();
 	test_rotation();
 	test_shearing();
 	//RUN_TEST(test_canvas);

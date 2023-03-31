@@ -6,8 +6,7 @@ void	test_mult_translation_matrix(void)
 	t_point		resul;
 	t_point		p;
 
-	transform = create_identity_matrix(); // substituir essa linha, pela função a baixo
-	// transform = translate_matrix(5, -3, 2);
+	transform = translation(5, -3, 2);
 	p = create_point(-3, 4, 5);
 	resul = multiply_matrix_tuple(transform, p);
 	TEST_ASSERT_EQUAL_DOUBLE(2, resul.x);
@@ -23,8 +22,7 @@ void	test_mult_inverse_translation_matrix(void)
 	t_point		resul;
 	t_point		p;
 
-	transform = create_identity_matrix(); // substituir essa linha, pela função a baixo
-	// transform = translate_matrix(5, -3, 2);
+	transform = translation(5, -3, 2);
 	inver_matrix = inverse_matrix(transform);
 	p = create_point(-3, 4, 5);
 	resul = multiply_matrix_tuple(inver_matrix, p);
@@ -36,16 +34,11 @@ void	test_mult_inverse_translation_matrix(void)
 
 void	test_translation_not_effect_vectors(void)
 {
-	// t_matrix	transform;
+	t_matrix	transform;
 	t_vector		resul;
 	t_vector		vec;
 
-	t_matrix transform = {4, {
-				{-3, -9, 7, 3},
-				{3, -8, 2, -9},
-				{-4, 4, 4, 1},
-				{-6, 5, -1, 1}}}; // substituir essa linha, pela função a baixo
-	// transform = translate_matrix(5, -3, 2);
+	transform = translation(5, -3, 2);
 	vec = create_vector(-3, 4, 5);
 	resul = multiply_matrix_tuple(transform, vec);
 	TEST_ASSERT_EQUAL_DOUBLE(-3, resul.x);
@@ -60,8 +53,7 @@ void	test_scaling_matrix_applied_point(void)
 	t_point		resul;
 	t_point		p;
 
-	transform = create_identity_matrix(); // substituir essa linha, pela função a baixo
-	// transform = scaling(2, 3, 4);
+	transform = scaling(2, 3, 4);
 	p = create_point(-4, 6, 8);
 	resul = multiply_matrix_tuple(transform, p);
 	TEST_ASSERT_EQUAL_DOUBLE(-8, resul.x);
@@ -76,8 +68,7 @@ void	test_scaling_matrix_applied_vector(void)
 	t_vector		resul;
 	t_vector		v;
 
-	transform = create_identity_matrix(); // substituir essa linha, pela função a baixo
-	// transform = scaling(2, 3, 4);
+	transform = scaling(2, 3, 4);
 	v = create_vector(-4, 6, 8);
 	resul = multiply_matrix_tuple(transform, v);
 	TEST_ASSERT_EQUAL_DOUBLE(-8, resul.x);
@@ -93,8 +84,7 @@ void	mult_inverse_scaling_matrix(void)
 	t_vector		resul;
 	t_vector		v;
 
-	transform = create_identity_matrix(); // substituir essa linha, pela função a baixo
-	// transform = scaling(2, 3, 4);
+	transform = scaling(2, 3, 4);
 	inver_matrix = inverse_matrix(transform);
 	v = create_vector(-4, 6, 8);
 	resul = multiply_matrix_tuple(inver_matrix, v);
@@ -110,14 +100,13 @@ void	test_reflection_scaling_negative_value(void)
 	t_point		resul;
 	t_point		p;
 
-	transform = create_identity_matrix(); // substituir essa linha, pela função a baixo
-	// transform = scaling(-1, 1, 1);
+	transform = scaling(-1, 1, 1);
 	p = create_point(2, 3, 4);
 	resul = multiply_matrix_tuple(transform, p);
 	TEST_ASSERT_EQUAL_DOUBLE(-2, resul.x);
 	TEST_ASSERT_EQUAL_DOUBLE(3, resul.y);
 	TEST_ASSERT_EQUAL_DOUBLE(4, resul.z);
-	TEST_ASSERT_EQUAL_DOUBLE(0, resul.w);
+	TEST_ASSERT_EQUAL_DOUBLE(1, resul.w);
 }
 
 void    test_individual_transformations(void)
@@ -125,16 +114,16 @@ void    test_individual_transformations(void)
 	t_point		p;
 	t_matrix	rotation;
 	t_matrix	scal;
-	t_matrix	translation;
+	t_matrix	trans;
 	t_point		result;
 
 	p = create_point(1, 0, 1);
-//	rotation = rotation_x(M_PI / 2);
-//	scal = scaling(5, 5, 5);
-//	translation = translate_matrix(10, 5, 7);
+	rotation = rotation_x(M_PI / 2);
+	scal = scaling(5, 5, 5);
+	trans = translation(10, 5, 7);
 	result = multiply_matrix_tuple(rotation, p);
 	result = multiply_matrix_tuple(scal, result);
-	result = multiply_matrix_tuple(translation, result);
+	result = multiply_matrix_tuple(trans, result);
 	TEST_ASSERT_EQUAL_DOUBLE(15, result.x);
 	TEST_ASSERT_EQUAL_DOUBLE(0, result.y);
 	TEST_ASSERT_EQUAL_DOUBLE(7, result.z);
@@ -146,16 +135,16 @@ void    test_chained_transformations(void)
 	t_point		p;
 	t_matrix	rotation;
 	t_matrix	scal;
-	t_matrix	translation;
+	t_matrix	trans;
 	t_matrix	transformation;
 	t_matrix	aux;
 	t_point		result;
 
 	p = create_point(1, 0, 1);
-//	rotation = rotation_x(M_PI / 2);
-//	scal = scaling(5, 5, 5);
-//	translation = translate_matrix(10, 5, 7);
-	aux = multiply_matrix(translation, scal);
+	rotation = rotation_x(M_PI / 2);
+	scal = scaling(5, 5, 5);
+	trans = translation(10, 5, 7);
+	aux = multiply_matrix(trans, scal);
 	transformation = multiply_matrix(aux, rotation);
 	result = multiply_matrix_tuple(transformation, p);
 	TEST_ASSERT_EQUAL_DOUBLE(15, result.x);

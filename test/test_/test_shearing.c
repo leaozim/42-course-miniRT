@@ -70,7 +70,7 @@ void	tests_shearing_yz(void)
 	shearing.x_y = 0;
 	shearing.y_z = 1;
 	point = create_point(2, 3, 4);
-	transform = shearing_matrix(shearing);
+	transform = shearing_matrix(shearing); 
 	result = multiply_matrix_tuple(transform, point);
 	expec = create_point(2, 7, 4);
 	TEST_ASSERT_EQUAL_DOUBLE(result.x, expec.x);

@@ -13,3 +13,25 @@ t_matrix	shearing_matrix(t_shearing she)
 	shearing.matrix[2][1] = she.z_y;
 	return (shearing);
 }
+
+t_matrix	translation(double x, double y, double z)
+{
+	t_matrix	translation;
+
+	translation = create_identity_matrix();
+	translation.matrix[0][3] = x;
+	translation.matrix[1][3] = y;
+	translation.matrix[2][3] = z;
+	return (translation);
+}
+
+t_matrix	scaling(double x, double y, double z)
+{
+	t_matrix	scaling;
+
+	scaling = create_identity_matrix();
+	scaling.matrix[0][0] = x;
+	scaling.matrix[1][1] = y;
+	scaling.matrix[2][2] = z;
+	return (scaling);
+}

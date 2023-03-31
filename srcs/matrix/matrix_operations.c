@@ -75,7 +75,7 @@ t_matrix	inverse_matrix(t_matrix mtx)
 	t_matrix		inver;
 
 	if (!is_invertible(mtx))
-		return (mtx);
+		return (create_identity_matrix());
 	row = -1;
 	while (++row < mtx.size)
 	{

@@ -213,6 +213,7 @@ void	test_matrix_mult_tupla(void)
 
 void	test_mult_identity_matrix(void)
 {
+
 	t_matrix	m = {4, {
 				{1, 3, 3, 4},
 				{5, 6, 7, 8},
@@ -226,13 +227,10 @@ void	test_mult_identity_matrix(void)
 void	test_matrix_identity_mult_tupla(void)
 {	
 	t_tuple	t;
+	t_matrix id_m;
 
 	t = create_tuple(1, 2, 3, 4);
-	t_matrix	id_m = {4, 
-				{{1.0, 0.0, 0.0, 0.0},
-				{0.0, 1.0, 0.0, 0.0},
-				{0.0, 0.0, 1.0, 0.0},
-				{0.0, 0.0, 0.0, 1.0}}};
+	id_m = create_identity_matrix();
 	t_tuple multiply = multiply_matrix_tuple(id_m, t);
 	TEST_ASSERT_TRUE(is_equal_tuple(multiply, t));
 }

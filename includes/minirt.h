@@ -72,7 +72,10 @@ double		cofactor(t_matrix matrix, size_t row, size_t col);
 t_matrix	create_matrix(double m[4][4], size_t size);
 double		is_invertible(t_matrix matrix);
 t_matrix	inverse_matrix(t_matrix mtx);
-
+t_matrix	rotation_y(double radians);
+t_matrix	rotation_z(double radians);
+t_matrix	rotation_x(double radians);
+t_matrix	shearing_matrix(t_shearing she);
 
 //// APAGAR ////
 void		print_array(char **str);

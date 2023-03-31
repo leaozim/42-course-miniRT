@@ -120,6 +120,50 @@ void	test_reflection_scaling_negative_value(void)
 	TEST_ASSERT_EQUAL_DOUBLE(0, resul.w);
 }
 
+void    test_individual_transformations(void)
+{
+	t_point		p;
+	t_matrix	rotation;
+	t_matrix	scal;
+	t_matrix	translation;
+	t_point		result;
+
+	p = create_point(1, 0, 1);
+//	rotation = rotation_x(M_PI / 2);
+//	scal = scaling(5, 5, 5);
+//	translation = translate_matrix(10, 5, 7);
+	result = multiply_matrix_tuple(rotation, p);
+	result = multiply_matrix_tuple(scal, result);
+	result = multiply_matrix_tuple(translation, result);
+	TEST_ASSERT_EQUAL_DOUBLE(15, result.x);
+	TEST_ASSERT_EQUAL_DOUBLE(0, result.y);
+	TEST_ASSERT_EQUAL_DOUBLE(7, result.z);
+	TEST_ASSERT_EQUAL_DOUBLE(1, result.w);
+}
+
+void    test_chained_transformations(void)
+{
+	t_point		p;
+	t_matrix	rotation;
+	t_matrix	scal;
+	t_matrix	translation;
+	t_matrix	transformation;
+	t_matrix	aux;
+	t_point		result;
+
+	p = create_point(1, 0, 1);
+//	rotation = rotation_x(M_PI / 2);
+//	scal = scaling(5, 5, 5);
+//	translation = translate_matrix(10, 5, 7);
+	aux = multiply_matrix(translation, scal);
+	transformation = multiply_matrix(aux, rotation);
+	result = multiply_matrix_tuple(transformation, p);
+	TEST_ASSERT_EQUAL_DOUBLE(15, result.x);
+	TEST_ASSERT_EQUAL_DOUBLE(0, result.y);
+	TEST_ASSERT_EQUAL_DOUBLE(7, result.z);
+	TEST_ASSERT_EQUAL_DOUBLE(1, result.w);
+}
+
 void	test_transformations_matrix(void)
 {
 	RUN_TEST(test_mult_translation_matrix);
@@ -129,4 +173,6 @@ void	test_transformations_matrix(void)
 	RUN_TEST(test_scaling_matrix_applied_point);
 	RUN_TEST(mult_inverse_scaling_matrix);
 	RUN_TEST(test_reflection_scaling_negative_value);
+	RUN_TEST(test_individual_transformations);
+	RUN_TEST(test_chained_transformations);
 }

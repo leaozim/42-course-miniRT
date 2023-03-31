@@ -14,11 +14,12 @@ void tearDown(void)
 int main(void)
 {
 	UNITY_BEGIN();
-	RUN_TEST(test_operation_tuple);
-	RUN_TEST(test_operation_color);
-	RUN_TEST(test_matrix);
+	test_operation_tuple();
+	test_operation_color();
+	test_matrix();
+	test_transformations_matrix();
+	test_rotation();
+	test_shearing();
 	//RUN_TEST(test_canvas);
-	RUN_TEST(test_rotation);
-	RUN_TEST(test_shearing);
 	return (UNITY_END());
 }

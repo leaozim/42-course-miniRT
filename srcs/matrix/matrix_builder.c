@@ -42,8 +42,8 @@ t_matrix	create_identity_matrix(void)
 			identity_matrix.matrix[row][col] = 0;
 		if (col == identity_matrix.size - 1)
 		{
-			row++;
 			col = 0;
+			row++;
 		}
 		else
 			col++;

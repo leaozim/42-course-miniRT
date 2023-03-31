@@ -73,7 +73,6 @@ t_matrix	create_matrix(double m[4][4], size_t size);
 double		is_invertible(t_matrix matrix);
 t_matrix	inverse_matrix(t_matrix mtx);
 
-
 //// APAGAR ////
 void		print_array(char **str);
 void		print_matrix(t_matrix m);

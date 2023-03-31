@@ -1,6 +1,5 @@
 # include "../h_test.h"
 
-
 void	test_rotating_point_around_x(void)
 {
 	t_point		point;

@@ -13,9 +13,9 @@ void	tests_shearing_xy(void)
 	transform = shearing_matrix(shearing);
 	result = multiply_matrix_tuple(transform, point);
 	expec = create_point(5, 3, 4);
-	TEST_ASSERT_EQUAL_DOUBLE(result.x, expec.x);
-	TEST_ASSERT_EQUAL_DOUBLE(result.y, expec.y);
-	TEST_ASSERT_EQUAL_DOUBLE(result.z, expec.z);
+	TEST_ASSERT_EQUAL_DOUBLE(expec.x, result.x);
+	TEST_ASSERT_EQUAL_DOUBLE(expec.y, result.y);
+	TEST_ASSERT_EQUAL_DOUBLE(expec.z, result.z);
 }
 
 void	tests_shearing_xz(void)

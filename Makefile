@@ -14,7 +14,7 @@ HEADER_FILES		=	minirt.h
 
 SRC					=	main.c \
 						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) \
-						$(MATRIX)
+						$(MATRIX) $(INTERSECTION)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
@@ -31,6 +31,8 @@ COLOR				=	color.c operations_color.c
 
 MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c \
 						matrix_utils.c matrix_transformations.c matrix_rotations.c
+
+INTERSECTION		=	intersection.c
 
 DIRS				=	. srcs utils parser tupla color canvas matrix
 IFLAGS				=	-I $(HEADER_PATH)

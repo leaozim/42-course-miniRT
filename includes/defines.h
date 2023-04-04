@@ -113,12 +113,13 @@ typedef struct s_shape
 		t_plane		plane;
 		t_cylinder	cylinder;
 	};
+	t_list			*intersect;
 }	t_shape;
 
 typedef struct s_matrix
 {
 	size_t	size;
-	double	matrix[4][4];
+	double	matrix[MTRX_MAX][MTRX_MAX];
 }	t_matrix;
 
 typedef struct s_shearing
@@ -130,6 +131,12 @@ typedef struct s_shearing
 	double	z_x;
 	double	z_y;
 }	t_shearing;
+
+typedef struct s_intersection
+{
+	double	t;
+	t_shape	*shapes;
+}	t_intersection;
 
 # define EPSILON 0.0001
 # define CAMERA 0

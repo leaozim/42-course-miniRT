@@ -99,20 +99,12 @@ static void	hit_intersections_nonnegative_t(t_scene *scene)
 void	hits_test(void)
 {
 	t_scene	scene;
-	char	**tokens;
 
-	ft_bzero(&scene, sizeof(t_scene));
-	tokens = malloc(4 * sizeof(char *));
-	tokens[0] = strdup("sp");
-	tokens[1] = strdup("0,-10,0");
-	tokens[2] = strdup("1.0");
-	tokens[3] = strdup("250,200,54");
-	create_sphere_node(tokens, &scene);
+	scene = create_sphere_test();
 	hit_intersections_positive_t(1, 2, 1, &scene);
 	hit_intersections_negative_t(-1, 1, 1, &scene);
 	hit_intersections_all_negative_t(-2, -1, -1, &scene);
 	hit_intersections_nonnegative_t(&scene);
-	ft_free_array(tokens);
 }
 
 

@@ -21,6 +21,7 @@ int main(void)
 	test_rotation();
 	test_shearing();
 	test_hit();
+	test_ray();
 	//RUN_TEST(test_canvas);
 	return (UNITY_END());
 }

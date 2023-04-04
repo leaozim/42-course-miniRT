@@ -62,7 +62,7 @@ void	sphere_default_transform(void)
 	TEST_ASSERT_EQUAL_DOUBLE(3.7, 7.3); // remover
 }
 
-void	Intersecting_scaled_sphere(void)
+void	intersecting_scaled_sphere(void)
 {
 	t_point		point;
 	t_vector	vec;
@@ -73,16 +73,17 @@ void	Intersecting_scaled_sphere(void)
 	scene = create_sphere_test();
 	(void)point;
 	(void)vec;
+	(void)scene;
 
 	// set_transform(s, scaling(2, 2, 2));
 	// xs ← intersect(s, r);
 	// xs.count = 2;
 	// xs[0].t = 3;
 	// xs[1].t = 7
-
+	TEST_ASSERT_EQUAL_DOUBLE(1.0, 2.0); // remover
 }
 
-void	 Intersecting_translated_sphere(void)
+void	 intersecting_translated_sphere(void)
 {
 	t_point		point;
 	t_vector	vec;
@@ -93,10 +94,12 @@ void	 Intersecting_translated_sphere(void)
 	scene = create_sphere_test();
 	(void)point;
 	(void)vec;
+	(void)scene;
 
 	// set_transform(s, translation(5, 0, 0));
 	// xs ← intersect(s, r)
 	// xs.count = 0;
+	TEST_ASSERT_EQUAL_DOUBLE(2.0, 1.0); // remover
 }
 
 void	test_ray(void)
@@ -104,4 +107,6 @@ void	test_ray(void)
 	RUN_TEST(translating_ray);
 	RUN_TEST(scaling_ray);
 	RUN_TEST(sphere_default_transform);
+	RUN_TEST(intersecting_scaled_sphere);
+	RUN_TEST(intersecting_translated_sphere);
 }

@@ -131,6 +131,19 @@ typedef struct s_shearing
 	double	z_y;
 }	t_shearing;
 
+typedef struct s_ray
+{
+	t_point		origin;
+	t_vector	direction;
+}	t_ray;
+
+typedef struct s_intersect
+{
+	t_shape		*shape;
+	double		time;
+}	t_intersect;
+
+
 # define EPSILON 0.0001
 # define CAMERA 0
 # define LIGHT 1

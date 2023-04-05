@@ -10,14 +10,14 @@ t_intersection	*create_intersection(double t, t_shape *shapes)
 	return (intersect);
 }
 
-// void	create_intersect_node(t_intersection )
-// {
-// 	t_intersection	*intersect;
+void	create_intersect_node(double t, t_shape *shapes)
+{
+	t_intersection	*intersect;
 
-// 	intersect = ft_calloc(1, sizeof(t_intersection));
-// 	intersect = create_intersection(t, shapes);
-// 	ft_lstadd_back(&shapes->intersect, ft_lstnew(intersect));
-// }
+	intersect = ft_calloc(1, sizeof(t_intersection));
+	intersect = create_intersection(t, shapes);
+	ft_lstadd_back(&shapes->intersect, ft_lstnew(intersect));
+}
 
 t_xs	intersect_sphere(t_sphere sphere, t_ray ray)
 {
@@ -40,3 +40,11 @@ t_xs	intersect_sphere(t_sphere sphere, t_ray ray)
 	return (xs);
 }
 
+void	create_intersect_sphere_node(t_xs *xs)
+{
+	t_list *listaxs;
+
+	listaxs = ft_calloc(1, sizeof(t_list));
+	ft_lstadd_back(&listaxs, ft_lstnew(xs));
+	// ft_lstadd_back(&listaxs, ft_lstnew(intersect_sphere()));
+}

@@ -113,6 +113,7 @@ typedef struct s_shape
 		t_plane		plane;
 		t_cylinder	cylinder;
 	};
+	t_list			*intersect;
 }	t_shape;
 
 typedef struct s_matrix
@@ -137,11 +138,12 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
-typedef struct s_intersect
+typedef struct s_intersection
 {
-	t_shape		*shape;
-	double		time;
-}	t_intersect;
+	double	t;
+	t_shape	*shapes;
+}	t_intersection;
+
 
 typedef struct s_bhaskara
 {
@@ -157,7 +159,6 @@ typedef struct s_xs
 	double	t1;
 	double	t2;
 	int		count;
-
 }	t_xs;
 
 # define EPSILON 0.0001

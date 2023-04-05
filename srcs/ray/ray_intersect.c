@@ -1,5 +1,24 @@
 #include "minirt.h"
 
+t_intersection	*create_intersection(double t, t_shape *shapes)
+{
+	t_intersection	*intersect;
+
+	intersect = (t_intersection *)malloc(sizeof(t_intersection));
+	intersect->shapes = shapes;
+	intersect->t = t;
+	return (intersect);
+}
+
+// void	create_intersect_node(t_intersection )
+// {
+// 	t_intersection	*intersect;
+
+// 	intersect = ft_calloc(1, sizeof(t_intersection));
+// 	intersect = create_intersection(t, shapes);
+// 	ft_lstadd_back(&shapes->intersect, ft_lstnew(intersect));
+// }
+
 t_xs	intersect_sphere(t_sphere sphere, t_ray ray)
 {
 	t_tuple		sphere_to_ray;
@@ -12,12 +31,12 @@ t_xs	intersect_sphere(t_sphere sphere, t_ray ray)
 	bhask.a = dot_product(ray.direction, ray.direction);
 	bhask.b = dot_product(ray.direction, sphere_to_ray) * 2;
 	bhask.c = dot_product(sphere_to_ray, sphere_to_ray) - 1;
-	bhask.delta = ((bhask.b * bhask.b) - (4 * bhask.a * bhask.c));
+	bhask.delta = pow(bhask.b, 2) - (4 * bhask.a * bhask.c);
 	if (bhask.delta < 0)
-		return  (xs);
+		return (xs);
 	xs.count = 2;
 	xs.t1 = ((-bhask.b - sqrt(bhask.delta)) / (2 * bhask.a));
 	xs.t2 = ((-bhask.b + sqrt(bhask.delta)) / (2 * bhask.a));
-	// ft_lstadd_back(xs_list, ft_lstnew(&xs));
 	return (xs);
 }
+

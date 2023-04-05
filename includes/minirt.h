@@ -81,6 +81,10 @@ t_matrix	scaling(double x, double y, double z);
 t_ray		create_ray(t_point origin, t_vector direction);
 t_ray		transform_ray(t_ray ray, t_matrix matrix);
 t_point		get_position(t_ray ray, double time);
+// t_xs		intersect_sphere(t_sphere sphere, t_ray ray, t_list **xs_list);
+t_xs	intersect_sphere(t_sphere sphere, t_ray ray);
+
+t_shape		create_sphere(void);
 //// APAGAR ////
 void		print_array(char **str);
 void		print_matrix(t_matrix m);

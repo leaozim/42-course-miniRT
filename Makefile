@@ -14,7 +14,7 @@ HEADER_FILES		=	minirt.h
 
 SRC					=	main.c \
 						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) \
-						$(MATRIX) $(RAY)
+						$(MATRIX) $(RAY) $(SHAPES)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
@@ -32,9 +32,11 @@ COLOR				=	color.c operations_color.c
 MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c \
 						matrix_utils.c matrix_transformations.c matrix_rotations.c
 
-RAY					=	ray_builder.c ray_operations.c
+RAY					=	ray_builder.c ray_operations.c ray_intersect.c
 
-DIRS				=	. srcs utils parser tupla color canvas matrix ray
+SHAPES				=	sphere.c
+
+DIRS				=	. srcs utils parser tupla color canvas matrix ray shapes
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror

@@ -143,6 +143,22 @@ typedef struct s_intersect
 	double		time;
 }	t_intersect;
 
+typedef struct s_bhaskara
+{
+	double	a;
+	double	b;
+	double	c;
+	double	delta;
+
+}	t_bhaskara;
+
+typedef struct s_xs
+{
+	double	t1;
+	double	t2;
+	int		count;
+
+}	t_xs;
 
 # define EPSILON 0.0001
 # define CAMERA 0

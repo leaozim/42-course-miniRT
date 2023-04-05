@@ -78,7 +78,9 @@ t_matrix	rotation_x(double radians);
 t_matrix	shearing_matrix(t_shearing she);
 t_matrix	translation(double x, double y, double z);
 t_matrix	scaling(double x, double y, double z);
-
+t_ray		create_ray(t_point origin, t_vector direction);
+t_ray		transform_ray(t_ray ray, t_matrix matrix);
+t_point		get_position(t_ray ray, double time);
 //// APAGAR ////
 void		print_array(char **str);
 void		print_matrix(t_matrix m);

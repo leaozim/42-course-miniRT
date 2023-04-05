@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_sphere	create_sphere(char **tokens)
+t_sphere	init_create_sphere(char **tokens)
 {
 	t_sphere	sp;
 
@@ -15,7 +15,7 @@ void	create_sphere_node(char **tokens, t_scene *scene)
 	t_shape	*shape;
 
 	shape = ft_calloc(1, sizeof(t_shape));
-	shape->sphere = create_sphere(tokens);
+	shape->sphere = init_create_sphere(tokens);
 	shape->type = SPHERE;
 	ft_lstadd_back(&scene->shapes, ft_lstnew(shape));
 	ft_free_array(tokens);

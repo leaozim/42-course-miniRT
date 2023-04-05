@@ -107,7 +107,6 @@ void	hits_test(void)
 	hit_intersections_nonnegative_t(&scene);
 }
 
-
 void	test_hit(void)
 {
 	RUN_TEST(hits_test);

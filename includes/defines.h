@@ -1,6 +1,14 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
+# define EPSILON 0.0001
+# define CAMERA 0
+# define LIGHT 1
+# define CYLINDER 2
+# define VECTOR_W 0
+# define POINT_W 1
+# define MTRX_MAX 4
+
 enum e_status
 {
 	OK,
@@ -87,6 +95,12 @@ typedef struct s_plane
 	t_color		color;
 }	t_plane;
 
+typedef struct s_intersection_node
+{
+	t_list inters
+
+}
+
 typedef struct s_cylinder
 {
 	t_point		coord;
@@ -132,18 +146,33 @@ typedef struct s_shearing
 	double	z_y;
 }	t_shearing;
 
+typedef struct s_ray
+{
+	t_point		origin;
+	t_vector	direction;
+}	t_ray;
+
 typedef struct s_intersection
 {
 	double	t;
 	t_shape	*shapes;
 }	t_intersection;
 
-# define EPSILON 0.0001
-# define CAMERA 0
-# define LIGHT 1
-# define CYLINDER 2
-# define VECTOR_W 0
-# define POINT_W 1
-# define MTRX_MAX 4
+
+typedef struct s_bhaskara
+{
+	double	a;
+	double	b;
+	double	c;
+	double	delta;
+
+}	t_bhaskara;
+
+typedef struct s_xs
+{
+	double	t1;
+	double	t2;
+	int		count;
+}	t_xs;
 
 #endif

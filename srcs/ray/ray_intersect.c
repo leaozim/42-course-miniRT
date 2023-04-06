@@ -15,11 +15,11 @@ void	create_intersect_node(double t, t_shape *shapes)
 	t_intersection	*intersect;
 
 	intersect = ft_calloc(1, sizeof(t_intersection));
-	intersect = create_intersection(t, shapes);
+	// intersect = create_intersection(t, shapes);
 	ft_lstadd_back(&shapes->intersect, ft_lstnew(intersect));
 }
 
-t_xs	intersect_sphere(t_sphere sphere, t_ray ray)
+t_xs	intersect_sphere(t_sphere sphere, t_ray ray, t_list **xs_list)
 {
 	t_tuple		sphere_to_ray;
 	t_bhaskara	bhask;

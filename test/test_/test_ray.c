@@ -39,10 +39,12 @@ void	test_ray_intersects_sphere_two_points(void)
 	t_ray		r;
 	t_shape		*shape;
 	t_xs 		xs;
+	t_intersection_node	*list;
 
+	list = ft_calloc(1, sizeof(t_intersection_node));
 	r = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape->sphere, r, list);
 	TEST_ASSERT_EQUAL(2, xs.count);
 	TEST_ASSERT_EQUAL_DOUBLE(4.0, xs.t1);
 	TEST_ASSERT_EQUAL_DOUBLE(6.0, xs.t2);
@@ -54,10 +56,12 @@ void	test_ray_intersects_sphere_tangent(void)
 	t_ray		r;
 	t_shape		*shape;
 	t_xs 		xs;
+	t_intersection_node	*list;
 
+	list = ft_calloc(1, sizeof(t_intersection_node));
 	r = create_ray(create_point(0, 1, -5), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape->sphere, r, list);
 	TEST_ASSERT_EQUAL(2, xs.count);
 	TEST_ASSERT_EQUAL_DOUBLE(5.0, xs.t1);
 	TEST_ASSERT_EQUAL_DOUBLE(5.0, xs.t2);
@@ -68,10 +72,12 @@ void	test_ray_misses_sphere(void)
 	t_ray		r;
 	t_shape		*shape;
 	t_xs 		xs;
+	t_intersection_node	*list;
 
+	list = ft_calloc(1, sizeof(t_intersection_node));
 	r = create_ray(create_point(0, 2, -5), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape->sphere, r, list);
 	TEST_ASSERT_EQUAL(0, xs.count);
 }
 
@@ -80,27 +86,48 @@ void	test_ray_originates_inside_sphere(void)
 	t_ray		r;
 	t_shape		*shape;
 	t_xs 		xs;
+	t_intersection_node	*list;
 
+	list = ft_calloc(1, sizeof(t_intersection_node));
 	r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape->sphere, r, list);
 	TEST_ASSERT_EQUAL(2, xs.count);
 	TEST_ASSERT_EQUAL_DOUBLE(-1.0, xs.t1);
 	TEST_ASSERT_EQUAL_DOUBLE(1.0, xs.t2);
 }
+
+void	seeing_content(t_intersection_node *list)
+{
+	t_xs	*content;
+	t_xs	*next;
+
+	content = (t_xs *)list->xs->content;
+	if (list->xs->next)
+		next = (t_xs *)list->xs->next->content;
+	printf("gdb\n");
+}
+
 
 void	test_sphere_is_behind_ray(void)
 {
 	t_ray		r;
 	t_shape		*shape;
 	t_xs 		xs;
+	t_intersection_node	*list;
 
+	list = ft_calloc(1, sizeof(t_intersection_node));
 	r = create_ray(create_point(0, 0, 5), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape->sphere, r, list);
 	TEST_ASSERT_EQUAL(2, xs.count);
 	TEST_ASSERT_EQUAL_DOUBLE(-6.0, xs.t1);
 	TEST_ASSERT_EQUAL_DOUBLE(-4.0, xs.t2);
+	seeing_content(list);
+	r = create_ray(create_point(0, 0, 1), create_vector(0, 0, 5));
+	shape = create_sphere();
+	xs = intersect_sphere(shape->sphere, r, list);
+	seeing_content(list);
 }
 
 void	test_intersection_encapsulates_t_object(void)

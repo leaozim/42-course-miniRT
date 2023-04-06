@@ -95,12 +95,6 @@ typedef struct s_plane
 	t_color		color;
 }	t_plane;
 
-typedef struct s_intersection_node
-{
-	t_list inters
-
-}
-
 typedef struct s_cylinder
 {
 	t_point		coord;
@@ -127,7 +121,6 @@ typedef struct s_shape
 		t_plane		plane;
 		t_cylinder	cylinder;
 	};
-	t_list			*intersect;
 }	t_shape;
 
 typedef struct s_matrix
@@ -158,6 +151,12 @@ typedef struct s_intersection
 	t_shape	*shapes;
 }	t_intersection;
 
+typedef struct s_intersection_node
+{
+	t_list	*intersections;
+	t_list	*xs;
+	int		total;
+}	t_intersection_node;
 
 typedef struct s_bhaskara
 {

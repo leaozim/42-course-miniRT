@@ -36,71 +36,104 @@ void	test_computing_point_distance(void)
 
 void	test_ray_intersects_sphere_two_points(void)
 {
-	t_ray		r;
-	t_shape		*shape;
-	t_xs 		xs;
+	t_ray			r;
+	t_shape			*shape;
+	t_xs 			xs;
+	t_intersections	*list;
+	t_intersection	*aux;
 
+
+	list = NULL;
 	r = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape, r, &list);
+	aux = (t_intersection *)list->content;
 	TEST_ASSERT_EQUAL(2, xs.count);
+	TEST_ASSERT_EQUAL(2, ft_lstsize(list));
 	TEST_ASSERT_EQUAL_DOUBLE(4.0, xs.t1);
 	TEST_ASSERT_EQUAL_DOUBLE(6.0, xs.t2);
+	TEST_ASSERT_EQUAL_DOUBLE(4.0, aux->t);
+	aux = (t_intersection *)list->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(6.0, aux->t);
 
 }
 
 void	test_ray_intersects_sphere_tangent(void)
 {
-	t_ray		r;
-	t_shape		*shape;
-	t_xs 		xs;
+	t_ray				r;
+	t_shape				*shape;
+	t_xs 				xs;
+	t_intersections		*list;
+	t_intersection		*aux;
 
+	list = NULL;
 	r = create_ray(create_point(0, 1, -5), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape, r, &list);
+	aux = (t_intersection *)list->content;
 	TEST_ASSERT_EQUAL(2, xs.count);
 	TEST_ASSERT_EQUAL_DOUBLE(5.0, xs.t1);
 	TEST_ASSERT_EQUAL_DOUBLE(5.0, xs.t2);
+	TEST_ASSERT_EQUAL_DOUBLE(5.0, aux->t);
+	
 }
 
 void	test_ray_misses_sphere(void)
 {
-	t_ray		r;
-	t_shape		*shape;
-	t_xs 		xs;
+	t_ray				r;
+	t_shape				*shape;
+	t_intersections		*list;
 
+	list = NULL;
 	r = create_ray(create_point(0, 2, -5), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
-	TEST_ASSERT_EQUAL(0, xs.count);
+	intersect_sphere(shape, r, &list);
+	TEST_ASSERT_EQUAL(0, ft_lstsize(list));
+
 }
 
 void	test_ray_originates_inside_sphere(void)
 {
-	t_ray		r;
-	t_shape		*shape;
-	t_xs 		xs;
+	t_ray				r;
+	t_shape				*shape;
+	t_xs 				xs;
+	t_intersections		*list;
+	t_intersection		*aux;
 
+	list = NULL;
 	r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape, r, &list);
 	TEST_ASSERT_EQUAL(2, xs.count);
 	TEST_ASSERT_EQUAL_DOUBLE(-1.0, xs.t1);
 	TEST_ASSERT_EQUAL_DOUBLE(1.0, xs.t2);
+	TEST_ASSERT_EQUAL(2, ft_lstsize(list));
+	aux = (t_intersection *)list->content;
+	TEST_ASSERT_EQUAL_DOUBLE(-1.0, aux->t);
+	aux = (t_intersection *)list->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(1.0, aux->t);
 }
 
 void	test_sphere_is_behind_ray(void)
 {
-	t_ray		r;
-	t_shape		*shape;
-	t_xs 		xs;
+	t_ray				r;
+	t_shape				*shape;
+	t_xs 				xs;
+	t_intersections		*list;
+	t_intersection		*aux;
 
+	list = NULL;
 	r = create_ray(create_point(0, 0, 5), create_vector(0, 0, 1));
 	shape = create_sphere();
-	xs = intersect_sphere(shape->sphere, r);
+	xs = intersect_sphere(shape, r, &list);
 	TEST_ASSERT_EQUAL(2, xs.count);
 	TEST_ASSERT_EQUAL_DOUBLE(-6.0, xs.t1);
 	TEST_ASSERT_EQUAL_DOUBLE(-4.0, xs.t2);
+	TEST_ASSERT_EQUAL(2, ft_lstsize(list));
+	aux = (t_intersection *)list->content;
+	TEST_ASSERT_EQUAL_DOUBLE(-6.0, aux->t);
+	aux = (t_intersection *)list->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(-4.0, aux->t);
 }
 
 void	test_intersection_encapsulates_t_object(void)
@@ -115,12 +148,53 @@ void	test_intersection_encapsulates_t_object(void)
 	TEST_ASSERT_EQUAL_DOUBLE(3.5, i->t);
 }
 
+// ​ ​Scenario​: Aggregating intersections
+// ​ ​Given​s ← sphere()
+// ​ ​And​i1 ← intersection(1, s)
+// ​ ​And​i2 ← intersection(2, s)
+// ​ ​When​xs ← intersections(i1, i2)
+// ​ ​Then​xs.count = 2
+// ​ ​And​xs[0].t = 1
+// ​ ​And​xs[1].t = 2
+
+
+void	intersect_sets_object_intersection(void)
+{
+	t_ray				r;
+	t_shape				*shape;
+	t_intersections		*list;
+	t_intersection		*aux;
+
+	list = NULL;
+	r = create_ray(create_point(0, 0, 5), create_vector(0, 0, 1));
+	shape = create_sphere();
+	intersect_sphere(shape, r, &list);
+	aux = (t_intersection *)list->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(SPHERE, aux->shapes->type);
+}
+
 // void	test_aggregating_intersections(void)
 // {
+// 	t_shape				*shape;
+// 	t_intersections		*list;
+// 	t_intersection		*aux;
 
+// 	list = NULL;
+// 	shape = create_sphere();
+// 	ft_lsadd_sorted(&list, ft_lstnew(create_intersection(1, shape)));
+// 	ft_lsadd_sorted(&list, ft_lstnew(create_intersection(-12, shape)));
+// 	ft_lsadd_sorted(&list, ft_lstnew(create_intersection(-1, shape)));
+// 	ft_lsadd_sorted(&list, ft_lstnew(create_intersection(42, shape)));
+// 	TEST_ASSERT_EQUAL(4, ft_lstsize(list));
+// 	aux = (t_intersection *)list->content;
+// 	TEST_ASSERT_EQUAL_DOUBLE(1, aux->t);
+// 	aux = (t_intersection *)list->next->content;
+// 	TEST_ASSERT_EQUAL_DOUBLE(2, aux->t);
+// 	aux = (t_intersection *)list->next->next->content;
+// 	TEST_ASSERT_EQUAL_DOUBLE(-1, aux->t);
+// 	// aux = (t_intersection *)list->next->next->next->content;
+// 	// TEST_ASSERT_EQUAL_DOUBLE(42, aux->t);
 // }
-
-
 	
 void	translating_ray(void)
 {
@@ -234,6 +308,8 @@ void	test_ray(void)
 	RUN_TEST(test_ray_originates_inside_sphere);
 	RUN_TEST(test_sphere_is_behind_ray);
 	RUN_TEST(test_intersection_encapsulates_t_object);
+	RUN_TEST(intersect_sets_object_intersection);
+	RUN_TEST(test_aggregating_intersections);
 	RUN_TEST(translating_ray);
 	RUN_TEST(scaling_ray);
 	RUN_TEST(sphere_default_transform);

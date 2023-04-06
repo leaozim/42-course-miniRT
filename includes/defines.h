@@ -1,6 +1,16 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
+# define EPSILON 0.0001
+# define CAMERA 0
+# define LIGHT 1
+# define CYLINDER 2
+# define VECTOR_W 0
+# define POINT_W 1
+# define MTRX_MAX 4
+
+# include "minirt.h"
+
 enum e_status
 {
 	OK,
@@ -113,13 +123,12 @@ typedef struct s_shape
 		t_plane		plane;
 		t_cylinder	cylinder;
 	};
-	t_list			*intersect;
 }	t_shape;
 
 typedef struct s_matrix
 {
 	size_t	size;
-	double	matrix[4][4];
+	double	matrix[MTRX_MAX][MTRX_MAX];
 }	t_matrix;
 
 typedef struct s_shearing
@@ -138,12 +147,13 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
+typedef t_list t_intersections;
+
 typedef struct s_intersection
 {
 	double	t;
 	t_shape	*shapes;
 }	t_intersection;
-
 
 typedef struct s_bhaskara
 {
@@ -160,13 +170,5 @@ typedef struct s_xs
 	double	t2;
 	int		count;
 }	t_xs;
-
-# define EPSILON 0.0001
-# define CAMERA 0
-# define LIGHT 1
-# define CYLINDER 2
-# define VECTOR_W 0
-# define POINT_W 1
-# define MTRX_MAX 4
 
 #endif

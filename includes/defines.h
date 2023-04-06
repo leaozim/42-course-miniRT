@@ -9,6 +9,8 @@
 # define POINT_W 1
 # define MTRX_MAX 4
 
+# include "minirt.h"
+
 enum e_status
 {
 	OK,
@@ -145,18 +147,13 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
+typedef t_list t_intersections;
+
 typedef struct s_intersection
 {
 	double	t;
 	t_shape	*shapes;
 }	t_intersection;
-
-typedef struct s_intersection_node
-{
-	t_list	*intersections;
-	t_list	*xs;
-	int		total;
-}	t_intersection_node;
 
 typedef struct s_bhaskara
 {

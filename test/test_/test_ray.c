@@ -173,49 +173,44 @@ void	intersect_sets_object_intersection(void)
 	TEST_ASSERT_EQUAL_DOUBLE(SPHERE, aux->shapes->type);
 }
 
-// void	test_aggregating_intersections(void)
-// {
-// 	t_shape				*shape;
-// 	t_intersections		*list;
-// 	t_intersection		*aux;
+void	test_aggregating_intersections(void)
+{
+	t_shape				*shape;
+	t_intersections		*list;
+	t_intersection		*aux;
 
-// 	list = NULL;
-// 	shape = create_sphere();
-// 	ft_lsadd_sorted(&list, ft_lstnew(create_intersection(1, shape)));
-// 	ft_lsadd_sorted(&list, ft_lstnew(create_intersection(-12, shape)));
-// 	ft_lsadd_sorted(&list, ft_lstnew(create_intersection(-1, shape)));
-// 	ft_lsadd_sorted(&list, ft_lstnew(create_intersection(42, shape)));
-// 	TEST_ASSERT_EQUAL(4, ft_lstsize(list));
-// 	aux = (t_intersection *)list->content;
-// 	TEST_ASSERT_EQUAL_DOUBLE(1, aux->t);
-// 	aux = (t_intersection *)list->next->content;
-// 	TEST_ASSERT_EQUAL_DOUBLE(2, aux->t);
-// 	aux = (t_intersection *)list->next->next->content;
-// 	TEST_ASSERT_EQUAL_DOUBLE(-1, aux->t);
-// 	// aux = (t_intersection *)list->next->next->next->content;
-// 	// TEST_ASSERT_EQUAL_DOUBLE(42, aux->t);
-// }
+	list = NULL;
+	shape = create_sphere();
+	add_sorted(&list, ft_lstnew(create_intersection(1, shape)));
+	add_sorted(&list, ft_lstnew(create_intersection(-12, shape)));
+	add_sorted(&list, ft_lstnew(create_intersection(-1, shape)));
+	add_sorted(&list, ft_lstnew(create_intersection(42, shape)));
+	TEST_ASSERT_EQUAL(4, ft_lstsize(list));
+	aux = (t_intersection *)list->content;
+	TEST_ASSERT_EQUAL_DOUBLE(-12, aux->t);
+	aux = (t_intersection *)list->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(-1, aux->t);
+	aux = (t_intersection *)list->next->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(1, aux->t);
+	aux = (t_intersection *)list->next->next->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(42, aux->t);
+}
 	
 void	translating_ray(void)
 {
 	t_point		point;
 	t_vector	vec;
+	t_matrix	m;
+	t_ray		ray;
+	t_ray		r_transform;
 
 	point = create_point(1, 2, 3);
 	vec = create_vector(0, 1, 0);
-	(void)point;
-	(void)vec;
-
-
-	// teste:
-	// r ← ray(point, vec);
-	// m ← translation(3, 4, 5);
-	// r2 ← transform(r, m);
-	
-	// TEST_ASSERT_TRUE(is_equal_tuple( r2.origin, point(4, 6, 8)));
-	// TEST_ASSERT_TRUE(is_equal_tuple( r2.direction, vector(0, 1, 0)));
-
-		TEST_ASSERT_EQUAL_DOUBLE(4.2, 2.1); // remover
+	ray = create_ray(point, vec);
+	m =	translation(3, 4, 5);
+	r_transform = transform_ray(ray, m);
+	TEST_ASSERT_TRUE(is_equal_tuple( r_transform.origin, create_point(4, 6, 8)));
+	TEST_ASSERT_TRUE(is_equal_tuple( r_transform.direction, create_vector(0, 1, 0)));
 }
 
 void	scaling_ray(void)
@@ -223,22 +218,17 @@ void	scaling_ray(void)
 	t_point		point;
 	t_vector	vec;
 	t_matrix	m;
+	t_ray		ray;
+	t_ray		r_transform;
+
 
 	point = create_point(1, 2, 3);
 	vec = create_vector(0, 1, 0);
-	(void)point;
-	(void)vec;
-	(void)m;
-
-	// teste:
-	// r ← ray(point, vec);
+	ray = create_ray(point, vec);
 	m =	scaling(2, 3, 4);
-	// r2 ← transform(r, m);
-	
-	// TEST_ASSERT_TRUE(is_equal_tuple( r2.origin, point(2, 6, 12)));
-	// TEST_ASSERT_TRUE(is_equal_tuple( r2.direction, vector(0, 3, 0)));
-
-	TEST_ASSERT_EQUAL_DOUBLE(1.3, 3.7); // remover
+	r_transform = transform_ray(ray, m);
+	TEST_ASSERT_TRUE(is_equal_tuple(r_transform.origin, create_point(2, 6, 12)));
+	TEST_ASSERT_TRUE(is_equal_tuple(r_transform.direction, create_vector(0, 3, 0)));
 }
 
 void	sphere_default_transform(void)

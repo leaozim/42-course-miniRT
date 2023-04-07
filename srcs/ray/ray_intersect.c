@@ -10,7 +10,7 @@ t_intersection	*create_intersection(double t, t_shape *shapes)
 	return (intersect);
 }
 
-void	ft_lsadd_sorted(t_intersections **head, t_intersections *new_node)
+void	add_sorted(t_intersections **head, t_intersections *new_node)
 {
 	t_intersection	*intersect;
 	t_intersections	*aux;
@@ -28,6 +28,7 @@ void	ft_lsadd_sorted(t_intersections **head, t_intersections *new_node)
 	{
 		new_node->next = *head;
 		*head = new_node;
+		return ;
 	}
 	aux = (*head);
 	if ((*head)->next != NULL)
@@ -38,7 +39,7 @@ void	ft_lsadd_sorted(t_intersections **head, t_intersections *new_node)
 	aux->next = new_node;
 }
 
-t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersect)
+t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **list)
 {
 	t_tuple		sphere_to_ray;
 	t_bhaskara	bhask;
@@ -55,9 +56,8 @@ t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersect)
 	xs.count = 2;
 	xs.t1 = ((-bhask.b - sqrt(bhask.delta)) / (2 * bhask.a));
 	xs.t2 = ((-bhask.b + sqrt(bhask.delta)) / (2 * bhask.a));
-	
-	ft_lsadd_sorted(intersect, ft_lstnew(create_intersection(xs.t1, sphere)));
+	add_sorted(list, ft_lstnew(create_intersection(xs.t1, sphere)));
 	if (!is_equal_double(xs.t1, xs.t2))	
-		ft_lsadd_sorted(intersect, ft_lstnew(create_intersection(xs.t2, sphere)));
+		add_sorted(list, ft_lstnew(create_intersection(xs.t2, sphere)));
 	return (xs);
 }

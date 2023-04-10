@@ -82,8 +82,13 @@ t_ray		create_ray(t_point origin, t_vector direction);
 t_ray		transform_ray(t_ray ray, t_matrix matrix);
 t_point		get_position(t_ray ray, double time);
 // t_xs		intersect_sphere(t_sphere sphere, t_ray ray, t_list **xs_list);
-t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **list);
+t_xs			intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **list);
 t_intersection	*create_intersection(double t, t_shape *shapes);
+t_ray			transform(t_ray ray, t_matrix matrix);
+t_intersection	*hit(t_intersections **list);
+void			ft_lsadd_sorted(t_intersections **head, t_intersections *new_node);
+void			set_transform(t_shape *shapes, t_matrix transform);
+
 
 
 t_shape		*create_sphere(void);

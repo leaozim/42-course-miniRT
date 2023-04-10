@@ -1,7 +1,7 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define EPSILON 0.0001
+# define EPSILON 0.00001
 # define CAMERA 0
 # define LIGHT 1
 # define CYLINDER 2
@@ -21,6 +21,12 @@ typedef struct s_mlx
 {
 	void	*mlx;
 }	t_mlx;
+
+typedef struct s_matrix
+{
+	size_t	size;
+	double	matrix[MTRX_MAX][MTRX_MAX];
+}	t_matrix;
 
 typedef struct s_canvas
 {
@@ -123,13 +129,8 @@ typedef struct s_shape
 		t_plane		plane;
 		t_cylinder	cylinder;
 	};
+	t_matrix	transform;
 }	t_shape;
-
-typedef struct s_matrix
-{
-	size_t	size;
-	double	matrix[MTRX_MAX][MTRX_MAX];
-}	t_matrix;
 
 typedef struct s_shearing
 {
@@ -170,5 +171,12 @@ typedef struct s_xs
 	double	t2;
 	int		count;
 }	t_xs;
+
+typedef struct s_sorted
+{
+	t_intersection	*intersect;
+	t_intersections	*aux;
+	t_intersection	*intersect_head;	
+} 	t_sorted;
 
 #endif

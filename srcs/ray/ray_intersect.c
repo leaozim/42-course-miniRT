@@ -10,32 +10,33 @@ t_intersection	*create_intersection(double t, t_shape *shapes)
 	return (intersect);
 }
 
-void	ft_lsadd_sorted(t_intersections **head, t_intersections *new_node)
+void	add_sorted(t_intersections **head, t_intersections *new_node)
 {
-	t_intersection	*intersect;
-	t_intersections	*aux;
-	t_intersection	*aux_next;
-	t_intersection	*intersect_head;
+	t_sorted	s;
 
-	intersect = (t_intersection *)new_node->content;
+	s.intersect = (t_intersection *)new_node->content;
 	if (*head == NULL)
-	{
 		*head = new_node;
-		return;
-	}
-	intersect_head = (t_intersection *)(*head)->content;
-	if (intersect->t < intersect_head->t)
+	else
 	{
-		new_node->next = *head;
-		*head = new_node;
+		s.intersect_head = (t_intersection *)(*head)->content;
+		if (s.intersect->t < s.intersect_head->t)
+		{
+			new_node->next = *head;
+			*head = new_node;
+			return ;
+		}
+		s.aux = (*head);
+		while (s.aux->next && ((t_intersection *)(s.aux->next->content))->t \
+		<= s.intersect->t)
+		{
+			s.aux = s.aux->next;
+			if (s.aux)
+				s.intersect_head = (t_intersection *)(s.aux->content);
+		}
+		new_node->next = s.aux->next;
+		s.aux->next = new_node;
 	}
-	aux = (*head);
-	if ((*head)->next != NULL)
-		aux_next = (t_intersection *)(*head)->next->content;
-	while (aux->next && aux_next->t <= intersect->t)
-		aux =  aux->next;
-	new_node->next = aux->next;
-	aux->next = new_node;	
 }
 
 t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersect)

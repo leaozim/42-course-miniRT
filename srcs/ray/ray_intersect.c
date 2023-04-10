@@ -34,7 +34,7 @@ void	add_sorted(t_intersections **head, t_intersections *new_node)
 	if ((*head)->next != NULL)
 		aux_next = (t_intersection *)(*head)->next->content;
 	while (aux->next && aux_next->t <= intersect->t)
-		aux =  aux->next;
+		aux = aux->next;
 	new_node->next = aux->next;
 	aux->next = new_node;
 }
@@ -57,7 +57,7 @@ t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **list)
 	xs.t1 = ((-bhask.b - sqrt(bhask.delta)) / (2 * bhask.a));
 	xs.t2 = ((-bhask.b + sqrt(bhask.delta)) / (2 * bhask.a));
 	add_sorted(list, ft_lstnew(create_intersection(xs.t1, sphere)));
-	if (!is_equal_double(xs.t1, xs.t2))	
+	if (!is_equal_double(xs.t1, xs.t2))
 		add_sorted(list, ft_lstnew(create_intersection(xs.t2, sphere)));
 	return (xs);
 }

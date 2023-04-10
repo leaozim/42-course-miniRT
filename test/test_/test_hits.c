@@ -11,9 +11,9 @@ void	hit_intersections_positive_t(void)
 	list = NULL;
 	shape = create_sphere();
 	i1 = create_intersection(1, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i1));
+	add_sorted(&list, ft_lstnew(i1));
 	i2 = create_intersection(2, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i2));
+	add_sorted(&list, ft_lstnew(i2));
 	h = hit(&list);
 	TEST_ASSERT_EQUAL_PTR(h, i1);
 	
@@ -30,9 +30,9 @@ void	hit_intersections_negative_t(void)
 	list = NULL;
 	shape = create_sphere();
 	i1 = create_intersection(-1, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i1));
+	add_sorted(&list, ft_lstnew(i1));
 	i2 = create_intersection(1, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i2));
+	add_sorted(&list, ft_lstnew(i2));
 	h = hit(&list);
 	TEST_ASSERT_EQUAL_PTR(h, i2);	
 }
@@ -47,13 +47,13 @@ void	hit_intersections_nonnegative_t()
 	list = NULL;
 	shape = create_sphere();
 	i1 = create_intersection(5, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i1));
+	add_sorted(&list, ft_lstnew(i1));
 	i2 = create_intersection(7, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i2));
+	add_sorted(&list, ft_lstnew(i2));
 	i3 = create_intersection(-3, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i3));
+	add_sorted(&list, ft_lstnew(i3));
 	i4 = create_intersection(2, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i4));
+	add_sorted(&list, ft_lstnew(i4));
 	h = hit(&list);
 	TEST_ASSERT_EQUAL_PTR(h, i4);	
 }
@@ -69,9 +69,9 @@ static void	hit_all_intersections_positive_t(void)
 	list = NULL;
 	shape = create_sphere();
 	i1 = create_intersection(-2, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i1));
+	add_sorted(&list, ft_lstnew(i1));
 	i2 = create_intersection(-1, shape);
-	ft_lsadd_sorted(&list, ft_lstnew(i2));
+	add_sorted(&list, ft_lstnew(i2));
 	h = hit(&list);
 	TEST_ASSERT_EQUAL_PTR(h, NULL);	
 }

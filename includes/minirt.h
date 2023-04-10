@@ -86,7 +86,7 @@ t_xs			intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **list);
 t_intersection	*create_intersection(double t, t_shape *shapes);
 t_ray			transform(t_ray ray, t_matrix matrix);
 t_intersection	*hit(t_intersections **list);
-void			ft_lsadd_sorted(t_intersections **head, t_intersections *new_node);
+void			add_sorted(t_intersections **head, t_intersections *new_node);
 void			set_transform(t_shape *shapes, t_matrix transform);
 
 

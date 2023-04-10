@@ -57,8 +57,8 @@ t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersect)
 	xs.t1 = ((-bhask.b - sqrt(bhask.delta)) / (2 * bhask.a));
 	xs.t2 = ((-bhask.b + sqrt(bhask.delta)) / (2 * bhask.a));
 	
-	ft_lsadd_sorted(intersect, ft_lstnew(create_intersection(xs.t1, sphere)));
+	add_sorted(intersect, ft_lstnew(create_intersection(xs.t1, sphere)));
 	if (!is_equal_double(xs.t1, xs.t2))	
-		ft_lsadd_sorted(intersect, ft_lstnew(create_intersection(xs.t2, sphere)));   
+		add_sorted(intersect, ft_lstnew(create_intersection(xs.t2, sphere)));   
     return (xs);
 }

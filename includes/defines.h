@@ -1,6 +1,16 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
+# define EPSILON 0.00001
+# define CAMERA 0
+# define LIGHT 1
+# define CYLINDER 2
+# define VECTOR_W 0
+# define POINT_W 1
+# define MTRX_MAX 4
+
+# include "minirt.h"
+
 enum e_status
 {
 	OK,
@@ -11,6 +21,12 @@ typedef struct s_mlx
 {
 	void	*mlx;
 }	t_mlx;
+
+typedef struct s_matrix
+{
+	size_t	size;
+	double	matrix[MTRX_MAX][MTRX_MAX];
+}	t_matrix;
 
 typedef struct s_canvas
 {
@@ -113,13 +129,8 @@ typedef struct s_shape
 		t_plane		plane;
 		t_cylinder	cylinder;
 	};
+	t_matrix	transform;
 }	t_shape;
-
-typedef struct s_matrix
-{
-	size_t	size;
-	double	matrix[4][4];
-}	t_matrix;
 
 typedef struct s_shearing
 {
@@ -131,12 +142,41 @@ typedef struct s_shearing
 	double	z_y;
 }	t_shearing;
 
-# define EPSILON 0.0001
-# define CAMERA 0
-# define LIGHT 1
-# define CYLINDER 2
-# define VECTOR_W 0
-# define POINT_W 1
-# define MTRX_MAX 4
+typedef struct s_ray
+{
+	t_point		origin;
+	t_vector	direction;
+}	t_ray;
+
+typedef t_list t_intersections;
+
+typedef struct s_intersection
+{
+	double	t;
+	t_shape	*shapes;
+}	t_intersection;
+
+typedef struct s_bhaskara
+{
+	double	a;
+	double	b;
+	double	c;
+	double	delta;
+
+}	t_bhaskara;
+
+typedef struct s_xs
+{
+	double	t1;
+	double	t2;
+	int		count;
+}	t_xs;
+
+typedef struct s_sorted
+{
+	t_intersection	*intersect;
+	t_intersections	*aux;
+	t_intersection	*intersect_head;	
+} 	t_sorted;
 
 #endif

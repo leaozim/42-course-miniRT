@@ -1,7 +1,7 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define EPSILON 0.00001
+# define EPSILON 0.0001
 # define CAMERA 0
 # define LIGHT 1
 # define CYLINDER 2
@@ -30,6 +30,7 @@ typedef struct s_matrix
 
 typedef struct s_canvas
 {
+	void	*mlx;
 	void	*window;
 	void	*image;
 	char	*address;
@@ -131,7 +132,6 @@ typedef struct s_shape
 	};
 	t_matrix	transform;
 }	t_shape;
-
 typedef struct s_shearing
 {
 	double	x_y;

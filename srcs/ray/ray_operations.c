@@ -9,7 +9,12 @@ t_ray	transform_ray(t_ray ray, t_matrix matrix)
 	return (new_ray);
 }
 
-t_point	get_position(t_ray r, double time)
+t_point	get_position(t_ray ray, double time)
 {
-	return(adding_tuples(multiply_tupla_scalar(r.direction, time), r.origin));
+	t_point	mult;
+	t_point	position;
+
+	mult = multiply_tupla_scalar(ray.direction, time);
+	position = adding_tuples(mult, ray.origin);
+	return (position);
 }

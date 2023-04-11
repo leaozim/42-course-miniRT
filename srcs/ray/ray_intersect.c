@@ -41,9 +41,9 @@ void	add_sorted(t_intersections **head, t_intersections *new_node)
 
 t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersect)
 {
-	t_tuple        	sphere_to_ray;
-	t_bhaskara    	bhask;
-	t_xs        	xs;
+	t_tuple		sphere_to_ray;
+	t_bhaskara	bhask;
+	t_xs		xs;
 
 	xs.count = 0;
 	sphere_to_ray = sub_tuples(ray.origin, create_point(0, 0, 0));
@@ -60,5 +60,5 @@ t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersect)
 	add_sorted(intersect, ft_lstnew(create_intersection(xs.t1, sphere)));
 	if (!is_equal_double(xs.t1, xs.t2))	
 		add_sorted(intersect, ft_lstnew(create_intersection(xs.t2, sphere)));   
-    return (xs);
+	return (xs);
 }

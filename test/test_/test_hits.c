@@ -16,7 +16,8 @@ void	hit_intersections_positive_t(void)
 	add_sorted(&list, ft_lstnew(i2));
 	h = hit(&list);
 	TEST_ASSERT_EQUAL_PTR(h, i1);
-	
+	destroy_shape(shape);
+	ft_lstclear(&list, free);
 }
 
 void	hit_intersections_negative_t(void)
@@ -34,7 +35,9 @@ void	hit_intersections_negative_t(void)
 	i2 = create_intersection(1, shape);
 	add_sorted(&list, ft_lstnew(i2));
 	h = hit(&list);
-	TEST_ASSERT_EQUAL_PTR(h, i2);	
+	TEST_ASSERT_EQUAL_PTR(h, i2);
+	destroy_shape(shape);
+	ft_lstclear(&list, free);
 }
 
 void	hit_intersections_nonnegative_t()
@@ -55,7 +58,9 @@ void	hit_intersections_nonnegative_t()
 	i4 = create_intersection(2, shape);
 	add_sorted(&list, ft_lstnew(i4));
 	h = hit(&list);
-	TEST_ASSERT_EQUAL_PTR(h, i4);	
+	TEST_ASSERT_EQUAL_PTR(h, i4);
+	destroy_shape(shape);
+	ft_lstclear(&list, free);
 }
 
 static void	hit_all_intersections_positive_t(void)
@@ -73,7 +78,9 @@ static void	hit_all_intersections_positive_t(void)
 	i2 = create_intersection(-1, shape);
 	add_sorted(&list, ft_lstnew(i2));
 	h = hit(&list);
-	TEST_ASSERT_EQUAL_PTR(h, NULL);	
+	TEST_ASSERT_EQUAL_PTR(h, NULL);
+	ft_lstclear(&list, free);
+	destroy_shape(shape);
 }
 
 void	test_hit(void)

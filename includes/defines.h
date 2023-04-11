@@ -30,6 +30,7 @@ typedef struct s_matrix
 
 typedef struct s_canvas
 {
+	void	*mlx;
 	void	*window;
 	void	*image;
 	char	*address;

@@ -11,7 +11,7 @@ t_canvas	create_canvas(void *mlx_ptr, int width, int height)
 	return (canvas);
 }
 
-void	write_pixel(void *mlx, int x, int y, t_color rgb, t_canvas c)
+void	write_pixel(t_canvas c, int x, int y, t_color rgb)
 {
 	int	i;
 
@@ -20,6 +20,6 @@ void	write_pixel(void *mlx, int x, int y, t_color rgb, t_canvas c)
 	c.address[i + 1] = (char)(rgb.g * 255);
 	c.address[i + 2] = (char)(rgb.r * 255);
 	c.address[i + 3] = (char)0;
-	mlx_put_image_to_window(mlx, c.window, c.image, y, x);
-	mlx_loop(mlx);
+	mlx_put_image_to_window(c.mlx, c.window, c.image, y, x);
+	mlx_loop(c.mlx);
 }

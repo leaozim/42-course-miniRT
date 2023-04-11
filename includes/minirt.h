@@ -53,7 +53,7 @@ double		magnitude(t_vector vec);
 t_vector	cross_product(t_vector vec1, t_vector vec2);
 t_canvas	create_canvas(void *mlx_ptr, int height, int width);
 void		destroy_mlx(void *mlx_ptr, void *win_ptr);
-void		write_pixel(void *mlx, int x, int y, t_color rgb, t_canvas c);
+void		write_pixel(t_canvas c, int x, int y, t_color rgb);
 t_matrix	create_identity_matrix(void);
 int			is_equal_matrix(t_matrix a, t_matrix b);
 t_matrix	multiply_matrix(t_matrix a, t_matrix b);

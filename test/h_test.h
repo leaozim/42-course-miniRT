@@ -26,6 +26,7 @@ t_shearing	set_shearing(void);
 double		rand_double();
 double		rand_rgb();
 t_scene		create_sphere_test(void);
+void	destroy_shape(t_shape *shape);
 
 
 #endif

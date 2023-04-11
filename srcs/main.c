@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 	read_file(argv[1], &scene);
 	mlx.mlx = mlx_init();
 	canvas = create_canvas(mlx.mlx, 1280, 900);
-	write_pixel(mlx.mlx, 500, 100, scene.ambient->color, canvas);
+	write_pixel(canvas, 500, 100, scene.ambient->color);
 	destroy_minirt(&scene);
 	return (0);
 }

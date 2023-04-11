@@ -18,7 +18,7 @@ void    test_pixel(void)
 		color = create_color(r, g, b);
 		void	*mlx = mlx_init();
 		canvas =  create_canvas(mlx, x, y);
-		write_pixel(mlx, 50, 50, color, canvas);
+		write_pixel(canvas, 50, 50, color);
 		TEST_ASSERT_EQUAL_DOUBLE(r, color.r);
 		TEST_ASSERT_EQUAL_DOUBLE(g, color.g);
 		TEST_ASSERT_EQUAL_DOUBLE(b, color.b);

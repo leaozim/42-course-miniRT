@@ -50,3 +50,7 @@ t_shearing	set_shearing(void)
 	return (s);
 }
 
+void	destroy_shape(t_shape *shape)
+{
+	free(shape);
+}

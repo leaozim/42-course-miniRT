@@ -21,6 +21,7 @@ void		test_transformations_matrix(void);
 void		test_ray_sphere(void);
 void		test_hit(void);
 void		test_ray(void);
+void		test_world(void);
 t_bool		is_equal_tuple(t_tuple a, t_tuple b);
 t_shearing	set_shearing(void);
 double		rand_double();

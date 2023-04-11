@@ -220,7 +220,6 @@ void	scaling_ray(void)
 {
 	t_point		point;
 	t_vector	vec;
-	t_ray		r, r2;
 	t_matrix	m;
 	t_ray		ray;
 	t_ray		r_transform;

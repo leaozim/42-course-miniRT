@@ -32,7 +32,8 @@ COLOR				=	color.c operations_color.c
 MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c \
 						matrix_utils.c matrix_transformations.c matrix_rotations.c
 
-RAY					=	ray_builder.c ray_operations.c ray_intersect.c
+RAY					=	ray_builder.c ray_operations.c ray_intersect.c ray_hit.c \
+						ray_transform.c
 
 SHAPES				=	sphere.c
 

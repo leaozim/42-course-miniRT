@@ -148,16 +148,6 @@ void	test_intersection_encapsulates_t_object(void)
 	TEST_ASSERT_EQUAL_DOUBLE(3.5, i->t);
 }
 
-// ​ ​Scenario​: Aggregating intersections
-// ​ ​Given​s ← sphere()
-// ​ ​And​i1 ← intersection(1, s)
-// ​ ​And​i2 ← intersection(2, s)
-// ​ ​When​xs ← intersections(i1, i2)
-// ​ ​Then​xs.count = 2
-// ​ ​And​xs[0].t = 1
-// ​ ​And​xs[1].t = 2
-
-
 void	intersect_sets_object_intersection(void)
 {
 	t_ray				r;
@@ -217,6 +207,7 @@ void	scaling_ray(void)
 {
 	t_point		point;
 	t_vector	vec;
+	t_ray		r, r2;
 	t_matrix	m;
 	t_ray		ray;
 	t_ray		r_transform;
@@ -233,59 +224,52 @@ void	scaling_ray(void)
 
 void	sphere_default_transform(void)
 {
-	t_scene		scene;
-	t_shape		shape;
-	t_sphere	*sphere;
+	t_shape		*sphere;
+	t_matrix	transform;
 
-	scene = create_sphere_test();
-	sphere = &shape.sphere;
-	sphere =  (t_sphere *)scene.shapes->content;
-	shape.sphere = *sphere;
-
-	// t ← translation(2, 3, 4);
-	// set_transform(shape.sphere, t);
-	// shape.transform = t
-	TEST_ASSERT_EQUAL_DOUBLE(3.7, 7.3); // remover
+	sphere = create_sphere();
+	transform = translation(2, 3, 4);
+	set_transform(sphere, transform);
+	TEST_ASSERT_TRUE(is_equal_matrix(transform, sphere->transform));
 }
 
 void	intersecting_scaled_sphere(void)
 {
-	t_point		point;
-	t_vector	vec;
-	t_scene		scene;
+	t_point			point;
+	t_vector		vec;
+	t_shape			*sphere;
+	t_xs 			xs;
+	t_intersections	*list;
+	t_ray			ray, transformed;
 
+	list = NULL;
 	point = create_point(0, 0, -5);
 	vec = create_vector(0, 0, 1);
-	scene = create_sphere_test();
-	(void)point;
-	(void)vec;
-	(void)scene;
+	ray = create_ray(point, vec);
+	sphere = create_sphere();
+	set_transform(sphere, scaling(2, 2, 2));
+	transformed = transform(ray, inverse_matrix(sphere->transform));
+	xs = intersect_sphere(sphere, transformed, &list);
 
-	// set_transform(s, scaling(2, 2, 2));
-	// xs ← intersect(s, r);
-	// xs.count = 2;
-	// xs[0].t = 3;
-	// xs[1].t = 7
-	TEST_ASSERT_EQUAL_DOUBLE(1.0, 2.0); // remover
+	TEST_ASSERT_EQUAL(2, xs.count);
+	TEST_ASSERT_EQUAL_DOUBLE(3.0, xs.t1);
+	TEST_ASSERT_EQUAL_DOUBLE(7.0, xs.t2);
 }
 
 void	 intersecting_translated_sphere(void)
 {
-	t_point		point;
-	t_vector	vec;
-	t_scene		scene;
+	t_shape			*sphere;
+	t_xs 			xs;
+	t_intersections	*list;
+	t_ray			ray, transformed;
 
-	point = create_point(0, 0, -5);
-	vec = create_vector(0, 0, 1);
-	scene = create_sphere_test();
-	(void)point;
-	(void)vec;
-	(void)scene;
-
-	// set_transform(s, translation(5, 0, 0));
-	// xs ← intersect(s, r)
-	// xs.count = 0;
-	TEST_ASSERT_EQUAL_DOUBLE(2.0, 1.0); // remover
+	list = NULL;
+	ray = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
+	sphere =  create_sphere();
+	set_transform(sphere, translation(5, 0, 0));
+	transformed = transform(ray, sphere->transform);
+	xs = intersect_sphere(sphere, transformed, &list);
+	TEST_ASSERT_EQUAL(0, xs.count);
 }
 
 void	test_ray(void)

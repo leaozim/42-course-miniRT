@@ -40,6 +40,7 @@ void	precomputing(void)
 	// comps.point = point(0, 0, -1);
 	// comps.eyev = vector(0, 0, -1);
 	// comps.normalv = vector(0, 0, -1);
+	destroy_shape(sphere);
 	TEST_ASSERT_EQUAL_DOUBLE(13, 37);
 }
 
@@ -54,7 +55,10 @@ void	hit_intersection_outside(void)
 	i = create_intersection(4, sphere);
 	// comps ← prepare_computations(i, r);
 	// comps.inside = false;
+	destroy_shape(sphere);
 	TEST_ASSERT_EQUAL_DOUBLE(10, 80);
+	
+
 }
 
 void	hit_intersection_inside(void)
@@ -69,6 +73,7 @@ void	hit_intersection_inside(void)
 	// comps.point = point(0, 0, 1);
 	// comps.inside = true;
 	// comps.normalv = create_vector(0, 0, -1)
+	destroy_shape(sphere);
 	TEST_ASSERT_EQUAL_DOUBLE(10, 70);	
 }
 

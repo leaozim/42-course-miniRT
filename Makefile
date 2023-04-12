@@ -101,7 +101,7 @@ test_debug: all
 	make debug -C test
 
 val: all
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT scenes/test.rt
 
 debug: all
 	gdb --tui --args ./$(NAME) scenes/test.rt

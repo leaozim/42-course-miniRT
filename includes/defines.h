@@ -17,11 +17,6 @@ enum e_status
 	ERROR
 };
 
-typedef struct s_mlx
-{
-	void	*mlx;
-}	t_mlx;
-
 typedef struct s_matrix
 {
 	size_t	size;
@@ -178,5 +173,11 @@ typedef struct s_sorted
 	t_intersections	*aux;
 	t_intersection	*intersect_head;	
 } 	t_sorted;
+
+typedef struct s_world
+{
+	t_list	*light_point;
+	t_list	*shapes;
+}	t_world;
 
 #endif

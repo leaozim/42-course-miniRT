@@ -1,25 +1,31 @@
 #include "minirt.h"
+#include <mlx.h>
 
-t_canvas	create_canvas(void *mlx_ptr, int width, int height)
+t_canvas	create_canvas(int width, int height)
 {
 	t_canvas	canvas;
 
-	canvas.window = mlx_new_window(mlx_ptr, width, height, "miniRT");
-	canvas.image = mlx_new_image(mlx_ptr, width, height);
+	canvas.mlx = mlx_init();
+	canvas.image = mlx_new_image(canvas.mlx, width, height);
 	canvas.address = mlx_get_data_addr(canvas.image, &canvas.bits_per_pixel, \
 		&canvas.size_line, &canvas.endianness);
 	return (canvas);
 }
 
-void	write_pixel(t_canvas c, int x, int y, t_color rgb)
+void	write_pixel(t_canvas canvas, int x, int y, int color)
 {
-	int	i;
+	char	*pixel;
+	int		index;
 
-	i = 0;
-	c.address[i] = (char)(rgb.b * 255);
-	c.address[i + 1] = (char)(rgb.g * 255);
-	c.address[i + 2] = (char)(rgb.r * 255);
-	c.address[i + 3] = (char)0;
-	mlx_put_image_to_window(c.mlx, c.window, c.image, y, x);
-	mlx_loop(c.mlx);
+	pixel = canvas.address;
+	pixel += (y * canvas.size_line) + (x * (canvas.bits_per_pixel / 8));
+	index = canvas.bits_per_pixel - 8;
+	while (index >= 0)
+	{
+		if (canvas.endianness == 0)
+			*pixel++ = (color >> (canvas.bits_per_pixel - 8 - index)) & 0xFF;
+		else
+			*pixel++ = (color >> index) & 0xFF;
+		index -= 8;
+	}
 }

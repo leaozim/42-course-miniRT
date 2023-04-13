@@ -9,9 +9,10 @@ t_lighting	init_lighting(void)
 	args.shape = NULL;
 	args.eyev = create_vector(0, 0, 0);
 	args.normalv = create_vector(0, 0, 0);
-	args.light_p = create_point_light(create_point(0, 0, 0), create_color(0, 0, 0));
+	args.light_p = create_point_light(create_point(0, 0, 0), \
+	create_color(0, 0, 0));
 	args.m = create_material();
-	return (args);	
+	return (args);
 }
 
 t_color	get_diffuse(t_lighting args, t_color effect_color)

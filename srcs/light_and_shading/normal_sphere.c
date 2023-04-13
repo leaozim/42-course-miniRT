@@ -13,7 +13,7 @@ t_vector	normal_at(t_shape *sphere, t_point world_point)
 	object_point = multiply_matrix_tuple(inverse, world_point);
 	object_normal = sub_tuples(object_point, create_point(0, 0, 0));
 	world_normal = multiply_matrix_tuple(transp_trans, object_normal);
-	world_normal.w  = 0;
+	world_normal.w = 0;
 	world_normal = normalize(world_normal);
 	return (world_normal);
 }

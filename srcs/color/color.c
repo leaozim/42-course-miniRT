@@ -28,7 +28,6 @@ t_color	create_color(double r, double g, double b)
 	color.g = g;
 	color.b = b;
 	color.mixed = merge_colors(r, g, b);
-
 	return (color);
 }
 

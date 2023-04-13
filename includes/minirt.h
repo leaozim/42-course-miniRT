@@ -87,8 +87,14 @@ t_ray			transform(t_ray ray, t_matrix matrix);
 t_intersection	*hit(t_intersections *list);
 void			add_sorted(t_intersections **head, t_intersections *new_node);
 void			set_transform(t_shape *shapes, t_matrix transform);
-
-
+t_vector	normal_sphere(t_shape *sphere, t_vector p);
+t_vector	normal_at(t_shape *sphere, t_point world_point);
+t_vector	reflect(t_vector in, t_vector normal);
+t_material	create_material(void);
+t_light_pnt create_point_light(t_point position, t_color intensity);
+t_color	create_lighting(t_lighting args);
+t_lighting	init_lighting(void);
+t_shape	*create_shape(void);
 
 t_shape		*create_sphere(void);
 //// APAGAR ////

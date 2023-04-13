@@ -85,12 +85,11 @@ void	drawing_sphere_light_shading(void)
 	t_point			position;
 	t_ray			r;
 	int				x, y;
-	t_light_pnt		light_pnt;
 	t_lighting		args;
 
-	args.light_p = create_point_light(create_point(-10, 10, -10),  create_color(0.9, 0.9, 0.9));
 	args = init_lighting();
-	args.m.color =create_color(rand_rgb(), rand_rgb(), rand_rgb());
+	args.light_p = create_point_light(create_point(-10, 10, -10), create_color(1, 1, 1));
+	args.m.color = create_color(1, 0.2, 1);
 	y = 0;
 	while (y < canvas_pixels - 1)
 	{
@@ -108,11 +107,7 @@ void	drawing_sphere_light_shading(void)
 				args.normalv = normal_at(((t_intersection *)list->content)->shapes, args.point);
 				args.eyev = neg_tuple(r.direction);
 				color = create_lighting(args);
-				// color = set_color(color.r, color.g, color.b); 
-				printf("%f", color.r);
-				printf("%f", color.g);
-				printf("%f", color.b);
-				write_pixel(canvas, x, y, color.r);
+				write_pixel(canvas, x, y, color.mixed);
 			}
 			ft_lstclear(&list, free);
 			x++;
@@ -128,5 +123,5 @@ void    test_canvas(void)
 {
 	//RUN_TEST(test_pixel);
 	// RUN_TEST(drawing_sphere);
-	// RUN_TEST(drawing_sphere_light_shading);
+	RUN_TEST(drawing_sphere_light_shading);
 }

@@ -6,6 +6,12 @@ double	rand_double()
 	return (valor);
 }
 
+double color_rand()
+{
+	return ((double)rand() / RAND_MAX);
+}
+
+
 double	rand_rgb()
 {
 	double valor = (double) (rand() % 255);

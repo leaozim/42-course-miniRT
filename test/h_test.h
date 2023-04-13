@@ -29,6 +29,6 @@ double		rand_rgb();
 t_scene		create_sphere_test(void);
 void	destroy_shape(t_shape *shape);
 void	test_light_and_shading(void);
-
+double color_rand();
 
 #endif

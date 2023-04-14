@@ -87,6 +87,11 @@ t_ray			transform(t_ray ray, t_matrix matrix);
 t_intersection	*hit(t_intersections *list);
 void			add_sorted(t_intersections **head, t_intersections *new_node);
 void			set_transform(t_shape *shapes, t_matrix transform);
+void			intersect_world(t_world *world, t_ray ray, t_intersections **intersect);
+t_light_pnt		*create_point_light(t_point position, t_color intensity);
+t_world			*default_world(void);
+void			destroy_world(t_world *w);
+
 
 
 

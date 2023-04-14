@@ -5,9 +5,19 @@ double	normalize_color(double color)
 	return (color / 255.0);
 }
 
-int	merge_colors(int r, int g, int b)
+static int	new_color(double color)
 {
-	return ((r << 16) | (g << 8) | b);
+	int	new_color;
+
+	new_color = (int)(color * 255);
+	if (new_color > 255)
+		return (255);
+	return (new_color);
+}
+
+static int	merge_colors(double r, double g, double b)
+{
+	return (new_color(r) << 16 | new_color(g) << 8 | new_color(b));
 }
 
 t_color	create_color(double r, double g, double b)
@@ -17,8 +27,7 @@ t_color	create_color(double r, double g, double b)
 	color.r = r;
 	color.g = g;
 	color.b = b;
-	color.mixed = merge_colors((int)(r * 255), (int)(g * 255), \
-	(int)(b * 255));
+	color.mixed = merge_colors(r, g, b);
 	return (color);
 }
 

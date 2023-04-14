@@ -85,6 +85,13 @@ typedef struct s_light
 	double		brightness;
 }	t_light;
 
+typedef struct s_light_pnt
+{
+	t_point	position;
+	t_color	intensity;
+}
+t_light_pnt;
+
 typedef struct s_sphere
 {
 	t_point		coord;
@@ -116,6 +123,15 @@ typedef struct s_scene
 	t_list		*lights;
 }	t_scene;
 
+typedef struct s_material
+{
+	t_color		color;
+	double		ambient;
+	double		diffuse;
+	double		specular;
+	double		shininess;
+}	t_material;
+
 typedef struct s_shape
 {
 	enum e_objects	type;
@@ -126,7 +142,11 @@ typedef struct s_shape
 		t_cylinder	cylinder;
 	};
 	t_matrix	transform;
+	t_material	material;
+	t_matrix	transpose;
+	t_matrix	inverse;
 }	t_shape;
+
 typedef struct s_shearing
 {
 	double	x_y;

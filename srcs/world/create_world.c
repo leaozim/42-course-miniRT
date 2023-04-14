@@ -1,6 +1,5 @@
 #include "minirt.h"
 
-
 t_world	*create_world(void)
 {
 	t_world	*world;

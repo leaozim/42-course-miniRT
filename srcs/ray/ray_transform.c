@@ -27,4 +27,3 @@ t_ray	transform(t_ray ray, t_matrix matrix)
 	transformed_ray = set_ray(origin, direction);
 	return (transformed_ray);
 }
-

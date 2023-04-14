@@ -85,13 +85,6 @@ typedef struct s_light
 	double		brightness;
 }	t_light;
 
-typedef struct s_light_pnt
-{
-	t_point	position;
-	t_color	intensity;
-}
-t_light_pnt;
-
 typedef struct s_sphere
 {
 	t_point		coord;
@@ -193,6 +186,24 @@ typedef struct s_sorted
 	t_intersections	*aux;
 	t_intersection	*intersect_head;	
 } 	t_sorted;
+
+typedef struct s_light_pnt
+{
+	t_point	position;
+	t_color	intensity;
+}
+t_light_pnt;
+
+typedef struct  s_lighting
+{
+	t_light_pnt	light_p;
+	t_shape		*shape;
+	t_vector	eyev;
+	t_vector	normalv;
+	t_point		point;
+	t_material	m;
+	double		light_normal;;
+} t_lighting;
 
 typedef struct s_world
 {

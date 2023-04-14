@@ -211,4 +211,14 @@ typedef struct s_world
 	t_list	*shapes;
 }	t_world;
 
+typedef struct s_comps
+{
+	t_shape		*shape;
+	double		t;
+	t_point		point;
+	t_vector	normal;
+	t_vector	camera;
+	t_point		over_point;
+}	t_comps;
+
 #endif

@@ -1,17 +1,17 @@
-#include "minirt.h"
+/* #include "minirt.h"
 
 t_lighting	init_lighting(void)
 {
-	t_lighting	*args;
+	t_lighting	args;
 
-	args->light_normal = 0;
-	args->point = create_point(0, 0, 0);
-	args->shape = NULL;
-	args->eyev = create_vector(0, 0, 0);
-	args->normalv = create_vector(0, 0, 0);
-	args->light_p = create_point_light(create_point(0, 0, 0), \
+	args.light_normal = 0;
+	args.point = create_point(0, 0, 0);
+	args.shape = NULL;
+	args.eyev = create_vector(0, 0, 0);
+	args.normalv = create_vector(0, 0, 0);
+	args.light_p = create_point_light(create_point(0, 0, 0), \
 	create_color(0, 0, 0));
-	args->m = create_material();
+	args.m = create_material();
 	return (args);
 }
 
@@ -70,3 +70,4 @@ t_color	create_lighting(t_lighting args)
 	specular = get_specular(args, lightv);
 	return (generate_color(ambient, diffuse, specular));
 }
+*/

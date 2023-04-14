@@ -1,4 +1,4 @@
-# include "../h_test.h"
+/* # include "../h_test.h"
 
 void    test_pixel(void)
 {
@@ -67,12 +67,6 @@ void	drawing_sphere(void)
 	mlx_loop(canvas.mlx);
 }
 
-<<<<<<< HEAD
-void    test_canvas(void)
-{
-	//RUN_TEST(test_pixel);
-	RUN_TEST(drawing_sphere);
-=======
 void	drawing_sphere_light_shading(void)
 {
 	double			wall_size = 7.0;
@@ -129,6 +123,6 @@ void    test_canvas(void)
 {
 	//RUN_TEST(test_pixel);
 	// RUN_TEST(drawing_sphere);
-	RUN_TEST(drawing_sphere_light_shading);
->>>>>>> main
+	//RUN_TEST(drawing_sphere_light_shading);
 }
+*/

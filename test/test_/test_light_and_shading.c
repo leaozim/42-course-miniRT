@@ -1,4 +1,4 @@
-# include "../h_test.h"
+/* # include "../h_test.h"
 
 void	test_normal_sphere_point_x_axis(void)
 {
@@ -236,3 +236,5 @@ void	test_light_and_shading(void)
 	RUN_TEST(test_lighting_eye_path_reflection_vector);
 	RUN_TEST(test_lighting_light_behind_surface);
 }
+
+*/

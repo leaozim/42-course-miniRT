@@ -44,31 +44,30 @@ void	test_intersect_world(void)
 	r1 = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
 	intersect_world(w, r1, &list);
 	TEST_ASSERT_EQUAL(4, ft_lstsize(list));
-	
-
-	// xs[0].t = 4;
-	// xs[1].t = 4.5;
-	// xs[2].t = 5.5;
-	// xs[3].t = 6;
+	TEST_ASSERT_EQUAL_DOUBLE(4, ((t_intersection *)(list->content))->t);
+	TEST_ASSERT_EQUAL_DOUBLE(4.5, ((t_intersection *)(list->next->content))->t);
+	TEST_ASSERT_EQUAL_DOUBLE(5.5, ((t_intersection *)(list->next->next->content))->t);
+	TEST_ASSERT_EQUAL_DOUBLE(6, ((t_intersection *)(list->next->next->next->content))->t);
+	ft_lstclear(&list, free);
 }
 
 void	test_precomputing(void)
 {
-	t_ray			r1;
+	t_ray			ray;
 	t_shape			*sphere;
 	t_intersection	*i;
+	t_comps			comps;
 
-	r1 = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
+	ray = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
 	sphere = create_sphere();
 	i = create_intersection(4, sphere);
-	// comps ← prepare_computations(i, r);
-	// comps.t = i.t;
-	// comps.object = i.object;
-	// comps.point = point(0, 0, -1);
-	// comps.eyev = vector(0, 0, -1);
-	// comps.normalv = vector(0, 0, -1);
+	comps = prepare_computation(i, ray);
+	TEST_ASSERT_EQUAL_DOUBLE(comps.t, i->t);
+	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 1}, comps.point));
+	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 0}, comps.camera));
+	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 0}, comps.normal));
+	free(i);
 	destroy_shape(sphere);
-	TEST_ASSERT_EQUAL_DOUBLE(13, 37);
 }
 
 void	test_hit_intersection_outside(void)
@@ -108,7 +107,7 @@ void	test_world(void)
 {
 	RUN_TEST(test_create_world);
 	RUN_TEST(test_intersect_world);
-	//RUN_TEST(test_precomputing);
+	RUN_TEST(test_precomputing);
 	//RUN_TEST(test_hit_intersection_outside);
 	//RUN_TEST(test_hit_intersection_inside);
 

@@ -38,7 +38,8 @@ RAY					=	ray_builder.c ray_operations.c ray_intersect.c ray_hit.c \
 
 SHAPES				=	sphere.c create_shape.c
 
-LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c
+LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c \
+						is_shadowed.c light_destroy.c
 
 WORLD				= 	create_world.c intersect_world.c destroy_world.c computations_world.c
 

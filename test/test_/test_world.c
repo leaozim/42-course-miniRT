@@ -49,6 +49,7 @@ void	test_intersect_world(void)
 	TEST_ASSERT_EQUAL_DOUBLE(5.5, ((t_intersection *)(list->next->next->content))->t);
 	TEST_ASSERT_EQUAL_DOUBLE(6, ((t_intersection *)(list->next->next->next->content))->t);
 	ft_lstclear(&list, free);
+	destroy_world(w);
 }
 
 void	test_precomputing(void)
@@ -64,43 +65,50 @@ void	test_precomputing(void)
 	comps = prepare_computation(i, ray);
 	TEST_ASSERT_EQUAL_DOUBLE(comps.t, i->t);
 	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 1}, comps.point));
-	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 0}, comps.camera));
-	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 0}, comps.normal));
+	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 0}, comps.eyev));
+	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 0}, comps.normalv));
 	free(i);
 	destroy_shape(sphere);
 }
 
-void	test_hit_intersection_outside(void)
-{
-	t_ray			r1;
-	t_shape			*sphere;
-	t_intersection	*i;
-
-	r1 = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
-	sphere = create_sphere();
-	i = create_intersection(4, sphere);
-	// comps ← prepare_computations(i, r);
-	// comps.inside = false;
-	destroy_shape(sphere);
-	TEST_ASSERT_EQUAL_DOUBLE(10, 80);
-	
-
-}
-
 void	test_hit_intersection_inside(void)
 {
-	t_ray			r1;
+	t_ray			ray;
 	t_shape			*sphere;
 	t_intersection	*i;
+	t_comps			comps;
 
-	r1 = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
+	ray = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
 	sphere = create_sphere();
 	i = create_intersection(1, sphere);
-	// comps.point = point(0, 0, 1);
-	// comps.inside = true;
-	// comps.normalv = create_vector(0, 0, -1)
+	comps = prepare_computation(i, ray);
+	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, 1, 1}, comps.point));
+	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 0}, comps.eyev));
+	TEST_ASSERT_TRUE(is_equal_tuple((t_tuple){0, 0, -1, 0}, comps.normalv));
+	free(i);
 	destroy_shape(sphere);
-	TEST_ASSERT_EQUAL_DOUBLE(10, 70);	
+}
+
+void	test_shading_intersection(void)
+{
+	t_world			*w;
+	t_shape			*shape;
+	t_ray			ray;
+	t_intersection	*i;
+	t_comps			comps;
+	t_color			color;
+
+	w = default_world();
+	ray = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
+	shape = (t_shape *)w->shapes->content;
+	i = create_intersection(4, shape);
+	comps = prepare_computation(i, ray);
+	color = shade_hit(w, comps, w->light_point);
+	TEST_ASSERT_TRUE(is_equal_double(0.38066, color.r));
+	TEST_ASSERT_TRUE(is_equal_double(0.47583, color.g));
+	TEST_ASSERT_TRUE(is_equal_double(0.2855, color.b));
+	free(i);
+	destroy_world(w);
 }
 
 void	test_world(void)
@@ -108,7 +116,6 @@ void	test_world(void)
 	RUN_TEST(test_create_world);
 	RUN_TEST(test_intersect_world);
 	RUN_TEST(test_precomputing);
-	//RUN_TEST(test_hit_intersection_outside);
-	//RUN_TEST(test_hit_intersection_inside);
-
+	RUN_TEST(test_hit_intersection_inside);
+	RUN_TEST(test_shading_intersection);
 }

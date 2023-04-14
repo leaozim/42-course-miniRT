@@ -91,7 +91,6 @@ void			intersect_world(t_world *world, t_ray ray, t_intersections **intersect);
 t_world			*default_world(void);
 void			destroy_world(t_world *w);
 t_comps			prepare_computation(t_intersection *i, t_ray ray);
-
 t_vector	normal_sphere(t_shape *sphere, t_vector p);
 t_vector	normal_at(t_shape *sphere, t_point world_point);
 t_vector	reflect(t_vector in, t_vector normal);
@@ -100,6 +99,12 @@ t_light_pnt	*create_point_light(t_point position, t_color intensity);
 t_color		create_lighting(t_lighting args);
 t_lighting	init_lighting(void);
 t_shape		*create_shape(void);
+t_pos_attr	create_pos_attr(t_vector eyev, t_vector normalv, t_point pos);
+t_lighting	set_lighting(t_light_pnt *light_p, t_pos_attr pos, t_material m);
+t_bool		is_shadowed(t_world *world, t_point point, t_light_pnt *light_p);
+t_color		shade_hit(t_world *world, t_comps comps, t_list *light_list);
+void		destroy_light_point(void *light_p);
+
 
 t_shape		*create_sphere(void);
 //// APAGAR ////

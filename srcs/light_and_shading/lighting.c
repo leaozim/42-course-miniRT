@@ -1,4 +1,4 @@
-/* #include "minirt.h"
+#include "minirt.h"
 
 t_lighting	init_lighting(void)
 {
@@ -40,7 +40,7 @@ t_color	get_specular(t_lighting args, t_vector lightv)
 	if (reflect_dot_eye <= 0)
 		return (create_color(0, 0, 0));
 	factor = pow(reflect_dot_eye, args.m.shininess);
-	specular = multiply_color_scalar(args.light_p.intensity, args.m.specular);
+	specular = multiply_color_scalar(args.light_p->intensity, args.m.specular);
 	specular = multiply_color_scalar(specular, factor);
 	return (specular);
 }
@@ -62,12 +62,11 @@ t_color	create_lighting(t_lighting args)
 	t_color		diffuse;
 	t_color		specular;
 
-	effect_color = multiply_color(args.m.color, args.light_p.intensity);
-	lightv = normalize(sub_tuples(args.light_p.position, args.point));
+	effect_color = multiply_color(args.m.color, args.light_p->intensity);
+	lightv = normalize(sub_tuples(args.light_p->position, args.point));
 	args.light_normal = dot_product(lightv, args.normalv);
 	ambient = multiply_color_scalar(effect_color, args.m.ambient);
 	diffuse = get_diffuse(args, effect_color);
 	specular = get_specular(args, lightv);
 	return (generate_color(ambient, diffuse, specular));
 }
-*/

@@ -51,9 +51,9 @@ t_tuple		sub_tuples(t_tuple a, t_tuple b);
 t_tuple		div_tuples(t_tuple t, double div);
 double		magnitude(t_vector vec);
 t_vector	cross_product(t_vector vec1, t_vector vec2);
-t_canvas	create_canvas(void *mlx_ptr, int height, int width);
+t_canvas	create_canvas(int width, int height);
 void		destroy_mlx(void *mlx_ptr, void *win_ptr);
-void		write_pixel(t_canvas c, int x, int y, t_color rgb);
+void		write_pixel(t_canvas canvas, int x, int y, int color);
 t_matrix	create_identity_matrix(void);
 int			is_equal_matrix(t_matrix a, t_matrix b);
 t_matrix	multiply_matrix(t_matrix a, t_matrix b);
@@ -84,11 +84,17 @@ t_point		get_position(t_ray ray, double time);
 t_xs			intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **list);
 t_intersection	*create_intersection(double t, t_shape *shapes);
 t_ray			transform(t_ray ray, t_matrix matrix);
-t_intersection	*hit(t_intersections **list);
+t_intersection	*hit(t_intersections *list);
 void			add_sorted(t_intersections **head, t_intersections *new_node);
 void			set_transform(t_shape *shapes, t_matrix transform);
-
-
+t_vector	normal_sphere(t_shape *sphere, t_vector p);
+t_vector	normal_at(t_shape *sphere, t_point world_point);
+t_vector	reflect(t_vector in, t_vector normal);
+t_material	create_material(void);
+t_light_pnt create_point_light(t_point position, t_color intensity);
+t_color	create_lighting(t_lighting args);
+t_lighting	init_lighting(void);
+t_shape	*create_shape(void);
 
 t_shape		*create_sphere(void);
 //// APAGAR ////

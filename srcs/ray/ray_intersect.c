@@ -39,7 +39,7 @@ void	add_sorted(t_intersections **head, t_intersections *new_node)
 	}
 }
 
-t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersect)
+t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersec)
 {
 	t_tuple		sphere_to_ray;
 	t_bhaskara	bhask;
@@ -50,15 +50,14 @@ t_xs	intersect_sphere(t_shape *sphere, t_ray ray, t_intersections **intersect)
 	bhask.a = dot_product(ray.direction, ray.direction);
 	bhask.b = dot_product(ray.direction, sphere_to_ray) * 2;
 	bhask.c = dot_product(sphere_to_ray, sphere_to_ray) - 1;
-	bhask.delta = pow(bhask.b, 2) - (4 * bhask.a * bhask.c);
+	bhask.delta = (bhask.b * bhask.b) - (4 * bhask.a * bhask.c);
 	if (bhask.delta < 0)
 		return (xs);
 	xs.count = 2;
 	xs.t1 = ((-bhask.b - sqrt(bhask.delta)) / (2 * bhask.a));
 	xs.t2 = ((-bhask.b + sqrt(bhask.delta)) / (2 * bhask.a));
-	
-	add_sorted(intersect, ft_lstnew(create_intersection(xs.t1, sphere)));
-	if (!is_equal_double(xs.t1, xs.t2))	
-		add_sorted(intersect, ft_lstnew(create_intersection(xs.t2, sphere)));   
+	add_sorted(intersec, ft_lstnew(create_intersection(xs.t1, sphere)));
+	if (!is_equal_double(xs.t1, xs.t2))
+		add_sorted(intersec, ft_lstnew(create_intersection(xs.t2, sphere)));
 	return (xs);
 }

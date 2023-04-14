@@ -21,12 +21,14 @@ void		test_transformations_matrix(void);
 void		test_ray_sphere(void);
 void		test_hit(void);
 void		test_ray(void);
+void		test_world(void);
 t_bool		is_equal_tuple(t_tuple a, t_tuple b);
 t_shearing	set_shearing(void);
 double		rand_double();
 double		rand_rgb();
 t_scene		create_sphere_test(void);
 void	destroy_shape(t_shape *shape);
-
+void	test_light_and_shading(void);
+double color_rand();
 
 #endif

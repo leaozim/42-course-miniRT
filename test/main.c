@@ -22,6 +22,8 @@ int main(void)
 	test_shearing();
 	test_hit();
 	test_ray();
-	//RUN_TEST(test_canvas);
+	test_light_and_shading();
+	// test_world();
+	test_canvas();
 	return (UNITY_END());
 }

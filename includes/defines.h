@@ -17,11 +17,6 @@ enum e_status
 	ERROR
 };
 
-typedef struct s_mlx
-{
-	void	*mlx;
-}	t_mlx;
-
 typedef struct s_matrix
 {
 	size_t	size;
@@ -121,6 +116,15 @@ typedef struct s_scene
 	t_list		*lights;
 }	t_scene;
 
+typedef struct s_material
+{
+	t_color		color;
+	double		ambient;
+	double		diffuse;
+	double		specular;
+	double		shininess;
+}	t_material;
+
 typedef struct s_shape
 {
 	enum e_objects	type;
@@ -131,6 +135,8 @@ typedef struct s_shape
 		t_cylinder	cylinder;
 	};
 	t_matrix	transform;
+	t_material	material;
+	t_matrix	transpose;
 }	t_shape;
 typedef struct s_shearing
 {
@@ -178,5 +184,29 @@ typedef struct s_sorted
 	t_intersections	*aux;
 	t_intersection	*intersect_head;	
 } 	t_sorted;
+
+typedef struct s_light_pnt
+{
+	t_point	position;
+	t_color	intensity;
+}
+t_light_pnt;
+
+typedef struct  s_lighting
+{
+	t_light_pnt	light_p;
+	t_shape		*shape;
+	t_vector	eyev;
+	t_vector	normalv;
+	t_point		point;
+	t_material	m;
+	double		light_normal;;
+} t_lighting;
+
+typedef struct s_world
+{
+	t_list	*light_point;
+	t_list	*shapes;
+}	t_world;
 
 #endif

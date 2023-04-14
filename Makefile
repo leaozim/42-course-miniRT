@@ -14,7 +14,7 @@ HEADER_FILES		=	minirt.h
 
 SRC					=	main.c \
 						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) \
-						$(MATRIX) $(RAY) $(SHAPES)
+						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
@@ -35,9 +35,12 @@ MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c \
 RAY					=	ray_builder.c ray_operations.c ray_intersect.c ray_hit.c \
 						ray_transform.c
 
-SHAPES				=	sphere.c
+SHAPES				=	sphere.c create_shape.c
 
-DIRS				=	. srcs utils parser tupla color canvas matrix ray shapes
+LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c 
+
+DIRS				=	. srcs utils parser tupla color canvas matrix ray shapes \
+						light_and_shading
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror
@@ -101,7 +104,7 @@ test_debug: all
 	make debug -C test
 
 val: all
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT scenes/test.rt
 
 debug: all
 	gdb --tui --args ./$(NAME) scenes/test.rt

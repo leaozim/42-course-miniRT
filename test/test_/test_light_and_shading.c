@@ -121,6 +121,7 @@ void	test_point_light_position_and_intensity(void)
 	TEST_ASSERT_TRUE(is_equal_double(1, light->intensity.r));
 	TEST_ASSERT_TRUE(is_equal_double(1, light->intensity.g));
 	TEST_ASSERT_TRUE(is_equal_double(1, light->intensity.b));
+	free(light);
 }
 
 void	test_default_material(void)
@@ -145,12 +146,14 @@ void	test_lighting_with_eye_between_light_and_surface(void)
 	light = init_lighting();
 	light.eyev = create_vector(0, 0, -1);
 	light.normalv = create_vector(0, 0, -1);
+	free(light.light_p);
 	light.light_p = create_point_light(create_point(0, 0, -10), create_color(1, 1, 1));
 	light.m = create_material();
 	result = create_lighting(light);
 	TEST_ASSERT_TRUE(is_equal_double(1.9, result.r));
 	TEST_ASSERT_TRUE(is_equal_double(1.9, result.g));
 	TEST_ASSERT_TRUE(is_equal_double(1.9, result.b));
+	free(light.light_p);
 }
 
 void	test_lighting_eye_between_light_and_surface_eye_offset_45(void)
@@ -161,12 +164,14 @@ void	test_lighting_eye_between_light_and_surface_eye_offset_45(void)
 	light = init_lighting();
 	light.eyev = create_vector(0, sqrt(2)/2, -sqrt(2)/2);
 	light.normalv = create_vector(0, 0, -1);
+	free(light.light_p);
 	light.light_p = create_point_light(create_point(0, 0, -10), create_color(1, 1, 1));
 	light.m = create_material();
 	result = create_lighting(light);
 	TEST_ASSERT_TRUE(is_equal_double(1.0, result.r));
 	TEST_ASSERT_TRUE(is_equal_double(1.0, result.g));
 	TEST_ASSERT_TRUE(is_equal_double(1.0, result.b));
+	free(light.light_p);
 }
 
 void	test_lighting_eye_opposite_surface_light_offset_45(void)
@@ -177,12 +182,14 @@ void	test_lighting_eye_opposite_surface_light_offset_45(void)
 	light = init_lighting();
 	light.eyev = create_vector(0, 0, -1);
 	light.normalv = create_vector(0, 0, -1);
+	free(light.light_p);
 	light.light_p = create_point_light(create_point(0, 10, -10), create_color(1, 1, 1));
 	light.m = create_material();
 	result = create_lighting(light);
 	TEST_ASSERT_TRUE(is_equal_double(0.7364, result.r));
 	TEST_ASSERT_TRUE(is_equal_double(0.7364, result.g));
 	TEST_ASSERT_TRUE(is_equal_double(0.7364, result.b));
+	free(light.light_p);
 }
 
 void	test_lighting_eye_path_reflection_vector(void)
@@ -193,12 +200,14 @@ void	test_lighting_eye_path_reflection_vector(void)
 	light = init_lighting();
 	light.eyev = create_vector(0, -sqrt(2)/2, -sqrt(2)/2);
 	light.normalv = create_vector(0, 0, -1);
+	free(light.light_p);
 	light.light_p = create_point_light(create_point(0, 10, -10), create_color(1, 1, 1));
 	light.m = create_material();
 	result = create_lighting(light);
 	TEST_ASSERT_TRUE(is_equal_double(1.6364, result.r));
 	TEST_ASSERT_TRUE(is_equal_double(1.6364, result.g));
 	TEST_ASSERT_TRUE(is_equal_double(1.6364, result.b));
+	free(light.light_p);
 }
 
 void	test_lighting_light_behind_surface(void)
@@ -209,12 +218,122 @@ void	test_lighting_light_behind_surface(void)
 	light = init_lighting();
 	light.eyev = create_vector(0, 0, -1);
 	light.normalv = create_vector(0, 0, -1);
+	free(light.light_p);
 	light.light_p = create_point_light(create_point(0, 0, 10), create_color(1, 1, 1));
 	light.m = create_material();
 	result = create_lighting(light);
 	TEST_ASSERT_TRUE(is_equal_double(0.1, result.r));
 	TEST_ASSERT_TRUE(is_equal_double(0.1, result.g));
 	TEST_ASSERT_TRUE(is_equal_double(0.1, result.b));
+	free(light.light_p);
+}
+
+void	test_lighting_surface_in_shadow(void)
+{
+	t_lighting	light;
+	t_color		result;
+
+	light = init_lighting();
+	light.eyev = create_vector(0, 0, -1);
+	light.normalv = create_vector(0, 0, -1);
+	free(light.light_p);
+	light.light_p = create_point_light(create_point(0, 0, 10), create_color(1, 1, 1));
+	light.m = create_material();
+	light.in_shadow = TRUE;
+	result = create_lighting(light);
+	TEST_ASSERT_TRUE(is_equal_double(0.1, result.r));
+	TEST_ASSERT_TRUE(is_equal_double(0.1, result.g));
+	TEST_ASSERT_TRUE(is_equal_double(0.1, result.b));
+	free(light.light_p);
+}
+
+void	test_there_no_shadow_when_nothing_collinear_with_point_and_light(void)
+{
+	t_world	*w;
+	t_point	p;
+
+	w = default_world();
+	p = create_point(0, 10, 0);
+	TEST_ASSERT_FALSE(is_shadowed(w, p));
+	destroy_world(w);
+}
+
+void	test_shadow_when_aobject_is_between_point_and_light(void)
+{
+	t_world	*w;
+	t_point	p;
+
+	w = default_world();
+	p = create_point(10, -10, 10);
+	TEST_ASSERT_TRUE(is_shadowed(w, p));
+	destroy_world(w);
+}
+
+void	test_there_no_shadow_when_an_object_is_behind_light(void)
+{
+	t_world	*w;
+	t_point	p;
+
+	w = default_world();
+	p = create_point(-20, 20, -20);
+	TEST_ASSERT_FALSE(is_shadowed(w, p));
+	destroy_world(w);
+}
+
+void	test_there_no_shadow_when_an_object_is_behind_point(void)
+{
+	t_world	*w;
+	t_point	p;
+
+	w = default_world();
+	p = create_point(-2, 2, -2);
+	TEST_ASSERT_FALSE(is_shadowed(w, p));
+	destroy_world(w);
+}
+
+void	test_shade_hit_is_given_an_intersection_in_shadow(void)
+{
+	t_world	*w;
+	t_point	p;
+	t_shape	*s1, *s2;
+	t_ray		ray;
+	t_intersections	*i;
+	t_comps		comps;
+	t_color		color;
+
+	w = create_world();
+	w->light_point = ft_lstnew(create_point_light(create_point(0, 0, -10), create_color(1, 1, 1)));
+	s1 = create_sphere();
+	s2 = create_sphere();
+	set_transform(s2,  translation(0, 0, 10));
+	ft_lstadd_front(&w->shapes, ft_lstnew(s1));
+	ft_lstadd_front(&w->shapes, ft_lstnew(s2));
+	ray = create_ray(create_point(0, 0, 5), create_vector(0, 0, 1));
+	i = create_intersection(4, s2);
+	comps = prepare_computation(i, ray);
+	color = shade_hit(w, comps);
+	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.r);
+	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.g);
+	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.b);
+	// TEST_ASSERT_EQUAL_DOUBLE(0.1, 0.3);
+	destroy_world(w);
+	ft_lstclear(&i, free);
+}
+
+void	test_hit_should_offset_the_point(void)
+{
+	t_intersections	*i;
+	t_shape		*shape;
+	t_ray		ray;
+	t_comps		comps;
+
+	ray = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
+	shape = create_sphere();
+	set_transform(shape, translation(0, 0, 1));
+	i = create_intersection(5, shape);
+	comps = prepare_computation(i, ray);
+	TEST_ASSERT_TRUE(comps.over_point.z < -EPSILON / 2);
+	TEST_ASSERT_TRUE(comps.point.z > comps.over_point.z);
 }
 
 void	test_light_and_shading(void)
@@ -235,4 +354,11 @@ void	test_light_and_shading(void)
 	RUN_TEST(test_lighting_eye_opposite_surface_light_offset_45);
 	RUN_TEST(test_lighting_eye_path_reflection_vector);
 	RUN_TEST(test_lighting_light_behind_surface);
+	RUN_TEST(test_lighting_surface_in_shadow);
+	RUN_TEST(test_there_no_shadow_when_nothing_collinear_with_point_and_light);
+	RUN_TEST(test_shadow_when_aobject_is_between_point_and_light);
+	RUN_TEST(test_there_no_shadow_when_an_object_is_behind_light);
+	RUN_TEST(test_there_no_shadow_when_an_object_is_behind_point);
+	RUN_TEST(test_shade_hit_is_given_an_intersection_in_shadow);
+	RUN_TEST(test_hit_should_offset_the_point);
 }

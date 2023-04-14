@@ -12,6 +12,8 @@ t_ray	set_ray(t_point origin, t_vector direction)
 void	set_transform(t_shape *shapes, t_matrix transform)
 {
 	shapes->transform = transform;
+	shapes->inverse = inverse_matrix(transform);
+	shapes->transpose = transposed_matrix(shapes->inverse);
 }
 
 t_ray	transform(t_ray ray, t_matrix matrix)

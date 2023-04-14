@@ -14,7 +14,8 @@ HEADER_FILES		=	minirt.h
 
 SRC					=	main.c \
 						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) \
-						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING)
+						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING) \
+						$(WORLD) $(SHADOWS)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
@@ -39,8 +40,13 @@ SHAPES				=	sphere.c create_shape.c
 
 LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c 
 
+WORLD				=	create_world.c intersect_world.c destroy_world.c \
+						computations_world.c
+
+SHADOWS				=	is_shadowed.c shade_hit.c
+
 DIRS				=	. srcs utils parser tupla color canvas matrix ray shapes \
-						light_and_shading
+						light_and_shading world shadows
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror

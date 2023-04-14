@@ -92,11 +92,19 @@ t_vector	normal_at(t_shape *sphere, t_point world_point);
 t_vector	reflect(t_vector in, t_vector normal);
 t_material	create_material(void);
 t_light_pnt *create_point_light(t_point position, t_color intensity);
-t_color	create_lighting(t_lighting args);
+t_color		create_lighting(t_lighting args);
 t_lighting	init_lighting(void);
-t_shape	*create_shape(void);
-
+t_shape		*create_shape(void);
+t_world		*default_world(void);
 t_shape		*create_sphere(void);
+t_world		*create_world(void);
+void		intersect_world(t_world *world, t_ray ray, t_intersections **intersect);
+void		destroy_world(t_world *w);
+
+t_bool		is_shadowed(t_world *world, t_point p);
+t_comps		prepare_computation(t_intersection *i, t_ray ray);
+t_color		shade_hit(t_world *world, t_comps comps);
+
 //// APAGAR ////
 void		print_array(char **str);
 void		print_matrix(t_matrix m);

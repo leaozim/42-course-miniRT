@@ -1,11 +1,12 @@
 #include "minirt.h"
 
-t_light_pnt	create_point_light(t_point position, t_color intensity)
+t_light_pnt	*create_point_light(t_point position, t_color intensity)
 {
-	t_light_pnt	light;
+	t_light_pnt	*light;
 
-	light.position = position;
-	light.intensity = intensity;
+	light = (t_light_pnt *)malloc(sizeof(t_light_pnt));
+	light->position = position;
+	light->intensity = intensity;
 	return (light);
 }
 

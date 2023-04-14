@@ -194,7 +194,7 @@ t_light_pnt;
 
 typedef struct  s_lighting
 {
-	t_light_pnt	light_p;
+	t_light_pnt	*light_p;
 	t_shape		*shape;
 	t_vector	eyev;
 	t_vector	normalv;

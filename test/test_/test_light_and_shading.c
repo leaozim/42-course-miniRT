@@ -112,15 +112,15 @@ void	test_point_light_position_and_intensity(void)
 {
 	t_color		intensi;
 	t_point		posit;
-	t_light_pnt	light;
+	t_light_pnt	*light;
 
 	intensi = create_color(1, 1 ,1);
 	posit = create_point(0, 0, 0);
 	light = create_point_light(posit, intensi);
-	TEST_ASSERT_TRUE(is_equal_tuple(posit, light.position));
-	TEST_ASSERT_TRUE(is_equal_double(1, light.intensity.r));
-	TEST_ASSERT_TRUE(is_equal_double(1, light.intensity.g));
-	TEST_ASSERT_TRUE(is_equal_double(1, light.intensity.b));
+	TEST_ASSERT_TRUE(is_equal_tuple(posit, light->position));
+	TEST_ASSERT_TRUE(is_equal_double(1, light->intensity.r));
+	TEST_ASSERT_TRUE(is_equal_double(1, light->intensity.g));
+	TEST_ASSERT_TRUE(is_equal_double(1, light->intensity.b));
 }
 
 void	test_default_material(void)

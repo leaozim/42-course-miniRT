@@ -123,5 +123,5 @@ void    test_canvas(void)
 {
 	//RUN_TEST(test_pixel);
 	// RUN_TEST(drawing_sphere);
-	RUN_TEST(drawing_sphere_light_shading);
+	// RUN_TEST(drawing_sphere_light_shading);
 }

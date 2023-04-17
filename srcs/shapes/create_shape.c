@@ -10,5 +10,6 @@ t_shape	*create_shape(void)
 	shape->material = create_material();
 	shape->transform = create_identity_matrix();
 	shape->transpose = create_identity_matrix();
+	shape->inverse = create_identity_matrix();
 	return (shape);
 }

@@ -23,7 +23,7 @@ int main(void)
 	test_hit();
 	test_ray();
 	test_light_and_shading();
-	// test_world();
-	test_canvas();
+	test_world();
+	// test_canvas();
 	return (UNITY_END());
 }

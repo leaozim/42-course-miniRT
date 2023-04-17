@@ -9,7 +9,7 @@ t_world	*create_world(void)
 		return (NULL);
 	world->light_point = NULL;
 	world->shapes = NULL;
-	return(world);
+	return (world);
 }
 
 t_world	*default_world(void)
@@ -19,7 +19,9 @@ t_world	*default_world(void)
 	t_shape	*sphere2;
 
 	world = create_world();
-	world->light_point = ft_lstnew(create_point_light(create_point(-10, 10, -10), create_color(1, 1, 1)));
+	world->light_point = \
+	ft_lstnew(create_point_light(create_point(-10, 10, -10), \
+	create_color(1, 1, 1)));
 	sphere1 = create_sphere();
 	sphere1->material.color = create_color(0.8, 1.0, 0.6);
 	sphere1->material.diffuse = 0.7;

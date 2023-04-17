@@ -303,7 +303,6 @@ void	test_shade_hit_is_given_an_intersection_in_shadow(void)
 	t_comps		comps;
 	t_color		color;
 
-
 	w = create_world();
 	w->light_point = ft_lstnew(create_point_light(create_point(0, 0, -10), create_color(1, 1, 1)));
 	s1 = create_sphere();

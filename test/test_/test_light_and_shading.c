@@ -318,7 +318,7 @@ void	test_shade_hit_is_given_an_intersection_in_shadow(void)
 	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.g);
 	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.b);
 	destroy_world(w);
-	ft_lstclear(&i, free);
+	free(i);
 }
 
 void	test_hit_should_offset_the_point(void)
@@ -335,6 +335,8 @@ void	test_hit_should_offset_the_point(void)
 	comps = prepare_computation(i, ray);
 	TEST_ASSERT_TRUE(comps.over_point.z < -EPSILON / 2);
 	TEST_ASSERT_TRUE(comps.point.z > comps.over_point.z);
+	destroy_shape(shape);
+	free(i);
 }
 
 void	test_light_and_shading(void)

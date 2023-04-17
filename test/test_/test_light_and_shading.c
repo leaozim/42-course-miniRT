@@ -132,7 +132,9 @@ void	test_default_material(void)
 	TEST_ASSERT_TRUE(is_equal_double(1, m.color.r));
 	TEST_ASSERT_TRUE(is_equal_double(1, m.color.g));
 	TEST_ASSERT_TRUE(is_equal_double(1, m.color.b));
-	TEST_ASSERT_TRUE(is_equal_double(0.1, m.ambient));
+	TEST_ASSERT_TRUE(is_equal_double(0.1, m.ambient.r));
+	TEST_ASSERT_TRUE(is_equal_double(0.1, m.ambient.g));
+	TEST_ASSERT_TRUE(is_equal_double(0.1, m.ambient.b));
 	TEST_ASSERT_TRUE(is_equal_double(0.9, m.diffuse));
 	TEST_ASSERT_TRUE(is_equal_double(0.9, m.specular));
 	TEST_ASSERT_TRUE(is_equal_double(200.0, m.shininess));
@@ -311,13 +313,11 @@ void	test_shade_hit_is_given_an_intersection_in_shadow(void)
 	ft_lstadd_front(&w->shapes, ft_lstnew(s2));
 	ray = create_ray(create_point(0, 0, 5), create_vector(0, 0, 1));
 	i = create_intersection(4, s2);
-	// t_lighting	light_attr = init_lighting();
 	comps = prepare_computation(i, ray);
 	color = shade_hit(w, comps, w->light_point);
 	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.r);
 	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.g);
 	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.b);
-	// TEST_ASSERT_EQUAL_DOUBLE(0.1, 0.3);
 	destroy_world(w);
 	ft_lstclear(&i, free);
 }

@@ -66,7 +66,7 @@ t_color	create_lighting(t_lighting args)
 	effect_color = multiply_color(args.m.color, args.light_p->intensity);
 	lightv = normalize(sub_tuples(args.light_p->position, args.point));
 	args.light_normal = dot_product(lightv, args.normalv);
-	ambient = multiply_color_scalar(effect_color, args.m.ambient);
+	ambient = multiply_color(effect_color, args.m.ambient);
 	if (args.in_shadow == TRUE)
 		return (ambient);
 	diffuse = get_diffuse(args, effect_color);

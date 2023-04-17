@@ -28,15 +28,15 @@ t_color	shade_hit(t_world *world, t_comps comps, t_list *light_list)
 	color = create_color(0, 0, 0);
 	light_attr = init_lighting();
 	free(light_attr.light_p);
+	light_attr.eyev = comps.eyev;
+	light_attr.normalv = comps.normalv;
+	light_attr.point = comps.point;
 	while (light_list)
 	{
 		aux[0] = color;
 		light_attr.light_p = light_list->content;
-		light_attr.eyev = comps.eyev;
-		light_attr.normalv = comps.normalv;
-		light_attr.point = comps.point;
 		light_attr.m = comps.shape->material;
-		light_attr.light_normal = is_shadowed(world, comps.over_point, light_list->content);
+		light_attr.in_shadow = is_shadowed(world, comps.point, light_list->content);
 		light_attr.shape = comps.shape;
 		aux[1] = create_lighting(light_attr);
 		color = adding_color(aux[0], aux[1]);

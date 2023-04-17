@@ -15,7 +15,7 @@ t_material	create_material(void)
 	t_material	material;
 
 	material.color = create_color(1, 1, 1);
-	material.ambient = 0.1;
+	material.ambient = create_color(0.1, 0.1, 0.1);
 	material.diffuse = 0.9;
 	material.specular = 0.9;
 	material.shininess = 200.0;

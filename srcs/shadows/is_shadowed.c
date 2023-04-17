@@ -5,7 +5,7 @@ static	t_bool	is_true_or_false(t_list *list, double distance)
 	t_intersection	*h;
 
 	h = hit(list);
-	if (h && ((t_intersection *)list->content)->t < distance)
+	if (h && h->t < distance)
 		return (ft_lstclear(&list, free), TRUE);
 	ft_lstclear(&list, free);
 	return (FALSE);

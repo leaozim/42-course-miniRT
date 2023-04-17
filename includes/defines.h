@@ -217,8 +217,8 @@ typedef struct s_comps
 	t_shape		*shape;
 	double		t;
 	t_point		point;
-	t_vector	normal;
-	t_vector	camera;
+	t_vector	normalv;
+	t_vector	eyev;
 	t_point		over_point;
 }	t_comps;
 

@@ -15,7 +15,7 @@ static int	new_color(double color)
 	return (new_color);
 }
 
-static int	merge_colors(double r, double g, double b)
+int	merge_colors(double r, double g, double b)
 {
 	return (new_color(r) << 16 | new_color(g) << 8 | new_color(b));
 }

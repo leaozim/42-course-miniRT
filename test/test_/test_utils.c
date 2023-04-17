@@ -56,6 +56,15 @@ t_shearing	set_shearing(void)
 	return (s);
 }
 
+t_color	formatted_color(t_color color, double r, double g, double b)
+{
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	color.mixed = merge_colors(r, g, b);
+	return (color);
+}
+
 void	destroy_shape(t_shape *shape)
 {
 	free(shape);

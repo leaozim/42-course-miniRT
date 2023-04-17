@@ -104,6 +104,8 @@ t_lighting	set_lighting(t_light_pnt *light_p, t_pos_attr pos, t_material m);
 t_bool		is_shadowed(t_world *world, t_point point, t_light_pnt *light_p);
 t_color		shade_hit(t_world *world, t_comps comps, t_list *light_list);
 void		destroy_light_point(void *light_p);
+t_color		color_at(t_world *world, t_ray ray);
+int			merge_colors(double r, double g, double b);
 
 
 t_shape		*create_sphere(void);

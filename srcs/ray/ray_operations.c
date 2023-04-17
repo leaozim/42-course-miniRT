@@ -43,3 +43,24 @@ t_color	shade_hit(t_world *world, t_comps comps, t_list *light_list)
 	}
 	return (color);
 }
+
+t_color	color_at(t_world *world, t_ray ray)
+{
+	t_intersections	*xs;
+	t_intersection	*get_hit;
+	t_comps			comps;
+	t_color			color;
+
+	xs = NULL;
+	intersect_world(world, ray, &xs);
+	get_hit = hit(xs);
+	if (!get_hit)
+	{
+		ft_lstclear(&xs, free);
+		return (create_color(0, 0, 0));
+	}
+	comps = prepare_computation(get_hit, ray);
+	color = shade_hit(world, comps, world->light_point);
+	ft_lstclear(&xs, free);
+	return (color);
+}

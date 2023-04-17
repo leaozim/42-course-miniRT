@@ -66,6 +66,8 @@ t_color	create_lighting(t_lighting args)
 	lightv = normalize(sub_tuples(args.light_p->position, args.point));
 	args.light_normal = dot_product(lightv, args.normalv);
 	ambient = multiply_color_scalar(effect_color, args.m.ambient);
+	if (args.light_normal == TRUE)
+		return (ambient);
 	diffuse = get_diffuse(args, effect_color);
 	specular = get_specular(args, lightv);
 	return (generate_color(ambient, diffuse, specular));

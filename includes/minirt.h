@@ -101,12 +101,12 @@ t_world		*create_world(void);
 void		intersect_world(t_world *world, t_ray ray, t_intersections **intersect);
 void		destroy_world(t_world *w);
 
-t_bool		is_shadowed(t_world *world, t_point p);
+// t_bool		is_shadowed(t_world *world, t_point p);
+t_bool		is_shadowed(t_world *world, t_point p, t_light_pnt *light_p);
 t_comps		prepare_computation(t_intersection *i, t_ray ray);
-// t_color	shade_hit(t_world *world, t_comps comps);
-t_color		shade_hit(t_world *world, t_comps comps, t_list *light_list);
+
 t_color		color_at(t_world *world, t_ray ray);
-// t_color		shade_hit(t_world *world, t_comps comps, t_list *light_list, t_lighting light);
+t_color	shade_hit(t_world *world, t_comps comps, t_list *light_list);
 void	destroy_light_point(void *light_p);
 int		merge_colors(double r, double g, double b);
 

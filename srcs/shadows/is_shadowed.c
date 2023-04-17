@@ -11,7 +11,7 @@ static	t_bool	is_true_or_false(t_list *list, double distance)
 	return (FALSE);
 }
 
-t_bool	is_shadowed(t_world *world, t_point p)
+t_bool	is_shadowed(t_world *world, t_point p, t_light_pnt *light_p)
 {
 	t_intersections	*list;
 	double			distance;
@@ -20,7 +20,7 @@ t_bool	is_shadowed(t_world *world, t_point p)
 	t_ray			ray;
 
 	list = NULL;
-	v = sub_tuples(((t_light_pnt *)world->light_point->content)->position, p);
+	v = sub_tuples(light_p->position, p);
 	distance = magnitude(v);
 	direction = normalize(v);
 	ray = create_ray(p, direction);

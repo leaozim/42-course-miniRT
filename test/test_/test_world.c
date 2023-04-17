@@ -195,5 +195,5 @@ void	test_world(void)
 	RUN_TEST(test_shading_intersection_inside);
 	RUN_TEST(test_color_ray_misses);
 	RUN_TEST(test_color_ray_hits);
-	//RUN_TEST(test_color_intersect_behind_ray);
+	RUN_TEST(test_color_intersect_behind_ray);
 }

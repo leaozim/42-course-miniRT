@@ -254,7 +254,7 @@ void	test_there_no_shadow_when_nothing_collinear_with_point_and_light(void)
 
 	w = default_world();
 	p = create_point(0, 10, 0);
-	TEST_ASSERT_FALSE(is_shadowed(w, p));
+	TEST_ASSERT_FALSE(is_shadowed(w, p, w->light_point->content));
 	destroy_world(w);
 }
 
@@ -265,7 +265,7 @@ void	test_shadow_when_aobject_is_between_point_and_light(void)
 
 	w = default_world();
 	p = create_point(10, -10, 10);
-	TEST_ASSERT_TRUE(is_shadowed(w, p));
+	TEST_ASSERT_TRUE(is_shadowed(w, p, w->light_point->content));
 	destroy_world(w);
 }
 
@@ -276,7 +276,7 @@ void	test_there_no_shadow_when_an_object_is_behind_light(void)
 
 	w = default_world();
 	p = create_point(-20, 20, -20);
-	TEST_ASSERT_FALSE(is_shadowed(w, p));
+	TEST_ASSERT_FALSE(is_shadowed(w, p, w->light_point->content));
 	destroy_world(w);
 }
 
@@ -287,7 +287,7 @@ void	test_there_no_shadow_when_an_object_is_behind_point(void)
 
 	w = default_world();
 	p = create_point(-2, 2, -2);
-	TEST_ASSERT_FALSE(is_shadowed(w, p));
+	TEST_ASSERT_FALSE(is_shadowed(w, p, w->light_point->content));
 	destroy_world(w);
 }
 
@@ -311,6 +311,7 @@ void	test_shade_hit_is_given_an_intersection_in_shadow(void)
 	ft_lstadd_front(&w->shapes, ft_lstnew(s2));
 	ray = create_ray(create_point(0, 0, 5), create_vector(0, 0, 1));
 	i = create_intersection(4, s2);
+	// t_lighting	light_attr = init_lighting();
 	comps = prepare_computation(i, ray);
 	color = shade_hit(w, comps, w->light_point);
 	TEST_ASSERT_EQUAL_DOUBLE(0.1, color.r);

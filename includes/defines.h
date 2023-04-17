@@ -119,7 +119,7 @@ typedef struct s_scene
 typedef struct s_material
 {
 	t_color		color;
-	double		ambient;
+	t_color		ambient;
 	double		diffuse;
 	double		specular;
 	double		shininess;
@@ -139,7 +139,6 @@ typedef struct s_shape
 	t_matrix	transpose;
 	t_matrix	inverse;
 }	t_shape;
-
 typedef struct s_shearing
 {
 	double	x_y;
@@ -201,11 +200,13 @@ typedef struct  s_lighting
 	t_vector	eyev;
 	t_vector	normalv;
 	t_point		point;
+	t_point		over_point;
 	t_material	m;
-	double		light_normal;;
+	double		light_normal;
+	t_bool		in_shadow;
 } t_lighting;
 
-typedef struct s_world	
+typedef struct s_world
 {
 	t_list	*light_point;
 	t_list	*shapes;
@@ -220,12 +221,5 @@ typedef struct s_comps
 	t_vector	eyev;
 	t_point		over_point;
 }	t_comps;
-
-typedef struct s_position_attributes
-{
-	t_vector	eyev;
-	t_vector	normalv;
-	t_point		point;
-}	t_pos_attr;
 
 #endif

@@ -9,9 +9,10 @@ t_lighting	init_lighting(void)
 	args.shape = NULL;
 	args.eyev = create_vector(0, 0, 0);
 	args.normalv = create_vector(0, 0, 0);
+	args.m = create_material();
+	args.in_shadow = FALSE;
 	args.light_p = create_point_light(create_point(0, 0, 0), \
 	create_color(0, 0, 0));
-	args.m = create_material();
 	return (args);
 }
 
@@ -65,8 +66,8 @@ t_color	create_lighting(t_lighting args)
 	effect_color = multiply_color(args.m.color, args.light_p->intensity);
 	lightv = normalize(sub_tuples(args.light_p->position, args.point));
 	args.light_normal = dot_product(lightv, args.normalv);
-	ambient = multiply_color_scalar(effect_color, args.m.ambient);
-	if (args.light_normal == TRUE)
+	ambient = multiply_color(effect_color, args.m.ambient);
+	if (args.in_shadow == TRUE)
 		return (ambient);
 	diffuse = get_diffuse(args, effect_color);
 	specular = get_specular(args, lightv);

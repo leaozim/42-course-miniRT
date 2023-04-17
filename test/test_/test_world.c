@@ -111,29 +111,6 @@ void	test_shading_intersection(void)
 	destroy_world(w);
 }
 
-void	test_shading_intersection_inside(void)
-{
-	t_world			*w;
-	t_shape			*shape;
-	t_ray			ray;
-	t_intersection	*i;
-	t_comps			comps;
-	t_color			color;
-
-	w = default_world();
-	ft_lstclear(&w->light_point, destroy_light_point);
-	w->light_point = ft_lstnew(create_point_light(create_point(0, 0.25, 0), create_color(1, 1, 1)));
-	ray = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
-	shape = (t_shape *)w->shapes->next->content;
-	i = create_intersection(0.5, shape);
-	comps = prepare_computation(i, ray);
-	color = shade_hit(w, comps, w->light_point);
-	TEST_ASSERT_TRUE(is_equal_double(0.90498, color.r));
-	TEST_ASSERT_TRUE(is_equal_double(0.90498, color.g));
-	TEST_ASSERT_TRUE(is_equal_double(0.90498, color.b));
-	free(i);
-	destroy_world(w);
-}
 
 void	test_color_ray_misses(void)
 {
@@ -165,6 +142,30 @@ void	test_color_ray_hits(void)
 	destroy_world(w);
 }
 
+void	test_shading_intersection_inside(void)
+{
+	t_world			*w;
+	t_shape			*shape;
+	t_ray			ray;
+	t_intersection	*i;
+	t_comps			comps;
+	t_color			color;
+
+	w = default_world();
+	ft_lstclear(&w->light_point, destroy_light_point);
+	w->light_point = ft_lstnew(create_point_light(create_point(0, 0.25, 0), create_color(1, 1, 1)));
+	ray = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
+	shape = (t_shape *)w->shapes->next->content;
+	i = create_intersection(0.5, shape);
+	comps = prepare_computation(i, ray);
+	color = shade_hit(w, comps, w->light_point);
+	TEST_ASSERT_TRUE(is_equal_double(0.90498, color.r));
+	TEST_ASSERT_TRUE(is_equal_double(0.90498, color.g));
+	TEST_ASSERT_TRUE(is_equal_double(0.90498, color.b));
+	free(i);
+	destroy_world(w);
+}
+
 void	test_color_intersect_behind_ray(void)
 {
 	t_world		*w;
@@ -174,9 +175,9 @@ void	test_color_intersect_behind_ray(void)
 
 	w = default_world();
 	outer = (t_shape *)w->shapes->content;
-	outer->material.color = formatted_color(outer->material.color, 1, 1, 1);
+	outer->material.ambient = create_color(1, 1, 1);
 	inner = (t_shape *)w->shapes->next->content;
-	inner->material.color = formatted_color(inner->material.color, 1, 1, 1);
+	inner->material.ambient = create_color(1, 1, 1);
 	ray = create_ray(create_point(0, 0, 0.75), create_vector(0, 0, -1));
 	color = color_at(w, ray);
 	TEST_ASSERT_TRUE(is_equal_double(inner->material.color.r, color.r));
@@ -192,8 +193,8 @@ void	test_world(void)
 	RUN_TEST(test_precomputing);
 	RUN_TEST(test_hit_intersection_inside);
 	RUN_TEST(test_shading_intersection);
-	RUN_TEST(test_shading_intersection_inside);
 	RUN_TEST(test_color_ray_misses);
 	RUN_TEST(test_color_ray_hits);
-	//RUN_TEST(test_color_intersect_behind_ray);
+	RUN_TEST(test_color_intersect_behind_ray);
+	RUN_TEST(test_shading_intersection_inside);
 }

@@ -1,4 +1,4 @@
-/* # include "../h_test.h"
+# include "../h_test.h"
 
 void    test_pixel(void)
 {
@@ -37,7 +37,7 @@ void	drawing_sphere(void)
 	t_canvas		canvas = create_canvas(canvas_pixels, canvas_pixels);
 	t_shape			*sphere = create_sphere();
 	t_point			origin = create_point(0, 0, -5);
-	t_color			rgb = create_color(0.3, 0, 0);
+	t_color			rgb = set_color(255, 0, 0);
 	void			*win = mlx_new_window(canvas.mlx, world_x, world_y, "test");
 	t_intersections	*list = NULL;
 	t_point			position;
@@ -123,6 +123,5 @@ void    test_canvas(void)
 {
 	//RUN_TEST(test_pixel);
 	// RUN_TEST(drawing_sphere);
-	//RUN_TEST(drawing_sphere_light_shading);
+	// RUN_TEST(drawing_sphere_light_shading);
 }
-*/

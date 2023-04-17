@@ -19,23 +19,25 @@ t_point	get_position(t_ray ray, double time)
 	return (position);
 }
 
-
 t_color	shade_hit(t_world *world, t_comps comps, t_list *light_list)
 {
-	t_pos_attr	pos_attr;
 	t_lighting	light_attr;
 	t_color		aux[2];
 	t_color		color;
 
 	color = create_color(0, 0, 0);
-	pos_attr = create_pos_attr(comps.eyev, comps.normalv, comps.over_point);
+	light_attr = init_lighting();
+	free(light_attr.light_p);
+	light_attr.eyev = comps.eyev;
+	light_attr.normalv = comps.normalv;
+	light_attr.point = comps.point;
 	while (light_list)
 	{
 		aux[0] = color;
-		light_attr = set_lighting(light_list->content, pos_attr,\
-		comps.shape->material);
-		light_attr.light_normal = is_shadowed(world, comps.over_point,\
-		light_list->content);
+		light_attr.light_p = light_list->content;
+		light_attr.m = comps.shape->material;
+		light_attr.in_shadow = \
+		is_shadowed(world, comps.point, light_list->content);
 		light_attr.shape = comps.shape;
 		aux[1] = create_lighting(light_attr);
 		color = adding_color(aux[0], aux[1]);

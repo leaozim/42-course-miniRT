@@ -34,6 +34,7 @@ void	test_the_default_material(void)
 	TEST_ASSERT_EQUAL_DOUBLE(0.9, s->material.diffuse);
 	TEST_ASSERT_EQUAL_DOUBLE(0.9, s->material.specular);
 	TEST_ASSERT_EQUAL_DOUBLE(200.0, s->material.shininess);
+	destroy_shape(s);
 }
 
 void	teste_assigning_a_material(void)
@@ -48,6 +49,8 @@ void	teste_assigning_a_material(void)
 	TEST_ASSERT_EQUAL_DOUBLE(0.9, s->material.diffuse);
 	TEST_ASSERT_EQUAL_DOUBLE(0.9, s->material.specular);
 	TEST_ASSERT_EQUAL_DOUBLE(200.0, s->material.shininess);
+	destroy_shape(s);
+
 }
 
 void	test_the_normal_plane_is_constant_everywhere(void)
@@ -134,7 +137,7 @@ void	test_ray_intersecting_a_plane_from_above(void)
 	TEST_ASSERT_EQUAL_INT(PLANE, aux->shapes->type);
 	TEST_ASSERT_EQUAL_INT(1, ft_lstsize(list));
 	destroy_shape(plane);
-	ft_lstclear(&list, NULL);
+	ft_lstclear(&list, free);
 }
 
 
@@ -154,7 +157,7 @@ void	test_ray_intersecting_a_plane_from_below(void)
 	TEST_ASSERT_EQUAL_INT(PLANE, aux->shapes->type);
 	TEST_ASSERT_EQUAL_INT(1, ft_lstsize(list));
 	destroy_shape(plane);
-	ft_lstclear(&list, NULL);
+	ft_lstclear(&list, free);
 }
 
 void test_shape(void)

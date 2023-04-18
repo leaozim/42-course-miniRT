@@ -36,7 +36,7 @@ MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c \
 RAY					=	ray_builder.c ray_operations.c ray_intersect.c ray_hit.c \
 						ray_transform.c
 
-SHAPES				=	sphere.c create_shape.c
+SHAPES				=	sphere.c create_shape.c plane.c
 
 LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c 	\
 						light_destroy.c

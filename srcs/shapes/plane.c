@@ -11,12 +11,12 @@ t_shape	*create_plane(void)
 	return (shape);
 }
 
-void	intersect_plane(t_shape *plane, t_ray ray, t_intersections **head)
+void	intersect_plane(t_shape *plane, t_ray ray, t_intersections **intersec)
 {
 	double	time;
 
 	if (fabs(ray.direction.y) < EPSILON|| is_equal_double(0.0, ray.direction.y))
 		return ;
 	time = -ray.origin.y / ray.direction.y;
-	add_sorted(head, ft_lstnew(create_intersection(time, plane)));
+	add_sorted(intersec, ft_lstnew(create_intersection(time, plane)));
 }

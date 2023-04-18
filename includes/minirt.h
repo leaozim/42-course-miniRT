@@ -112,6 +112,10 @@ int				merge_colors(double r, double g, double b);
 void			intersect_plane(t_shape *plane, t_ray ray, \
 				t_intersections **head);
 void			create_sphere_node(char **tokens, t_scene *scene);
+t_bool			intersect_cylinder(t_shape *cly, t_ray ray, \
+				t_intersections **intersec);
+t_cylinder		init_create_cylinder(char **tokens);
+t_shape			*create_cylinder(void);
 
 //// APAGAR ////
 void			print_array(char **str);

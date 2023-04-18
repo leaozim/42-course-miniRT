@@ -273,7 +273,7 @@ void	 intersecting_translated_sphere(void)
 	set_transform(sphere, translation(5, 0, 0));
 	transformed = transform(ray, sphere->transform);
 	intersect_sphere(sphere, transformed, &list);
-	TEST_ASSERT_EQUAL(0, xs.count);
+	TEST_ASSERT_NULL(list);
 	destroy_shape(sphere);
 	ft_lstclear(&list, free);
 }

@@ -7,6 +7,7 @@ void	test_ray_misses_cylinder(void)
 	t_point		origin1, origin2, origin3;
 	t_ray		ray1, ray2, ray3;
 	t_intersections	*list = NULL;
+	t_intersection	*aux;
 
 	cyl = create_cylinder();
 	origin1 = create_point(1, 0, 0);
@@ -29,41 +30,40 @@ void	test_ray_misses_cylinder(void)
 
 void test_ray_strikes_cylinder(void)
 {
-	// t_shape		*cyl;
-	// t_vector	direction1, direction2, direction3;
-	// t_point		origin1, origin2, origin3;
-	// t_ray		ray1, ray2, ray3;
-	// t_intersections	*list = NULL;
-	// t_intersection	*aux;
+	t_shape		*cyl;
+	t_vector	direction1, direction2, direction3;
+	t_point		origin1, origin2, origin3;
+	t_ray		ray1, ray2, ray3;
+	t_intersections	*list = NULL;
+	t_intersection	*aux;
 
-	// cyl = create_cylinder();
-	// origin1 = create_point(1, 0, -5);
-	// origin2 = create_point(0, 0, 0);
-	// origin3 = create_point(0.5, 0, -5);
-	// direction1 = normalize(create_vector(0, 0, 1));
-	// direction2 = normalize(create_vector(0, 0, 0));
-	// direction3 = normalize(create_vector(1, 1, 1));
-	// ray1 = create_ray(origin1, direction1);
-	// ray2 = create_ray(origin2, direction2);
-	// ray3 = create_ray(origin3, direction3);
-	// intersect_cylinder(cyl,ray1, &list);
-	// intersect_cylinder(cyl, ray2, &list);
-	// intersect_cylinder(cyl, ray3, &list);
-	// aux = (t_intersection *)list->content;
-	// TEST_ASSERT_EQUAL_INT(CYLINDER, aux->shapes->type);
-	// TEST_ASSERT_NULL(list);
-	// TEST_ASSERT_EQUAL_DOUBLE(4.0, aux->t);
-	// aux = (t_intersection *)list->next->content;
-	// TEST_ASSERT_EQUAL_DOUBLE(5.0, aux->t);
-	// aux = (t_intersection *)list->next->next->content;
-	// TEST_ASSERT_EQUAL_DOUBLE(6.0, aux->t);
-	// aux = (t_intersection *)list->next->next->next->content;
-	// TEST_ASSERT_EQUAL_DOUBLE(6.80798, aux->t);
-	// aux = (t_intersection *)list->next->next->next->next->content;
-	// TEST_ASSERT_EQUAL_DOUBLE(7.08872, aux->t);
-	// destroy_shape(cyl);
-	// ft_lstclear(&list, free);
-	TEST_ASSERT_EQUAL_INT(1, 2);
+	cyl = create_cylinder();
+	origin1 = create_point(1, 0, -5);
+	origin2 = create_point(0, 0, -5);
+	origin3 = create_point(0.5, 0, -5);
+	direction1 = normalize(create_vector(0, 0, 1));
+	direction2 = normalize(create_vector(0, 0, 1));
+	direction3 = normalize(create_vector(0.1, 1, 1));
+	ray1 = create_ray(origin1, direction1);
+	ray2 = create_ray(origin2, direction2);
+	ray3 = create_ray(origin3, direction3);
+	intersect_cylinder(cyl, ray1, &list);
+	intersect_cylinder(cyl, ray2, &list);
+	intersect_cylinder(cyl, ray3, &list);
+	aux = (t_intersection *)list->content;
+	TEST_ASSERT_EQUAL_INT(CYLINDER, aux->shapes->type);
+	TEST_ASSERT_EQUAL(5, ft_lstsize(list));
+	TEST_ASSERT_EQUAL_DOUBLE(4.0, aux->t);
+	aux = (t_intersection *)list->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(5.0, aux->t);
+	aux = (t_intersection *)list->next->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(6.0, aux->t);
+	aux = (t_intersection *)list->next->next->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(6.80798, aux->t);
+	aux = (t_intersection *)list->next->next->next->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(7.08872, aux->t);
+	destroy_shape(cyl);
+	ft_lstclear(&list, free);
 }
 
 void	test_normal_vector_cylinder(void)

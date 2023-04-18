@@ -20,10 +20,9 @@ void	intersect_cylinder(t_shape *cly, t_ray ray, t_intersections **intersec)
 	t_bhaskara	bhask;
 	t_xs		xs;
 
-	bhask.a = pow(ray.direction.x, 2) + pow(ray.direction.x, 2);
-	bhask.b = ray.origin.x * ray.direction.x * 2  + \
-			ray.origin.z * ray.direction.z; 
-	bhask.c = pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1;
+	bhask.a = pow(ray.direction.x, 2) + pow(ray.direction.z, 2);
+	bhask.b = 2 * ray.origin.x * ray.direction.x + 2 * ray.origin.z * ray.direction.z; 
+	bhask.c = (pow(ray.origin.x, 2) + pow(ray.origin.z, 2)) - 1;
 	bhask.delta = (bhask.b * bhask.b) - (4 * bhask.a * bhask.c);
 	if (bhask.delta < 0 || is_equal_double(bhask.a, 0.0))
 		return ;

@@ -9,7 +9,6 @@ void	intersect_world(t_world *world, t_ray ray, t_intersections **intersect)
 	shapes = world->shapes;
 	while (shapes)
 	{
-		printf("ola\n");
 		object = (t_shape *)shapes->content;
 		transformed = transform(ray, object->inverse);
 		if (object->type == SPHERE)

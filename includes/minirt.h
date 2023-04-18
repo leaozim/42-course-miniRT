@@ -111,6 +111,7 @@ void			destroy_light_point(void *light_p);
 int				merge_colors(double r, double g, double b);
 void			intersect_plane(t_shape *plane, t_ray ray, \
 				t_intersections **head);
+void			create_sphere_node(char **tokens, t_scene *scene);
 
 //// APAGAR ////
 void			print_array(char **str);

@@ -32,5 +32,6 @@ void		test_light_and_shading(void);
 double		color_rand();
 t_color		formatted_color(t_color color, double r, double g, double b);
 void		test_shape(void);
+void		test_cylinders(void);
 
 #endif

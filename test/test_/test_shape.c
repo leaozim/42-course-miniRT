@@ -68,27 +68,6 @@ void	test_the_normal_plane_is_constant_everywhere(void)
 	destroy_shape(plane);
 }
 
-// ​ ​Scenario​: Intersecting a scaled shape with a ray
-// ​ ​Given​r ← ray(point(0, 0, -5), vector(0, 0, 1))
-// ​ ​And​s ← test_shape()
-// ​ ​When​set_transform(s, scaling(2, 2, 2))
-// ​ ​And​xs ← intersect(s, r)
-// ​ ​Then​s.saved_ray.origin = point(0, 0, -2.5)
-// ​ ​And​s.saved_ray.direction = vector(0, 0, 0.5)
-
-// void	test_intersecting_a_scaled_shape_with_a_ray(void)
-// {
-// 	t_ray 			ray;
-// 	t_shape 		*s;
-// 	t_intersections *list;
-
-// 	list = NULL;
-// 	ray = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
-// 	s = create_sphere();
-// 	intersect_sphere();
-// }
-
-
 void	test_intersect_with_ray_parallel_to_the_plane(void)
 {
 

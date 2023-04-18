@@ -25,6 +25,7 @@ int main(void)
 	test_light_and_shading();
 	test_world();
 	test_shape();
-	// test_canvas();
+	test_cylinders();
+	test_canvas();
 	return (UNITY_END());
 }

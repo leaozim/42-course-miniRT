@@ -29,9 +29,10 @@ t_shearing	set_shearing(void);
 double		rand_double();
 double		rand_rgb();
 t_scene		create_sphere_test(void);
-void	destroy_shape(t_shape *shape);
-void	test_light_and_shading(void);
-double color_rand();
-t_color	formatted_color(t_color color, double r, double g, double b);
+void		destroy_shape(t_shape *shape);
+void		test_light_and_shading(void);
+double 		color_rand();
+t_color		formatted_color(t_color color, double r, double g, double b);
+double		radians(double degree);
 
 #endif

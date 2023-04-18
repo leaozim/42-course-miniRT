@@ -227,7 +227,11 @@ typedef struct s_cam
 	double		hsize;
 	double		vsize;
 	double		fov;
+	double		pixel_size;
+	double		half_width;
+	double		half_height;
 	t_matrix	transform;
+	t_matrix	inverse;
 }	t_cam;
 
 #endif

@@ -19,6 +19,8 @@ void	intersect_cylinder(t_shape *cly, t_ray ray, t_intersections **intersec)
 {
 	t_bhaskara	bhask;
 	t_xs		xs;
+	double		y0;
+	double		y1;
 
 	bhask.a = pow(ray.direction.x, 2) + pow(ray.direction.z, 2);
 	bhask.b = 2 * ray.origin.x * ray.direction.x + 2 * ray.origin.z * ray.direction.z; 
@@ -28,7 +30,13 @@ void	intersect_cylinder(t_shape *cly, t_ray ray, t_intersections **intersec)
 		return ;
 	xs.t1 = (-bhask.b - sqrt(bhask.delta)) / (2 * bhask.a);
 	xs.t2 = (-bhask.b + sqrt(bhask.delta)) / (2 * bhask.a);
-	add_sorted(intersec, ft_lstnew(create_intersection(xs.t1, cly)));
-	if (!is_equal_double(xs.t1, xs.t2))
-		add_sorted(intersec, ft_lstnew(create_intersection(xs.t2, cly)));
+	y0 = ray.origin.y + (xs.t1 * ray.direction.y);
+	y1 = ray.origin.y + (xs.t2  * ray.direction.y);
+	if (cly->cylinder.min < y0 && y0 < cly->cylinder.max)
+		add_sorted(intersec, ft_lstnew(create_intersection(xs.t1, cly)));
+	if (cly->cylinder.min < y1 && y1 < cly->cylinder.max)
+	{
+		if (!is_equal_double(xs.t1, xs.t2))
+			add_sorted(intersec, ft_lstnew(create_intersection(xs.t2, cly)));
+	}
 }

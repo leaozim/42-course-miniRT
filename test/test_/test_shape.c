@@ -170,15 +170,4 @@ void test_shape(void)
 	RUN_TEST(test_intersect_with_a_conplanar_ray);
 	RUN_TEST(test_ray_intersecting_a_plane_from_above);
 	RUN_TEST(test_ray_intersecting_a_plane_from_below);
-
-	// RUN_TEST(test_default_transform);
-
-	// RUN_TEST(test_default_transform);
-
-	// RUN_TEST(test_default_transform);
-
-	// RUN_TEST(test_default_transform);
-
-	// RUN_TEST(test_default_transform);
-
 }

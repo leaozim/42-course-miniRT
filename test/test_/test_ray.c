@@ -46,12 +46,9 @@ void	test_ray_intersects_sphere_two_points(void)
 	list = NULL;
 	r = create_ray(create_point(0, 0, -5), create_vector(0, 0, 1));
 	sphere = create_sphere();
-	xs = intersect_sphere(sphere, r, &list);
+	intersect_sphere(sphere, r, &list);
 	aux = (t_intersection *)list->content;
-	TEST_ASSERT_EQUAL(2, xs.count);
 	TEST_ASSERT_EQUAL(2, ft_lstsize(list));
-	TEST_ASSERT_EQUAL_DOUBLE(4.0, xs.t1);
-	TEST_ASSERT_EQUAL_DOUBLE(6.0, xs.t2);
 	TEST_ASSERT_EQUAL_DOUBLE(4.0, aux->t);
 	aux = (t_intersection *)list->next->content;
 	TEST_ASSERT_EQUAL_DOUBLE(6.0, aux->t);
@@ -70,11 +67,8 @@ void	test_ray_intersects_sphere_tangent(void)
 	list = NULL;
 	r = create_ray(create_point(0, 1, -5), create_vector(0, 0, 1));
 	sphere = create_sphere();
-	xs = intersect_sphere(sphere, r, &list);
+	intersect_sphere(sphere, r, &list);
 	aux = (t_intersection *)list->content;
-	TEST_ASSERT_EQUAL(2, xs.count);
-	TEST_ASSERT_EQUAL_DOUBLE(5.0, xs.t1);
-	TEST_ASSERT_EQUAL_DOUBLE(5.0, xs.t2);
 	TEST_ASSERT_EQUAL_DOUBLE(5.0, aux->t);
 	destroy_shape(sphere);
 	ft_lstclear(&list, free);
@@ -106,10 +100,7 @@ void	test_ray_originates_inside_sphere(void)
 	list = NULL;
 	r = create_ray(create_point(0, 0, 0), create_vector(0, 0, 1));
 	sphere = create_sphere();
-	xs = intersect_sphere(sphere, r, &list);
-	TEST_ASSERT_EQUAL(2, xs.count);
-	TEST_ASSERT_EQUAL_DOUBLE(-1.0, xs.t1);
-	TEST_ASSERT_EQUAL_DOUBLE(1.0, xs.t2);
+	intersect_sphere(sphere, r, &list);
 	TEST_ASSERT_EQUAL(2, ft_lstsize(list));
 	aux = (t_intersection *)list->content;
 	TEST_ASSERT_EQUAL_DOUBLE(-1.0, aux->t);
@@ -130,10 +121,7 @@ void	test_sphere_is_behind_ray(void)
 	list = NULL;
 	r = create_ray(create_point(0, 0, 5), create_vector(0, 0, 1));
 	sphere = create_sphere();
-	xs = intersect_sphere(sphere, r, &list);
-	TEST_ASSERT_EQUAL(2, xs.count);
-	TEST_ASSERT_EQUAL_DOUBLE(-6.0, xs.t1);
-	TEST_ASSERT_EQUAL_DOUBLE(-4.0, xs.t2);
+	intersect_sphere(sphere, r, &list);
 	TEST_ASSERT_EQUAL(2, ft_lstsize(list));
 	aux = (t_intersection *)list->content;
 	TEST_ASSERT_EQUAL_DOUBLE(-6.0, aux->t);
@@ -254,6 +242,7 @@ void	intersecting_scaled_sphere(void)
 	t_xs 			xs;
 	t_intersections	*list;
 	t_ray			ray, transformed;
+	t_intersection	*aux;
 
 	list = NULL;
 	point = create_point(0, 0, -5);
@@ -262,10 +251,11 @@ void	intersecting_scaled_sphere(void)
 	sphere = create_sphere();
 	set_transform(sphere, scaling(2, 2, 2));
 	transformed = transform(ray, inverse_matrix(sphere->transform));
-	xs = intersect_sphere(sphere, transformed, &list);
-	TEST_ASSERT_EQUAL(2, xs.count);
-	TEST_ASSERT_EQUAL_DOUBLE(3.0, xs.t1);
-	TEST_ASSERT_EQUAL_DOUBLE(7.0, xs.t2);
+	intersect_sphere(sphere, transformed, &list);
+	aux = (t_intersection *)list->content;
+	TEST_ASSERT_EQUAL_DOUBLE(3.0, aux->t);
+	aux = (t_intersection *)list->next->content;
+	TEST_ASSERT_EQUAL_DOUBLE(7.0, aux->t);
 	destroy_shape(sphere);
 	ft_lstclear(&list, free);
 }
@@ -282,7 +272,7 @@ void	 intersecting_translated_sphere(void)
 	sphere =  create_sphere();
 	set_transform(sphere, translation(5, 0, 0));
 	transformed = transform(ray, sphere->transform);
-	xs = intersect_sphere(sphere, transformed, &list);
+	intersect_sphere(sphere, transformed, &list);
 	TEST_ASSERT_EQUAL(0, xs.count);
 	destroy_shape(sphere);
 	ft_lstclear(&list, free);

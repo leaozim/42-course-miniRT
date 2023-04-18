@@ -81,8 +81,8 @@ t_matrix		scaling(double x, double y, double z);
 t_ray			create_ray(t_point origin, t_vector direction);
 t_ray			transform_ray(t_ray ray, t_matrix matrix);
 t_point			get_position(t_ray ray, double time);
-t_xs			intersect_sphere(t_shape *sphere, t_ray ray, \
-				t_intersections **list);
+void			intersect_sphere(t_shape *sphere, t_ray ray, \
+				t_intersections **intersec);
 t_intersection	*create_intersection(double t, t_shape *shapes);
 t_ray			transform(t_ray ray, t_matrix matrix);
 t_intersection	*hit(t_intersections *list);
@@ -112,7 +112,7 @@ int				merge_colors(double r, double g, double b);
 void			intersect_plane(t_shape *plane, t_ray ray, \
 				t_intersections **head);
 void			create_sphere_node(char **tokens, t_scene *scene);
-t_bool			intersect_cylinder(t_shape *cly, t_ray ray, \
+void			intersect_cylinder(t_shape *cly, t_ray ray, \
 				t_intersections **intersec);
 t_cylinder		init_create_cylinder(char **tokens);
 t_shape			*create_cylinder(void);

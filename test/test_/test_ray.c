@@ -38,7 +38,6 @@ void	test_ray_intersects_sphere_two_points(void)
 {
 	t_ray			r;
 	t_shape			*sphere;
-	t_xs 			xs;
 	t_intersections	*list;
 	t_intersection	*aux;
 
@@ -239,7 +238,6 @@ void	intersecting_scaled_sphere(void)
 	t_point			point;
 	t_vector		vec;
 	t_shape			*sphere;
-	t_xs 			xs;
 	t_intersections	*list;
 	t_ray			ray, transformed;
 	t_intersection	*aux;
@@ -263,7 +261,6 @@ void	intersecting_scaled_sphere(void)
 void	 intersecting_translated_sphere(void)
 {
 	t_shape			*sphere;
-	t_xs 			xs;
 	t_intersections	*list;
 	t_ray			ray, transformed;
 

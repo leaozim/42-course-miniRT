@@ -101,6 +101,7 @@ t_world		*create_world(void);
 void		intersect_world(t_world *world, t_ray ray, t_intersections **intersect);
 void		destroy_world(t_world *w);
 t_matrix	view_transformation(t_point from,  t_point to, t_vector up);
+t_cam		init_cam(double hsize, double vsize, double fov);
 
 // t_bool		is_shadowed(t_world *world, t_point p);
 t_bool		is_shadowed(t_world *world, t_point p, t_light_pnt *light_p);

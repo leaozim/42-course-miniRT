@@ -222,4 +222,12 @@ typedef struct s_comps
 	t_point		over_point;
 }	t_comps;
 
+typedef struct s_cam
+{
+	double		hsize;
+	double		vsize;
+	double		fov;
+	t_matrix	transform;
+}	t_cam;
+
 #endif

@@ -23,6 +23,7 @@ void		test_hit(void);
 void		test_ray(void);
 void		test_world(void);
 void		test_view_transformation(void);
+void		test_camera(void);
 t_bool		is_equal_tuple(t_tuple a, t_tuple b);
 t_shearing	set_shearing(void);
 double		rand_double();

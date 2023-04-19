@@ -101,6 +101,11 @@ t_shape			*create_sphere(void);
 t_world			*create_world(void);
 void			intersect_world(t_world *world, t_ray ray, \
 				t_intersections **intersect);
+t_matrix		view_transformation(t_point from, t_point to, t_vector up);
+t_cam			init_cam(double hsize, double vsize, double fov);
+t_ray			ray_for_pixel(t_cam cam, double px, double py);
+t_cam			set_camera_transform(t_cam camera, t_matrix transform);
+t_canvas		render(t_cam camera, t_world *world);
 void			destroy_world(t_world *w);
 t_shape			*create_plane(void);
 t_bool			is_shadowed(t_world *world, t_point p, t_light_pnt *light_p);
@@ -116,6 +121,7 @@ void			intersect_cylinder(t_shape *cly, t_ray ray, \
 				t_intersections **intersec);
 t_cylinder		init_create_cylinder(char **tokens);
 t_shape			*create_cylinder(void);
+
 
 //// APAGAR ////
 void			print_array(char **str);

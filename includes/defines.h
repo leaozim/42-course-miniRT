@@ -192,6 +192,7 @@ typedef struct s_light_pnt
 	t_point	position;
 	t_color	intensity;
 }	t_light_pnt;
+
 typedef struct s_lighting
 {
 	t_light_pnt	*light_p;
@@ -220,5 +221,17 @@ typedef struct s_comps
 	t_vector	eyev;
 	t_point		over_point;
 }	t_comps;
+
+typedef struct s_cam
+{
+	double		hsize;
+	double		vsize;
+	double		fov;
+	double		pixel_size;
+	double		half_width;
+	double		half_height;
+	t_matrix	transform;
+	t_matrix	inverse;
+}	t_cam;
 
 #endif

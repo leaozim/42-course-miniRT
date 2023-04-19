@@ -18,7 +18,7 @@ void	intersect_world(t_world *world, t_ray ray, t_intersections **intersect)
 		else if (object->type == AMBIENT)
 		{
 			printf("oi cilindro\n");
-			//cylinder_intersection(local_ray, object);
+			//intersect_cylinder(object, ray, intersect);
 		}
 		shapes = shapes->next;
 	}

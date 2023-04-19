@@ -22,6 +22,8 @@ void		test_ray_sphere(void);
 void		test_hit(void);
 void		test_ray(void);
 void		test_world(void);
+void		test_view_transformation(void);
+void		test_camera(void);
 t_bool		is_equal_tuple(t_tuple a, t_tuple b);
 t_shearing	set_shearing(void);
 double		rand_double();
@@ -33,5 +35,6 @@ double		color_rand();
 t_color		formatted_color(t_color color, double r, double g, double b);
 void		test_shape(void);
 void		test_cylinders(void);
+double		radians(double degree);
 
 #endif

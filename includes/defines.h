@@ -106,6 +106,9 @@ typedef struct s_cylinder
 	double		diameter;
 	double		height;
 	t_color		color;
+	double		min;
+	double		max;
+	t_bool		closed;
 }	t_cylinder;
 
 typedef struct s_scene

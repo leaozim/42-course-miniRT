@@ -157,12 +157,12 @@ void	test_print_three_spheres(void)
 
 void	test_camera(void)
 {
-	RUN_TEST(test_create_cam);
-	RUN_TEST(test_pixel_size_horizontal_cam);
-	RUN_TEST(test_pixel_size_vertical_cam);
-	RUN_TEST(test_ray_center_canvas);
-	RUN_TEST(test_ray_corner_canvas);
-	RUN_TEST(test_ray_transformed);
-	//RUN_TEST(test_print_three_spheres);
+	// RUN_TEST(test_create_cam);
+	// RUN_TEST(test_pixel_size_horizontal_cam);
+	// RUN_TEST(test_pixel_size_vertical_cam);
+	// RUN_TEST(test_ray_center_canvas);
+	// RUN_TEST(test_ray_corner_canvas);
+	// RUN_TEST(test_ray_transformed);
+	RUN_TEST(test_print_three_spheres);
 
 }

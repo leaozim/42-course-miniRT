@@ -59,7 +59,6 @@ void	test_ray_intersects_sphere_tangent(void)
 {
 	t_ray				r;
 	t_shape				*sphere;
-	t_xs 				xs;
 	t_intersections		*list;
 	t_intersection		*aux;
 
@@ -92,7 +91,6 @@ void	test_ray_originates_inside_sphere(void)
 {
 	t_ray				r;
 	t_shape				*sphere;
-	t_xs 				xs;
 	t_intersections		*list;
 	t_intersection		*aux;
 
@@ -113,7 +111,6 @@ void	test_sphere_is_behind_ray(void)
 {
 	t_ray				r;
 	t_shape				*sphere;
-	t_xs 				xs;
 	t_intersections		*list;
 	t_intersection		*aux;
 

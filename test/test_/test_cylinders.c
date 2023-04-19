@@ -7,7 +7,6 @@ void	test_ray_misses_cylinder(void)
 	t_point		origin1, origin2, origin3;
 	t_ray		ray1, ray2, ray3;
 	t_intersections	*list = NULL;
-	t_intersection	*aux;
 
 	cyl = create_cylinder();
 	origin1 = create_point(1, 0, 0);
@@ -68,7 +67,7 @@ void test_ray_strikes_cylinder(void)
 
 void	test_normal_vector_cylinder(void)
 {
-	 t_shape	*cyl;
+	t_shape	*cyl;
 	t_vector	normal1, normal2, normal3, normal4;
 
 	cyl = create_cylinder();
@@ -129,6 +128,70 @@ void	test_intersecting_constrained_cylinder(void)
 	ft_lstclear(&list, free);
 }
 
+void	test_default_closed_value_cylinder(void)
+{
+	t_shape		*cyl;
+
+	cyl = create_cylinder();
+	cyl->cylinder.closed = TRUE;
+	TEST_ASSERT_TRUE(cyl->cylinder.closed);
+
+}
+
+void	test_intersecting_caps_closed_cylinder(void)
+{
+	t_shape		*cyl;
+	t_vector	direction1, direction2, direction3, direction4, direction5;
+	t_ray		ray1, ray2, ray3, ray4, ray5;
+	t_intersections	*list = NULL;
+
+	cyl = create_cylinder();
+	cyl->cylinder.min = 1;
+	cyl->cylinder.max = 2;
+	cyl->cylinder.closed = FALSE;
+	direction1 = normalize(create_vector(0, -1, 0));
+	direction2 = normalize(create_vector(0, -1, 2));
+	direction3 = normalize(create_vector(0, -1, 1));
+	direction4 =normalize(create_vector(0, 1, 2));
+	direction5 = normalize(create_vector(0, 1, 1));
+	ray1 = create_ray(create_point(0, 3, 0), direction1);
+	ray2 = create_ray(create_point(0, 3, -2), direction2);
+	ray3 = create_ray(create_point(0, 4, -2), direction3);
+	ray4 = create_ray(create_point(0, 0, -2), direction4);	
+	ray5 = create_ray(create_point(0, -1, -2), direction5);
+	intersect_cylinder(cyl,ray1, &list);
+	intersect_cylinder(cyl, ray2, &list);
+	intersect_cylinder(cyl, ray3, &list);
+	intersect_cylinder(cyl, ray4, &list);
+	intersect_cylinder(cyl, ray5, &list);
+	TEST_ASSERT_NOT_NULL(list);
+	TEST_ASSERT_EQUAL(10, ft_lstsize(list));
+	destroy_shape(cyl);
+	ft_lstclear(&list, free);
+}
+
+void	test_normal_vector_on_a_cylinders_end_caps(void)
+{
+	t_shape		*cyl;
+	t_vector	normal1, normal2, normal3, normal4, normal5, normal6;
+
+	cyl = create_cylinder();
+	normal1 = normal_at(cyl, create_point(0, 1, 0));
+	normal2 = normal_at(cyl, create_point(0.5, 1, 0));
+	normal3 = normal_at(cyl, create_point(0, 1, 0.5));
+	normal4 = normal_at(cyl, create_point(0, 2, 0));
+	normal5 = normal_at(cyl, create_point(0.5, 2, 0));
+	normal6 = normal_at(cyl, create_point(0, 2, 0.5));
+	TEST_ASSERT_TRUE(is_equal_tuple(create_vector(0, -1, 0), normal1));
+	TEST_ASSERT_TRUE(is_equal_tuple(create_vector(0, -1, 0), normal2));
+	TEST_ASSERT_TRUE(is_equal_tuple(create_vector(0, -1, 0), normal3));
+	TEST_ASSERT_TRUE(is_equal_tuple(create_vector(0, 1, 0), normal4));
+	TEST_ASSERT_TRUE(is_equal_tuple(create_vector(0, 1, 0), normal5));
+	TEST_ASSERT_TRUE(is_equal_tuple(create_vector(0, 1, 0), normal6));
+	destroy_shape(cyl);
+}
+
+
 void	test_cylinders(void)
 {
 	RUN_TEST(test_ray_misses_cylinder);
@@ -136,4 +199,7 @@ void	test_cylinders(void)
 	RUN_TEST(test_normal_vector_cylinder);
 	RUN_TEST(test_default_minimum_and_maximum_cylinder);
 	RUN_TEST(test_intersecting_constrained_cylinder);
+	RUN_TEST(test_default_closed_value_cylinder);
+	RUN_TEST(test_intersecting_caps_closed_cylinder);
+	RUN_TEST(test_normal_vector_on_a_cylinders_end_caps);
 }

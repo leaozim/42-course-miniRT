@@ -16,10 +16,7 @@ void	intersect_world(t_world *world, t_ray ray, t_intersections **intersect)
 		else if (object->type == PLANE)
 			intersect_plane(object, ray, intersect);
 		else if (object->type == AMBIENT)
-		{
-			printf("oi cilindro\n");
-			//intersect_cylinder(object, ray, intersect);
-		}
+			intersect_cylinder(object, ray, intersect);
 		shapes = shapes->next;
 	}
 }

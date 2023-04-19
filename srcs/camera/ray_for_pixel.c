@@ -16,17 +16,16 @@ static t_ray	_ray_for_pixel(t_cam camera, double _world_x, double _world_y)
 	return (create_ray(origin, direction));
 }
 
-
 t_ray	ray_for_pixel(t_cam cam, double px, double py)
 {
-	double xoffset;
-	double yoffset;
-	double world_x;
-	double world_y;
+	double	xoffset;
+	double	yoffset;
+	double	world_x;
+	double	world_y;
 
 	xoffset = (px + 0.5) * cam.pixel_size;
 	yoffset = (py + 0.5) * cam.pixel_size;
 	world_x = cam.half_width - xoffset;
 	world_y = cam.half_height - yoffset;
-	return(_ray_for_pixel(cam, world_x, world_y));
+	return (_ray_for_pixel(cam, world_x, world_y));
 }

@@ -51,7 +51,7 @@ t_tuple		sub_tuples(t_tuple a, t_tuple b);
 t_tuple		div_tuples(t_tuple t, double div);
 double		magnitude(t_vector vec);
 t_vector	cross_product(t_vector vec1, t_vector vec2);
-t_canvas	create_canvas(int width, int height);
+t_canvas	create_canvas(int height, int width);
 void		destroy_mlx(void *mlx_ptr, void *win_ptr);
 void		write_pixel(t_canvas canvas, int x, int y, int color);
 t_matrix	create_identity_matrix(void);
@@ -104,6 +104,7 @@ t_matrix	view_transformation(t_point from,  t_point to, t_vector up);
 t_cam		init_cam(double hsize, double vsize, double fov);
 t_ray		ray_for_pixel(t_cam cam, double px, double py);
 t_cam		set_camera_transform(t_cam camera, t_matrix transform);
+t_canvas	render(t_cam camera, t_world *world);
 
 // t_bool		is_shadowed(t_world *world, t_point p);
 t_bool		is_shadowed(t_world *world, t_point p, t_light_pnt *light_p);

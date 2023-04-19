@@ -44,7 +44,7 @@ LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c \
 
 WORLD				= 	create_world.c intersect_world.c destroy_world.c computations_world.c
 
-CAMERA				= 	camera_builder.c ray_for_pixel.c camera_set.c
+CAMERA				= 	camera_builder.c ray_for_pixel.c camera_set.c render.c
 
 DIRS				=	. srcs utils parser tupla color canvas matrix ray shapes \
 						 light_and_shading world camera

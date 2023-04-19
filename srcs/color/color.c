@@ -12,6 +12,8 @@ static int	new_color(double color)
 	new_color = (int)(color * 255);
 	if (new_color > 255)
 		return (255);
+	if (new_color < 0)
+		return (0);
 	return (new_color);
 }
 

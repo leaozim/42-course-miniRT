@@ -296,10 +296,9 @@ void	test_there_no_shadow_when_an_object_is_behind_point(void)
 void	test_shade_hit_is_given_an_intersection_in_shadow(void)
 {
 	t_world	*w;
-	t_point	p;
 	t_shape	*s1, *s2;
 	t_ray		ray;
-	t_intersections	*i;
+	t_intersection	*i;
 	t_comps		comps;
 	t_color		color;
 
@@ -323,7 +322,7 @@ void	test_shade_hit_is_given_an_intersection_in_shadow(void)
 
 void	test_hit_should_offset_the_point(void)
 {
-	t_intersections	*i;
+	t_intersection	*i;
 	t_shape		*shape;
 	t_ray		ray;
 	t_comps		comps;

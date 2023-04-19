@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_plane	create_plane(char **tokens)
+t_plane	init_create_plane(char **tokens)
 {
 	t_plane	pl;
 
@@ -15,7 +15,7 @@ void	create_plane_node(char **tokens, t_scene *scene)
 	t_shape	*plane;
 
 	plane = ft_calloc(1, sizeof(t_shape));
-	plane->plane = create_plane(tokens);
+	plane->plane = init_create_plane(tokens);
 	plane->type = PLANE;
 	ft_lstadd_back(&scene->shapes, ft_lstnew(plane));
 	ft_free_array(tokens);

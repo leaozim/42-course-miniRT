@@ -124,8 +124,7 @@ typedef struct s_material
 	double		specular;
 	double		shininess;
 }	t_material;
-
-typedef struct s_shape
+typedef struct defines
 {
 	enum e_objects	type;
 	union
@@ -134,10 +133,10 @@ typedef struct s_shape
 		t_plane		plane;
 		t_cylinder	cylinder;
 	};
-	t_matrix	transform;
-	t_material	material;
-	t_matrix	transpose;
-	t_matrix	inverse;
+	t_matrix		transform;
+	t_material		material;
+	t_matrix		transpose;
+	t_matrix		inverse;
 }	t_shape;
 typedef struct s_shearing
 {
@@ -155,8 +154,7 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
-typedef t_list t_intersections;
-
+typedef t_list	t_intersections;
 typedef struct s_intersection
 {
 	double	t;
@@ -184,16 +182,15 @@ typedef struct s_sorted
 	t_intersection	*intersect;
 	t_intersections	*aux;
 	t_intersection	*intersect_head;	
-} 	t_sorted;
+}	t_sorted;
 
 typedef struct s_light_pnt
 {
 	t_point	position;
 	t_color	intensity;
-}
-t_light_pnt;
+}	t_light_pnt;
 
-typedef struct  s_lighting
+typedef struct s_lighting
 {
 	t_light_pnt	*light_p;
 	t_shape		*shape;
@@ -204,7 +201,7 @@ typedef struct  s_lighting
 	t_material	m;
 	double		light_normal;
 	t_bool		in_shadow;
-} t_lighting;
+}	t_lighting;
 
 typedef struct s_world
 {

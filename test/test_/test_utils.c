@@ -65,8 +65,6 @@ t_color	formatted_color(t_color color, double r, double g, double b)
 	return (color);
 }
 
-
-
 void	destroy_shape(t_shape *shape)
 {
 	free(shape);

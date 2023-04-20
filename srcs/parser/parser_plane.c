@@ -1,5 +1,40 @@
 #include "minirt.h"
 
+t_matrix	get_rotation_matrix(t_vector vector)
+{
+	double		x;
+	double		z;
+	double		ratio;
+	t_matrix	mz;
+	t_matrix	mx;
+
+	ratio = sqrt((vector.x * vector.x) + (vector.y * vector.y));
+	if (is_equal_double(0.0, ratio))
+		z = M_PI_2;
+	else
+		z = acos(vector.y / ratio);
+	x = acos(ratio);
+	mz = rotation_z(z);
+	mx = rotation_x(x);
+	return (multiply_matrix(mz, mx));
+}
+
+static int	set_plane_transformation(t_shape *obj)
+{
+	t_matrix	translat;
+	t_matrix	rotation;
+	t_matrix	transform;
+
+	translat = translation(
+			obj->plane.coord.x,
+			obj->plane.coord.y,
+			obj->plane.coord.z);
+	rotation = get_rotation_matrix(obj->plane.vector);
+	transform = multiply_matrix(translat, rotation);
+	set_transform(obj, transform);
+	return (0);
+}
+
 t_plane	init_create_plane(char **tokens)
 {
 	t_plane	pl;
@@ -12,12 +47,16 @@ t_plane	init_create_plane(char **tokens)
 
 void	create_plane_node(char **tokens, t_scene *scene)
 {
-	t_shape	*plane;
+	t_shape	*shape;
 
-	plane = ft_calloc(1, sizeof(t_shape));
-	plane->plane = init_create_plane(tokens);
-	plane->type = PLANE;
-	ft_lstadd_back(&scene->shapes, ft_lstnew(plane));
+	shape = create_plane();
+	shape = ft_calloc(1, sizeof(t_shape));
+	shape->plane = init_create_plane(tokens);
+	shape->type = PLANE;
+	shape->material.specular = 0.2;
+	set_color_material(tokens[3], shape);
+	set_plane_transformation(shape);
+	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
 	ft_free_array(tokens);
 }
 

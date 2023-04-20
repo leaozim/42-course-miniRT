@@ -67,11 +67,6 @@ void	test_computing_normal_translated_sphere(void)
 	destroy_shape(sphere);
 }
 
-double	radians(double degree)
-{
-	return ((degree / 180) * M_PI);
-}
-
 void	test_computing_normal_transformed_sphere(void)
 {
 	t_shape		*sphere;

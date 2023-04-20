@@ -13,10 +13,14 @@ void	intersect_world(t_world *world, t_ray ray, t_intersections **intersect)
 		transformed = transform(ray, object->inverse);
 		if (object->type == SPHERE)
 			intersect_sphere(object, transformed, intersect);
-		else if (object->type == PLANE)
+		if (object->type == PLANE)
+		{
 			intersect_plane(object, ray, intersect);
-		else if (object->type == AMBIENT)
+		}
+		if (object->type == CYLINDER)
+		{
 			intersect_cylinder(object, ray, intersect);
+		}
 		shapes = shapes->next;
 	}
 }

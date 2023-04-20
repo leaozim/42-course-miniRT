@@ -121,6 +121,12 @@ void			intersect_cylinder(t_shape *cly, t_ray ray, \
 				t_intersections **intersec);
 t_cylinder		init_create_cylinder(char **tokens);
 t_shape			*create_cylinder(void);
+t_world			*setup_world(t_scene *scene);
+void			set_shape_material(t_shape *shape, t_scene *s);
+t_cam			setup_camera(t_scene *s);
+double			radians(double degree);
+void			set_color_material(char *token, t_shape *shape);
+
 
 
 //// APAGAR ////

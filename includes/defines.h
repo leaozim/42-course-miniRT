@@ -127,6 +127,7 @@ typedef struct s_material
 	double		specular;
 	double		shininess;
 }	t_material;
+
 typedef struct defines
 {
 	enum e_objects	type;
@@ -141,6 +142,7 @@ typedef struct defines
 	t_matrix		transpose;
 	t_matrix		inverse;
 }	t_shape;
+
 typedef struct s_shearing
 {
 	double	x_y;
@@ -191,6 +193,7 @@ typedef struct s_light_pnt
 {
 	t_point	position;
 	t_color	intensity;
+	double	brightness;
 }	t_light_pnt;
 
 typedef struct s_lighting

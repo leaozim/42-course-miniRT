@@ -141,6 +141,7 @@ typedef struct defines
 	t_material		material;
 	t_matrix		transpose;
 	t_matrix		inverse;
+	t_vector		orientation;
 }	t_shape;
 
 typedef struct s_shearing
@@ -238,3 +239,5 @@ typedef struct s_cam
 }	t_cam;
 
 #endif
+
+

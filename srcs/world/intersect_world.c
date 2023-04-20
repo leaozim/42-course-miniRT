@@ -15,11 +15,11 @@ void	intersect_world(t_world *world, t_ray ray, t_intersections **intersect)
 			intersect_sphere(object, transformed, intersect);
 		if (object->type == PLANE)
 		{
-			intersect_plane(object, ray, intersect);
+			intersect_plane(object, transformed, intersect);
 		}
-		if (object->type == CYLINDER)
+		if (object->type == AMBIENT)
 		{
-			intersect_cylinder(object, ray, intersect);
+			intersect_cylinder(object, transformed, intersect);
 		}
 		shapes = shapes->next;
 	}

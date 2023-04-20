@@ -7,3 +7,9 @@ void	set_shape_material(t_shape *shape, t_scene *s)
 	shape->material.ambient = \
 	multiply_color_scalar(s->ambient->color, s->ambient->ratio);
 }
+
+int	set_orientation_vector(char *token, t_shape *s)
+{
+	s->orientation = (t_vector)(create_parameter(token, create_vector));
+	return (0);
+}

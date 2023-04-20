@@ -126,7 +126,9 @@ void			set_shape_material(t_shape *shape, t_scene *s);
 t_cam			setup_camera(t_scene *s);
 double			radians(double degree);
 void			set_color_material(char *token, t_shape *shape);
-
+t_matrix		total_rotation_matrix(t_vector vector);
+t_matrix		multiply_matrix_triple(t_matrix a, t_matrix b, t_matrix c);
+int				set_orientation_vector(char *token, t_shape *s);
 
 
 //// APAGAR ////

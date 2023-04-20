@@ -7,7 +7,7 @@ t_shape	*create_cylinder(void)
 	cylinder = create_shape();
 	if (!cylinder)
 		return (NULL);
-	cylinder->type = CYLINDER;
+	cylinder->type = AMBIENT;
 	cylinder->cylinder.closed = TRUE;
 	cylinder->cylinder.diameter = 1.0;
 	cylinder->cylinder.max = INFINITY;

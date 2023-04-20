@@ -19,7 +19,7 @@ void	create_cylinder_node(char **tokens, t_scene *scene)
 	cylinder = ft_calloc(1, sizeof(t_shape));
 	cylinder->cylinder = create_cylinder(tokens);
 	cylinder->type = CYLINDER;
-	ft_lstadd_back(&scene->shapes, ft_lstnew(cylinder));
+	ft_lstadd_front(&scene->shapes, ft_lstnew(cylinder));
 	ft_free_array(tokens);
 }
 

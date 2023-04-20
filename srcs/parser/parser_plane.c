@@ -17,7 +17,7 @@ void	create_plane_node(char **tokens, t_scene *scene)
 	plane = ft_calloc(1, sizeof(t_shape));
 	plane->plane = init_create_plane(tokens);
 	plane->type = PLANE;
-	ft_lstadd_back(&scene->shapes, ft_lstnew(plane));
+	ft_lstadd_front(&scene->shapes, ft_lstnew(plane));
 	ft_free_array(tokens);
 }
 

@@ -22,7 +22,8 @@ UTILS				=	error.c \
 
 PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
 						parser_cylinder.c create_parameter.c check_file.c \
-						parser_light.c parser_plane.c parser_ambient.c
+						parser_light.c parser_plane.c parser_ambient.c \
+						parser_shape.c
 
 TUPLA				=	create_tuple.c operations_tuple.c operations_tuple2.c
 
@@ -43,7 +44,7 @@ LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c 	\
 						light_destroy.c
 
 WORLD				=	create_world.c intersect_world.c destroy_world.c \
-						computations_world.c is_shadowed.c 
+						computations_world.c is_shadowed.c setup_world.c
 
 CAMERA				= 	camera_builder.c ray_for_pixel.c camera_set.c render.c
 

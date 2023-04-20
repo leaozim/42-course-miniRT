@@ -16,3 +16,8 @@ int	is_equal_double(double a, double b)
 		return (TRUE);
 	return (FALSE);
 }
+
+double	radians(double degree)
+{
+	return ((degree / 180) * M_PI);
+}

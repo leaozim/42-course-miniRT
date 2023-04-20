@@ -117,6 +117,11 @@ int				merge_colors(double r, double g, double b);
 void			intersect_plane(t_shape *plane, t_ray ray, \
 				t_intersections **head);
 void			create_sphere_node(char **tokens, t_scene *scene);
+t_world			*setup_world(t_scene *scene);
+void			set_shape_material(t_shape *shape, t_scene *s);
+t_cam			setup_camera(t_scene *s);
+double			radians(double degree);
+
 
 
 //// APAGAR ////

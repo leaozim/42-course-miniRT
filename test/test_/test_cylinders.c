@@ -135,7 +135,7 @@ void	test_default_closed_value_cylinder(void)
 	cyl = create_cylinder();
 	cyl->cylinder.closed = TRUE;
 	TEST_ASSERT_TRUE(cyl->cylinder.closed);
-
+	destroy_shape(cyl);
 }
 
 void	test_intersecting_caps_closed_cylinder(void)
@@ -148,7 +148,7 @@ void	test_intersecting_caps_closed_cylinder(void)
 	cyl = create_cylinder();
 	cyl->cylinder.min = 1;
 	cyl->cylinder.max = 2;
-	cyl->cylinder.closed = FALSE;
+	cyl->cylinder.closed = TRUE;
 	direction1 = normalize(create_vector(0, -1, 0));
 	direction2 = normalize(create_vector(0, -1, 2));
 	direction3 = normalize(create_vector(0, -1, 1));
@@ -176,6 +176,9 @@ void	test_normal_vector_on_a_cylinders_end_caps(void)
 	t_vector	normal1, normal2, normal3, normal4, normal5, normal6;
 
 	cyl = create_cylinder();
+	cyl->cylinder.min = 1;
+	cyl->cylinder.max = 2;
+	cyl->cylinder.closed = TRUE;
 	normal1 = normal_at(cyl, create_point(0, 1, 0));
 	normal2 = normal_at(cyl, create_point(0.5, 1, 0));
 	normal3 = normal_at(cyl, create_point(0, 1, 0.5));
@@ -190,7 +193,6 @@ void	test_normal_vector_on_a_cylinders_end_caps(void)
 	TEST_ASSERT_TRUE(is_equal_tuple(create_vector(0, 1, 0), normal6));
 	destroy_shape(cyl);
 }
-
 
 void	test_cylinders(void)
 {

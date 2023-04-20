@@ -1,6 +1,5 @@
 #include "minirt.h"
 
-
 static int	set_sphere_transformation(t_shape *sphere)
 {
 	t_matrix	transform;
@@ -55,4 +54,3 @@ int	check_id_sp(char **tokens)
 	ft_free_array(tokens);
 	return (OK);
 }
-

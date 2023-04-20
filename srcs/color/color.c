@@ -17,11 +17,6 @@ static int	new_color(double color)
 	return (new_color);
 }
 
-int	merge_colors(double r, double g, double b)
-{
-	return (new_color(r) << 16 | new_color(g) << 8 | new_color(b));
-}
-
 t_color	create_color(double r, double g, double b)
 {
 	t_color	color;
@@ -29,7 +24,7 @@ t_color	create_color(double r, double g, double b)
 	color.r = r;
 	color.g = g;
 	color.b = b;
-	color.mixed = merge_colors(r, g, b);
+	color.mixed = new_color(r) << 16 | new_color(g) << 8 | new_color(b);
 	return (color);
 }
 

@@ -45,7 +45,7 @@ int	main(int argc, char *argv[])
 	world = setup_world(&scene);
 	camera = setup_camera(&scene);
 	canvas = render(camera, world);
-	win = mlx_new_window(canvas.mlx, 1337, 800, "miniRT");
+	win = mlx_new_window(canvas.mlx, 600, 400, "miniRT");
 	mlx_put_image_to_window(canvas.mlx, win, canvas.image,	0, 0);
 	destroy_minirt(&scene);
 	mlx_loop(canvas.mlx);

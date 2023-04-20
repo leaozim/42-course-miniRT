@@ -14,8 +14,8 @@ t_light_pnt	*create_light(char **tokens, t_light_pnt *light_p)
 void	create_light_node(char **tokens, t_scene *scene)
 {
 	t_light_pnt	*light_p;
-	t_point 	position;
-	t_color 	intensity;
+	t_point		position;
+	t_color		intensity;
 
 	light_p = create_point_light(position, intensity);
 	light_p = create_light(tokens, light_p);

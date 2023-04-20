@@ -21,3 +21,13 @@ double	radians(double degree)
 {
 	return ((degree / 180) * M_PI);
 }
+
+t_bool	is_equal_vectors(t_vector a, t_vector b)
+{
+	return (
+		is_equal_double(a.x, b.x)
+		&& is_equal_double(a.y, b.y)
+		&& is_equal_double(a.z, b.z)
+		&& is_equal_double(a.w, b.w)
+	);
+}

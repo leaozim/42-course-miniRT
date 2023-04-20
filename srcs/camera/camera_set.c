@@ -20,7 +20,7 @@ t_cam	set_camera(t_cam cam, t_camera *camera)
 		aux = cross_product((t_tuple){0, 1, 0, 0}, camera->vector);
 		up = cross_product(camera->vector, aux);
 	}
-	transformation = view_transformation(camera->point_of_view,\
+	transformation = view_transformation(camera->point_of_view, \
 	camera->vector, up);
 	cam = set_camera_transform(cam, transformation);
 	return (cam);
@@ -30,6 +30,6 @@ t_cam	setup_camera(t_scene *s)
 {
 	t_cam	camera;
 
-	camera = init_cam(1337, 800, radians(s->camera->field_of_view));
-	return(set_camera(camera, s->camera));
+	camera = init_cam(600, 400, radians(s->camera->field_of_view));
+	return (set_camera(camera, s->camera));
 }

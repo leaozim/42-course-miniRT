@@ -15,7 +15,7 @@ HEADER_FILES		=	minirt.h
 SRC					=	main.c \
 						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) \
 						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING) \
-						$(WORLD) $(CAMERA)
+						$(WORLD) $(SHADOWS) $(CAMERA)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
@@ -37,17 +37,18 @@ MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c \
 RAY					=	ray_builder.c ray_operations.c ray_intersect.c ray_hit.c \
 						ray_transform.c
 
-SHAPES				=	sphere.c create_shape.c
+SHAPES				=	sphere.c create_shape.c plane.c cylinder.c
 
-LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c \
-						is_shadowed.c light_destroy.c
+LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c 	\
+						light_destroy.c
 
-WORLD				= 	create_world.c intersect_world.c destroy_world.c computations_world.c
+WORLD				=	create_world.c intersect_world.c destroy_world.c \
+						computations_world.c is_shadowed.c 
 
-CAMERA				= 	camera_builder.c ray_for_pixel.c camera_set.c
+CAMERA				= 	camera_builder.c ray_for_pixel.c camera_set.c render.c
 
 DIRS				=	. srcs utils parser tupla color canvas matrix ray shapes \
-						 light_and_shading world camera
+						light_and_shading world camera
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror

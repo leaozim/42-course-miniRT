@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_cylinder	create_cylinder(char **tokens)
+t_cylinder	init_create_cylinder(char **tokens)
 {
 	t_cylinder	cy;
 
@@ -17,7 +17,7 @@ void	create_cylinder_node(char **tokens, t_scene *scene)
 	t_shape	*cylinder;
 
 	cylinder = ft_calloc(1, sizeof(t_shape));
-	cylinder->cylinder = create_cylinder(tokens);
+	cylinder->cylinder = init_create_cylinder(tokens);
 	cylinder->type = CYLINDER;
 	ft_lstadd_back(&scene->shapes, ft_lstnew(cylinder));
 	ft_free_array(tokens);

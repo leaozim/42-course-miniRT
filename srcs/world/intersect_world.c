@@ -14,14 +14,11 @@ void	intersect_world(t_world *world, t_ray ray, t_intersections **intersect)
 		if (object->type == SPHERE)
 			intersect_sphere(object, transformed, intersect);
 		else if (object->type == PLANE)
-		{
-			printf("oi plano\n");
-			//plane_intersection(local_ray, object);
-		}			
+			intersect_plane(object, ray, intersect);
 		else if (object->type == AMBIENT)
 		{
 			printf("oi cilindro\n");
-			//cylinder_intersection(local_ray, object);
+			//intersect_cylinder(object, ray, intersect);
 		}
 		shapes = shapes->next;
 	}

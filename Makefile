@@ -15,7 +15,7 @@ HEADER_FILES		=	minirt.h
 SRC					=	main.c \
 						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) \
 						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING) \
-						$(WORLD) $(SHADOWS) $(CAMERA)
+						$(WORLD) $(SHADOWS) $(CAMERA) $(MLX)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
@@ -46,10 +46,12 @@ LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c 	\
 WORLD				=	create_world.c intersect_world.c destroy_world.c \
 						computations_world.c is_shadowed.c setup_world.c
 
+MLX 				=	destroy_window.c handle_hook.c
+
 CAMERA				= 	camera_builder.c ray_for_pixel.c camera_set.c render.c
 
 DIRS				=	. srcs utils parser tupla color canvas matrix ray shapes \
-						light_and_shading world camera
+						light_and_shading world camera mlx
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror
@@ -57,7 +59,7 @@ CFLAGS				=	-Wall -Wextra -Werror
 VPATH				=	$(addprefix ./srcs/, $(DIRS))
 VPATH				+=	$(HEADER_PATH)
 
-CFLAGS				+=	-g
+CFLAGS				+=	-g3
 
 WHITE				=	\e[00m
 GREEN				=	\e[32m

@@ -128,6 +128,9 @@ double			radians(double degree);
 void			set_color_material(char *token, t_shape *shape);
 t_matrix		get_rotation_matrix(t_vector orientation);
 t_bool			is_equal_vectors(t_vector a, t_vector b);
+int				close_window(t_canvas *canvas);
+int				keyboard_events(int key, t_canvas *canvas);
+void			handle_hooks(t_canvas *canvas);
 
 //// APAGAR ////
 void			print_array(char **str);

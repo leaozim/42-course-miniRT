@@ -8,6 +8,11 @@
 # define VECTOR_W 0
 # define POINT_W 1
 # define MTRX_MAX 4
+# define KEY_PRESS 02
+# define ESC 65307
+# define DESTROY_NOTIFY 17
+# define NO_EVENT_MASK	0L
+
 
 # include "minirt.h"
 

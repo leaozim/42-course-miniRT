@@ -27,17 +27,13 @@ void	print_matrix(t_matrix m)
 	printf("\n\n");
 }
 
-
 int	main(int argc, char *argv[])
 {
 	t_scene		scene;
 	t_world		*world;
 	t_cam		camera;
 	t_canvas	canvas;
-	void		*win;
 
-	(void)world;
-	(void)camera;
 	if (check_argc(argc) || check_file(argv[1]) == ERROR)
 		return (EXIT_FAILURE);
 	ft_bzero(&scene, sizeof(t_scene));
@@ -45,9 +41,8 @@ int	main(int argc, char *argv[])
 	world = setup_world(&scene);
 	camera = setup_camera(&scene);
 	canvas = render(camera, world);
-	win = mlx_new_window(canvas.mlx, 600, 400, "miniRT");
-	mlx_put_image_to_window(canvas.mlx, win, canvas.image,	0, 0);
-	destroy_minirt(&scene);
+	handle_hooks(&canvas);
 	mlx_loop(canvas.mlx);
+	destroy_minirt(&scene); 
 	return (0);
 }

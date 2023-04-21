@@ -86,3 +86,15 @@ t_matrix	inverse_matrix(t_matrix mtx)
 	inver.size = mtx.size;
 	return (inver);
 }
+
+t_matrix	multiply_matrix_triple(t_matrix a, t_matrix b, t_matrix c)
+{
+	t_matrix	aux;
+	t_matrix	multiply;
+
+	if (a.size != b.size || b.size != c.size || c.size != a.size)
+		return (create_identity_matrix());
+	aux = multiply_matrix(a, b);
+	multiply = multiply_matrix(aux, c);
+	return (multiply);
+}

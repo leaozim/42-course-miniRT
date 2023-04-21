@@ -63,7 +63,7 @@ int	check_file(char *filename)
 {
 	char	*line;
 	int		fd;
-	t_bool	is_duplicated[3];
+	t_bool	is_duplicated[10];
 
 	is_duplicated[CAMERA] = FALSE;
 	is_duplicated[LIGHT] = FALSE;

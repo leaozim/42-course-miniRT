@@ -4,7 +4,7 @@
 # define EPSILON 0.0001
 # define CAMERA 0
 # define LIGHT 1
-# define CYLINDER 2
+# define AMBIENT 2
 # define VECTOR_W 0
 # define POINT_W 1
 # define MTRX_MAX 4
@@ -49,7 +49,7 @@ enum e_objects
 {
 	SPHERE,
 	PLANE,
-	AMBIENT,
+	CYLINDER,
 };
 
 typedef struct s_color
@@ -146,6 +146,7 @@ typedef struct defines
 	t_material		material;
 	t_matrix		transpose;
 	t_matrix		inverse;
+	t_vector		orientation;
 }	t_shape;
 
 typedef struct s_shearing
@@ -243,3 +244,5 @@ typedef struct s_cam
 }	t_cam;
 
 #endif
+
+

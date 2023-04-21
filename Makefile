@@ -59,7 +59,7 @@ CFLAGS				=	-Wall -Wextra -Werror
 VPATH				=	$(addprefix ./srcs/, $(DIRS))
 VPATH				+=	$(HEADER_PATH)
 
-CFLAGS				+=	-g3
+CFLAGS				+=	-g3 -O3 -ffast-math
 
 WHITE				=	\e[00m
 GREEN				=	\e[32m

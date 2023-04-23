@@ -13,3 +13,9 @@ int	set_orientation_vector(char *token, t_shape *s)
 	s->orientation = (t_vector)(create_parameter(token, create_vector));
 	return (0);
 }
+
+void	set_color_material(t_color color, t_shape *shape)
+{
+	shape->material.color = color;
+}
+

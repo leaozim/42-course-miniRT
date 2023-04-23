@@ -96,7 +96,6 @@ t_light_pnt		*create_point_light(t_point position, t_color intensity);
 t_color			create_lighting(t_lighting args);
 t_lighting		init_lighting(void);
 t_shape			*create_shape(void);
-t_world			*default_world(void);
 t_shape			*create_sphere(void);
 t_world			*create_world(void);
 void			intersect_world(t_world *world, t_ray ray, \
@@ -104,7 +103,6 @@ void			intersect_world(t_world *world, t_ray ray, \
 t_matrix		view_transformation(t_point from, t_point to, t_vector up);
 t_cam			init_cam(double hsize, double vsize, double fov);
 t_ray			ray_for_pixel(t_cam cam, double px, double py);
-t_cam			set_camera_transform(t_cam camera, t_matrix transform);
 t_canvas		render(t_cam camera, t_world *world);
 void			destroy_world(t_world *w);
 t_shape			*create_plane(void);
@@ -119,13 +117,12 @@ void			intersect_plane(t_shape *plane, t_ray ray, \
 void			create_sphere_node(char **tokens, t_scene *scene);
 void			intersect_cylinder(t_shape *cly, t_ray ray, \
 				t_intersections **intersec);
-t_cylinder		init_create_cylinder(char **tokens);
 t_shape			*create_cylinder(void);
 t_world			*setup_world(t_scene *scene);
 void			set_shape_material(t_shape *shape, t_scene *s);
 t_cam			setup_camera(t_scene *s);
 double			radians(double degree);
-void			set_color_material(char *token, t_shape *shape);
+void			set_color_material(t_color color, t_shape *shape);
 t_matrix		get_rotation_matrix(t_vector orientation);
 t_bool			is_equal_vectors(t_vector a, t_vector b);
 int				close_window(t_canvas *canvas);
@@ -134,10 +131,12 @@ void			handle_hooks(t_canvas *canvas);
 t_matrix		total_rotation_matrix(t_vector vector);
 t_matrix		multiply_matrix_triple(t_matrix a, t_matrix b, t_matrix c);
 int				set_orientation_vector(char *token, t_shape *s);
+t_matrix	full_rotation_matrix(t_vector vector);
 
 
 //// APAGAR ////
 void			print_array(char **str);
 void			print_matrix(t_matrix m);
+void	print_tuple(t_tuple tupla);
 
 #endif

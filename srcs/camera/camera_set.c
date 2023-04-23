@@ -1,13 +1,13 @@
 #include "minirt.h"
 
-t_cam	set_camera_transform(t_cam camera, t_matrix transform)
+static t_cam	set_camera_transform(t_cam camera, t_matrix transform)
 {
 	camera.transform = transform;
 	camera.inverse = inverse_matrix(transform);
 	return (camera);
 }
 
-t_cam	set_camera(t_cam cam, t_camera *camera)
+static t_cam	set_camera(t_cam cam, t_camera *camera)
 {
 	t_matrix	transformation;
 	t_vector	aux;
@@ -30,6 +30,6 @@ t_cam	setup_camera(t_scene *s)
 {
 	t_cam	camera;
 
-	camera = init_cam(600, 400, radians(s->camera->field_of_view));
+	camera = init_cam(WIDTH, HEIGHT, radians(s->camera->field_of_view));
 	return (set_camera(camera, s->camera));
 }

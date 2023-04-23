@@ -16,7 +16,7 @@ static int	set_plane_transformation(t_shape *obj)
 	return (0);
 }
 
-t_plane	init_create_plane(char **tokens)
+static t_plane	init_create_plane(char **tokens)
 {
 	t_plane	pl;
 
@@ -32,8 +32,7 @@ void	create_plane_node(char **tokens, t_scene *scene)
 
 	shape = create_plane();
 	shape->plane = init_create_plane(tokens);
-	set_color_material(tokens[3], shape);
-	shape->material.color = shape->plane.color;
+	set_color_material(shape->plane.color, shape);
 	set_plane_transformation(shape);
 	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
 	ft_free_array(tokens);

@@ -38,8 +38,3 @@ t_color	set_color(double r, double g, double b)
 	return (create_color(normalize_color(r), normalize_color(g), \
 	normalize_color(b)));
 }
-
-void	set_color_material(char *token, t_shape *shape)
-{
-	shape->material.color = create_parameter_color(token);
-}

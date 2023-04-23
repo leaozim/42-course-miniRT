@@ -12,7 +12,8 @@
 # define ESC 65307
 # define DESTROY_NOTIFY 17
 # define NO_EVENT_MASK	0L
-
+# define WIDTH 850
+# define HEIGHT 650
 
 # include "minirt.h"
 

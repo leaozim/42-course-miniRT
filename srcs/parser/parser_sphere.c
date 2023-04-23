@@ -19,7 +19,7 @@ static int	set_sphere_transformation(t_shape *sphere)
 	return (0);
 }
 
-t_sphere	init_create_sphere(char **tokens)
+static t_sphere	init_create_sphere(char **tokens)
 {
 	t_sphere	sp;
 
@@ -36,7 +36,7 @@ void	create_sphere_node(char **tokens, t_scene *scene)
 	shape = create_sphere();
 	shape->sphere = init_create_sphere(tokens);
 	set_sphere_transformation(shape);
-	set_color_material(tokens[3], shape);
+	set_color_material(shape->sphere.color, shape);
 	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
 	ft_free_array(tokens);
 }

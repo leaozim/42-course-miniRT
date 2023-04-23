@@ -20,17 +20,12 @@ static void	set_shapes(t_list **shapes, t_scene *s)
 	*shapes = s->shapes;
 }
 
-static void	set_shapes_and_light(t_world *world, t_scene *s)
-{
-	set_shapes(&world->shapes, s);
-	set_lights(&world->light_point, s);
-}
-
 t_world	*setup_world(t_scene *scene)
 {
 	t_world	*w;
 
 	w = create_world();
-	set_shapes_and_light(w, scene);
+	set_shapes(&w->shapes, scene);
+	set_lights(&w->light_point, scene);
 	return (w);
 }

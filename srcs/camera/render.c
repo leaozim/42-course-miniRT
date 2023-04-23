@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-void	draw_on_the_canvas(t_cam camera, t_canvas canvas,t_world *world)
+void	draw_on_the_canvas(t_cam camera, t_canvas canvas, t_world *world)
 {
 	size_t		x;
 	size_t		y;
@@ -28,7 +28,7 @@ t_canvas	render(t_cam camera, t_world *world)
 
 	canvas = create_canvas(camera.vsize, camera.hsize);
 	draw_on_the_canvas(camera, canvas, world);
-	canvas.window = mlx_new_window(canvas.mlx, 600, 400, "miniRT");
-	mlx_put_image_to_window(canvas.mlx, canvas.window, canvas.image,	0, 0);
+	canvas.window = mlx_new_window(canvas.mlx, WIDTH, HEIGHT, "miniRT");
+	mlx_put_image_to_window(canvas.mlx, canvas.window, canvas.image, 0, 0);
 	return (canvas);
 }

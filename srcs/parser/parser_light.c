@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-t_light_pnt	*create_light(char **tokens, t_light_pnt *light_p)
+static t_light_pnt	*create_light(char **tokens, t_light_pnt *light_p)
 {
 	t_color	aux;
 

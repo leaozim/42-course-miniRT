@@ -16,7 +16,7 @@ t_lighting	init_lighting(void)
 	return (args);
 }
 
-t_color	get_diffuse(t_lighting args, t_color effect_color)
+static t_color	get_diffuse(t_lighting args, t_color effect_color)
 {
 	t_color		diffuse;
 
@@ -27,7 +27,7 @@ t_color	get_diffuse(t_lighting args, t_color effect_color)
 	return (diffuse);
 }
 
-t_color	get_specular(t_lighting args, t_vector lightv)
+static t_color	get_specular(t_lighting args, t_vector lightv)
 {
 	t_color		specular;
 	double		factor;
@@ -46,7 +46,7 @@ t_color	get_specular(t_lighting args, t_vector lightv)
 	return (specular);
 }
 
-t_color	generate_color(t_color ambient, t_color	diffuse, t_color	specular)
+static t_color	generate_color(t_color ambient, t_color	diffuse, t_color	specular)
 {
 	t_color	color_final;
 
@@ -64,11 +64,11 @@ t_color	create_lighting(t_lighting args)
 	t_color		specular;
 
 	effect_color = multiply_color(args.m.color, args.light_p->intensity);
-	lightv = normalize(sub_tuples(args.light_p->position, args.point));
-	args.light_normal = dot_product(lightv, args.normalv);
 	ambient = multiply_color(effect_color, args.m.ambient);
 	if (args.in_shadow == TRUE)
 		return (ambient);
+	lightv = normalize(sub_tuples(args.light_p->position, args.point));
+	args.light_normal = dot_product(lightv, args.normalv);
 	diffuse = get_diffuse(args, effect_color);
 	specular = get_specular(args, lightv);
 	return (generate_color(ambient, diffuse, specular));

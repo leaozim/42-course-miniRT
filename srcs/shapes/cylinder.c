@@ -15,7 +15,7 @@ t_shape	*create_cylinder(void)
 	return (cylinder);
 }
 
-t_bhaskara	bhaskaras_formula(t_ray ray)
+static t_bhaskara	bhaskaras_formula(t_ray ray)
 {
 	t_bhaskara	bhask;
 
@@ -41,7 +41,7 @@ static void	intersect_caps(t_shape *cyl, t_ray ray, t_intersections **intersec)
 {
 	double	time;
 
-	if (cyl->cylinder.closed == FALSE || is_equal_double(ray.direction.y, 0.0))
+	if (!cyl->cylinder.closed || is_equal_double(ray.direction.y, 0.0))
 		return ;
 	time = (cyl->cylinder.min - ray.origin.y) / ray.direction.y;
 	if (check_cap(ray, time))
@@ -68,9 +68,7 @@ void	intersect_cylinder(t_shape *cyl, t_ray ray, t_intersections **intersec)
 	y1 = ray.origin.y + (xs.t2 * ray.direction.y);
 	if (cyl->cylinder.min < y0 && y0 < cyl->cylinder.max)
 		add_sorted(intersec, ft_lstnew(create_intersection(xs.t1, cyl)));
-	if (cyl->cylinder.min < y1 && y1 < cyl->cylinder.max)
-	{
-		if (!is_equal_double(xs.t1, xs.t2))
+	if (!is_equal_double(xs.t1, xs.t2))
+		if (cyl->cylinder.min < y1 && y1 < cyl->cylinder.max)
 			add_sorted(intersec, ft_lstnew(create_intersection(xs.t2, cyl)));
-	}
 }

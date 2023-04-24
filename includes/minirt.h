@@ -131,5 +131,6 @@ t_matrix		multiply_matrix_triple(t_matrix a, t_matrix b, t_matrix c);
 t_matrix		full_rotation_matrix(t_vector vector);
 void			set_orientation_vector(t_vector vector, t_shape *shape);
 t_cam			set_camera_transform(t_cam camera, t_matrix transform);
+int				check_qtd_elemments(t_bool is_duplicated[]);
 
 #endif

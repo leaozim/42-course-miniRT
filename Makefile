@@ -65,7 +65,7 @@ CFLAGS				=	-Wall -Wextra -Werror
 VPATH				=	$(addprefix ./srcs/, $(DIRS))
 VPATH				+=	$(HEADER_PATH)
 
-CFLAGS				+=	-g3 -O3 -ffast-math
+CFLAGS				+=	-g
 
 WHITE				=	\e[00m
 GREEN				=	\e[32m
@@ -123,7 +123,7 @@ val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT scenes/test.rt
 
 debug: all
-	gdb --tui --args ./$(NAME) scenes/invalid/wrong_element_a0.rt
+	gdb --tui --args ./$(NAME) scenes/invalid/wrong_sphere_diameter_range.rt 
 
 mc:	all
 	clear

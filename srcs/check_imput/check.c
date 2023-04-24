@@ -43,7 +43,7 @@ int	check_orientation(char *tokens)
 		return (ft_free_array(orientation), ERROR);
 	while (orientation[i])
 	{
-		if (ft_isrange(ft_atoi(orientation[i]), -1, 1))
+		if (ft_isrange(ft_atof(orientation[i]), -1, 1))
 			return (ft_free_array(orientation), error_msg(ERROR_RANGE), ERROR);
 		else if (!ft_isfloat(orientation[i]))
 			return (ft_free_array(orientation), error_msg(ERROR_FLOAT), ERROR);

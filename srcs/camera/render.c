@@ -1,14 +1,12 @@
 #include "minirt.h"
 
-t_canvas	render(t_cam camera, t_world *world)
+void	draw_on_the_canvas(t_cam camera, t_canvas canvas, t_world *world)
 {
 	size_t		x;
 	size_t		y;
-	t_canvas	canvas;
 	t_ray		ray;
 	t_color		color;
 
-	canvas = create_canvas(camera.vsize, camera.hsize);
 	y = 0;
 	while (y < (camera.vsize - 1))
 	{
@@ -22,5 +20,15 @@ t_canvas	render(t_cam camera, t_world *world)
 		}
 		y++;
 	}
+}
+
+t_canvas	render(t_cam camera, t_world *world)
+{
+	t_canvas	canvas;
+
+	canvas = create_canvas(camera.vsize, camera.hsize);
+	draw_on_the_canvas(camera, canvas, world);
+	canvas.window = mlx_new_window(canvas.mlx, WIDTH, HEIGHT, "miniRT");
+	mlx_put_image_to_window(canvas.mlx, canvas.window, canvas.image, 0, 0);
 	return (canvas);
 }

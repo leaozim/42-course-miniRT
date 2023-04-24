@@ -11,5 +11,6 @@ t_shape	*create_shape(void)
 	shape->transform = create_identity_matrix();
 	shape->transpose = create_identity_matrix();
 	shape->inverse = create_identity_matrix();
+	shape->orientation = create_vector(0, 0, 0);
 	return (shape);
 }

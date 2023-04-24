@@ -6,7 +6,7 @@
 /*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:35:13 by marcrodr          #+#    #+#             */
-/*   Updated: 2023/03/17 19:44:58 by marcrodr         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:12:00 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	get_line(char **buffer, char **line)
 		}
 	}
 }
-
+#include <stdio.h>
 char	*gnl(int fd)
 {
 	static char		*buffer[1024];

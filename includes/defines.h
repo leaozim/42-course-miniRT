@@ -4,10 +4,16 @@
 # define EPSILON 0.0001
 # define CAMERA 0
 # define LIGHT 1
-# define CYLINDER 2
+# define AMBIENT 2
 # define VECTOR_W 0
 # define POINT_W 1
 # define MTRX_MAX 4
+# define KEY_PRESS 02
+# define ESC 65307
+# define DESTROY_NOTIFY 17
+# define NO_EVENT_MASK	0L
+# define WIDTH 850
+# define HEIGHT 650
 
 # include "minirt.h"
 
@@ -44,7 +50,7 @@ enum e_objects
 {
 	SPHERE,
 	PLANE,
-	AMBIENT,
+	CYLINDER,
 };
 
 typedef struct s_color
@@ -127,6 +133,7 @@ typedef struct s_material
 	double		specular;
 	double		shininess;
 }	t_material;
+
 typedef struct defines
 {
 	enum e_objects	type;
@@ -140,7 +147,9 @@ typedef struct defines
 	t_material		material;
 	t_matrix		transpose;
 	t_matrix		inverse;
+	t_vector		orientation;
 }	t_shape;
+
 typedef struct s_shearing
 {
 	double	x_y;
@@ -191,6 +200,7 @@ typedef struct s_light_pnt
 {
 	t_point	position;
 	t_color	intensity;
+	double	brightness;
 }	t_light_pnt;
 
 typedef struct s_lighting

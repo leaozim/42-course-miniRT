@@ -22,7 +22,7 @@ UTILS				=	error.c \
 
 CHECK_IMPUT			=	check_file.c check.c check_ambient.c check_plane.c		\
 						check_camera.c check_cylinder.c check_light.c			\
-						check_sphere.c
+						check_sphere.c check_utils.c
 
 PARSER				=	parser_cylinder.c create_parameter.c parser_shape.c		\
 						parser_light.c parser_plane.c parser_ambient.c			\

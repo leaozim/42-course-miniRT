@@ -17,4 +17,3 @@ void	set_color_material(t_color color, t_shape *shape)
 {
 	shape->material.color = color;
 }
-

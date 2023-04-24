@@ -34,7 +34,6 @@ t_color	shade_hit(t_world *world, t_comps comps, t_list *light_list)
 	while (light_list)
 	{
 		aux[0] = color;
-
 		light_attr.light_p = light_list->content;
 		light_attr.m = comps.shape->material;
 		light_attr.in_shadow = \

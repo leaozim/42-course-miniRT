@@ -1,20 +1,5 @@
 #include "minirt.h"
 
-void	print_matrix(t_matrix m)
-{
-	size_t	i, j;
-
-	for (i = 0; i < m.size; i++)
-	{
-		for (j = 0; j < m.size; j++)
-		{
-			printf("{ %5.1f } ", m.matrix[i][j]);
-		}
-		printf("\n");
-	}
-	printf("\n\n");
-}
-
 int	main(int argc, char *argv[])
 {
 	t_scene		scene;
@@ -31,6 +16,6 @@ int	main(int argc, char *argv[])
 	canvas = render(camera, world);
 	handle_hooks(&canvas);
 	mlx_loop(canvas.mlx);
-	destroy_minirt(&scene); 
+	destroy_minirt(&scene);
 	return (0);
 }

@@ -46,12 +46,12 @@ static t_color	get_specular(t_lighting args, t_vector lightv)
 	return (specular);
 }
 
-static t_color	generate_color(t_color ambient, t_color	diffuse, t_color	specular)
+static t_color	generate_color(t_color ambient, t_color	diffuse, t_color spec)
 {
 	t_color	color_final;
 
 	color_final = adding_color(ambient, diffuse);
-	color_final = adding_color(color_final, specular);
+	color_final = adding_color(color_final, spec);
 	return (color_final);
 }
 

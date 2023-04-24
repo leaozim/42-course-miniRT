@@ -3,13 +3,13 @@
 static t_matrix	create_orientation(
 	t_vector left, t_vector true_up, t_vector to)
 {
-	double	orientation[MTRX_MAX][MTRX_MAX] =
-	{
+	const double	orientation[MTRX_MAX][MTRX_MAX] = {
 	{left.x, left.y, left.z, 0},
 	{true_up.x, true_up.y, true_up.z, 0},
 	{-to.x, -to.y, -to.z, 0},
 	{0, 0, 0, 1}
 	};
+
 	return (create_matrix(orientation, MTRX_MAX));
 }
 

@@ -1,17 +1,5 @@
 #include "minirt.h"
 
-void	print_array(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		printf("%s\n", str[i]);
-		i++;
-	}
-}
-
 void	print_matrix(t_matrix m)
 {
 	size_t	i, j;

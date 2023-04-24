@@ -130,8 +130,8 @@ int				keyboard_events(int key, t_canvas *canvas);
 void			handle_hooks(t_canvas *canvas);
 t_matrix		total_rotation_matrix(t_vector vector);
 t_matrix		multiply_matrix_triple(t_matrix a, t_matrix b, t_matrix c);
-int				set_orientation_vector(char *token, t_shape *s);
-t_matrix	full_rotation_matrix(t_vector vector);
+t_matrix		full_rotation_matrix(t_vector vector);
+void			set_orientation_vector(t_vector vector, t_shape *shape);
 
 
 //// APAGAR ////

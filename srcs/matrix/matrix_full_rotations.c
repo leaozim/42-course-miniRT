@@ -26,20 +26,29 @@ static t_matrix	rotation_xz(t_vector orientation)
 
 t_matrix	get_rotation_matrix(t_vector orientation)
 {
-	if (is_equal_vectors(create_vector(0, 1, 0), orientation))
-		return (create_identity_matrix());
-	else if (is_equal_vectors(create_vector(0, -1, 0), orientation))
-		return (rotation_x(M_PI));
-	else if (is_equal_vectors(create_vector(1, 0, 0), orientation))
-		return (rotation_z(-M_PI / 2));
-	else if (is_equal_vectors(create_vector(-1, 0, 0), orientation))
-		return (rotation_z(M_PI / 2));
-	else if (is_equal_vectors(create_vector(0, 0, 1), orientation))
-		return (rotation_x(M_PI / 2));
-	else if (is_equal_vectors(create_vector(0, 0, -1), orientation))
-		return (rotation_x(-M_PI / 2));
+	const t_vector	special_cases[] = {
+		create_vector(0, 1, 0),
+		create_vector(0, -1, 0),
+		create_vector(1, 0, 0),
+		create_vector(-1, 0, 0),
+		create_vector(0, 0, 1),
+		create_vector(0, 0, -1)
+	};
+	const t_matrix	special_matrices[] = {
+		create_identity_matrix(),
+		rotation_x(M_PI),
+		rotation_z(-M_PI / 2),
+		rotation_z(M_PI / 2),
+		rotation_x(M_PI / 2),
+		rotation_x(-M_PI / 2)
+	};
+	int				i;
+
+	i = -1;
+	while (++i < 6)
+		if (is_equal_vectors(special_cases[i], orientation))
+			return (special_matrices[i]);
 	if (is_equal_double(orientation.y, 0))
 		return (rotation_xy(orientation));
-	else
-		return (rotation_xz(orientation));
+	return (rotation_xz(orientation));
 }

@@ -245,5 +245,3 @@ typedef struct s_cam
 }	t_cam;
 
 #endif
-
-

@@ -12,16 +12,16 @@ static t_vector	set_normal_cylinder(t_shape *shape, t_point w_p)
 	return (create_vector(w_p.x, 0, w_p.z));
 }
 
-static t_vector	set_normal_object(t_shape *shape, t_point o_p)
+static t_vector	set_normal_object(t_shape *shape, t_point object_point)
 {
 	t_vector	object_normal;
 
 	if (shape->type == SPHERE)
-		object_normal = sub_tuples(o_p, create_point(0, 0, 0));
+		object_normal = sub_tuples(object_point, create_point(0, 0, 0));
 	else if (shape->type == PLANE)
 		object_normal = create_vector(0, 1, 0);
 	else if (shape->type == CYLINDER)
-		object_normal = set_normal_cylinder(shape, o_p);
+		object_normal = set_normal_cylinder(shape, object_point);
 	return (object_normal);
 }
 

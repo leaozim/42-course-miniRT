@@ -33,15 +33,17 @@ int	read_file(char *filename, t_scene *scene)
 	int		fd;
 
 	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (ERROR);
 	while (42)
 	{
 		line = gnl(fd);
 		if (!line)
-			return (close(fd), 0);
+			return (close(fd), free(line), OK);
 		set_shape(line, scene);
 		free(line);
 	}
 	ft_free_array(tokens);
 	close (fd);
-	return (OK);
+	return (0);
 }

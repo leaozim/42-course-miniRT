@@ -75,10 +75,12 @@ int	check_file(char *filename)
 	{
 		line = gnl(fd);
 		if (!line)
-			return (0);
+			return (close(fd), free(line), OK);
 		replace_char(line, ' ');
 		if (identifier(line, is_duplicated) == ERROR)
 			return (close(fd), free(line), ERROR);
+		// if (check_elements_count(line) == ERROR)
+		// 	return (close(fd), free(line), ERROR);
 		free(line);
 	}
 	close (fd);

@@ -12,18 +12,22 @@ OBJS				=	$(SRC:%.c=$(OBJ_DIR)/%.o)
 HEADER_PATH			=	./includes
 HEADER_FILES		=	minirt.h
 
-SRC					=	main.c \
-						$(UTILS) $(PARSER) $(TUPLA) $(CANVAS) $(COLOR) \
-						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING) \
-						$(WORLD) $(SHADOWS) $(CAMERA) $(MLX)
+SRC					=	main.c													\
+						$(UTILS) $(CHECK_IMPUT) $(PARSER) $(TUPLA) $(CANVAS) 	\
+						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING)			\
+						$(WORLD) $(SHADOWS) $(CAMERA) $(MLX) $(COLOR)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
 
-PARSER				=	parser.c parser_camera.c check.c parser_sphere.c \
-						parser_cylinder.c create_parameter.c check_file.c \
-						parser_light.c parser_plane.c parser_ambient.c \
-						parser_shape.c
+CHECK_IMPUT			=	check_file.c check.c check_ambient.c check_plane.c		\
+						check_camera.c check_cylinder.c check_light.c			\
+						check_sphere.c
+
+PARSER				=	parser_cylinder.c create_parameter.c parser_shape.c		\
+						parser_light.c parser_plane.c parser_ambient.c			\
+						parser.c parser_camera.c  parser_sphere.c				
+						
 
 TUPLA				=	create_tuple.c operations_tuple.c operations_tuple2.c
 
@@ -31,27 +35,29 @@ CANVAS				= 	create_canvas.c
 
 COLOR				=	color.c operations_color.c
 
-MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c \
-						matrix_utils.c matrix_transformations.c matrix_rotations.c \
-						matrix_view_transformation.c matrix_full_rotations.c
+MATRIX				=	matrix_builder.c matrix_operations.c matrix_checkers.c	\
+						matrix_view_transformation.c matrix_full_rotations.c	\
+						matrix_rotations.c matrix_transformations.c				\
+						matrix_utils.c
 
-RAY					=	ray_builder.c ray_operations.c ray_intersect.c ray_hit.c \
-						ray_transform.c
+RAY					=	ray_builder.c ray_operations.c ray_intersect.c			\
+						ray_transform.c ray_hit.c
 
 SHAPES				=	sphere.c create_shape.c plane.c cylinder.c
 
-LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c 	\
+LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c	\
 						light_destroy.c
 
-WORLD				=	create_world.c intersect_world.c destroy_world.c \
+WORLD				=	create_world.c intersect_world.c destroy_world.c 		\
 						computations_world.c is_shadowed.c setup_world.c
 
 MLX 				=	destroy_window.c handle_hook.c
 
 CAMERA				= 	camera_builder.c ray_for_pixel.c camera_set.c render.c
 
-DIRS				=	. srcs utils parser tupla color canvas matrix ray shapes \
-						light_and_shading world camera mlx
+DIRS				=	. srcs utils parser tupla color canvas matrix ray		\
+						shapes light_and_shading world camera mlx check_imput
+
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 CFLAGS				=	-Wall -Wextra -Werror
@@ -96,7 +102,6 @@ $(OBJ_DIR)/%.o: %.c $(HEADER_FILES) Makefile | $(OBJ_DIR)
 #@echo -n "$(YELLOW)Compiling $(WHITE)$$(( $(PROGRESS) * 100 / $(NUMBER_OF_SRC_FILES)))%\r"
 #$(eval PROGRESS=$(shell echo $$(($(PROGRESS)+1))))
 
-
 $(OBJ_DIR):
 	mkdir -p $@
 
@@ -118,13 +123,13 @@ val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT scenes/test.rt
 
 debug: all
-	gdb --tui --args ./$(NAME) scenes/test.rt
+	gdb --tui --args ./$(NAME) scenes/invalid/wrong_element_a0.rt
 
 mc:	all
 	clear
 	./minirt
 
 norm:
-	@norminette ${SRC} ${LIBFT_PATH} 
+	@norminette ${VPATH} ${LIBFT_PATH} 
 
 .PHONY:	all clean fclean re git test

@@ -2,10 +2,10 @@
 
 int	main(int argc, char *argv[])
 {
-	t_scene		scene;
 	t_world		*world;
-	t_cam		camera;
 	t_canvas	canvas;
+	t_scene		scene;
+	t_cam		camera;
 
 	if (check_argc(argc) || check_file(argv[1]) == ERROR)
 		return (EXIT_FAILURE);

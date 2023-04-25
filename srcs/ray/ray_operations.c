@@ -25,7 +25,8 @@ t_color	shade_hit(t_world *world, t_comps comps, t_list *light_list)
 	t_color		aux[2];
 	t_color		color;
 
-	color = create_color(0, 0, 0);
+	color = multiply_color(comps.shape->material.color, \
+	comps.shape->material.ambient);
 	light_attr = init_lighting();
 	free(light_attr.light_p);
 	light_attr.eyev = comps.eyev;
@@ -33,6 +34,7 @@ t_color	shade_hit(t_world *world, t_comps comps, t_list *light_list)
 	light_attr.point = comps.point;
 	while (light_list)
 	{
+		printf("iu\n");
 		aux[0] = color;
 		light_attr.light_p = light_list->content;
 		light_attr.m = comps.shape->material;

@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-static int	identifier(char *line, t_bool is_duplicated[])
+static int	identifier(char *line, t_bool reqred_obj[])
 {
 	char	**tokens;
 
@@ -9,20 +9,18 @@ static int	identifier(char *line, t_bool is_duplicated[])
 		return (ft_free_array(tokens), 0);
 	if (is_invalid_file_data(tokens))
 		return (error_msg(ERROR_FILE), ft_free_array(tokens), ERROR);
-	if (ft_strcmp(tokens[0], "A") == 0 && is_duplicated[AMBIENT] == FALSE)
-		return (check_id_a(tokens, is_duplicated));
-	else if (ft_strcmp(tokens[0], "C") == 0 && is_duplicated[CAMERA] == FALSE)
-		return (check_id_c(tokens, is_duplicated));
-	else if (ft_strcmp(tokens[0], "L") == 0 && is_duplicated[LIGHT] == FALSE)
-		return (check_id_l(tokens, is_duplicated));
-	else if (ft_strcmp(tokens[0], "sp") == 0)
+	if (ft_strcmp(tokens[0], _AMBIENT_) == 0 && reqred_obj[AMBIENT] == FALSE)
+		return (check_id_a(tokens, reqred_obj));
+	else if (ft_strcmp(tokens[0], _CAMERA_) == 0 && reqred_obj[CAMERA] == FALSE)
+		return (check_id_c(tokens, reqred_obj));
+	else if (ft_strcmp(tokens[0], _LIGHT_) == 0 && reqred_obj[LIGHT] == FALSE)
+		return (check_id_l(tokens, reqred_obj));
+	else if (ft_strcmp(tokens[0], _SPHERE_) == 0)
 		return (check_id_sp(tokens));
-	else if (ft_strcmp(tokens[0], "pl") == 0)
+	else if (ft_strcmp(tokens[0], _PLANE_) == 0)
 		return (check_id_pl(tokens));
-	else if (ft_strcmp(tokens[0], "cy") == 0)
+	else if (ft_strcmp(tokens[0], _CYLINDER_) == 0)
 		return (check_id_cy(tokens));
-	else if (tokens[0][0] == '#')
-		return (ft_free_array(tokens), OK);
 	return (ft_free_array(tokens), error_msg(ERROR_FILE), ERROR);
 }
 
@@ -30,11 +28,11 @@ int	check_file(char *filename)
 {
 	char	*line;
 	int		fd;
-	t_bool	is_duplicated[10];
+	t_bool	required_obj[10];
 
-	is_duplicated[CAMERA] = FALSE;
-	is_duplicated[LIGHT] = FALSE;
-	is_duplicated[AMBIENT] = FALSE;
+	required_obj[CAMERA] = FALSE;
+	required_obj[LIGHT] = FALSE;
+	required_obj[AMBIENT] = FALSE;
 	fd = check_open_file(filename);
 	if (fd == ERROR)
 		return (ERROR);
@@ -46,10 +44,10 @@ int	check_file(char *filename)
 		if (!*line)
 			return (close(fd), free(line), ERROR);
 		replace_char(line, ' ');
-		if (identifier(line, is_duplicated) == ERROR)
+		if (identifier(line, required_obj) == ERROR)
 			return (close(fd), free(line), ERROR);
 		free(line);
 	}
 	close (fd);
-	return (check_qtd_elemments(is_duplicated));
+	return (check_qtd_elemments(required_obj));
 }

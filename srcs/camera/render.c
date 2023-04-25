@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-static void	write_pixel_on_the_canvas(t_cam camera, t_canvas canvas, t_world *world)
+void	write_pixel_on_the_canvas(t_cam camera, t_canvas canvas, t_world *world)
 {
 	size_t		x;
 	size_t		y;

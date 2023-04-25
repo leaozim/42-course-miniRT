@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_normalize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:57:50 by marcrodr          #+#    #+#             */
-/*   Updated: 2023/04/25 10:59:49 by marcrodr         ###   ########.fr       */
+/*   Updated: 2023/04/25 12:54:31 by lade-lim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

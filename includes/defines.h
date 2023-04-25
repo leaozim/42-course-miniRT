@@ -14,6 +14,12 @@
 # define NO_EVENT_MASK	0L
 # define WIDTH 850
 # define HEIGHT 650
+# define _AMBIENT_ "A"
+# define _CAMERA_ "C"
+# define _LIGHT_ "L"
+# define _SPHERE_ "sp"
+# define _PLANE_ "pl"
+# define _CYLINDER_ "cy"
 
 # include "minirt.h"
 

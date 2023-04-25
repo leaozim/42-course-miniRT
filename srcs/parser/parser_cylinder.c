@@ -40,9 +40,9 @@ void	create_cylinder_node(char **tokens, t_scene *scene)
 
 	shape = create_cylinder();
 	shape->cylinder = init_create_cylinder(tokens);
-	set_orientation_vector(shape->cylinder.vector, shape);
+	set_shape_orientation_vector(shape->cylinder.vector, shape);
 	set_cylinder_transform(shape);
-	set_color_material(shape->cylinder.color, shape);
+	set_shape_color_material(shape->cylinder.color, shape);
 	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
 	ft_free_array(tokens);
 }

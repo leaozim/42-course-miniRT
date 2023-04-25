@@ -41,8 +41,8 @@ static void	intersect_caps(t_shape *cyl, t_ray ray, t_intersections **intersec)
 {
 	double	time;
 
-	if (cyl->cylinder.closed == FALSE 
-		)
+	if (cyl->cylinder.closed == FALSE
+		|| is_equal_double(ray.direction.y, 0.0))
 		return ;
 	time = (cyl->cylinder.min - ray.origin.y) / ray.direction.y;
 	if (check_cap(ray, time))

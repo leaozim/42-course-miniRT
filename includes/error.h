@@ -24,6 +24,7 @@
 # define ERROR_MANY_ARGC_SP "To many or few arguments for sphere!"
 # define ERROR_ORI_SP "Sphere orientation are invalid!"
 # define ERROR_FLOAT_SP "Parameter for sphere needs to be a Float"
+# define ERROR_NOT_NORMALIZED "Orientation is not normalized"
 
 # define ERROR_MANY_ARGC_PL "To many or few arguments for plane!"
 # define ERROR_COOR_PL "Plane coordinates are invalid!"

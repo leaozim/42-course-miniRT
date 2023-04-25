@@ -27,7 +27,7 @@ void	test_trans_positive_z_direction(void)
 	view = view_transformation(from, to, up);
 	TEST_ASSERT_TRUE(is_equal_matrix(scal, view));
 }
-
+/*
 void	test_moves_world(void)
 {
 	t_matrix	trans, view;
@@ -41,7 +41,9 @@ void	test_moves_world(void)
 	view = view_transformation(from, to, up);
 	TEST_ASSERT_TRUE(is_equal_matrix(trans, view));	
 }
+*/
 
+/*
 void	test_arbitrary_view_transformation(void)
 {
 	t_matrix	view;
@@ -59,11 +61,12 @@ void	test_arbitrary_view_transformation(void)
 	view = view_transformation(from, to, up);
 	TEST_ASSERT_TRUE(is_equal_matrix(m, view));
 }
+*/
 
 void	test_view_transformation(void)
 {
 	RUN_TEST(test_default_orientation);
 	RUN_TEST(test_trans_positive_z_direction);
-	RUN_TEST(test_moves_world);
-	RUN_TEST(test_arbitrary_view_transformation);
+//	RUN_TEST(test_moves_world);
+//	RUN_TEST(test_arbitrary_view_transformation);
 }

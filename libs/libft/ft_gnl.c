@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lade-lim <larissa_silva@outlook.com>       +#+  +:+       +#+        */
+/*   By: marcrodr <marcrodr@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:35:13 by marcrodr          #+#    #+#             */
-/*   Updated: 2023/04/24 17:12:00 by lade-lim         ###   ########.fr       */
+/*   Updated: 2023/04/25 11:15:25 by marcrodr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	get_line(char **buffer, char **line)
 		}
 	}
 }
-#include <stdio.h>
+
 char	*gnl(int fd)
 {
 	static char		*buffer[1024];

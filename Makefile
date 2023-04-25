@@ -17,8 +17,7 @@ SRC					=	main.c													\
 						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING)			\
 						$(WORLD) $(SHADOWS) $(CAMERA) $(MLX) $(COLOR)
 
-UTILS				=	error.c \
-						check_arguments.c destroy_minirt.c check_normalize.c
+UTILS				=	error.c check_arguments.c destroy_minirt.c 
 
 CHECK_INPUT			=	check_file.c check.c check_ambient.c check_plane.c		\
 						check_camera.c check_cylinder.c check_light.c			\

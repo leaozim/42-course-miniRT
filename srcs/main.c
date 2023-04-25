@@ -14,8 +14,8 @@ int	main(int argc, char *argv[])
 	world = setup_world(&scene);
 	camera = setup_camera(&scene);
 	canvas = render(camera, world);
+	destroy_minirt(&scene);
 	handle_hooks(&canvas);
 	mlx_loop(canvas.mlx);
-	destroy_minirt(&scene);
 	return (0);
 }

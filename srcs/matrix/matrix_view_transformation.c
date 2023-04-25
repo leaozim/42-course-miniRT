@@ -35,11 +35,9 @@ t_matrix	view_transformation(t_point from, t_point to, t_vector up)
 	t_vector	left;
 	t_vector	normalized_up;
 	t_vector	true_up;
-	t_vector	forward;
 
-	forward = normalize(sub_tuples(to, from));
 	normalized_up = normalize(up);
-	left = cross_product(forward, normalized_up);
-	true_up = cross_product(left, forward);
-	return (create_transformation(left, true_up, forward, from));
+	left = cross_product(to, normalized_up);
+	true_up = cross_product(left, to);
+	return (create_transformation(left, true_up, to, from));
 }

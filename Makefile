@@ -13,14 +13,14 @@ HEADER_PATH			=	./includes
 HEADER_FILES		=	minirt.h
 
 SRC					=	main.c													\
-						$(UTILS) $(CHECK_IMPUT) $(PARSER) $(TUPLA) $(CANVAS) 	\
+						$(UTILS) $(CHECK_INPUT) $(PARSER) $(TUPLA) $(CANVAS) 	\
 						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING)			\
 						$(WORLD) $(SHADOWS) $(CAMERA) $(MLX) $(COLOR)
 
 UTILS				=	error.c \
 						check_arguments.c destroy_minirt.c
 
-CHECK_IMPUT			=	check_file.c check.c check_ambient.c check_plane.c		\
+CHECK_INPUT			=	check_file.c check.c check_ambient.c check_plane.c		\
 						check_camera.c check_cylinder.c check_light.c			\
 						check_sphere.c check_utils.c
 
@@ -56,7 +56,7 @@ MLX 				=	destroy_window.c handle_hook.c
 CAMERA				= 	camera_builder.c ray_for_pixel.c camera_set.c render.c
 
 DIRS				=	. srcs utils parser tupla color canvas matrix ray		\
-						shapes light_and_shading world camera mlx check_imput
+						shapes light_and_shading world camera mlx check_input
 
 IFLAGS				=	-I $(HEADER_PATH)
 LDFLAGS				=	-L$(LIBFT_PATH) -lft -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
@@ -65,7 +65,7 @@ CFLAGS				=	-Wall -Wextra -Werror
 VPATH				=	$(addprefix ./srcs/, $(DIRS))
 VPATH				+=	$(HEADER_PATH)
 
-CFLAGS				+=	-g
+CFLAGS				+=	-g3 -O3 -ffast-math
 
 WHITE				=	\e[00m
 GREEN				=	\e[32m
@@ -123,7 +123,7 @@ val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT scenes/test.rt
 
 debug: all
-	gdb --tui --args ./$(NAME) scenes/invalid/wrong_sphere_diameter_range.rt 
+	gdb --tui --args ./$(NAME) scenes/invalid/wrong_element_a0.rt
 
 mc:	all
 	clear

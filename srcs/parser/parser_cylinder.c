@@ -13,6 +13,7 @@ t_cylinder	init_create_cylinder(char **tokens)
 	cy.max = half;
 	cy.min = -half;
 	cy.color = create_parameter_color(tokens[5]);
+	cy.closed = TRUE;
 	return (cy);
 }
 

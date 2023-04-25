@@ -8,6 +8,7 @@ void	write_pixel_on_the_canvas(t_cam camera, t_canvas canvas, t_world *world)
 	t_color		color;
 
 	y = 0;
+	
 	while (y < (camera.vsize - 1))
 	{
 		x = 0;

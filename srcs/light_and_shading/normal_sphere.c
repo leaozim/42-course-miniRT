@@ -16,6 +16,7 @@ static t_vector	set_normal_object(t_shape *shape, t_point object_point)
 {
 	t_vector	object_normal;
 
+	object_normal = create_vector(0, 0, 0);
 	if (shape->type == SPHERE)
 		object_normal = sub_tuples(object_point, create_point(0, 0, 0));
 	else if (shape->type == PLANE)

@@ -17,6 +17,8 @@ void	create_light_node(char **tokens, t_scene *scene)
 	t_point		position;
 	t_color		intensity;
 
+	position = create_point(0, 0, 0);
+	intensity = create_color(1, 1, 1);
 	light_p = create_point_light(position, intensity);
 	light_p = create_light(tokens, light_p);
 	ft_lstadd_front(&scene->lights, ft_lstnew(light_p));

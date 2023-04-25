@@ -73,5 +73,5 @@ int	check_normalize(char *token)
 	ft_free_array(aux);
 	if (x <= 0 && y <= 0 && z <= 0)
 		return (1);
-	return(0);
+	return (0);
 }

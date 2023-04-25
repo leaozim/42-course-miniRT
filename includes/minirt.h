@@ -135,5 +135,4 @@ int				is_normalized(char *token);
 int				check_qtd_elemments(t_bool is_duplicated[]);
 int				check_normalize(char *token);
 
-
 #endif

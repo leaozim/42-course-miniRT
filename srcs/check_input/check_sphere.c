@@ -9,6 +9,8 @@ int	check_id_sp(char **tokens)
 	diameter = ft_atof(tokens[2]);
 	if (check_coordinates(tokens[1]))
 		return (error_msg(ERROR_ORI_SP), ft_free_array(tokens), ERROR);
+	if (check_normalize(tokens[1]))
+		return (error_msg(ERROR_ORI_SP), ft_free_array(tokens), ERROR);
 	if (!ft_isfloat(tokens[2]) || diameter <= 0 || diameter > 1000)
 		return (error_msg(ERROR_FLOAT_SP), ft_free_array(tokens), ERROR);
 	if (check_color(tokens[3]))

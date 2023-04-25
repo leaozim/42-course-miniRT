@@ -18,7 +18,7 @@ SRC					=	main.c													\
 						$(WORLD) $(SHADOWS) $(CAMERA) $(MLX) $(COLOR)
 
 UTILS				=	error.c \
-						check_arguments.c destroy_minirt.c
+						check_arguments.c destroy_minirt.c check_normalize.c
 
 CHECK_INPUT			=	check_file.c check.c check_ambient.c check_plane.c		\
 						check_camera.c check_cylinder.c check_light.c			\
@@ -123,7 +123,7 @@ val: all
 	valgrind -q --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes ./miniRT scenes/test.rt
 
 debug: all
-	gdb --tui --args ./$(NAME) scenes/invalid/wrong_element_a0.rt
+	gdb --tui --args ./$(NAME) scenes/invalid/orientation_not_normalized.rt
 
 mc:	all
 	clear

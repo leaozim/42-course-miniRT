@@ -84,8 +84,8 @@ int	check_open_file(char *file)
 	len_file = ft_strlen(file);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (close (fd), ft_putstr_fd("Error\n", 2), perror(file), ERROR);
-	if (ft_strcmp(&file[len_file - 3], ".rt") || len_file == 3)
-		return (close (fd), error_msg(ERROR_FORMAT), ERROR);
+		return (ft_putstr_fd("Error\n", 2), perror(file), ERROR);
+	else if (ft_strcmp(&file[len_file - 3], ".rt") || len_file == 3)
+		return (error_msg(ERROR_FORMAT), ERROR);
 	return (fd);
 }

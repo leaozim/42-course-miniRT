@@ -35,14 +35,12 @@ int	check_file(char *filename)
 	required_obj[AMBIENT] = FALSE;
 	fd = check_open_file(filename);
 	if (fd == ERROR)
-		return (ERROR);
+		return (close(fd), ERROR);
 	while (42)
 	{
 		line = gnl(fd);
 		if (!line)
 			break ;
-		if (!*line)
-			return (close(fd), free(line), ERROR);
 		replace_char(line, ' ');
 		if (identifier(line, required_obj) == ERROR)
 			return (close(fd), free(line), ERROR);

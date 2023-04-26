@@ -28,6 +28,6 @@ int main(void)
 	test_cylinders();
 	test_view_transformation();
 	test_camera();
-	// test_canvas();
+	test_canvas();
 	return (UNITY_END());
 }

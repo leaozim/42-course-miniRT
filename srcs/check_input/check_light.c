@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-int	check_id_l(char **tokens, t_bool *is_duplicated)
+int	check_id_l(char **tokens, t_bool *required_obj)
 {
 	if (ft_array_size(tokens) != 4)
 		return (error_msg(ERROR_MANY_ARGC_L), ft_free_array(tokens), ERROR);
@@ -11,6 +11,6 @@ int	check_id_l(char **tokens, t_bool *is_duplicated)
 	if (check_color(tokens[3]))
 		return (ft_free_array(tokens), ERROR);
 	ft_free_array(tokens);
-	is_duplicated[LIGHT] = TRUE;
+	required_obj[LIGHT] = TRUE;
 	return (OK);
 }

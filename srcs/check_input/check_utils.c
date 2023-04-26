@@ -41,3 +41,37 @@ int	check_qtd_elemments(t_bool is_duplicated[])
 		return (error_msg(ERROR_QTT_), ERROR);
 	return (OK);
 }
+
+int	is_normalized(char *token)
+{
+	char	**aux;
+	double	x;
+	double	y;
+	double	z;
+
+	aux = ft_split(token, ',');
+	x = ft_atof(aux[0]);
+	y = ft_atof(aux[1]);
+	z = ft_atof(aux[2]);
+	ft_free_array(aux);
+	if (!is_equal_double(1.0, magnitude((t_vector){x, y, z, 0})))
+		return (error_msg(ERROR_NOT_NORMALIZED), ERROR);
+	return (OK);
+}
+
+int	check_normalize(char *token)
+{
+	char	**aux;
+	double	x;
+	double	y;
+	double	z;
+
+	aux = ft_split(token, ',');
+	x = ft_atof(aux[0]);
+	y = ft_atof(aux[1]);
+	z = ft_atof(aux[2]);
+	ft_free_array(aux);
+	if (x <= 0 && y <= 0 && z <= 0)
+		return (1);
+	return (0);
+}

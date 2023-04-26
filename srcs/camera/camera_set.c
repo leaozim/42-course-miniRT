@@ -14,10 +14,10 @@ static t_cam	set_camera(t_cam cam, t_camera *camera)
 	t_vector	up;
 
 	if (is_equal_double(1, fabs(camera->vector.y)))
-		up = create_vector(1, 0, 0);
+		up = (create_vector(1, 0, 0));
 	else
 	{
-		aux = cross_product((t_tuple){0, 1, 0, 0}, camera->vector);
+		aux = cross_product(((t_tuple){0, 1, 0, 0}), camera->vector);
 		up = cross_product(camera->vector, aux);
 	}
 	transformation = view_transformation(camera->point_of_view, \

@@ -133,6 +133,5 @@ void			set_shape_orientation_vector(t_vector vector, t_shape *shape);
 t_cam			set_camera_transform(t_cam camera, t_matrix transform);
 int				is_normalized(char *token);
 int				check_qtd_elemments(t_bool is_duplicated[]);
-int				check_normalize(char *token);
 
 #endif

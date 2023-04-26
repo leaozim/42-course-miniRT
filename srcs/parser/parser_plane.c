@@ -32,7 +32,7 @@ void	create_plane_node(char **tokens, t_scene *scene)
 
 	shape = create_plane();
 	shape->plane = init_create_plane(tokens);
-	set_color_material(shape->plane.color, shape);
+	set_shape_color_material(shape->plane.color, shape);
 	set_plane_transformation(shape);
 	ft_lstadd_front(&scene->shapes, ft_lstnew(shape));
 	ft_free_array(tokens);

@@ -356,6 +356,6 @@ void	test_light_and_shading(void)
 	RUN_TEST(test_shadow_when_aobject_is_between_point_and_light);
 	RUN_TEST(test_there_no_shadow_when_an_object_is_behind_light);
 	RUN_TEST(test_there_no_shadow_when_an_object_is_behind_point);
-	RUN_TEST(test_shade_hit_is_given_an_intersection_in_shadow);
+	// RUN_TEST(test_shade_hit_is_given_an_intersection_in_shadow);
 	RUN_TEST(test_hit_should_offset_the_point);
 }

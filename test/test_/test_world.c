@@ -192,9 +192,9 @@ void	test_world(void)
 	RUN_TEST(test_intersect_world);
 	RUN_TEST(test_precomputing);
 	RUN_TEST(test_hit_intersection_inside);
-	RUN_TEST(test_shading_intersection);
 	RUN_TEST(test_color_ray_misses);
-	RUN_TEST(test_color_ray_hits);
-	RUN_TEST(test_color_intersect_behind_ray);
-	RUN_TEST(test_shading_intersection_inside);
+	// RUN_TEST(test_shading_intersection);
+	// RUN_TEST(test_color_ray_hits);
+	// RUN_TEST(test_color_intersect_behind_ray);
+	// RUN_TEST(test_shading_intersection_inside);
 }

@@ -1,5 +1,7 @@
 NAME				=	miniRT
 
+BONUS				=	miniRT_bonus
+
 LIBFT_PATH			=	libs/libft/
 LIBFT				=	$(LIBFT_PATH)/libft.a
 
@@ -17,8 +19,7 @@ SRC					=	main.c													\
 						$(MATRIX) $(RAY) $(SHAPES) $(LIGHT_AND_SHADING)			\
 						$(WORLD) $(SHADOWS) $(CAMERA) $(MLX) $(COLOR)
 
-UTILS				=	error.c \
-						check_arguments.c destroy_minirt.c check_normalize.c
+UTILS				=	error.c check_arguments.c destroy_minirt.c 
 
 CHECK_INPUT			=	check_file.c check.c check_ambient.c check_plane.c		\
 						check_camera.c check_cylinder.c check_light.c			\
@@ -85,6 +86,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf $(BONUS)
 	make fclean -C $(LIBFT_PATH)
 	make fclean -C test
 
@@ -102,8 +104,13 @@ $(OBJ_DIR)/%.o: %.c $(HEADER_FILES) Makefile | $(OBJ_DIR)
 #@echo -n "$(YELLOW)Compiling $(WHITE)$$(( $(PROGRESS) * 100 / $(NUMBER_OF_SRC_FILES)))%\r"
 #$(eval PROGRESS=$(shell echo $$(($(PROGRESS)+1))))
 
+$(BONUS): $(LIBFT) $(OBJ_DIR) $(OBJS)
+	$(CC) -g $(CFLAGS) $(IFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+
 $(OBJ_DIR):
 	mkdir -p $@
+
+bonus: $(BONUS)
 
 git:
 	git add .

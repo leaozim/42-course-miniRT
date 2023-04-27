@@ -13,7 +13,7 @@ static int	identifier(char *line, t_bool reqred_obj[])
 		return (check_id_a(tokens, reqred_obj));
 	else if (ft_strcmp(tokens[0], _CAMERA_) == 0 && reqred_obj[CAMERA] == FALSE)
 		return (check_id_c(tokens, reqred_obj));
-	else if (ft_strcmp(tokens[0], _LIGHT_) == 0 && reqred_obj[LIGHT] == FALSE)
+	else if (ft_strcmp(tokens[0], _LIGHT_) == 0)
 		return (check_id_l(tokens, reqred_obj));
 	else if (ft_strcmp(tokens[0], _SPHERE_) == 0)
 		return (check_id_sp(tokens));

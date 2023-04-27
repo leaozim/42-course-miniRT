@@ -7,7 +7,7 @@ int	check_id_c(char **tokens, t_bool *required_obj)
 	if (check_coordinates(tokens[1]))
 		return (error_msg(ERROR_COOR_C), ft_free_array(tokens), ERROR);
 	if (check_orientation(tokens[2]))
-		return (ft_free_array(tokens), ERROR);
+		return (error_msg(ERROR_ORI_C), ft_free_array(tokens), ERROR);
 	if (is_normalized(tokens[2]))
 		return (ft_free_array(tokens), ERROR);
 	if (ft_isrange(ft_atoi(tokens[3]), 0, 180))

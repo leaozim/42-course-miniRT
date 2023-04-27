@@ -33,7 +33,7 @@ int				check_file(char *filename);
 int				check_open_file(char *file);
 void			create_light_node(char **tokens, t_scene *scene);
 void			create_cylinder_node(char **tokens, t_scene *scene);
-void			destroy_minirt(t_scene *scene);
+void			destroy_minirt(t_scene *scene, t_world *w);
 t_color			create_parameter_color(char *tokens);
 void			create_camera(char **tokens, t_scene *scene);
 void			create_plane_node(char **tokens, t_scene *scene);

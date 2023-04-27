@@ -49,8 +49,8 @@ SHAPES				=	sphere.c create_shape.c plane.c cylinder.c
 LIGHT_AND_SHADING	=	normal_sphere.c reflect.c lighting.c light_builder.c	\
 						light_destroy.c
 
-WORLD				=	create_world.c intersect_world.c destroy_world.c 		\
-						computations_world.c is_shadowed.c setup_world.c
+WORLD				=	create_world.c intersect_world.c setup_world.c			\
+						computations_world.c is_shadowed.c 
 
 MLX 				=	destroy_window.c handle_hook.c
 

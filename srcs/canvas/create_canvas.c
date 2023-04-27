@@ -1,5 +1,4 @@
 #include "minirt.h"
-#include <mlx.h>
 
 t_canvas	create_canvas(int height, int width)
 {

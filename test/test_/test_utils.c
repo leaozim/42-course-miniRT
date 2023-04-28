@@ -68,6 +68,7 @@ t_color	formatted_color(t_color color, double r, double g, double b)
 void	destroy_shape(t_shape *shape)
 {
 	free(shape);
+	// ft_lstclear(&shape, free);
 }
 
 t_world	*default_world(void)
@@ -89,4 +90,11 @@ t_world	*default_world(void)
 	set_transform(sphere2, scaling(0.5, 0.5, 0.5));
 	ft_lstadd_back(&world->shapes, ft_lstnew(sphere2));
 	return (world);
+}
+
+void	destroy_world(t_world *w)
+{
+	ft_lstclear(&w->shapes, free);
+	ft_lstclear(&w->light_point, free);
+	free(w);
 }

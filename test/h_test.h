@@ -36,5 +36,6 @@ t_color		formatted_color(t_color color, double r, double g, double b);
 void		test_shape(void);
 void		test_cylinders(void);
 t_world		*default_world(void);
+void		destroy_world(t_world *w);
 
 #endif

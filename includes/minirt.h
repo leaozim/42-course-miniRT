@@ -2,7 +2,7 @@
 # define MINIRT_H
 
 # include "../libs/libft/libft.h"
-# include "mlx.h"
+# include "../libs/minilibx-linux/mlx.h"
 # include "defines.h"
 # include "error.h"
 # include <fcntl.h>

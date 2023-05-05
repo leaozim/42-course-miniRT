@@ -4,6 +4,9 @@ This project was developed by me and cadet  <a href="https://github.com/meritiss
 
 ## Introduction
 Ray tracing is a technique used to render 3D images by calculating the intersection of a ray of light, coming from the viewer's camera, with the objects in the scene. Each ray is fired from the camera, passing through the corresponding pixels in the viewing window, and the color of each pixel is determined by the color of the object intersected by the ray at the point of intersection (or the background color if there is no intersection).
+<p align=center>
+<img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/ray.jpeg"</>
+</p>
 Ray tracing accurately simulates the physical properties of light rays, allowing lights, shadows, and surfaces to be rendered with a reasonable degree of fidelity, even on modest computers.
 
 ## About the implementation
@@ -45,25 +48,26 @@ Run the program
 
 ## Examples of rendered images
 
+
+
+<p align=center>
+<img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/brightness2.png"</>
+</p>
+
+<p align=center>
+<img align="center" src="https://github.com/leaozim/42-course-miniRT/blob/main/images/rodrigo.png"</>
+</p>
 <p align=center>
 <img align="center" src="https://github.com/leaozim/42-course-miniRT/blob/main/images/room.png"</>
 </p>
 
 <p align=center>
-<img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/rodrigo.png"</>
-</p>
-
-<p align=center>
 <img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/man.png"</>
 </p>
-
 <p align=center>
 <img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/lights_in_the_spheres.png"</>
 </p>
 
-<p align=center>
-<img align="center"  src="hhttps://github.com/leaozim/42-course-miniRT/blob/main/images/brightness2.png"</>
-</p>
 
 <p align=center>
 <img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/doidao.png"</>

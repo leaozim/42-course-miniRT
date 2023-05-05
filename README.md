@@ -11,7 +11,7 @@ Ray tracing accurately simulates the physical properties of light rays, allowing
 
 ## About the implementation
 
-This algorithm was implemented based on the book <a href="http://raytracerchallenge.com/">"The Ray Tracing Challenge"</a> using the Test Driven Development (TDD) method. The UNITY Test was used as the testing tool. However, it is important to note that some tests suggested by the book became outdated due to school specifications, which required some implementation details not covered in the book.
+This algorithm was implemented based on the book <a href="http://raytracerchallenge.com/">"The Ray Tracing Challenge"</a> using the Test Driven Development (TDD) method. The <a href="https://github.com/ThrowTheSwitch/Unity">UNITY</a> Test was used as the testing tool. However, it is important to note that some tests suggested by the book became outdated due to school specifications, which required some implementation details not covered in the book.
 To achieve this goal, the school's 42 graphics library, <a href="https://github.com/42Paris/minilibx-linux">MiniLibX</a>, was used! This library was developed internally and includes the basic tools needed to open a window, create images, and manipulate keyboard and mouse events.
 
 ## How to Run 

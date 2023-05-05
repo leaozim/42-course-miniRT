@@ -40,3 +40,32 @@ Run the program
 | Plane         | pl [coordinate] [vector] [rgb color]                 | pl 0,0,0 0,1,0 255,0,255     |
 | Sphere        | sp [coordinate] [diameter] [rgb color]               | sp 0,0,0 3 0,0,255           |
 | Cylinder      | cy [coordinate] [vector] [diameter] [height] [color] | cy 0,0,0 0,0,1 3 5 145,39,79 |
+
+
+
+## Examples of rendered images
+
+<p align=center>
+<img align="center" src="https://github.com/leaozim/42-course-miniRT/blob/main/images/room.png"</>
+</p>
+
+<p align=center>
+<img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/rodrigo.png"</>
+</p>
+
+<p align=center>
+<img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/man.png"</>
+</p>
+
+<p align=center>
+<img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/lights_in_the_spheres.png"</>
+</p>
+
+<p align=center>
+<img align="center"  src="hhttps://github.com/leaozim/42-course-miniRT/blob/main/images/brightness2.png"</>
+</p>
+
+<p align=center>
+<img align="center"  src="https://github.com/leaozim/42-course-miniRT/blob/main/images/doidao.png"</>
+</p>
+

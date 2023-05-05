@@ -12,28 +12,31 @@ Ray tracing accurately simulates the physical properties of light rays, allowing
 ## About the implementation
 
 This algorithm was implemented based on the book <a href="http://raytracerchallenge.com/">"The Ray Tracing Challenge"</a> using the Test Driven Development (TDD) method. The UNITY Test was used as the testing tool. However, it is important to note that some tests suggested by the book became outdated due to school specifications, which required some implementation details not covered in the book.
+To achieve this goal, the school's 42 graphics library, <a href="https://github.com/42Paris/minilibx-linux>MiniLibX</a>, was used! This library was developed internally and includes the basic tools needed to open a window, create images, and manipulate keyboard and mouse events.
 
 ## How to Run 
 
-Git clone the project:
+#### Git clone the project:
 ```sh
 git@github.com:leaozim/42-course-miniRT.git
 ```
-Installing dependencies
+#### Installing dependencies
+Inside the libs directory in the MiniRT folder, you will find the minilibx-linux library. If you are running on Linux, you can execute the command below and it will install its dependencies. If you use MacOS, follow the installation instructions contained in this repository 
 ```sh
 sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev
 ```
-To compile, use make
+#### To compile, use make
+MiniRT relies on the libft submodule and the MiniLibX library to run. Both are located at the root of the project and will be compiled when running the make command.
 ```sh
 cd 42-course-miniRT && make
 ```
-Run the program
+#### Run the program
+Run MiniRT with an .rt file as an argument. You can use one of the examples located in the scenes folder or write your own .rt file.
 ```sh
 ./miniRT scenes/bonitao.rt
 ```
 ## Create your own RT File
-
-.rt files need at least one Camera, Ambient Light and Light. The geometric shapes available are planes, cylinders and spheres.
+Files with the .rt extension require at least one camera, ambient light, and regular light. The available shapes are planes, cylinders, and spheres. You can configure as many shapes and lights as you want.
 
 | **Objects**   | **Input**                                            | **Example**                  |
 | :----         | :--------------------------------------------------- | :--------------------------- |
